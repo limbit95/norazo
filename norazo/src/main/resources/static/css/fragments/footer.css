@@ -1,0 +1,23 @@
+footer{
+    width: 100%;
+    height: 200px;
+    background-color: #0554F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+footer>p{
+    margin: 16px 0;
+    color: #FAFAFA;
+}
+
+footer>article>*{
+    font-size: 14px;
+}
+
+footer a {
+    color: #FAFAFA;
+    text-decoration: none;
+}
