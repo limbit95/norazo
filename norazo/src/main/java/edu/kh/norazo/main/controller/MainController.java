@@ -19,7 +19,7 @@ public class MainController {
 	@GetMapping("login")
 	public String login() {
 		
-		return "common/login";
+		return "member/login";
 	}
 	
 	@GetMapping("sportsBoard")
@@ -34,7 +34,7 @@ public class MainController {
 
 	@GetMapping("myPage")
 	public String myPage() {
-		return "common/myPage";
+		return "common/fragments/myPage";
 	}
 	
 
