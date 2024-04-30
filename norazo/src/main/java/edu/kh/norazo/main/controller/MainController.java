@@ -32,10 +32,19 @@ public class MainController {
 		return "common/modal";
 	}
 	
+
 	@GetMapping("signUp")
 	public String signUp() {
 		return "common/signUp";
 		
+
+	
+	
+	
+	@GetMapping("test")
+	public String test() {
+		return "common/main-copy";
+
 	}
 	
 }

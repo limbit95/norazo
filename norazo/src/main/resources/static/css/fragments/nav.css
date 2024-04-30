@@ -1,6 +1,7 @@
 @media (max-width: 1040px) {
     .nav-container {
         display: flex; 
+        flex-direction: row;
         justify-content: center; 
         align-items: center; 
         height: 70px;
@@ -31,15 +32,15 @@
     
     .logo-div {
         width: 100px;
-        height: 35px;
+        height: 30px;
         margin-left: 10px;
     }
     
     .logo-div > a {
         width: 130px;
-        height: 35px;
+        height: 30px;
     }
-    
+     
     .logo-div > a > img{
         width: 100px;
         height: 30px;
@@ -98,6 +99,7 @@
     /* nav바 */
     .nav-container {
         display: flex; 
+        flex-direction: row;
         justify-content: center; 
         align-items: center; 
         height: 70px;
@@ -127,18 +129,18 @@
 
     .logo-div {
         width: 130px;
-        height: 35px;
+        height: 30px;
         margin-left: 30px;
     }
 
     .logo-div > a{
         width: 130px;
-        height: 35px;
+        height: 30px;
     }
 
     .logo-div > a > img{
         width: 130px;
-        height: 35px;
+        height: 30px;
     }
 
     .search-box-div {
