@@ -14,7 +14,7 @@ public class MainController {
 	
 	@GetMapping("category")
 	public String categoryPage() {
-		return "common/main-category";
+		return "common/fragments/main-category";
 	}
 	@GetMapping("login")
 	public String login() {
@@ -34,13 +34,14 @@ public class MainController {
 
 	@GetMapping("myPage")
 	public String myPage() {
-		return "common/myPage"
+		return "common/myPage";
 	}
 	
 
 	@GetMapping("signUp")
 	public String signUp() {
 		return "common/signUp";
+	}
 		
 
 	
