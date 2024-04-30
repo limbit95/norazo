@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid red;
+    padding: 0;
+    margin: 0;
+}
+
+main * {
+    width: 56.771vw;
+}
+
+/* 폰트 */
+@font-face {
+    font-family: 'main';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* 서브폰트 */
+@font-face {
+    font-family: 'regular';
+    font-weight: 300;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot?#iefix') format('embedded-opentype'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.woff2') format('woff2'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.woff') format('woff'),
+         url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.ttf') format("truetype");
+    font-display: swap;
+}
+
+/* h태그 */
+h1 {
+    font-family: 'main';
+    font-size: 2.083vw;
+}
+h2 {
+    font-family: 'main';
+    font-size: 1.302vw;
+}
+h3 {
+    font-family: 'regular';
+    font-size: 1.042vw;
+}
+h4 {
+    font-family: 'regular';
+    font-size: 0.781vw;
+}
+
+/* color */
+:root {
+    --primary1: #0554F2;
+    --primary2: #076DF2;
+    --primary3: #3889F2;
+    --secondary: #FFD332;
+    --gray1: #3C3C3C;
+    --gray2: #808080;
+    --gray3: #B4B4B4;
+    --gray4: #E1E1E1;
+    --white: #FAFAFA;    
+}
+
+/* layout */
+body {
+    display: flex;
+    justify-content: center;
+}
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+article {
+    height: 35.185vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
