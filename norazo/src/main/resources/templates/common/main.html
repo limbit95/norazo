@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/common/nav.css">
     <link rel="stylesheet" href="/css/fragments/adBanner.css">
+
     <!-- <link rel="stylesheet" href="/css/fragments/modal.css"> -->
 
     <link rel="stylesheet" href="/css/common/main.css">
@@ -15,21 +16,32 @@
 
 <body>
     
-
-    <th:block th:replace="~{common/nav}"></th:block>
-
-    <main> 
+    <main>
        
         <!--광고 배너 -->
         <th:block th:replace="~{common/fragments/adBanner}"></th:block>
 
+        <!-- 푸터 -->
+        <th:block th:replace="~{common/footer}"></th:block>
+
+        <article></article>
+    </main>
 
 
+    <title>NORAZO</title>
+</head>
+<body>
+    <main>
+        <th:block th:replace="~{common/nav}"></th:block>
+
+        <br>
+        
+        <th:block th:replace="~{common/adBanner}"></th:block>
 
     </main>
+
     <!-- 푸터 -->
     <th:block th:replace="~{common/footer}"></th:block>
     
-
 </body>
 </html>

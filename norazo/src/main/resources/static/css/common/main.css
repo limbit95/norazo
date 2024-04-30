@@ -1,13 +1,11 @@
 * {
     box-sizing: border-box;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     padding: 0;
     margin: 0;
 }
 
 main * {
-    display: flex;
-    flex-direction: row;
     width: 56.771vw;
 }
 
@@ -22,7 +20,7 @@ main * {
 /* 서브폰트 */
 @font-face {
     font-family: 'regular';
-    font-weight: 300px;
+    font-weight: 300;
     font-style: normal;
     src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot');
     src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot?#iefix') format('embedded-opentype'),
@@ -33,25 +31,21 @@ main * {
 }
 
 /* h태그 */
-/* 40px */
 h1 {
     font-family: 'main';
     font-size: 40px;
 }
-/* 25px */
 h2 {
     font-family: 'main';
     font-size: 25px;
 }
-/* 20px */
 h3 {
     font-family: 'regular';
     font-size: 20px;
 }
-/* 15px */
 h4 {
     font-family: 'regular';
-    font-size: 15px;
+    font-size: 0.781vw;
 }
 
 /* color */

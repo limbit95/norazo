@@ -9,12 +9,39 @@
     font-family: 'main';
 }
 
+main {
+    display: flex;
+}
+
+.profile {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+}
+.backGround {
+    width: 430px;
+    height: 1020px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
+    border: 1px solid black;
+}
+
+.div1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .Rectangle1 {
     width: 250px;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: var(--primary1);
     height: 30px;
     border-top-left-radius: 30px;
@@ -25,11 +52,64 @@
 .Rectangle2 {
     width: 250px;
     color: var(--primary2);
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 40px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
+    border: 1px solid black;
+}
+
+.Rectangle3 {
+    width: 250px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    color: var(--primary2);
+    border: 1px solid black;
+
+}
+
+.Rectangle4 {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary1);
+    height: 40px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: 1px solid black;
+}
+
+.Rectangle5 {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary1);
+    height: 260px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 1px solid black;
+}
+
+.MyProfileRight {
+    width: 650px;
+    height: 1020px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
     border: 1px solid black;
 }

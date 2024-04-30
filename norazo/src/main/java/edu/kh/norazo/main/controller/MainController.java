@@ -31,5 +31,26 @@ public class MainController {
 	public String modal() {
 		return "common/modal";
 	}
+
+	@GetMapping("myPage")
+	public String myPage() {
+		return "common/myPage";
+	}
+	
+
+	@GetMapping("signUp")
+	public String signUp() {
+		return "common/signUp";
+	}
+		
+
+	
+	
+	
+	@GetMapping("test")
+	public String test() {
+		return "common/main-copy";
+
+	}
 	
 }
