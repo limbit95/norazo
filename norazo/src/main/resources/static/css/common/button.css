@@ -1,0 +1,292 @@
+/* 버튼 */
+
+/* 버튼 메인 CSS */
+button {
+    left: 0px; 
+    top: 0px;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+    border-color: transparent;
+
+    /* 폰트 */
+    font-family: 'main';
+    word-wrap: break-word;
+    text-align: center; 
+    color: var(--white); 
+}
+
+button:hover {
+    left: 0px; 
+    top: 0px;
+    background: var(--secondary);
+    border-radius: 30px;
+    transition: background-color 0.3s;
+    border-color: transparent;
+
+    /* 폰트 */
+    font-family: 'main';
+    color: var(--white);
+    text-align: center;
+    word-wrap: break-word;
+}
+
+
+/* ----------------------------------------------------------- */
+
+/* 회원가입 관련 버튼 */
+
+
+
+
+
+/* 회원가입 (가입하기) 버튼 */
+.signupSubmitBtn {
+    width: 1090px; 
+    height: 70px;
+    background-color: var(--primary1);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.singupSubmitBtn:hover {
+    width: 1090px; 
+    height: 70px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+
+
+/* 회원가입 (인증요청) / (주소검색) / (중복확인) 버튼 */
+.singupBtn {
+    width: 250px;
+    height: 70px;
+    background-color: var(--primary3);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.singupBtn:hover {
+    width: 250px;
+    height: 70px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+
+/* ----------------------------------------------------------- */
+
+/* 로그인 관련 버튼 */
+
+.loginBtn {
+    width: 420px;
+    height: 70px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: var(--primary1);
+  
+    /* 폰트 */
+    font-size: 25px; 
+}
+.loginBtn:hover {
+    width: 420px;
+    height: 70px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* 폰트 */
+    font-size: 25px; 
+}
+
+
+/* ----------------------------------------------------------- */
+
+/* 모달창 관련 버튼 */
+
+.joinBtn {
+    width: 590px;
+    height: 70px;
+    background-color: var(--primary1);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.joinBtn:hover {
+    width: 590px;
+    height: 70px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+/* ----------------------------------------------------------- */
+
+/* 모임글 작성 관련 버튼 */
+
+
+
+
+/* 모임글 작성 페이지 (등록하기) */
+.boardSubmitBtn {
+    width: 500px;
+    height: 70px;
+    background-color: var(--primary1);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.boardSubmitBtn:hover {
+    width: 500px;
+    height: 70px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+
+/* 모임글 작성 페이지 (등록하기) */
+.boardCreateBtn {
+    width: 500px;
+    height: 50px;
+    background-color: var(--primary1);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.boardCreateBtn:hover {
+    width: 500px;
+    height: 50px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+/* ----------------------------------------------------------- */
+
+
+/* 게시판 관련 버튼 */
+
+
+
+/* 게시판 (변경하기) / (수정하기)  버튼 */
+.updateBoardBtn {
+    width: 130px;
+    height: 50px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.updateBoardBtn:hover {
+    width: 130px;
+    height: 50px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+.commentSubmitBtn {
+    width: 250px;
+    height: 70px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.commentSubmitBtn:hover {
+    width: 250px;
+    height: 70px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+/* 게시판 글 (변경하기) / (수정하기) 버튼 */
+.updateBoardSubmitBtn {
+    width: 500px;
+    height: 50px;
+    background-color: var(--primary1);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.updateBoardSubmitBtn:hover {
+    width: 500px;
+    height: 50px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+
+
+/* ----------------------------------------------------------- */
+
+/* 게시판 모임글 상세조회 */
+
+
+
+
+
+/* 상세조회 (잠여현황) 버튼 + 모임글 게시판 (작성하기) */ 
+.joinMemberViewBtn {
+    width: 250px; 
+    height: 70px;
+    background-color: var(--primary2);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.joinMemberViewBtn:hover {
+    width: 250px; 
+    height: 70px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+/* 상세조회 (잠여 쥐소) 버튼 */
+.detailCancelBtn {
+    width: 390px;
+    height: 50px;
+    background-color: var(--primary2);
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.detailCancelBtn:hover {
+    width: 390px;
+    height: 50px;
+    
+    /* 폰트 */
+    font-size: 25px;
+}
+
+
+/* 상세조회 (댓글등록) 버튼 */
+.detailCommentSubmitBtn {
+    width: 90px;
+    height: 50px;
+    background-color: var(--primary2);
+
+    /* 폰트 */
+    font-size: 20px;
+
+}
+.detailCommentSubmitBtn:hover {
+    width: 90px;
+    height: 50px;
+
+    /* 폰트 */
+    font-size: 20px;
+}
+
+
+/* ----------------------------------------------------------- */
+
+/*  */
+
+ /* 5) 인풋 (확정)
+  - 체크박스 */
+
+
+/* 6) a 테그 (확정) */
+
