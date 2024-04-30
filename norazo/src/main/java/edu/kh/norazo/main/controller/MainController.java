@@ -32,4 +32,12 @@ public class MainController {
 		return "common/modal";
 	}
 	
+	
+	
+	
+	@GetMapping("test")
+	public String test() {
+		return "common/main-copy";
+	}
+	
 }
