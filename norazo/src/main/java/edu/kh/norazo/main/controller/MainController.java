@@ -17,4 +17,14 @@ public class MainController {
 		return "common/main-category";
 	}
 	
+	@GetMapping("sportsBoard")
+	public String sportsBoardPage() {
+		return "board/sportsBoard";
+	}
+	
+	@GetMapping("modal")
+	public String modal() {
+		return "common/modal";
+	}
+	
 }

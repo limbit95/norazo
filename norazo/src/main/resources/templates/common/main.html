@@ -6,6 +6,8 @@
     <!-- 광고 베너 CSS 테스트중 -->
     <link rel="stylesheet" href="/css/fragments/adBanner.css">
     <link rel="stylesheet" href="/css/fragments/footer.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
+    <link rel="stylesheet" href="/css/fragments/modal.css">
 
     <link rel="stylesheet" href="/css/common/main.css">
     <title>노라조</title>
@@ -13,17 +15,17 @@
 
 <body>
     
-    <main>
+    <th:block th:replace="~{common/nav}"></th:block>
+
+    <main> 
        
         <!--광고 배너 -->
         <th:block th:replace="~{common/adBanner}"></th:block>
 
-        <!-- 푸터 -->
-        <th:block th:replace="~{common/footer}"></th:block>
 
-        <article></article>
     </main>
-
+    
+    <th:block th:replace="~{common/footer}"></th:block>
 
 </body>
 </html>
