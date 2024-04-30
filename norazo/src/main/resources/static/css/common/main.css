@@ -20,7 +20,7 @@ main * {
 /* 서브폰트 */
 @font-face {
     font-family: 'regular';
-    font-weight: 300;
+    font-weight: 300px;
     font-style: normal;
     src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot');
     src: url('https://cdn.jsdelivr.net/gh/webfontworld/hana/HanaLight.eot?#iefix') format('embedded-opentype'),
@@ -31,21 +31,25 @@ main * {
 }
 
 /* h태그 */
+/* 40px */
 h1 {
     font-family: 'main';
-    font-size: 2.083vw;
+    font-size: 40px;
 }
+/* 25px */
 h2 {
     font-family: 'main';
-    font-size: 1.302vw;
+    font-size: 25px;
 }
+/* 20px */
 h3 {
     font-family: 'regular';
-    font-size: 1.042vw;
+    font-size: 20px;
 }
+/* 15px */
 h4 {
     font-family: 'regular';
-    font-size: 0.781vw;
+    font-size: 15px;
 }
 
 /* color */
