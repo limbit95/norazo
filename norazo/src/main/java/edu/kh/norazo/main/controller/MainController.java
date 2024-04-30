@@ -31,6 +31,11 @@ public class MainController {
 	public String modal() {
 		return "common/modal";
 	}
+
+	@GetMapping("myPage")
+	public String myPage() {
+		return "common/myPage"
+	}
 	
 
 	@GetMapping("signUp")
