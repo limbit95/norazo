@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     padding: 0;
     margin: 0;
 }
@@ -33,19 +33,19 @@ main * {
 /* h태그 */
 h1 {
     font-family: 'main';
-    font-size: 2.083vw;
+    font-size: 40px;
 }
 h2 {
     font-family: 'main';
-    font-size: 1.302vw;
+    font-size: 25px;
 }
 h3 {
     font-family: 'regular';
-    font-size: 1.042vw;
+    font-size: 20px;
 }
 h4 {
     font-family: 'regular';
-    font-size: 0.781vw;
+    font-size: 15px;
 }
 
 /* color */
@@ -65,6 +65,8 @@ h4 {
 body {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 main {
     display: flex;

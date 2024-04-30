@@ -1,0 +1,173 @@
+
+
+.category-page {
+    width: 1090px; 
+    height: 100%; 
+    border: 1px solid black;
+}
+
+.category-title {
+    font-weight: bold; 
+    font-size: 40px;
+}
+
+.category-board-list {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.board {
+    width: 250px;
+    height: 310px; 
+    padding: 0px; 
+    margin-top: 20px;
+}
+
+.board > img {
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 250px; 
+    height: 220px; 
+    border-radius: 30px; 
+    background-color: rgb(255, 255, 255); 
+    padding: 0px; 
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.address {
+    color: #8F8B8B; 
+    font-size: 15px; 
+    text-align: start; 
+    margin: 5px; 
+    margin-top: 10px;
+}
+
+.board-title {
+    color: #3C3C3C; 
+    font-size: 18px; 
+    text-align: start; 
+    margin: 5px 5px; 
+    cursor: pointer;
+}
+
+
+
+/* 모달창 css */
+/* * {
+    border: 1px solid red;
+} */
+
+.modal-content {
+    border-radius: 30px; 
+    border: 3px solid #076DF2; 
+    width: 600px; 
+    height: 600px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 6px 6px rgba(0,0,0,0.45);
+    background-color: white;
+
+    position: fixed;
+
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.modal-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.modal-title {
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+.board-like {
+    font-size: 30px; 
+    color: #FFD332; 
+    cursor: pointer; 
+    margin-left: 260px;
+}
+
+.close-btn {
+    font-size: 30px;
+    margin-left: 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-left: 20px;
+    height: 360px;
+    display: flex;
+    align-items: center;
+}
+
+.modal-thumbnail {
+    width: 320px; 
+    height: 320px; 
+    border: 3px solid #076DF2; 
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.modal-info {
+    width: 330px; 
+    height: 320px; 
+    margin-left: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: end;
+}
+
+.modal-info-line {
+    border-bottom: 3px solid #535353;
+    display: flex;
+}
+
+.info-content {
+    margin-left: 10px;
+}
+
+.attend-member-div {
+    height: 120px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-evenly;
+}
+
+.attend-member {
+    width: 80px; 
+    height: 80px; 
+    border-radius: 50px;
+}
+
+.join-btn-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+}
+
+.join-btn {
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    font-size: 25px;
+    height: 60px;
+    color: white;
+    width: 650px;
+    background-color: #076DF2;
+    cursor: pointer;
+}
+
+.popup-hidden {
+    display: none !important;
+}
