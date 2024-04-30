@@ -20,40 +20,44 @@
     align-items: center;
 }
 
-.nav-category-btn {
-    background-color: #076DF2;
-     width: 30px; 
-     height: 30px; 
-     border-radius: 5px; 
-     margin-top: 4px;
+.category-list-btn1 {
+    width: 30px;
+    height: 30px;
 }
 
-.logo-div {
-    margin-left: 20px;
+.category-list-btn2 {
+    color: #076DF2;
+    font-size: 30px;
+    padding: 0px;
+    margin: 0px;
 }
 
-.logo-div > a {
-    text-decoration: none; 
-    font-size: 35px; 
-    color: #076DF2; 
-    font-weight: bold;
+.logo {
+    width: 130px;
+    height: 30px;
+    margin-left: 40px;
+}
+
+.logo > img{
+    width: 130px;
+    height: 30px;
 }
 
 .search-box-div {
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .search-box-div > input {
-    width: 590px; 
+    width: 580px; 
     height: 40px; 
     font-size: 15x; 
     border-radius: 30px; 
     border: solid #076DF2; 
 }
-
+ 
 .nav-btn-div {
     display: flex; 
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .nav-btn-div > div {
@@ -68,8 +72,9 @@
 }
 
 .btnlist {
-    font-size: 40px; 
+    font-size: 30px; 
     margin-top: 5px;
+    margin-left: 10px;
     text-decoration: none;
     color: #076DF2;
 }
@@ -77,7 +82,7 @@
 
 
 
-/* 숨겨진 카테고리 목록 div */
+/* 카테고리 목록 div */
 .card-container {
     display: flex; 
     justify-content: center;
@@ -97,15 +102,17 @@
 }
 
 .card-list {
-    width: 860px;
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .card-1-div {
     width: 200px; 
     height: 120px; 
     border-radius: 15px; 
-    margin-left: 10px; 
-    margin-top: 10px; 
+    margin-left: 20px; 
+    margin-top: 20px; 
     position: relative;
 }
 
@@ -123,9 +130,10 @@
   }
 
 .card-1-title {
+    font-size: 22px;
     text-shadow: 2px 2px 4px #000000;
     color: #fafafa;
     position: absolute; 
-    top: 68%; 
-    left: 8%; 
+    top: 40%; 
+    left: 10%; 
 }
