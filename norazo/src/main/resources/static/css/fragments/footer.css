@@ -8,15 +8,25 @@ footer{
     flex-direction: column;
 }
 
-footer>p{
+footer > p {
     margin: 16px 0;
 }
 
-footer>article>*{
+footer > article>*{
     font-size: 14px;
 }
 
 footer a {
     color: FFFFFF;
     text-decoration: none;
+
+}
+
+footer article div {
+    display: inline-block; /* 각 링크를 인라인 블록으로 표시하여 가로 정렬 */
+    margin-right: 100px; /* 링크 사이에 간격을 조절 */
+}
+
+footer article div:last-child {
+    margin-right: 0; /* 마지막 링크의 오른쪽 여백을 없앰 */
 }
