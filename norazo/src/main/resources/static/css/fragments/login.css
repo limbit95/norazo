@@ -1,0 +1,47 @@
+.page .page-title {
+    display: none;
+    }
+
+body{
+    background-color: #3889F2;
+}
+
+section {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    background-color: var(--gray4);
+    border-radius: 30px;
+    height: 200px;
+    height: 300px;
+}
+
+#logo{
+    width: 279px;
+    height: 57px;
+    margin-bottom: 10px;
+}
+.login-input-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 세로 정렬 */
+   
+}
+
+/* 로그인/비밀번호 인풋 */
+.login-input-area input[type="text"],
+.login-input-area input[type="password"] {
+    margin-bottom: 10px; /* 입력 필드 사이의 간격 조정 */
+    border-radius: 30px;
+    margin: 5;  
+}
+
+.login-input-area h4 {
+    margin-bottom: 1px; /* 라디오 버튼 아래의 여백 조정 */
+}
+
+.login-input-area button {
+    margin-top: 10px; /* 로그인 버튼 위의 여백 조정 */
+}

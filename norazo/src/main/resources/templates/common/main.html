@@ -8,22 +8,26 @@
     <link rel="stylesheet" href="/css/fragments/footer.css">
 
     <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/fragments/nav.css">
     <title>노라조</title>
 </head>
 
 <body>
     
     <main>
-       
+        <th:block th:replace="~{common/nav}"></th:block>
+        <form action="/"></form>
         <!--광고 배너 -->
         <th:block th:replace="~{common/adBanner}"></th:block>
 
-        <!-- 푸터 -->
-        <th:block th:replace="~{common/footer}"></th:block>
+    
 
         <article></article>
+        
+       
+
     </main>
-
-
+    <!-- 푸터 -->
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
