@@ -32,4 +32,10 @@ public class MainController {
 		return "common/modal";
 	}
 	
+	@GetMapping("signUp")
+	public String signUp() {
+		return "common/signUp";
+		
+	}
+	
 }

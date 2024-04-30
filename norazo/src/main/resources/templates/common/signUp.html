@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노라조</title>
+</head>
+<body>
+    <main>
+        <section>
+            <form action="">
+                <!-- 이메일 입력 -->
+                <label for="">
+                    <span>이메일</span>
+                </label>
+
+                <div>
+                    <input type="text" placeholder="이메일을 입력하세요." maxlength="30" autocomplete="off">
+
+                    <button>인증요청</button>
+                </div>
+                <span>메일을 받을 수 있는 이메일을 입력해주세요.</span>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 인증번호 입력 -->
+                <label for="">
+                    <span>인증번호</span>
+                </label>
+                <div>
+                    <input type="text" placeholder="인증번호를 입력하세요." maxlength="6" autocomplete="off">
+
+                    <button>인증하기</button>            
+                </div>
+                <span></span><!-- 인증 입력 틀력시 문구 변경용 -->
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 비밀번호 / 비밀번호 확인 -->
+                <label for="">
+                    <span>비밀번호</span>
+                </label>
+
+                <div>
+                    <input type="password" placeholder="비밀번호를 입력하세요." maxlength="20" autocomplete="off">
+                </div>
+
+                <div>
+                    <input type="password" placeholder="비밀번호 확인" maxlength="20" autocomplete="off">
+                </div>
+                <!-- 정규 표현식 -->
+                <span>영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 닉네임 -->
+                <label for="">
+                    <span>닉네임</span>
+                </label>
+
+                <div>
+                    <input type="text" placeholder="닉네임" maxlength="10">
+                </div>
+
+                <span>한글,영어,숫자로만 2~10글자</span>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 성별 선택 -->
+
+                <label for="">
+                    <span>성별</span>
+                </label>
+
+                <div>
+                    <select id="gender" name="gender">
+                        <option value="male">남성</option>
+                        <option value="female">여성</option>
+                    </select>
+
+                </div>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 생년 월일 -->
+                <label for="">
+                    <span>생년월일</span>
+                </label>
+                <div>
+                    <input type="text" placeholder="YYYYMMDD">
+                </div>
+                
+                <!-- 주소 입력 -->
+                <label for="">주소</label>
+
+                <!--우편번호-->
+                <div>
+                    <input type="text" placeholder="우편번호" maxlength="6">
+                    <button>검색</button>
+                </div>
+                <!--도로명/지번주소-->
+                <div>
+                    <input type="text" placeholder="도로명/지번 주소">
+                </div>
+                <!-- 상세 주소 -->
+                <div>
+                    <input type="text" placeholder="상세 주소">
+                </div>
+
+                <button>가입하기</button>
+            </form>
+        </section>
+
+    </main>
+</body>
+</html>
