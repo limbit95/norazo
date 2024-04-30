@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'main';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+    font-family: 'main';
+}
+
+
+.Rectangle1 {
+    width: 250px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    color: var(--primary1);
+    height: 30px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border: 1px solid black;
+}
+
+.Rectangle2 {
+    width: 250px;
+    color: var(--primary2);
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+    height: 40px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 1px solid black;
+}
