@@ -37,6 +37,7 @@ h1 {
 }
 h2 {
     font-family: 'main';
+
     font-size: 1.302vw;
 }
 h3 {
@@ -65,6 +66,8 @@ h4 {
 body {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 main {
     display: flex;
