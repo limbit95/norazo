@@ -22,4 +22,14 @@ public class MainController {
 		return "common/login";
 	}
 	
+	@GetMapping("sportsBoard")
+	public String sportsBoardPage() {
+		return "board/sportsBoard";
+	}
+	
+	@GetMapping("modal")
+	public String modal() {
+		return "common/modal";
+	}
+	
 }
