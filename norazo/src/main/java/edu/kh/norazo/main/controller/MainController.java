@@ -16,6 +16,11 @@ public class MainController {
 	public String categoryPage() {
 		return "common/main-category";
 	}
+	@GetMapping("login")
+	public String login() {
+		
+		return "common/login";
+	}
 	
 	@GetMapping("sportsBoard")
 	public String sportsBoardPage() {
