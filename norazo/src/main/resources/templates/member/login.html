@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>노라조</title>
-    <link rel="stylesheet" href="/css/fragments/footer.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/fragments/login.css">
 </head>
 <body>
-    
+    <th:block th:replace="~{common/nav}"></th:block>
     <main>
         <section>
              <!-- 로고 -->
@@ -21,16 +22,16 @@
              <form action="" method="post">
                  <div class="login-input-area">
 
-                    <div>
-                        <input type="text" id="id" placeholder="아이디" autocapitalize="off">
+                    <div class="idInput">
+                        <input type="text" id="id" placeholder="아이디" autocapitalize="off" class="loginInput">
                     </div>
                     
-                    <div>
-                        <input type="password" id="password" placeholder="비밀번호" autocapitalize="off">
+                    <div class="pwInput">
+                        <input type="password" id="password" placeholder="비밀번호" autocapitalize="off" class="loginInput">
                     </div>
                     
                     <div class="radioDiv">
-                        <input type="checkbox"><h3>아이디 저장</h3>
+                        <input type="checkbox" class="saveId"><h3 class="saveId">아이디 저장</h3>
                     </div>    
 
                      <button class="loginBtn">로그인</button>
@@ -41,13 +42,14 @@
              <!-- 비밀번호 찾기/회원가입 폼-->
             <div class="pwSignDiv">
 
-                    <a href="">비밀번호 찾기</a>
+                    <a href="" class="loginTag">비밀번호 찾기</a>
 
-                    <a href="">회원 가입</a>
+                    <a href="" class="loginTag">회원 가입</a>
 
             </div>
  
         </section>
      </main>
+     <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
