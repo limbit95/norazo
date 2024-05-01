@@ -83,3 +83,76 @@ article {
 }
 
 
+
+
+
+/* --------------------- 신규 모임 글 --------------------- */
+
+.title-group {
+    display: flex;
+    width: 1090px;
+    align-items: end;
+}
+
+.boardType-title {
+    text-align: start;
+    margin-left: 30px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    width: 950px;
+}
+
+.whole-view {
+    text-decoration: none;
+    width: auto;
+    height: 50px;
+    font-size: 15px;
+    font-family: 'main';
+    color: black;
+}
+
+.whole-view:visited { color: black; }    
+
+.sportsBoard-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1090px;
+}
+
+.sportsBoard-list > div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 230px;
+    height: 275px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.sportsBoard-list > div > img {
+    width: 230px; 
+    height: 200px; 
+    border-radius: 30px; 
+    background-color: rgb(255, 255, 255); 
+    padding: 0px;
+    margin: 0;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+}
+
+.sportsBoard-list > div > div {
+    height: 65px;
+    margin-top: 10px;
+}
+
+.sportsBoard-title {
+    color: #3C3C3C; 
+    font-size: 18px; 
+    text-align: start; 
+    width: auto;
+    cursor: pointer;
+}
+
+/* 자유게시판 전용 css 작성해야함 */
