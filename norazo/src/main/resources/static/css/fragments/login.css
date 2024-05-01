@@ -13,7 +13,6 @@ section {
     background-color: var(--gray4);
     border-radius: 80px;
 }
-
 input[type="password"] {
     flex-direction: column;
 } 
@@ -54,7 +53,6 @@ input[type="password"] {
     display: flex;
     flex-direction: row;
 }
-
 .pwSignDiv{
     display: flex;
     width: 410px;
