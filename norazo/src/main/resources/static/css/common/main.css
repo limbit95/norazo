@@ -1,12 +1,12 @@
 * {
     box-sizing: border-box;
-    /* border: 1px solid red; */
+    border: 1px solid red;
     padding: 0;
     margin: 0;
 }
 
 main * {
-    width: 56.771vw;
+    width: 1020px;
 }
 
 /* 폰트 */
@@ -81,3 +81,5 @@ article {
     align-items: center;
     flex-direction: column;
 }
+
+
