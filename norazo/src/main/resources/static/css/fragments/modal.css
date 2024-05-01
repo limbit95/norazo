@@ -102,3 +102,7 @@
 .popup-hidden {
     display: none !important;
 }
+
+.like-hidden {
+    display: none !important;
+}
