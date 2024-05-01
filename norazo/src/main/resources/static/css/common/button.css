@@ -1,5 +1,17 @@
 /* 버튼 */
 
+/* 240501 : 
+- button 
+cursor -> add
+
+- input
+padding add 
+text-size bigger
+onclick -> black to transparent
+*/
+
+
+
 /* 버튼 메인 CSS */
 button {
     left: 0px; 
@@ -309,7 +321,7 @@ input::placeholder {
 .loginInput {
     width: 420px; 
     height: 60px; 
-    border: 3px var(--primary2) "solid";
+    border: 3px var(--primary2) solid;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     /* 폰트 */
@@ -328,7 +340,7 @@ input::placeholder {
 .signupInput1 {
     width: 1090px; 
     height: 70px; 
-    border: 3px var(--primary3) "solid";
+    border: 3px var(--primary3) solid;
 
     /* 폰트 */
     font-size: 15px;
@@ -341,7 +353,7 @@ input::placeholder {
 .signupInput2 {
     width: 800px; 
     height: 70px; 
-    border: 3px var(--primary3) "solid";
+    border: 3px var(--primary3) solid;
 
     /* 폰트 */
     font-size: 15px;
@@ -356,7 +368,7 @@ input::placeholder {
 .profileUpdateInput1 {
     width: 500px; 
     height: 50px; 
-    border: 3px var(--gray3) "solid";
+    border: 3px var(--gray3) solid;
     
     /* 폰트 */
     font-size: 20px;
@@ -369,7 +381,7 @@ input::placeholder {
 .profileUpdateInput2 {
     width: 370px; 
     height: 50px; 
-    border: 3px var(--gray3) "solid";
+    border: 3px var(--gray3) solid;
     
     /* 폰트 */
     font-size: 20px;

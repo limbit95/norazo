@@ -1,4 +1,4 @@
-package edu.kh.norazo.sport.model.mapper;
+package edu.kh.norazo.board.model.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 

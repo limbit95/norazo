@@ -1,10 +1,10 @@
-package edu.kh.norazo.sport.controller;
+package edu.kh.norazo.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.kh.norazo.sport.model.service.SportBoardService;
+import edu.kh.norazo.board.model.service.SportBoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
