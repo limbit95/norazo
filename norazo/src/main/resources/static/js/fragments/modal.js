@@ -1,16 +1,20 @@
 const modalContent = document.querySelector(".modal-content");
-const thumbnail = document.querySelector(".thumbnail");
+const thumbnail = document.querySelectorAll(".thumbnail");
 const closeBtn = document.querySelector(".close-btn"); 
-const boardTitle = document.querySelector(".board-title"); 
+const boardTitle = document.querySelectorAll(".board-title"); 
 
-thumbnail.addEventListener("click", () => {
-    modalContent.classList.toggle("popup-hidden");
-});
+thumbnail.forEach( (i) => {
+    i.addEventListener("click", () => {
+        modalContent.classList.remove("popup-hidden");
+    });
+})
 
-boardTitle.addEventListener("click", () => {
-    modalContent.classList.toggle("popup-hidden");
-});
+boardTitle.forEach( (i) => {
+    i.addEventListener("click", () => {
+        modalContent.classList.remove("popup-hidden");
+    });
+})
 
 closeBtn.addEventListener("click", () => {
-    modalContent.classList.toggle("popup-hidden");
+    modalContent.classList.add("popup-hidden");
 });

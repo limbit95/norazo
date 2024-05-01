@@ -1,0 +1,39 @@
+
+section{
+    background-color: var(--primary3);
+    height: 900px;
+    width: 1020px;
+    margin-bottom: 60px;
+} 
+.boardCreateDiv {
+    height: 1130px;
+    width: 1090px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+h1{
+    text-align: center;
+    margin: 30px;
+}
+
+ 
+.boardCreateDiv div:first-child {
+    height: 160px;
+}
+.boardCreateDiv div:nth-child(2) {
+    height: 980px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary3);
+}
+
+.board-title {
+    height: 130px;
+    padding: 30px;
+    padding-bottom: 10px;
+    background-color: blue; 
+}
+.board-write {
+    text-align: center;
+}

@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>노라조</title>
-    <link rel="stylesheet" href="/css/fragments/footer.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/fragments/login.css">
 </head>
 <body>
-    
+    <th:block th:replace="~{common/nav}"></th:block>
     <main>
         <section>
              <!-- 로고 -->
@@ -30,7 +31,7 @@
                     </div>
                     
                     <div class="radioDiv">
-                        <input type="checkbox"><h3>아이디 저장</h3>
+                        <input type="checkbox" class="saveId"><h3 class="saveId">아이디 저장</h3>
                     </div>    
 
                      <button class="loginBtn">로그인</button>
@@ -49,5 +50,6 @@
  
         </section>
      </main>
+     <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
