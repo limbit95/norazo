@@ -1,5 +1,17 @@
 /* 버튼 */
 
+/* 240501 : 
+- button 
+cursor -> add
+
+- input
+padding add 
+text-size bigger
+onclick -> black to transparent
+*/
+
+
+
 /* 버튼 메인 CSS */
 button {
     left: 0px; 
@@ -309,7 +321,7 @@ input::placeholder {
 .loginInput {
     width: 420px; 
     height: 60px; 
-    border: 3px var(--primary2) "solid";
+    border: 3px var(--primary2) solid;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
     /* 폰트 */
@@ -328,7 +340,7 @@ input::placeholder {
 .signupInput1 {
     width: 1090px; 
     height: 70px; 
-    border: 3px var(--primary3) "solid";
+    border: 3px var(--primary3) solid;
 
     /* 폰트 */
     font-size: 15px;
@@ -341,7 +353,7 @@ input::placeholder {
 .signupInput2 {
     width: 800px; 
     height: 70px; 
-    border: 3px var(--primary3) "solid";
+    border: 3px var(--primary3) solid;
 
     /* 폰트 */
     font-size: 15px;
@@ -356,7 +368,7 @@ input::placeholder {
 .profileUpdateInput1 {
     width: 500px; 
     height: 50px; 
-    border: 3px var(--gray3) "solid";
+    border: 3px var(--gray3) solid;
     
     /* 폰트 */
     font-size: 20px;
@@ -369,7 +381,7 @@ input::placeholder {
 .profileUpdateInput2 {
     width: 370px; 
     height: 50px; 
-    border: 3px var(--gray3) "solid";
+    border: 3px var(--gray3) solid;
     
     /* 폰트 */
     font-size: 20px;
@@ -422,85 +434,6 @@ input::placeholder {
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 
-/* 체크박스 (로그인 아이디저장) */
-
-/* 체크박스 감싸는 컨테이너 (텍스트 포함) */
-
-/* 
-HTML 코드
-<div class="saveIdCheckbox">
-  <label class="control control-checkbox">
-    Checkbox
-    <input type="checkbox" />
-    <div class="control_indicator"></div>
-  </label>
-</div>
-
-*/
-.saveIdCheckbox .control {
-display: block;
-position: relative;
-padding-left: 30px;
-cursor: pointer;
-font-size: 18px;
-}
-
-
-.saveIdCheckbox .control input {
-position: absolute;
-z-index: -1;
-opacity: 0;
-}
-.saveIdCheckbox .control_indicator {
-position: absolute;
-top: 2px;
-left: 0;
-height: 20px;
-width: 20px;
-background: var(--white);
-border: 2px solid var(--primary1);
-border-radius: 8px;
-}
-.saveIdCheckbox .control:hover input ~ .control_indicator,
-.saveIdCheckbox .control input:focus ~ .control_indicator {
-background: var(--gray3);
-}
-.saveIdCheckbox .control input:checked ~ .control_indicator {
-background: var(--primary1);
-}
-.saveIdCheckbox .control:hover input:not([disabled]):checked ~ .control_indicator,
-.saveIdCheckbox .control input:checked:focus ~ .control_indicator {
-background: var(--primary1);
-}
-.saveIdCheckbox .control input:disabled ~ .control_indicator {
-background: var(--white);
-pointer-events: none;
-}
-.saveIdCheckbox .control_indicator:after {
-content: '';
-position: absolute;
-display: none;
-}
-.saveIdCheckbox .control input:checked ~ .control_indicator:after {
-display: block;
-}
-.saveIdCheckbox .control-checkbox .control_indicator:after {
-left: 8px;
-top: 4px;
-width: 3px;
-height: 8px;
-border: solid #fff;
-border-width: 0 2px 2px 0;
-transform: rotate(45deg);
-}
-.saveIdCheckbox .control-checkbox input:disabled ~ .control_indicator:after {
-border-color: var(--primary1);
-}
- 
-
-/* ----------------------------------------------------------- */
-/* ----------------------------------------------------------- */
-/* ----------------------------------------------------------- */
 
 
 /* a 테그 */

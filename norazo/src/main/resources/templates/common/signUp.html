@@ -27,7 +27,7 @@
                 </label>
 
                 <div>
-                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일을 입력하세요." maxlength="30" autocomplete="off">
+                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일을 입력하세요." maxlength="30" autocomplete="off" class="signupInput2">
 
                     <button class="singupBtn" type="button">인증요청</button>
                 </div>
@@ -40,7 +40,7 @@
                     <span class="required"><h2>인증번호</h2></span>
                 </label>
                 <div>
-                    <input type="text" name="emailCheck" id="emailCheck" placeholder="인증번호를 입력하세요." maxlength="6" autocomplete="off">
+                    <input type="text" name="emailCheck" id="emailCheck" placeholder="인증번호를 입력하세요." maxlength="6" autocomplete="off" class="signupInput2">
 
                     <button class="singupBtn" type="button">인증하기</button>            
                 </div>
@@ -53,11 +53,11 @@
                 </label>
 
                 <div class="signUp-input-area">
-                    <input name="memberPw" id="memberPw" type="password" placeholder="비밀번호를 입력하세요." maxlength="20">
+                    <input name="memberPw" id="memberPw" type="password" placeholder="비밀번호를 입력하세요." maxlength="20" class="signupInput1">
                 </div>
 
                 <div class="signUp-input-area">
-                    <input name="memberPwConfirm" id="memberPwConfirm" type="password" placeholder="비밀번호 확인" maxlength="20">
+                    <input name="memberPwConfirm" id="memberPwConfirm" type="password" placeholder="비밀번호 확인" maxlength="20" class="signupInput1">
                 </div>
                 <!-- 정규 표현식 -->
                 <span class="signUp-message" id="pwMessage"><h4>영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</h4></span>
@@ -69,7 +69,7 @@
                 </label>
 
                 <div class="signUp-input-area">
-                    <input name="memberNickname" id="memberNickname" type="text" placeholder="닉네임" maxlength="10">
+                    <input name="memberNickname" id="memberNickname" type="text" placeholder="닉네임" maxlength="10" class="signupInput1">
                 </div>
 
                 <span class="signUp-message" id="nickMessage"><h4>한글,영어,숫자로만 2~10글자</h4></span>
@@ -119,17 +119,17 @@
                 </label>
 
                     <div class="signUp-input-area">
-                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">                       
+                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode" class="signupInput2">                       
                         
                         <button type="button" class="singupBtn">검색</button>
                     </div>
 
                     <div class="signUp-input-area">
-                        <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address">
+                        <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address" class="signupInput1">
                     </div>
 
                     <div class="signUp-input-area">
-                        <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
+                        <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress" class="signupInput1">
                     </div>
 
                 <button class="signupSubmitBtn">가입하기</button>
