@@ -2,8 +2,8 @@
 .modal-content {
     border-radius: 30px; 
     border: 3px solid #076DF2; 
-    width: 600px; 
-    height: 600px;
+    width: 500px; 
+    height: 400px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 6px 6px rgba(0,0,0,0.45);
     background-color: white;
 
@@ -17,26 +17,27 @@
 }
 
 .modal-header {
-    height: 80px;
+    height: 50px;
     display: flex;
     align-items: center;
 }
 
 .modal-title {
     margin-left: 20px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .board-like {
     font-size: 30px; 
     color: #FFD332; 
     cursor: pointer; 
-    margin-left: 260px;
+    margin-left: 150px;
 }
 
 .close-btn {
     font-size: 30px;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-bottom: 5px;
     background-color: white;
     border: none;
     cursor: pointer;
@@ -44,65 +45,56 @@
 
 .modal-body {
     margin-left: 20px;
-    height: 360px;
+    height: 280px;
     display: flex;
     align-items: center;
 }
 
 .modal-thumbnail {
-    width: 320px; 
-    height: 320px; 
+    width: 230px; 
+    height: 230px; 
     border: 3px solid #076DF2; 
     border-radius: 30px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .modal-info {
-    width: 330px; 
-    height: 320px; 
+    width: 225px; 
+    height: 120px; 
     margin-left: 10px; 
     display: flex; 
     flex-direction: column; 
-    justify-content: end;
+    justify-content: space-around;
 }
 
 .modal-info-line {
-    border-bottom: 3px solid #535353;
+    border-bottom: 1px solid #535353;
     display: flex;
 }
 
-.info-content {
+.modal-info-line > h2 {
+    font-size: 15px;
+    text-align: center;
+}
+
+.info-content { 
     margin-left: 10px;
-}
-
-.attend-member-div {
-    height: 120px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-evenly;
-}
-
-.attend-member {
-    width: 80px; 
-    height: 80px; 
-    border-radius: 50px;
 }
 
 .join-btn-div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 50px;
 }
 
 .join-btn {
-    width: 100%;
+    width: 90%;
     border: none;
     border-radius: 30px;
-    font-size: 25px;
-    height: 60px;
+    font-size: 20px;
+    height: 50px;
     color: white;
-    width: 650px;
     background-color: #076DF2;
     cursor: pointer;
 }
