@@ -1,25 +1,43 @@
-@media (min-width: 950px) {
+@media (min-width: 990px) {
+    .title-group {
+        display: flex;
+        width: 53.125vw;
+        align-items: end;
+    }
+
     .boardType-title {
         text-align: start;
         margin-top: 40px;
         margin-bottom: 20px;
         font-size: 40px;
-        width: 1020px;
+        width: 53.125vw;
+        flex-basis: 90%;
     }
+
+    .whole-view {
+        text-decoration: none;
+        flex-basis: 10%;
+        height: 50px;
+        font-size: 15px;
+        font-family: 'main';
+    }
+
+    .whole-view:visited { color:black; }
 
     .board-list {
         display: flex;
         flex-wrap: wrap;
+        width: 56.771vw;
     }
 
     .board-list > div {
         display: flex;
         flex-wrap: wrap;
         width: 230px;
-        height: 300px;
+        height: 275px;
         padding: 0px;
         margin-top: 10px;
-        margin-left: 30px;
+        margin-left: 33px;
     }
 
     .board-list > div > img {
@@ -35,34 +53,87 @@
     }
 
     .board-list > div > div {
-        height: 90px;
+        height: 65px;
         margin-top: 10px;
     }
 
-    .address {
-        color: #8F8B8B; 
-        font-size: 15px; 
-        text-align: start; 
-        width: auto;
-    }
-    
     .board-title {
         color: #3C3C3C; 
         font-size: 18px; 
         text-align: start; 
         width: auto;
         cursor: pointer;
-        margin-top: 5px;
     }
-
     
 }
 
-@media (max-width: 950px) {
+@media (max-width: 990px) {
+    main {
+        width: 89.474vw; /* 850 */
+    }
+
+    .title-group {
+        display: flex;
+        width: 83.158vw;
+        align-items: end;
+    }
+
     .boardType-title {
         text-align: start;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 4.211vw;
+        width: 83.158vw;
+    }
+
+    .whole-view {
+        text-decoration: none;
+        flex-basis: 10%;
+        height: 40px;
+        font-size: 1.389vw;
+        font-family: 'main';
+    }
+
+    .whole-view:visited { color:black; }
+
+    .board-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 89.474vw;
+    }
+
+    .board-list > div {
+        display: flex;
+        flex-wrap: wrap;
+        width: 18vw;
+        height: 160px;
+        padding: 0px;
         margin-top: 10px;
-        font-size: 25px;
+        margin-left: 20px;
+    }
+
+    .board-list > div > img {
+        width: 18vw; 
+        height: 100px; 
+        border-radius: 20px; 
+        background-color: rgb(255, 255, 255); 
+        padding: 0px;
+        margin: 0;
+        border: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        cursor: pointer;
+    }
+
+    .board-list > div > div {
+        height: 50px;
+        margin-top: 10px;
+    }
+
+    .board-title {
+        color: #3C3C3C; 
+        font-size: 1.579vw; 
+        text-align: start; 
+        width: auto;
+        cursor: pointer;
     }
 }
-
