@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/fragments/adBanner.css">
+    <link rel="stylesheet" href="/css/fragments/modal.css">
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/common/nav.css">
-    <link rel="stylesheet" href="/css/fragments/modal.css">
 
     <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/board/sportsBoard.css">
@@ -20,13 +20,32 @@
 
     <main>
 
-        <div class="boart-title">
-            <h1>OO 게시판</h1>
+        <h1 class="boardType-title">OO 게시판</h1>
+
+        <div class="board-list">
+            <div>
+                <img src="/1.jpg" class="thumbnail"></img>
+                <div>
+                    <h4 class="address">서울시 은평구</h4>
+                    <h4 class="board-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
+                </div>
+            </div>
+
+            <div>
+                <img src="/1.jpg" class="thumbnail"></img>
+                <div>
+                    <h4 class="address">서울시 은평구</h4>
+                    <h4 class="board-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
+                </div>
+            </div>
         </div>
 
 
-
     </main>
+
+    <th:block th:replace="~{common/fragments/modal}"></th:block>
+
+    <th:block th:replace="~{common/footer}"></th:block>
     
 </body>
 </html>
