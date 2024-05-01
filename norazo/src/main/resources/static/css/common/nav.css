@@ -1,4 +1,83 @@
-@media (max-width: 1040px) {
+@media (min-width: 950px) {
+    .nav-container {
+        display: flex; 
+        flex-direction: row;
+        justify-content: center; 
+        align-items: center; 
+        height: 70px;
+        width: 100%;
+        background-color: #E1E1E1;
+        border-bottom: 3px solid #FFD332;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+
+    .nav-div {
+        display: flex; 
+        width: 1090px; 
+        justify-content: center;
+        align-items: center;
+    }
+
+    .category-btn {
+        color: #076DF2;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .logo {
+        width: 130px;
+        height: 25px;
+        cursor: pointer;
+    }
+
+    .search-box-div {
+        width: 590px;
+        height: 35px;
+        margin-left: 10px;
+        border-radius: 30px; 
+        border: solid var(--secondary); 
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-box-div > input {
+        width: 540px;
+        height: 35px;
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+    }
+
+    .search-box-div > input::placeholder {
+        font-size: 13px;
+    }
+
+    .search-box-div > input:focus {outline:none;}
+
+    .searchAllBtn {
+        font-size: 25px;
+        color: var(--primary1);
+        cursor: pointer;
+    }
+
+    .btnlist {
+        display: flex; 
+        margin-left: 10px;
+    }
+    
+    .btnlist * {
+        font-size: 30px;
+        text-decoration: none;
+        color: #076DF2;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    
+}
+
+@media (max-width: 950px) {
     .nav-container {
         display: flex; 
         flex-direction: row;
@@ -19,39 +98,26 @@
         border: 2px solid blue;
     }
     
-    .nav-div > a {
-        width: 30px;
-        height: 30px;
-    }
-        
     .category-btn {
         color: #076DF2;
         width: 30px;
         height: 30px;
+        cursor: pointer;
     }
     
-    .logo-div {
+    .logo {
         width: 100px;
-        height: 30px;
+        height: 25px;
         margin-left: 10px;
-    }
-    
-    .logo-div > a {
-        width: 130px;
-        height: 30px;
-    }
-     
-    .logo-div > a > img{
-        width: 100px;
-        height: 30px;
+        cursor: pointer;
     }
     
     .search-box-div {
         width: 180px;
-        height: 40px;
+        height: 35px;
         margin-left: 10px;
         border-radius: 20px; 
-        border: solid #076DF2; 
+        border: solid var(--secondary); 
         background-color: white;
         display: flex;
         justify-content: center;
@@ -59,141 +125,40 @@
     }
     
     .search-box-div > input {
-        width: 160px;
-        height: 40px;
+        width: 140px;
+        height: 35px;
         background-color: rgba(0, 0, 0, 0);
         border: none;
     }
     
     .search-box-div > input::placeholder {
-        font-size: 14px;
+        font-size: 13px;
     }
     
     .search-box-div > input:focus {outline:none;}
+
+    .searchAllBtn {
+        font-size: 20px;
+        color: var(--primary1);
+        cursor: pointer;
+    }
     
-    .nav-btnlist-div {
+    .btnlist {
         display: flex; 
         margin-left: 10px;
     }
     
-    .nav-btnlist-div > div {
-        display: flex; 
-        margin: 5px;
-        cursor: pointer;
-    }
-    
-    .nav-btnlist-div > div {
-        font-size: 30px;
-        display: flex;
-    }
-    
-    .btn {
+    .btnlist * {
         font-size: 30px;
         text-decoration: none;
         color: #076DF2;
-    }
-}
-
-
-@media (min-width: 1020px) {
-    /* nav바 */
-    .nav-container {
-        display: flex; 
-        flex-direction: row;
-        justify-content: center; 
-        align-items: center; 
-        height: 70px;
-        width: 100%;
-        background-color: #E1E1E1;
-        border-bottom: 3px solid #FFD332;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    }
-
-    .nav-div {
-        display: flex; 
-        width: 1090px; 
-        justify-content: center;
-        align-items: center;
-    }
-
-    .nav-div > a {
-        width: 30px;
-        height: 30px;
-    }
-        
-    .category-btn {
-        color: #076DF2;
-        width: 30px;
-        height: 30px;
-    }
-
-    .logo-div {
-        width: 130px;
-        height: 30px;
-        margin-left: 30px;
-    }
-
-    .logo-div > a{
-        width: 130px;
-        height: 30px;
-    }
-
-    .logo-div > a > img{
-        width: 130px;
-        height: 30px;
-    }
-
-    .search-box-div {
-        width: 590px;
-        height: 40px;
-        margin-left: 30px;
-        border-radius: 30px; 
-        border: solid #076DF2; 
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .search-box-div > input {
-        width: 560px;
-        height: 40px;
-        background-color: rgba(0, 0, 0, 0);
-        border: none;
-    }
-
-    .search-box-div > input::placeholder {
-        font-size: 15px;
-    }
-
-    .search-box-div > input:focus {outline:none;}
-
-    .nav-btnlist-div {
-        display: flex; 
-        margin-left: 30px;
-    }
-
-    .nav-btnlist-div > div {
-        display: flex; 
-        margin: 5px;
+        margin-left: 10px;
         cursor: pointer;
     }
-
-    .nav-btnlist-div > div {
-        font-size: 30px;
-        display: flex;
-    }
-
-    .btn {
-        font-size: 30px;
-        text-decoration: none;
-        color: #076DF2;
-    }
-    
 }
 
 .category-container {
-    width: 46.875vw;
+    width: 43.75vw;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -208,7 +173,7 @@
 }
 
 .category-list-div {
-    width: 46.875vw;
+    width: 43.75vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -218,23 +183,23 @@
 }
 
 .category-div {
-    width: 220px;
-    height: 120px; 
+    width: 180px;
+    height: 100px; 
     border-radius: 15px; 
     position: relative;
     margin: 10px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 }
 
 .category-img {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    width: 220px; 
-    height: 120px; 
+    width: 180px; 
+    height: 100px; 
     border-radius: 15px; 
-    cursor: pointer;
 }
 
-.category-img:hover {
+.category-div:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
@@ -243,9 +208,8 @@
     text-shadow: 2px 2px 4px #000000;
     color: #fafafa;
     position: absolute; 
-    top: 65%; 
+    top: 60%; 
     left: 10%; 
-    cursor: pointer;
 } 
 
 

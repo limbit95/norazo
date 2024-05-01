@@ -5,8 +5,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
+import edu.kh.norazo.main.model.mapper.MainMapper;
+import edu.kh.norazo.main.model.service.MainService;
+import lombok.RequiredArgsConstructor;
+
+
 @Controller
+@RequiredArgsConstructor
 public class MainController {
+	
+	private final MainService service;
 
 	@RequestMapping("/")
 	public String mainPage() {
@@ -15,8 +23,11 @@ public class MainController {
 	
 	@GetMapping("category")
 	public String categoryPage() {
+		
+		
 		return "common/fragments/main-category";
 	}
+	
 	@GetMapping("login")
 	public String login() {
 		
@@ -37,7 +48,6 @@ public class MainController {
 	public String myPage() {
 		return "common/fragments/myPage";
 	}
-	
 
 	@GetMapping("signUp")
 	public String signUp() {
@@ -45,10 +55,5 @@ public class MainController {
 	}
 
 	
-	@GetMapping("test")
-	public String test() {
-		return "common/main-copy";
 
-	}
-	
 }
