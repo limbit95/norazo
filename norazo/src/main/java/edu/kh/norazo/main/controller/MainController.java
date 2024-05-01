@@ -4,9 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import edu.kh.norazo.main.model.mapper.MainMapper;
 import edu.kh.norazo.main.model.service.MainService;
 import lombok.RequiredArgsConstructor;
+
 
 @Controller
 @RequiredArgsConstructor
@@ -51,9 +53,7 @@ public class MainController {
 	public String signUp() {
 		return "common/signUp";
 	}
-		
 
 	
-	
-	
+
 }
