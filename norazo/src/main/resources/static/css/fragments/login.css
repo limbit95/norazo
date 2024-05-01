@@ -1,19 +1,9 @@
-*{
-    padding: 0;
-    margin: 0;
-    border: none;
-
-}
-
-.page .page-title {
-    display: none;
-    }
 
 body{
     background-color: var(--primary3);
 }
 
-section{
+section {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,14 +13,20 @@ section{
     background-color: var(--gray4);
     border-radius: 80px;
 }
-section div{
-    display: flex;
-}
+
+input[type="password"] {
+    flex-direction: column;
+} 
 
 #logo{
     margin-top: 50px;
     width: 279px;
     height: 56px;
+
+}
+.saveId{
+    width: auto;
+    padding-left: 10px;
 }
 .login-input-area{
     display: flex;
@@ -42,32 +38,21 @@ section div{
 .login-input-area div:nth-child(1),div:nth-child(2){
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin: 15px;
    
 }
 .radioDiv{
     display: flex;
     align-items: center;
     margin: 10px;
+    padding-left: 330px;
 }
-
+.radioDiv[type="checkbox"] {
+    width: 20%;
+}
 .login-input-area div:last-child input{
     display: flex;
     flex-direction: row;
-}
-input{
-    width: 424px;
-    height: 60px;
-}
-
-.login-input-area input[type="checkbox"]{
-    margin-left: 240px;
-    width: 18px;
-    height: 18px;
-}
-
-h3{
-    margin-left: 10px;
 }
 
 .pwSignDiv{
@@ -77,14 +62,16 @@ h3{
 }
 
 .pwSignDiv > a {
-    margin-top: 5px;
+    margin-top: 25px;
     width: auto;
     font-family: 'regular';
     font-size: 20px;
 
 }
 
-
+.saveIdCheckBox {
+    flex-direction: column;
+}
 /* .pwSignDiv > div > a{
     display: flex;
     justify-content: center;

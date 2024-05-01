@@ -53,7 +53,9 @@ public class MainController {
 	public String signUp() {
 		return "common/signUp";
 	}
-
-	
+	@GetMapping("boardWrite")
+	public String bordWrite() {
+		return "board/boardWrite";
+	}
 
 }
