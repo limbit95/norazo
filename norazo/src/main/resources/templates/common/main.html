@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/css/common/nav.css">
     <link rel="stylesheet" href="/css/fragments/adBanner.css">
     <link rel="stylesheet" href="/css/fragments/modal.css">
-    <link rel="stylesheet" href="/css/board/sportsBoard.css">
     
     <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <title>노라조</title>
@@ -22,9 +21,9 @@
         
         <th:block th:replace="~{common/fragments/adBanner}"></th:block>
 
-        <div class="title-group">
-            <h1 class="boardType-title">신규 모임글</h1>
-            <a href="/sportsBoard" class="whole-view">전체보기</a>
+        <div class="sportsBoard-header">
+            <h1 class="sportsBoard-header-title">신규 모임글</h1>
+            <a href="/sportsBoard" class="sportsBoard-whole-view">전체보기</a>
         </div>
 
         <!-- 신규 모임글 -->
@@ -58,13 +57,45 @@
             </div>
         </div>
 
-
-        <div class="title-group">
-            <h1 class="freeBoard-title">자유 게시판</h1>
-            <a href="/freeBoard" class="whole-view">전체보기</a>
+        <!-- 자유 게시판 (최신글) -->
+        <div class="freeBoard-header">
+            <h1 class="freeBoard-header-title">자유 게시판</h1>
+            <a href="/freeBoard" class="freeBoard-whole-view">전체보기</a>
+        </div>
+        
+        <div class="freeBoard-list">
+            <a href="">암벽화 추천 부탁드립니다</a>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
         </div>
 
+        <div class="freeBoard-list">
+            <a href="">암벽화 추천 부탁드립니다</a>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+        </div>
+
+        <div class="freeBoard-list">
+            <a href="">암벽화 추천 부탁드립니다</a>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+        </div>
+
+        <div class="freeBoard-list">
+            <a href="">암벽화 추천 부탁드립니다</a>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+        </div>
+
+        <div class="freeBoard-list">
+            <a href="">암벽화 추천 부탁드립니다</a>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+        </div> 
+
     </main>
+    
+    <br><br><br><br>
     
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>

@@ -1,3 +1,5 @@
+/* nav */
+/* 990px보다 큰 화면일 때 */
 @media (min-width: 990px) {
     .nav-container {
         display: flex; 
@@ -77,6 +79,8 @@
     
 }
 
+/* nav */
+/* 990px보다 작은 화면일 때 */
 @media (max-width: 990px) {
     .nav-container {
         display: flex; 
@@ -157,59 +161,122 @@
     }
 }
 
-.category-container {
-    width: 43.75vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 10px;
-}
+/* 카테고리 */
+/* 1900px보다 큰 화면일 때 */
+@media (min-width: 1900px) {
+    .category-container {
+        width: 830px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    
+    .category-header {
+        width: 250px;
+        height: 50px;
+        display: flex;
+        text-align: center;
+    }
+    
+    .category-list-div {
+        width: 830px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border: 5px solid var(--primary3);
+        border-radius: 30px;
+        padding: 10px;
+    }
+    
+    .category-div {
+        width: 180px;
+        height: 100px; 
+        border-radius: 15px; 
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    
+    .category-img {
+        width: 180px; 
+        height: 100px; 
+        border-radius: 15px; 
+    }
+    
+    .category-div:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+    
+    .category-title {
+        width: auto;
+        font-weight: 100;
+        text-shadow: 2px 2px 4px #000000;
+        color: #fafafa;
+        position: absolute; 
+        top: 60%; 
+        left: 10%; 
+    } 
+}  
 
-.category-header {
-    width: 250px;
-    height: 50px;
-    display: flex;
-    text-align: center;
-}
-
-.category-list-div {
-    width: 43.75vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 5px solid var(--primary3);
-    border-radius: 30px;
-    padding: 10px;
-}
-
-.category-div {
-    width: 180px;
-    height: 100px; 
-    border-radius: 15px; 
-    position: relative;
-    margin: 10px;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.category-img {
-    width: 180px; 
-    height: 100px; 
-    border-radius: 15px; 
-}
-
-.category-div:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
-
-.category-title {
-    font-weight: 100;
-    text-shadow: 2px 2px 4px #000000;
-    color: #fafafa;
-    position: absolute; 
-    top: 60%; 
-    left: 10%; 
+/* 카테고리 */
+/* 1900px보다 작은 화면일 때  */
+@media (max-width: 1900px) {
+    .category-container {
+        width: 43.75vw;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    
+    .category-header {
+        width: 250px;
+        height: 50px;
+        display: flex;
+        text-align: center;
+    }
+    
+    .category-list-div {
+        width: 43.75vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border: 5px solid var(--primary3);
+        border-radius: 30px;
+        padding: 10px;
+    }
+    
+    .category-div {
+        width: 180px;
+        height: 100px; 
+        border-radius: 15px; 
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    
+    .category-img {
+        width: 180px; 
+        height: 100px; 
+        border-radius: 15px; 
+    }
+    
+    .category-div:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+    
+    .category-title {
+        width: auto;
+        font-weight: 100;
+        text-shadow: 2px 2px 4px #000000;
+        color: #fafafa;
+        position: absolute; 
+        top: 60%; 
+        left: 10%; 
+    } 
 } 
-
-

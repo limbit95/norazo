@@ -1,4 +1,73 @@
-@media (min-width: 990px) {
+@media (min-width: 1900px) {
+    .title-group {
+        display: flex;
+        width: 1090px;
+        align-items: end;
+    }
+
+    .boardType-title {
+        text-align: start;
+        margin-top: 40px; 
+        margin-bottom: 20px;
+        font-size: 40px;
+        width: 1020px;
+        flex-basis: 90%;
+    }
+
+    .whole-view {
+        text-decoration: none;
+        flex-basis: 10%;
+        height: 50px;
+        font-size: 15px;
+        font-family: 'main';
+    }
+    
+    .whole-view:visited { color:black; }
+
+    .board-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1090px;
+    }
+
+    .board-list > div {
+        display: flex;
+        flex-wrap: wrap;
+        width: 230px;
+        height: 275px;
+        padding: 0px;
+        margin-top: 10px;
+        margin-left: 33px;
+    }
+
+    .board-list > div > img {
+        width: 230px; 
+        height: 200px;
+        border-radius: 30px; 
+        background-color: rgb(255, 255, 255); 
+        padding: 0px;
+        margin: 0;
+        border: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        cursor: pointer;
+    }
+
+    .board-list > div > div {
+        height: 65px;
+        margin-top: 10px;
+    }
+
+    .board-title {
+        color: #3C3C3C; 
+        font-size: 18px; 
+        text-align: start; 
+        width: auto;
+        cursor: pointer;
+    }
+    
+}
+
+@media (max-width: 1900px) {
     .title-group {
         display: flex;
         width: 53.125vw;
