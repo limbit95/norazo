@@ -1,0 +1,41 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: none;
+
+}
+pre{
+    text-align: center;
+    color: var(--gray3);
+}
+
+body{
+    background-color: var(--white);
+}
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 666px;
+    height: 596px;
+}
+input::placeholder{
+    font-family: 'regular';
+    font-size: 15px;
+    color: var(--gray2);
+}
+form div{
+    display: flex;
+}
+
+.required h2{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--gray1);
+}
+
+.signUp-message h4{
+    margin-top: 5px;
+    color: var(--gray1);
+}

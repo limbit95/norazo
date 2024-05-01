@@ -1,71 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>노라조</title>
+    
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/fragments/signUp.css">
 </head>
 <body>
     <main>
         <section>
-            <form action="">
+            <pre>
+                <h2>
+                노라조랑 함께하는 
+                스포츠 어때?
+                </h2>
+            </pre>
+            <form action="" method="post" name="signUpForm" id="signUpForm">
+
                 <!-- 이메일 입력 -->
-                <label for="">
-                    <span>이메일</span>
+                <label for="memberEmail">
+                    <span class="required"><h2>이메일</h2></span>
                 </label>
 
                 <div>
-                    <input type="text" placeholder="이메일을 입력하세요." maxlength="30" autocomplete="off">
+                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일을 입력하세요." maxlength="30" autocomplete="off">
 
-                    <button>인증요청</button>
+                    <button class="singupBtn" type="button">인증요청</button>
                 </div>
-                <span>메일을 받을 수 있는 이메일을 입력해주세요.</span>
+
+                <span class="signUp-message" id="signUp-message"><h4>메일을 받을 수 있는 이메일을 입력해주세요.</h4></span>
                 <!------------------------------------------------------------------------------------------>
 
                 <!-- 인증번호 입력 -->
-                <label for="">
-                    <span>인증번호</span>
+                <label for="emailCheck">
+                    <span class="required"><h2>인증번호</h2></span>
                 </label>
                 <div>
-                    <input type="text" placeholder="인증번호를 입력하세요." maxlength="6" autocomplete="off">
+                    <input type="text" name="emailCheck" id="emailCheck" placeholder="인증번호를 입력하세요." maxlength="6" autocomplete="off">
 
-                    <button>인증하기</button>            
+                    <button class="singupBtn" type="button">인증하기</button>            
                 </div>
-                <span></span><!-- 인증 입력 틀력시 문구 변경용 -->
+                <span class="signUp-message" id="authKeyMessage"></span><!-- 인증 입력 틀력시 문구 변경용 -->
                 <!------------------------------------------------------------------------------------------>
 
                 <!-- 비밀번호 / 비밀번호 확인 -->
-                <label for="">
-                    <span>비밀번호</span>
+                <label for="memberPw">
+                    <span class="required"><h2>비밀번호</h2></span>
                 </label>
 
-                <div>
-                    <input type="password" placeholder="비밀번호를 입력하세요." maxlength="20" autocomplete="off">
+                <div class="signUp-input-area">
+                    <input name="memberPw" id="memberPw" type="password" placeholder="비밀번호를 입력하세요." maxlength="20">
                 </div>
 
-                <div>
-                    <input type="password" placeholder="비밀번호 확인" maxlength="20" autocomplete="off">
+                <div class="signUp-input-area">
+                    <input name="memberPwConfirm" id="memberPwConfirm" type="password" placeholder="비밀번호 확인" maxlength="20">
                 </div>
                 <!-- 정규 표현식 -->
-                <span>영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
+                <span class="signUp-message" id="pwMessage"><h4>영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</h4></span>
                 <!------------------------------------------------------------------------------------------>
 
                 <!-- 닉네임 -->
-                <label for="">
-                    <span>닉네임</span>
+                <label for="memberNickname">
+                    <span class="required"><h2>닉네임</h2></span>
                 </label>
 
-                <div>
-                    <input type="text" placeholder="닉네임" maxlength="10">
+                <div class="signUp-input-area">
+                    <input name="memberNickname" id="memberNickname" type="text" placeholder="닉네임" maxlength="10">
                 </div>
 
-                <span>한글,영어,숫자로만 2~10글자</span>
+                <span class="signUp-message" id="nickMessage"><h4>한글,영어,숫자로만 2~10글자</h4></span>
                 <!------------------------------------------------------------------------------------------>
 
                 <!-- 성별 선택 -->
 
-                <label for="">
-                    <span>성별</span>
+                <label for="memberGender">
+                    <span class="required"><h2>성별</h2></span>
                 </label>
 
                 <div>
@@ -73,39 +85,57 @@
                         <option value="male">남성</option>
                         <option value="female">여성</option>
                     </select>
-
                 </div>
                 <!------------------------------------------------------------------------------------------>
 
                 <!-- 생년 월일 -->
-                <label for="">
-                    <span>생년월일</span>
+                <label for="birthday">
+                    <span class="required"><h2>생년월일</h2></span>
                 </label>
+
                 <div>
-                    <input type="text" placeholder="YYYYMMDD">
-                </div>
                 
-                <!-- 주소 입력 -->
-                <label for="">주소</label>
+                    <select class="birthday" id="year" name="year">
+                        <option disabled selected>출생연도</option>
+                    </select>
 
-                <!--우편번호-->
-                <div>
-                    <input type="text" placeholder="우편번호" maxlength="6">
-                    <button>검색</button>
-                </div>
-                <!--도로명/지번주소-->
-                <div>
-                    <input type="text" placeholder="도로명/지번 주소">
-                </div>
-                <!-- 상세 주소 -->
-                <div>
-                    <input type="text" placeholder="상세 주소">
+                    <select class="birthday" id="month" name="month">
+                        <option disabled selected>월</option>
+                    </select>
+
+                    <select class="birthday" id="day" name="day">
+                        <option disabled selected>일</option>
+                    </select>
+                    
                 </div>
 
-                <button>가입하기</button>
+                 <!------------------------------------------------------------------------------------------>
+
+
+                 <!-- 주소 입력 -->
+                <label for="memberAddress">
+                    <span class="required"><h2>주소</h2></span>
+                </label>
+
+                    <div class="signUp-input-area">
+                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode">                       
+                        
+                        <button type="button" class="singupBtn">검색</button>
+                    </div>
+
+                    <div class="signUp-input-area">
+                        <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address">
+                    </div>
+
+                    <div class="signUp-input-area">
+                        <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress">
+                    </div>
+
+                <button class="signupSubmitBtn">가입하기</button>
             </form>
         </section>
 
     </main>
+    <script src="/js/fragments/signUp.js"></script>
 </body>
 </html>

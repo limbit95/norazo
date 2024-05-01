@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/css/fragments/footer.css">
 
     <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/fragments/login.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
              <img src="/images/logo.png" alt="homeLogo" id="logo">
         
              <!-- 로그인 폼-->
-             <form action="">
+             <form action="" method="post">
                  <div class="login-input-area">
 
                     <div>
@@ -28,25 +29,23 @@
                         <input type="password" id="password" placeholder="비밀번호" autocapitalize="off">
                     </div>
                     
-                    <div>
-                        <h4><input type="radio">아이디 저장</h4>
+                    <div class="radioDiv">
+                        <input type="checkbox"><h3>아이디 저장</h3>
                     </div>    
 
-                     <button>로그인</button>
+                     <button class="loginBtn">로그인</button>
                  </div>
                      
              </form>
  
              <!-- 비밀번호 찾기/회원가입 폼-->
-             <div>
-                <div>
-                    <a href="">비밀번호 찾기</a>
-                </div>
+            <div class="pwSignDiv">
 
-                <div>
+                    <a href="">비밀번호 찾기</a>
+
                     <a href="">회원 가입</a>
-                </div>
-             </div>
+
+            </div>
  
         </section>
      </main>
