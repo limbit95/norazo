@@ -25,9 +25,9 @@ public class MemberController {
 
 	private final MemberService service;
 	
-	@GetMapping("signUp")
-	public String signUp() {
-		return "common/signUp";
+	@GetMapping("login")
+	public String login() {
+		return "member/login";
 	}
 	
 	/** 로그인 : 로그인시 메인페이지 이동 
@@ -51,7 +51,7 @@ public class MemberController {
 		// 로그인 실패 시 
 		if(loginMember == null) {
 			ra.addFlashAttribute("message","아이디 또는 비밀번호가 일치하지 않습니다.");
-			path = "/login";
+			path = "login";
 		}
 		// 로그인 성공 시 
 		if(loginMember != null) {
@@ -77,6 +77,11 @@ public class MemberController {
 		}
 		
 		return "redirect:"+path;
+	}
+	
+	@GetMapping("signUp")
+	public String signUp() {
+		return "common/signUp";
 	}
 	
 }
