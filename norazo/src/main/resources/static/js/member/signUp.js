@@ -36,8 +36,7 @@ const checkObj ={
   "memberNickname" : false,
   "gender" : false
 };    
-
-
+// ------------------------------------------------------------------
 
 const memberEmail = document.querySelector("#memberEmail");
 const signUpMessage = document.querySelector("#signUpMessage");
@@ -76,97 +75,92 @@ if( !regExp.test(inputEmail)){
 
   return;
 }
-// 비동기로 작업 하기 
+// 비동기로 작업
+  fetch("/member/checkEmail?memberEmail=" + inputEmail)
+  .then( resp => resp.text())
+  .then( count => {
+
+    if(count == 1){
+      signUpMessage.innerText = "중복된 이메일 입니다.";
+      signUpMessage.classList.add('error');
+      signUpMessage.classList.remove('confirm');
+      checkObj.memberEmail = false;
+      return;
+    }
+
+    signUpMessage.innerText = "사용 가능한 이메일 입니다.";
+    signUpMessage.classList.add('confirm');
+    signUpMessage.classList.remove('error');
+    checkObj.memberEmail = true;
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
 });
 // ----------------------------------------------------------------------------
-// // 이메일 인증 
+// 이메일 인증 
 
-// // 인증요청
-// const singupBtn = document.querySelector("#singupBtn");
+// 인증번호 받기 
+const sendAuthKeyBtn = document.querySelector("#sendAuthKeyBtn");
 
-// // 인증번호
-// const emailCheck = document.querySelector("#emailCheck");
+// 인증번호 입력 
+const emailCheck = document.querySelector("#emailCheck");
 
-// // 인증하기 버튼
-// const authKeyBtn = document.querySelector("#authKeyBtn");
+// 인증번호 입력 후 확인 버튼
+const authKeyBtn = document.querySelector("#authKeyBtn");
+// span 메시지 
+const authKeyMessage = document.querySelector("#authKeyMessage");
+// 5분 타이머 역활 
+let authTimer;
 
-// // 인증번호 관련 메시지 출력 
-// const authKeyMessage = document.querySelector("#authKeyMessage");
+const initMin = 4;
+const initSec = 59;
+const initTime = "05:00";
 
-// let authTimer; // 타이머 역활을 할 setInterval을 지정할 변수 
+let min = initMin;
+let sec = initSec;
 
-// const initMin = 4; // 타이머 초기값 (분)
-// const initSec = 59;
-// const initTime = "05:00";
+// 인증번호 받기 클릭 시 
+sendAuthKeyBtn.addEventListener("click", () => {
 
-// // 실제 줄어드는 시간을 저장할 변수 
-// let min = initMin;
-// let sec = initSec;
+  checkObj.emailCheck = false;
+  authKeyMessage.innerText = "";
 
-// // 인증번호 받기 버튼 클릭 시 
-// singupBtn.addEventListener("click",()=>{
+  if(!checkObj.memberEmail){
+    alert("유효한 이메일 작성 후 클릭해 주세요,");
+    return;
+  }
+  
+  min = initMin;
+  sec = initSec;
 
-//      checkObj.authKey = false;
-//      authKeyMessage.innerText = "";
+  clearInterval(authTimer);
+  // ---------------------------------------------------
+  // 비동기 메일보내기 
 
-//     // 중복되지 않은 유효한 이메일을 입혈한 경우가 아니라면
+  // ---------------------------------------------------
+  authKeyMessage.innerText = initTime;
+  authKeyMessage.classList.remove("confirm","error");
 
-//     if(! checkObj.memberEmail){
-//         alert("유효한 이메일 작성 후 클릭해 주세요");
-//         return;
-//     }
+  alert("인증번호가 발송 되었습니다.");
 
-//     // 클릭 시 타이머 숫자 소기화
-//     min = initMin;
-//     sec = initSec;
+  authTimer = setInterval( () => {
 
-//     // 어던 동작중인 인터벌 구헌 
-//     clearInterval(authTimer);
-//     //----------------------------------------------------------
-// // 비동기로 서버에서 메일 보내기 
+    authKeyMessage.innerText = `${addZero(min)}:${addZero(sec)}`;
 
+    if(min == 0 && sec == 0){
+      checkObj.emailCheck = false;
+      clearInterval
+    }
 
-//     //----------------------------------------------------------
-// // 메일은 비동기로 서버에서 보내라고 하고 
-//     // 화면에서는 타이머 시작하기 
+  },1000);
+});
 
-//     authKeyMessage.innerText = initTime;
-//     authKeyMessage.classList.remove("confirm","error");
-
-//     alert("인증번호가 발송되었습니다.");
-
-//     // setInterval(함수, 지연시간(ms))
-//     // - 지연시간(ms) 만큼 시간이 지날 때 마다 함수 수행
-
-//     // cleatInternal(Interval이 저장된 변수)
-//     // - 매개변수로 전달받음 interval을 멈춤 
-
-//     // 인증 시간 출력(1초 마다 동작)
-//     authTimer = setInterval(() => {
-
-//         authKeyMessage.innerText = `${addZero(min)}:${addZero(sec)}`
-
-//         // 0분 0초인 경우 ("00:00" 출력 후)
-//         if(min == 0 && sec ==0){
-//             checkObj.authKey = false; // 인증 못함
-//             clearInterval(authTimer); // interval 멈춤 
-//             authKeyMessage.classList.add("error");
-//             authKeyMessage.classList.remove("confirm");
-//             return;
-//         }
-
-//         // 0초인 경우(0초를 출력한 후)
-        
-//         if(sec == 0){
-//             sec = 60;
-//             min --;
-//         }
-
-//         sec --; // 1초 감소 
-
-//     }, 1000); // 1초 지연시간
-
-//   });
+function addZero(number){
+  if(number < 10) return "0" + number;
+  else return number;
+}
 // -------------------------------------------------------------------
 const memberPw = document.querySelector("#memberPw");
 const memberPwConfirm = document.querySelector("#memberPwConfirm");
@@ -297,3 +291,5 @@ birthDayEl.addEventListener('focus', function () {
   }); 
   
   // --------------------------------------------
+
+

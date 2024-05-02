@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.norazo.member.model.dto.Member;
@@ -28,6 +30,16 @@ public class MemberController {
 	@GetMapping("login")
 	public String login() {
 		return "member/login";
+	}
+	
+	/** 로그 아웃
+	 * @param status
+	 * @return
+	 */
+	@GetMapping("logout")
+	public String logout(SessionStatus status) {
+		status.setComplete();
+		return "redirect:/";
 	}
 	
 	/** 로그인 : 로그인시 메인페이지 이동 
@@ -80,8 +92,19 @@ public class MemberController {
 	}
 	
 	@GetMapping("signUp")
-	public String signUp() {
+	public String signUpPage() {
 		return "member/signUp";
 	}
 	
+	
+	/** 이메일 중복 검사
+	 * @param memberEmail
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("checkEmail")
+	public int checkEmail(@RequestParam("memberEmail")String memberEmail) {
+		
+		return service.checkEmail(memberEmail);
+	}
 }

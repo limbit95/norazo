@@ -22,9 +22,9 @@ public class MemberServiceImpl implements MemberService{
 	// 로그인 서비스 
 	@Override
 	public Member login(Member inputMember) {
-		
+								
 		Member loginMember = mapper.login(inputMember.getMemberEmail());
-		
+			
 		// 비밀번호가 일치하지 않는다면 ------------- 
 		if(loginMember == null) return null;
 		
@@ -35,5 +35,11 @@ public class MemberServiceImpl implements MemberService{
 		loginMember.setMemberPw(null);
 		// -------------------------
 		return loginMember;
+	}
+
+	@Override
+	public int checkEmail(String memberEmail) {
+		
+		return mapper.checkEmail(memberEmail);
 	}
 }
