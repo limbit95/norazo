@@ -20,3 +20,4 @@ myPageBtn.addEventListener("click", () => {
     location.href = "/myPage";
 });
 
+

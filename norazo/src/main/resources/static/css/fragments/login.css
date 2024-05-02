@@ -1,3 +1,7 @@
+/* 임성혁 수정 */
+main * {
+    width: 1090px;
+}
 
 body{
     background-color: var(--primary3);

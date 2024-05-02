@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,19 +19,19 @@
              <img src="/images/logo.png" alt="homeLogo" id="logo">
         
              <!-- 로그인 폼-->
-             <form action="" method="post">
+             <form action="/member/login" method="post" id="loginForm">
                  <div class="login-input-area">
 
                     <div class="idInput">
-                        <input type="text" id="id" placeholder="아이디" autocapitalize="off" class="loginInput">
+                        <input type="text" id="id" name="memberEmail" placeholder="아이디" autocapitalize="off" class="loginInput">
                     </div>
                     
                     <div class="pwInput">
-                        <input type="password" id="password" placeholder="비밀번호" autocapitalize="off" class="loginInput">
+                        <input type="password" id="password" name="memberPw" placeholder="비밀번호" autocapitalize="off" class="loginInput">
                     </div>
                     
                     <div class="radioDiv">
-                        <input type="checkbox" class="saveId"><h3 class="saveId">아이디 저장</h3>
+                        <input type="checkbox" class="saveId" id="saveId" name="saveId"><h3 class="saveId">아이디 저장</h3>
                     </div>    
 
                      <button class="loginBtn">로그인</button>
@@ -42,14 +42,15 @@
              <!-- 비밀번호 찾기/회원가입 폼-->
             <div class="pwSignDiv">
 
-                    <a href="" class="loginTag">비밀번호 찾기</a>
+                <a href="" class="loginTag">비밀번호 찾기</a>
 
-                    <a href="" class="loginTag">회원 가입</a>
+                <a href="/member/signUp" class="loginTag">회원 가입</a>
 
             </div>
  
         </section>
      </main>
      <th:block th:replace="~{common/footer}"></th:block>
+     <script src="/js/member/login.js"></script>
 </body>
 </html>
