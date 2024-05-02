@@ -20,11 +20,21 @@
         align-items: center;
     }
 
+    .nav-div > :nth-child(1) {
+        width: 35px;
+        height: 35px;
+    }
+
     .category-btn {
         color: #076DF2;
         width: 30px;
         height: 30px;
         cursor: pointer;
+    }
+
+    .nav-div > :nth-child(2) {
+        width: 130px;
+        height: 25px;
     }
 
     .logo {
@@ -68,12 +78,17 @@
         display: flex; 
         margin-left: 10px;
     }
+
+    .btnlist > a {
+        width: 35px;
+        height: 35px;
+        margin-left: 10px; 
+    }
     
     .btnlist * {
         font-size: 30px;
         text-decoration: none;
         color: #076DF2;
-        margin-left: 10px;
         cursor: pointer;
     }
     
@@ -101,18 +116,28 @@
         align-items: center;
         border: 2px solid blue;
     }
-    
+
+    .nav-div > :nth-child(1) {
+        width: 35px;
+        height: 35px;
+    }
+
     .category-btn {
         color: #076DF2;
         width: 30px;
         height: 30px;
         cursor: pointer;
     }
+
+    .nav-div > :nth-child(2) {
+        width: 100px;
+        height: 25px;
+        margin-left: 10px;
+    }
     
     .logo {
         width: 100px;
         height: 25px;
-        margin-left: 10px;
         cursor: pointer;
     }
     
@@ -151,12 +176,17 @@
         display: flex; 
         margin-left: 10px;
     }
+
+    .btnlist > a {
+        width: 35px;
+        height: 35px;
+        margin-left: 10px; 
+    }
     
     .btnlist * {
         font-size: 30px;
         text-decoration: none;
         color: #076DF2;
-        margin-left: 10px;
         cursor: pointer;
     }
 }
@@ -173,7 +203,7 @@
     }
     
     .category-header {
-        width: 250px;
+        width: auto;
         height: 50px;
         display: flex;
         text-align: center;
@@ -212,11 +242,10 @@
     
     .category-title {
         width: auto;
-        font-weight: 100;
         text-shadow: 2px 2px 4px #000000;
         color: #fafafa;
         position: absolute; 
-        top: 60%; 
+        top: 58%; 
         left: 10%; 
     } 
 }  
@@ -233,10 +262,9 @@
     }
     
     .category-header {
-        width: 250px;
+        width: auto;
         height: 50px;
         display: flex;
-        text-align: center;
     }
     
     .category-list-div {
@@ -272,11 +300,10 @@
     
     .category-title {
         width: auto;
-        font-weight: 100;
         text-shadow: 2px 2px 4px #000000;
         color: #fafafa;
         position: absolute; 
-        top: 60%; 
+        top: 58%; 
         left: 10%; 
     } 
 } 

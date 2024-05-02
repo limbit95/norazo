@@ -1,26 +1,10 @@
 <div class="nav-container">
   <div class="nav-div">
     <!-- 카테고리 목록 버튼 -->
-    <ion-icon name="menu-outline" class="category-btn"></ion-icon>
+    <a href="/category"><ion-icon name="menu-outline" class="category-btn"></ion-icon></a>
  
     <!-- 노라조 로고 -->
-    <img src="/images/logo.png" class="logo">
-
-    
-    <!-- <form th:action="@{{boardCode}(boardCode=${boardCode})}" method="get" id="boardSearch">
-
-      <select name="key" id="searchKey">
-        <option value="t">제목</option>
-        <option value="c">내용</option>
-        <option value="tc">제목+내용</option>
-        <option value="w">작성자</option>
-      </select>
-
-      <input type="text" name="query" id="searchQuery" placeholder="검색어를 입력해주세요.">
-
-      <button>검색</button>
-    </form> -->
-
+    <a href="/"><img src="/images/logo.png" class="logo"></a>
     
     <!-- 검색창 -->
     <form action="/" method="get", id="searchAll" class="search-box-div">
@@ -31,10 +15,10 @@
 
     <!-- 버튼 요소들 -->
     <div class="btnlist">
-        <ion-icon class="board-btn" name="easel-outline"></ion-icon>
-        <ion-icon class="faq-btn" name="help-circle-outline"></ion-icon>
-        <ion-icon class="favorite-btn" name="heart-outline"></ion-icon>
-        <ion-icon class="myPage-btn" name="person-outline"></ion-icon>
+      <a href="/board"><ion-icon class="board-btn" name="easel"></ion-icon></a>
+      <a href="/faq"><ion-icon class="faq-btn" name="help-circle-outline"></ion-icon></a>
+      <a href="#"><ion-icon class="favorite-btn" name="heart-outline"></ion-icon></a>
+      <a href="/myPage"><ion-icon class="myPage-btn" name="person-outline"></ion-icon></a>
     </div>
   </div>
 </div>

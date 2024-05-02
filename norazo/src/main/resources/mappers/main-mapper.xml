@@ -2,5 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.norazo.main.model.mapper.MainMapper">
 
+	<select id="selectSportsTypeList">
+		SELECT SPORTS_EN_NAME "sportsEnName", SPORTS_NAME "sportsName", IMG_PATH "imgPath", IMG_NAME "imgName"
+		FROM "SPORTS_TYPE"
+		ORDER BY SPORTS_NO
+	</select>
 
 </mapper>

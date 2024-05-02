@@ -1,28 +1,32 @@
 @media (min-width: 1900px) {
-    .title-group {
+    .board-page-header {
         display: flex;
-        width: 1090px;
-        align-items: end;
+        align-items: center;
+        width: 1020px;
+        height: 100px;
     }
 
     .boardType-title {
-        text-align: start;
-        margin-top: 40px; 
-        margin-bottom: 20px;
+        /* text-align: start; */
+        /* margin-top: 40px;  */
+        /* margin-bottom: 20px; */
         font-size: 40px;
         width: 1020px;
         flex-basis: 90%;
     }
 
-    .whole-view {
-        text-decoration: none;
-        flex-basis: 10%;
-        height: 50px;
-        font-size: 15px;
+    .newMoim {
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: var(--primary2);
         font-family: 'main';
+        font-size: 20px;    
+        font-weight: 1000;
+        color: white;
+        cursor: pointer;
+        margin-top: 30px;
     }
-    
-    .whole-view:visited { color:black; }
 
     .board-list {
         display: flex;
@@ -68,10 +72,11 @@
 }
 
 @media (max-width: 1900px) {
-    .title-group {
+    .board-page-header {
         display: flex;
-        width: 53.125vw;
-        align-items: end;
+        align-items: center;
+        width: 52.125vw;
+        height: 100px;
     }
 
     .boardType-title {
@@ -83,15 +88,18 @@
         flex-basis: 90%;
     }
 
-    .whole-view {
-        text-decoration: none;
-        flex-basis: 10%;
-        height: 50px;
-        font-size: 15px;
+    .newMoim {
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: var(--primary2);
         font-family: 'main';
+        font-size: 20px;    
+        font-weight: 1000;
+        color: white;
+        cursor: pointer;
+        margin-top: 30px;
     }
-
-    .whole-view:visited { color:black; }
 
     .board-list {
         display: flex;
@@ -154,16 +162,6 @@
         font-size: 4.211vw;
         width: 83.158vw;
     }
-
-    .whole-view {
-        text-decoration: none;
-        flex-basis: 10%;
-        height: 40px;
-        font-size: 1.389vw;
-        font-family: 'main';
-    }
-
-    .whole-view:visited { color:black; }
 
     .board-list {
         display: flex;

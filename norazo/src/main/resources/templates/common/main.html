@@ -15,42 +15,42 @@
 </head>
 
 <body>
+    
     <th:block th:replace="~{common/nav}"></th:block>
-
+    
     <main>
-        
         <th:block th:replace="~{common/fragments/adBanner}"></th:block>
 
         <div class="sportsBoard-header">
             <h1 class="sportsBoard-header-title">신규 모임글</h1>
-            <a href="/sportsBoard" class="sportsBoard-whole-view">전체보기</a>
+            <a href="/sportsBoard/main" class="sportsBoard-whole-view">전체보기</a>
         </div>
 
         <!-- 신규 모임글 -->
         <div class="sportsBoard-list">
             <div>
-                <img src="/1.jpg" class="thumbnail"></img>
+                <img src="" class="thumbnail"></img>
                 <div>
                     <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
                 </div>
             </div>
             
             <div>
-                <img src="/1.jpg" class="thumbnail"></img>
+                <img src="" class="thumbnail"></img>
                 <div>
                     <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
                 </div>
             </div>
 
             <div>
-                <img src="/1.jpg" class="thumbnail"></img>
+                <img src="" class="thumbnail"></img>
                 <div>
                     <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
                 </div>
             </div>
 
             <div>
-                <img src="/1.jpg" class="thumbnail"></img>
+                <img src="" class="thumbnail"></img>
                 <div>
                     <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
                 </div>
@@ -60,37 +60,37 @@
         <!-- 자유 게시판 (최신글) -->
         <div class="freeBoard-header">
             <h1 class="freeBoard-header-title">자유 게시판</h1>
-            <a href="/freeBoard" class="freeBoard-whole-view">전체보기</a>
+            <a th:href="@{/board/{boardCode}(boardCode=${application.boardTypeList.get(1).boardCode})}" class="freeBoard-whole-view">전체보기</a>
         </div>
         
         <div class="freeBoard-list">
             <a href="">암벽화 추천 부탁드립니다</a>
             <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
         </div>
 
         <div class="freeBoard-list">
             <a href="">암벽화 추천 부탁드립니다</a>
             <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
         </div>
 
         <div class="freeBoard-list">
             <a href="">암벽화 추천 부탁드립니다</a>
             <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
         </div>
 
         <div class="freeBoard-list">
             <a href="">암벽화 추천 부탁드립니다</a>
             <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
         </div>
 
         <div class="freeBoard-list">
             <a href="">암벽화 추천 부탁드립니다</a>
             <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-address">2024-04-24 12:45</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
         </div> 
 
     </main>

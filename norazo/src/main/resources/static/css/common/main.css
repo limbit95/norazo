@@ -6,7 +6,7 @@
 }
 
 main * {
-    width: 1090px;
+    /* width: 1090px; 임성혁 수정 */
 }
 
 /* 폰트 */
@@ -73,6 +73,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 1090px; /* 임성혁 수정 */
 }
 article {
     height: 35.185vh;
@@ -190,7 +191,7 @@ article {
 
 .freeBoard-list > a {
     width: 70%;
-    font-weight: 100;
+    font-weight: 1000;
     margin-left: 30px;
     font-family: 'main';
     font-size: 25px;
@@ -205,7 +206,7 @@ article {
     color: var(--gray2);
 }
 
-.freeBoard-address {
+.freeBoard-date {
     width: auto;
     font-weight: 1000;
     color: var(--gray2);
