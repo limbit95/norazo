@@ -1,6 +1,8 @@
 <div class="MyProfileLeft">
     <div class="backGround">
-        <img class="profile" src="/images/profile/profile-circle.svg">
+        <img class="profile"
+             th:with="user=#{user.default.image}"
+             th:src="${session.loginMember.profileImg ?: user}">
         <div class="div1">
             <div class="Rectangle1"><h3>닉네임</h3></div>
             <div class="Rectangle2"><h3>아스날</h3></div>

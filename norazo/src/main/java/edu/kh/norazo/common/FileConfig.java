@@ -38,12 +38,21 @@ public class FileConfig implements WebMvcConfigurer{
 	@Value("${category.img.resource-location}")
 	private String categoryImgResourceLocation;
 	
+	@Value("${my.profile.resource-handler}")
+	private String profileResourceHandler;
+	@Value("${my.profile.resource-location}")
+	private String profileResourceLocation;
+	
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		// 카테고리 이미지
 		registry.addResourceHandler(categoryImgResourceHandler)
 		.addResourceLocations(categoryImgResourceLocation);
 	
+		// 프로필 이미지 요청 - 서버 폴더 연결 추가
+		registry.addResourceHandler(profileResourceHandler) // /myPage/profile/**
+		.addResourceLocations(profileResourceLocation); // file:///C:/uploadFiles/profile/
 	}
 	
 	
