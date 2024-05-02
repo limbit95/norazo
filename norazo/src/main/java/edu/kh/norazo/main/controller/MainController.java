@@ -44,11 +44,6 @@ public class MainController {
 		return "common/modal";
 	}
 
-	@GetMapping("myPage")
-	public String myPage() {
-		return "common/fragments/myPage";
-	}
-
 	@GetMapping("signUp")
 	public String signUp() {
 		return "common/signUp";
