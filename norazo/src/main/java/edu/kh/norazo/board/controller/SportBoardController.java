@@ -23,13 +23,13 @@ public class SportBoardController {
 		return "board/sportsBoard";
 	}
 	
-	@GetMapping("{sportsName:[a-z]+}")
-	public String test(@PathVariable("sportsName") String sportsName) {
-		
-		log.debug("종목 : " + sportsName);
-		
-		return "redirect:/";
-	}
+//	@GetMapping("{sportsName:[a-z]+}")
+//	public String test(@PathVariable("sportsName") String sportsName) {
+//		
+//		log.debug("종목 : " + sportsName);
+//		
+//		return "redirect:/";
+//	}
 	
 	// "sportsBoard/{sportsType:[0-9]+}/{boardNo:[0-9]+}/detail" = ex : 축구 게시판 1번 게시글
 	
