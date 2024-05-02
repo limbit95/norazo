@@ -17,6 +17,6 @@ myPageBtn.addEventListener("click", () => {
         return;
     }
 
-    location.href = "/myPage";
+    location.href = "/myPage/main";
 });
 

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="/css/fragments/myPage.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+</head>
+<body>
+    <th:block th:replace="~{common/nav}"></th:block>
+    <main>
+        <div class="contents">
+            <th:block th:replace="~{common/fragments/myPageLeftSide}"></th:block>
+			<section class="editMain">
+                <div class="editTitle"><h1>프로필 수정</h1></div>
+                <img class="profile" src="/images/profile/profile-circle.svg">
+                <form action="main" method="POST" name="myPageFrm" id="updateInfo">
+                    <div class="myPage-row">
+                        <h2 class="editTitle">닉네임</h2>
+                        <div>
+                            <input type="text" name="memberNickname" 
+                                maxlength="10" id="memberNickname" class="profileUpdateInput2"
+                                >
+                            <button class="button" type="button"><h3>중복확인</h3></button>
+                        </div>
+                    </div>
+            
+                    <div class="info-title">
+                        <h2 class="editTitle">주소</h2>
+                    </div>
+            
+                    <div class="myPage-row info-address">
+                        <input type="text" name="memberAddress"
+                            placeholder="  우편번호" id="postcode" class="profileUpdateInput2"
+                            >
+                        
+                        <button class="button" type="button"><h3>검색</h3></button>
+                    </div>
+            
+                    <div class="myPage-row info-address">
+                        <input type="text" name="memberAddress"
+                            placeholder="  도로명/지번 주소" id="address" class="profileUpdateInput1"
+                            >
+                    </div>
+            
+                    <div class="myPage-row info-address">
+                        <input type="text" name="memberAddress"
+                            placeholder="  상세 주소" id="detailAddress" class="profileUpdateInput1"
+                            >
+                    </div>
+
+                    <div class="myPage-row info-gender">
+                        <h2 class="editTitle">성별</h2>
+                        <select id="gender" name="gender" class="profileUpdateInput1">
+                            <option class="selected" value="select" selected disabled>  성별을 선택하세요</option>
+                            <option value="man">남자</option>
+                            <option value="woman">여자</option>
+                        </select>
+                    </div>
+                    
+                    <button class="myPage-submit"><h3>수정하기</h3></button>
+                    </form>
+			</section>
+        </div>
+    </main>
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
