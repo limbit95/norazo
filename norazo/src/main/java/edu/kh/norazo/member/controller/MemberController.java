@@ -81,7 +81,7 @@ public class MemberController {
 	
 	@GetMapping("signUp")
 	public String signUp() {
-		return "common/signUp";
+		return "member/signUp";
 	}
 	
 }
