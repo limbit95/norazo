@@ -191,7 +191,7 @@ article {
 
 .freeBoard-list > a {
     width: 70%;
-    font-weight: 100;
+    font-weight: 1000;
     margin-left: 30px;
     font-family: 'main';
     font-size: 25px;
@@ -206,7 +206,7 @@ article {
     color: var(--gray2);
 }
 
-.freeBoard-address {
+.freeBoard-date {
     width: auto;
     font-weight: 1000;
     color: var(--gray2);

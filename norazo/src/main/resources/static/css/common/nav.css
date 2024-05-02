@@ -1,3 +1,5 @@
+/* nav */
+/* 990px보다 큰 화면일 때 */
 @media (min-width: 990px) {
     .nav-container {
         display: flex; 
@@ -18,11 +20,21 @@
         align-items: center;
     }
 
+    .nav-div > :nth-child(1) {
+        width: 35px;
+        height: 35px;
+    }
+
     .category-btn {
         color: #076DF2;
         width: 30px;
         height: 30px;
         cursor: pointer;
+    }
+
+    .nav-div > :nth-child(2) {
+        width: 130px;
+        height: 25px;
     }
 
     .logo {
@@ -66,17 +78,24 @@
         display: flex; 
         margin-left: 10px;
     }
+
+    .btnlist > a {
+        width: 35px;
+        height: 35px;
+        margin-left: 10px; 
+    }
     
     .btnlist * {
         font-size: 30px;
         text-decoration: none;
         color: #076DF2;
-        margin-left: 10px;
         cursor: pointer;
     }
     
 }
 
+/* nav */
+/* 990px보다 작은 화면일 때 */
 @media (max-width: 990px) {
     .nav-container {
         display: flex; 
@@ -97,18 +116,28 @@
         align-items: center;
         border: 2px solid blue;
     }
-    
+
+    .nav-div > :nth-child(1) {
+        width: 35px;
+        height: 35px;
+    }
+
     .category-btn {
         color: #076DF2;
         width: 30px;
         height: 30px;
         cursor: pointer;
     }
+
+    .nav-div > :nth-child(2) {
+        width: 100px;
+        height: 25px;
+        margin-left: 10px;
+    }
     
     .logo {
         width: 100px;
         height: 25px;
-        margin-left: 10px;
         cursor: pointer;
     }
     
@@ -147,69 +176,134 @@
         display: flex; 
         margin-left: 10px;
     }
+
+    .btnlist > a {
+        width: 35px;
+        height: 35px;
+        margin-left: 10px; 
+    }
     
     .btnlist * {
         font-size: 30px;
         text-decoration: none;
         color: #076DF2;
-        margin-left: 10px;
         cursor: pointer;
     }
 }
 
-.category-container {
-    width: 43.75vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 10px;
-}
+/* 카테고리 */
+/* 1900px보다 큰 화면일 때 */
+@media (min-width: 1900px) {
+    .category-container {
+        width: 830px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    
+    .category-header {
+        width: auto;
+        height: 50px;
+        display: flex;
+        text-align: center;
+    }
+    
+    .category-list-div {
+        width: 830px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border: 5px solid var(--primary3);
+        border-radius: 30px;
+        padding: 10px;
+    }
+    
+    .category-div {
+        width: 180px;
+        height: 100px; 
+        border-radius: 15px; 
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    
+    .category-img {
+        width: 180px; 
+        height: 100px; 
+        border-radius: 15px; 
+    }
+    
+    .category-div:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+    
+    .category-title {
+        width: auto;
+        text-shadow: 2px 2px 4px #000000;
+        color: #fafafa;
+        position: absolute; 
+        top: 58%; 
+        left: 10%; 
+    } 
+}  
 
-.category-header {
-    width: 250px;
-    height: 50px;
-    display: flex;
-    text-align: center;
-}
-
-.category-list-div {
-    width: 43.75vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border: 5px solid var(--primary3);
-    border-radius: 30px;
-    padding: 10px;
-}
-
-.category-div {
-    width: 180px;
-    height: 100px; 
-    border-radius: 15px; 
-    position: relative;
-    margin: 10px;
-    cursor: pointer;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-.category-img {
-    width: 180px; 
-    height: 100px; 
-    border-radius: 15px; 
-}
-
-.category-div:hover {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  }
-
-.category-title {
-    font-weight: 100;
-    text-shadow: 2px 2px 4px #000000;
-    color: #fafafa;
-    position: absolute; 
-    top: 60%; 
-    left: 10%; 
+/* 카테고리 */
+/* 1900px보다 작은 화면일 때  */
+@media (max-width: 1900px) {
+    .category-container {
+        width: 43.75vw;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    
+    .category-header {
+        width: auto;
+        height: 50px;
+        display: flex;
+    }
+    
+    .category-list-div {
+        width: 43.75vw;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        border: 5px solid var(--primary3);
+        border-radius: 30px;
+        padding: 10px;
+    }
+    
+    .category-div {
+        width: 180px;
+        height: 100px; 
+        border-radius: 15px; 
+        position: relative;
+        margin: 10px;
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    
+    .category-img {
+        width: 180px; 
+        height: 100px; 
+        border-radius: 15px; 
+    }
+    
+    .category-div:hover {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+      }
+    
+    .category-title {
+        width: auto;
+        text-shadow: 2px 2px 4px #000000;
+        color: #fafafa;
+        position: absolute; 
+        top: 58%; 
+        left: 10%; 
+    } 
 } 
-
-

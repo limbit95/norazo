@@ -25,6 +25,10 @@ public class MemberController {
 
 	private final MemberService service;
 	
+	@GetMapping("signUp")
+	public String signUp() {
+		return "common/signUp";
+	}
 	
 	/** 로그인 : 로그인시 메인페이지 이동 
 	 * @return : /
@@ -75,9 +79,4 @@ public class MemberController {
 		return "redirect:"+path;
 	}
 	
-	@GetMapping("signUp")
-	public String signUp() {
-		
-		return "member/signUp";
-	}
 }
