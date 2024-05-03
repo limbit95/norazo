@@ -52,7 +52,7 @@
                     <span class="required"><h2>비밀번호</h2></span>
                 </label>
 
-                <div class="signUp-input-area" id="memberPw">
+                <div class="signUp-input-area">
                     <input name="memberPw" id="memberPw" type="password" placeholder="비밀번호를 입력하세요." maxlength="20" class="signupInput1">
                 </div>
 
@@ -72,7 +72,7 @@
                     <input name="memberTel" id="memberTel" type="text" placeholder="(- 없이 숫자만 입력)" maxlength="11" class="signupInput1">
                 </div>
 
-                <span class="signUp-message" id="nickMessage"><h4>전화번호를 입력해주세요.(-제외)</h4></span>
+                <span class="signUp-message" id="telMessage"><h4>전화번호를 입력해주세요.(-제외)</h4></span>
 
                 <!------------------------------------------------------------------------------------------>
 
@@ -96,8 +96,9 @@
 
                 <div class="genderDiv">
                     <select id="gender" name="gender">
-                        <option value="male">남성</option>
-                        <option value="female">여성</option>
+                        <option>성별</option>
+                        <option value="M">남성</option>
+                        <option value="F">여성</option>
                     </select>
                 </div>
                 <!------------------------------------------------------------------------------------------>
@@ -109,16 +110,16 @@
 
                 <div class="birthdayDiv">
                 
-                    <select class="birthday" id="year" name="year">
-                        <option disabled selected>출생연도</option>
+                    <select class="birthday" id="year" name="birthday">
+                        <option value="year">출생연도</option>
                     </select>
 
-                    <select class="birthday" id="month" name="month">
-                        <option disabled selected>월</option>
+                    <select class="birthday" id="month" name="birthday">
+                        <option value="month">월</option>
                     </select>
 
-                    <select class="birthday" id="day" name="day">
-                        <option disabled selected>일</option>
+                    <select class="birthday" id="day" name="birthday">
+                        <option value="day">일</option>
                     </select>
                     
                 </div>
@@ -131,17 +132,17 @@
                     <span class="required"><h2>주소</h2></span>
                 </label>
 
-                    <div class="signUp-input-area" id="postcode">
+                    <div class="signUp-input-area">
                         <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode" class="signupInput2">                       
                         
-                        <button type="button" class="singupBtn">검색</button>
+                        <button type="button" class="singupBtn" id="searchAddress">검색</button>
                     </div>
 
-                    <div class="signUp-input-area" id="address">
+                    <div class="signUp-input-area">
                         <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address" class="signupInput1">
                     </div>
 
-                    <div class="signUp-input-area" id="detailAddress">
+                    <div class="signUp-input-area">
                         <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress" class="signupInput1">
                     </div>
 
@@ -150,6 +151,7 @@
         </section>
 
     </main>
+    <!-- 회원 가입 js -->
     <script src="/js/member/signUp.js"></script>
   <!-- 다음 주소 API 추가 -->
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
