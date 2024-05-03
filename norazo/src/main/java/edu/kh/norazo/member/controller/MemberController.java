@@ -1,5 +1,7 @@
 package edu.kh.norazo.member.controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -106,5 +108,37 @@ public class MemberController {
 	public int checkEmail(@RequestParam("memberEmail")String memberEmail) {
 		
 		return service.checkEmail(memberEmail);
+	}
+	
+	/** 닉네임 중복 검사
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("checkNickname")
+	public int checkNickname(@RequestParam("memberNickname")String memberNickname) {
+		return service.checkNickname(memberNickname);
+	}
+	 
+	/** 회원 가입 
+	 * @param inputMember
+	 * @param memberAddress
+	 * @param birthMap
+	 * @param genderMap
+	 * @param ra
+	 * @return
+	 */
+	@PostMapping("signUp")
+	public String signUp(Member inputMember,
+						 @RequestParam("memberAddress")String[]memberAddress,
+						 @RequestParam("birthday")String[]birthday,
+						 RedirectAttributes ra) {
+		Map<String, Object> map = null;
+		
+		String birthdayString = birthday[0] + "-" + birthday[1] + "-" + birthday[2];
+		
+		inputMember.setMemberAddres(birthdayString);
+		
+		int result = service.signUp(inputMember, memberAddress);
+		return "";
 	}
 }
