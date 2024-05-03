@@ -33,6 +33,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
+}
+.adBannerImg {
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* Next & previous buttons */
@@ -73,6 +78,7 @@
   display: flex;
   bottom: 50%;
   /* width: 100%; */
+  width: 1090px; /* 임성혁 수정 */
   text-align: center;
   justify-content: center;
   font-family: BM DoHyeon OTF;
@@ -115,4 +121,3 @@
   from {opacity: .4}
   to {opacity: 1}
 }
-

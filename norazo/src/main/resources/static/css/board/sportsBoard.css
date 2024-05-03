@@ -1,3 +1,218 @@
-.boart-title {
-    text-align: center;
+@media (min-width: 1900px) {
+    .board-page-header {
+        display: flex;
+        align-items: center;
+        width: 1020px;
+        height: 100px;
+    }
+
+    .boardType-title {
+        /* text-align: start; */
+        /* margin-top: 40px;  */
+        /* margin-bottom: 20px; */
+        font-size: 40px;
+        width: 1020px;
+        flex-basis: 90%;
+    }
+
+    .newMoim {
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: var(--primary2);
+        font-family: 'main';
+        font-size: 20px;    
+        font-weight: 1000;
+        color: white;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+
+    .board-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1090px;
+    }
+
+    .board-list > div {
+        display: flex;
+        flex-wrap: wrap;
+        width: 230px;
+        height: 275px;
+        padding: 0px;
+        margin-top: 10px;
+        margin-left: 33px;
+    }
+
+    .board-list > div > img {
+        width: 230px; 
+        height: 200px;
+        border-radius: 30px; 
+        background-color: rgb(255, 255, 255); 
+        padding: 0px;
+        margin: 0;
+        border: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        cursor: pointer;
+    }
+
+    .board-list > div > div {
+        height: 65px;
+        margin-top: 10px;
+    }
+
+    .board-title {
+        color: #3C3C3C; 
+        font-size: 18px; 
+        text-align: start; 
+        width: auto;
+        cursor: pointer;
+    }
+    
 }
+
+@media (max-width: 1900px) {
+    .board-page-header {
+        display: flex;
+        align-items: center;
+        width: 52.125vw;
+        height: 100px;
+    }
+
+    .boardType-title {
+        text-align: start;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 40px;
+        width: 53.125vw;
+        flex-basis: 90%;
+    }
+
+    .newMoim {
+        width: 100px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: var(--primary2);
+        font-family: 'main';
+        font-size: 20px;    
+        font-weight: 1000;
+        color: white;
+        cursor: pointer;
+        margin-top: 30px;
+    }
+
+    .board-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 56.771vw;
+    }
+
+    .board-list > div {
+        display: flex;
+        flex-wrap: wrap;
+        width: 230px;
+        height: 275px;
+        padding: 0px;
+        margin-top: 10px;
+        margin-left: 33px;
+    }
+
+    .board-list > div > img {
+        width: 230px; 
+        height: 200px; 
+        border-radius: 30px; 
+        background-color: rgb(255, 255, 255); 
+        padding: 0px;
+        margin: 0;
+        border: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        cursor: pointer;
+    }
+
+    .board-list > div > div {
+        height: 65px;
+        margin-top: 10px;
+    }
+
+    .board-title {
+        color: #3C3C3C; 
+        font-size: 18px; 
+        text-align: start; 
+        width: auto;
+        cursor: pointer;
+    }
+    
+}
+
+@media (max-width: 990px) {
+    main {
+        width: 89.474vw; /* 850 */
+    }
+
+    .title-group {
+        display: flex;
+        width: 83.158vw;
+        align-items: end;
+    }
+
+    .boardType-title {
+        text-align: start;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 4.211vw;
+        width: 83.158vw;
+    }
+
+    .board-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 89.474vw;
+    }
+
+    .board-list > div {
+        display: flex;
+        flex-wrap: wrap;
+        width: 18vw;
+        height: 160px;
+        padding: 0px;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    .board-list > div > img {
+        width: 18vw; 
+        height: 100px; 
+        border-radius: 20px; 
+        background-color: rgb(255, 255, 255); 
+        padding: 0px;
+        margin: 0;
+        border: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        cursor: pointer;
+    }
+
+    .board-list > div > div {
+        height: 50px;
+        margin-top: 10px;
+    }
+
+    .board-title {
+        color: #3C3C3C; 
+        font-size: 1.579vw; 
+        text-align: start; 
+        width: auto;
+        cursor: pointer;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

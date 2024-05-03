@@ -1,54 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>노라조</title>
-    <link rel="stylesheet" href="/css/fragments/footer.css">
-
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/fragments/login.css">
 </head>
 <body>
-    
+    <th:block th:replace="~{common/nav}"></th:block>
     <main>
         <section>
              <!-- 로고 -->
              <img src="/images/logo.png" alt="homeLogo" id="logo">
         
              <!-- 로그인 폼-->
-             <form action="">
+             <form action="/member/login" method="post" id="loginForm">
                  <div class="login-input-area">
 
-                    <div>
-                        <input type="text" id="id" placeholder="아이디" autocapitalize="off">
+                    <div class="idInput">
+                        <input type="text" id="id" name="memberEmail" placeholder="아이디" autocapitalize="off" class="loginInput">
                     </div>
                     
-                    <div>
-                        <input type="password" id="password" placeholder="비밀번호" autocapitalize="off">
+                    <div class="pwInput">
+                        <input type="password" id="password" name="memberPw" placeholder="비밀번호" autocapitalize="off" class="loginInput">
                     </div>
                     
-                    <div>
-                        <h4><input type="radio">아이디 저장</h4>
+                    <div class="radioDiv">
+                        <input type="checkbox" class="saveId" id="saveId" name="saveId"><h3 class="saveId">아이디 저장</h3>
                     </div>    
 
-                     <button>로그인</button>
+                     <button class="loginBtn">로그인</button>
                  </div>
                      
              </form>
  
              <!-- 비밀번호 찾기/회원가입 폼-->
-             <div>
-                <div>
-                    <a href="">비밀번호 찾기</a>
-                </div>
+            <div class="pwSignDiv">
 
-                <div>
-                    <a href="">회원 가입</a>
-                </div>
-             </div>
+                <a href="" class="loginTag">비밀번호 찾기</a>
+
+                <a href="/member/signUp" class="loginTag">회원 가입</a>
+
+            </div>
  
         </section>
      </main>
+     <th:block th:replace="~{common/footer}"></th:block>
+     <script src="/js/member/login.js"></script>
 </body>
 </html>

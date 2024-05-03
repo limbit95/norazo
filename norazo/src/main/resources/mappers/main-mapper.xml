@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.kh.norazo.main.model.mapper.MainMapper">
+
+	<!-- 게시판 종류 조회 -->
+	<select id="selectBoardTypeList">
+		SELECT BOARD_CODE "boardCode", BOARD_NAME "boardName"
+		FROM "BOARD_TYPE"
+		ORDER BY BOARD_CODE 
+	</select>
+
+	<!-- 스포츠 종목 조회 -->
+	<select id="selectSportsTypeList">
+		SELECT SPORTS_CODE "sportsCode", SPORTS_KR_NAME "sportsKrName", IMG_PATH "imgPath", IMG_NAME "imgName"
+		FROM "SPORTS_TYPE"
+		ORDER BY SPORTS_NO
+	</select>
+
+</mapper>
