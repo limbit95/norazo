@@ -278,7 +278,7 @@ memberPw.addEventListener("input", e=> {
     if( !regExp.test(inputPw)){ //유효하지 않으면 
         pwMessage.innerText = "비밀번호가 유효하지 않습니다.";
         pwMessage.classList.add("error");
-        pwMessage.classList.remove("confrim");
+        pwMessage.classList.remove("confirm");
         checkObj.memberPw = false;
         return;
     }
