@@ -285,7 +285,7 @@ memberPw.addEventListener("input", e=> {
 
     // 유효한 경우 
     pwMessage.innerText = "유효한 비밀번호 형식입니다.";
-    pwMessage.classList.add("confrim");
+    pwMessage.classList.add("confirm");
     pwMessage.classList.remove("error");
     checkObj.memberPw = true;
 
