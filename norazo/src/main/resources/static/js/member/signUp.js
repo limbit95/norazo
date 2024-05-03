@@ -196,7 +196,7 @@ memberPw.addEventListener("input", e =>{
         pwMessage.innerText = "영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.";
         pwMessage.classList.remove("error","confirm");
         checkObj.memberPw = false;
-        memberPw.value="";
+        // memberPw.value="";
         return;
     }
     const regExp = /^[a-zA-Z0-9!@#_-]{6,20}$/;
@@ -226,12 +226,16 @@ memberPw.addEventListener("input", e =>{
 // 단, 비밀번호가 유효할 때만 검사 수행
 memberPwConfirm.addEventListener("input",() => {
 
-    if(checkObj.memberPw){
-        checkPw();
-        return;
+    if(!checkObj.memberPw){
+      pwMessage.innerText = "비밀번호를 먼저 입력해주세요";
+      pwMessage.classList.add("error");
+      pwMessage.classList.remove("confirm");
+      checkObj.memberPwConfirm = false;
+      return;
     }
 
-    checkObj.memberPwConfirm = false;
+    
+    checkPw();
 });
 // -------------------------------------------------------------------
 /* 생년 월일 */

@@ -206,6 +206,7 @@
         height: 50px;
         display: flex;
         text-align: center;
+        margin-top: 20px;
     }
     
     .category-list-div {
@@ -339,7 +340,7 @@
     min-width : 120px;
     border-radius: 10px;
     border: 2px solid var(--secondary);
-    top: 105%;
+    top: 104%;
     right: 0%;
 }
 

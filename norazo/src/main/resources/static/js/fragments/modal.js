@@ -15,6 +15,15 @@ boardTitle.forEach( (i) => {
     });
 })
 
-closeBtn.addEventListener("click", () => {
-    modalContent.classList.add("popup-hidden");
-});
+if(closeBtn != null){
+    closeBtn.addEventListener("click", () => {
+        modalContent.classList.add("popup-hidden");
+    });
+}
+
+
+window.addEventListener("keydown", (e) => {
+    if(e.key == 'Escape'){
+        modalContent.classList.add("popup-hidden");
+    } 
+})
