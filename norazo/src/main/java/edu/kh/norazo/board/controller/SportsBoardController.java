@@ -22,15 +22,16 @@ public class SportsBoardController {
 	private final SportsBoardService service;
 	
 	// 모임 게시판  종합 페이지
-	@GetMapping("/main")
-	public String sportsBoardPage() {
-		return "board/sportsBoard";
-	}
+//	@GetMapping("/main")
+//	public String sportsBoardPage() {
+//		return "board/sportsBoard";
+//	}
 	
 	@GetMapping("{sportsCode:[a-z]+}")
 	public String test(@PathVariable("sportsCode") String sportsCode,
 					   @RequestParam(value="cp", required=false, defaultValue="1") int cp,
 					   Model model) {
+		
 		Map<String, Object> map = service.selectBoardList(sportsCode, cp);
 		
 		model.addAttribute("pagination", map.get("pagination"));

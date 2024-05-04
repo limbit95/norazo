@@ -7,9 +7,15 @@
 		SELECT COUNT(*)
 		FROM "BOARD"
 		WHERE BOARD_DEL_FL = 'N' 
-		AND SPORTS_CODE = #{sportsCode}
+		<if test="!sportsCode.equals('main')">
+			AND SPORTS_CODE = #{sportsCode}
+		</if>
+		<if test="sportsCode.equals('main')">
+			AND BOARD_CODE = 1
+		</if>
 	</select>
 	
+	<!-- 스포츠 종목 한글 이름 얻어오기 -->
 	<select id="getSportsKrName">
 		SELECT SPORTS_KR_NAME
 		FROM SPORTS_TYPE
@@ -39,7 +45,12 @@
 		JOIN "MEMBER" USING(MEMBER_NO)
 		JOIN "SPORTS_TYPE" USING(SPORTS_CODE)
 		WHERE BOARD_DEL_FL = 'N'
-		AND SPORTS_CODE = #{sportsCode}
+		<if test="!sportsCode.equals('main')">
+			AND SPORTS_CODE = #{sportsCode}
+		</if>
+		<if test="sportsCode.equals('main')">
+			AND BOARD_CODE = 1
+		</if>
 		ORDER BY BOARD_NO DESC
 	</select>
 	

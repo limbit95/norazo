@@ -83,11 +83,42 @@ COMMENT ON COLUMN "BOARD"."MEETING_LOCATION" IS '모임 장소(모임글)';
 
 CREATE SEQUENCE SEQ_BOARD_NO;
 
+-- 스포츠 타입 조회
+SELECT * FROM SPORTS_TYPE;
+
 ------------------- 모임 게시글 샘플 데이터 -------------------
 INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '5:5 풋살 하실 분들 모집합니다', 'A', DEFAULT, NULL, DEFAULT, 1, 1, 'football', 10, '월드컵 경기장');
 INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '즐겁게 축구 같이 하실 분들 지금 당장 참석!!!', 'B', DEFAULT, NULL, DEFAULT, 1, 1, 'football', 10, '용산구 축구장');
 INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '전 축구 국가대표 출신 무료 강좌!', 'C', DEFAULT, NULL, DEFAULT, 1, 1, 'football', 10, '은평구 축구장');
 INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '오후 3시부터 달리실 분~~~', 'D', DEFAULT, NULL, DEFAULT, 1, 1, 'football', 10, '종로구 축구장');
+
+INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '농구 3:3 인원 모집', 'D', DEFAULT, NULL, DEFAULT, 1, 1, 'basketball', 6, '마포구 농구장');
+INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '소수인원으로 농구하실 분 지금 바로 참석', 'D', DEFAULT, NULL, DEFAULT, 1, 1, 'basketball', 4, '평화의 공원 1번 코트장');
+
+INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '핸드볼 처음이신 분도 하실 수 있습니다 [삼척핸드볼스포츠클럽]', 'D', DEFAULT, NULL, DEFAULT, 1, 1, 'handball', 10, '삼척핸드볼스포츠클럽');
+INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '올림픽 공원에서 핸드볼 경기 진행 예정!', 'D', DEFAULT, NULL, DEFAULT, 1, 1, 'handball', 10, '올림픽공원');
+
+
+
+SELECT BOARD_NO, BOARD_TITLE, SPORTS_KR_NAME, 
+	CASE 
+		WHEN SYSDATE - BOARD_WRITE_DATE < 1 / 24 / 60
+		THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24 * 60 * 60) || '초 전'
+		
+		WHEN SYSDATE - BOARD_WRITE_DATE < 1 / 24
+		THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24 * 60) || '분 전'
+		
+		WHEN SYSDATE - BOARD_WRITE_DATE < 1
+		THEN FLOOR((SYSDATE - BOARD_WRITE_DATE) * 24) || '시간 전'
+		
+		ELSE TO_CHAR(BOARD_WRITE_DATE, 'YYYY-MM-DD')
+	END "BOARD_WRITE_DATE" 
+FROM "BOARD" B
+JOIN "MEMBER" USING(MEMBER_NO)
+JOIN "SPORTS_TYPE" USING(SPORTS_CODE)
+WHERE BOARD_DEL_FL = 'N'
+AND BOARD_CODE = 1
+ORDER BY BOARD_NO DESC;
 
 
 SELECT BOARD_NO, BOARD_TITLE, SPORTS_KR_NAME, 
