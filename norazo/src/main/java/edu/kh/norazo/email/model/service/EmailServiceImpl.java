@@ -44,11 +44,13 @@ public class EmailServiceImpl implements EmailService{
 			MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 			
 			helper.setTo(email);
+			
 			helper.setSubject(subject);
 			
-			helper.setText( loadHtml(authKey, htmlName) );
+			helper.setText( loadHtml(authKey, htmlName), true );
 			
 			helper.addInline("logo",new ClassPathResource("static/images/logo.png"));
+			
 			mailSender.send(mimeMessage);
 			
 		} catch (Exception e) {
