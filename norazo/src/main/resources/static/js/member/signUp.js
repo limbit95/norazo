@@ -35,7 +35,11 @@ const checkObj ={
   "memberPwConfirm" : false,
   "memberNickname" : false,
   "gender" : false,
-  "memberTel" : false
+  "memberTel" : false,
+  "year" : false,
+  "month" : false,
+  "day" : false,
+  "memberAddress" : false
 };    
 // ------------------------------------------------------------------
 
@@ -396,7 +400,7 @@ memberNickname.addEventListener("input", e =>{
 });
 
 // -------------------------------------------------------------------
-// 성별 
+// 성별 선택이 안되었을 시 
 const gender = document.querySelector("#gender");
 
 gender.addEventListener("change", function() {
@@ -405,7 +409,7 @@ gender.addEventListener("change", function() {
     // "성별" 이외의 값을 선택한 경우에만 경고창 표시
     if (selectedGender !== "F" && selectedGender !== "M") {
         alert("성별을 선택해주세요.");
-       checkObj.gender = false;
+        checkObj.gender = false;
     }
 
     checkObj.gender = true;
@@ -416,6 +420,7 @@ gender.addEventListener("change", function() {
 const birthYearEl = document.querySelector('#year');
 const birthMonthEl = document.querySelector('#month');
 const birthDayEl = document.querySelector('#day');
+
 
 isYearOptionExisted = false;
 isMonthOptionExisted = false;
@@ -468,21 +473,128 @@ birthDayEl.addEventListener('focus', function () {
     }
     console.log(checkObj);
   }); 
-  const signUpForm = document.querySelector("#signUpForm");
 
-// signUpForm.addEventListener("submit", function(event) {
-//     const year = document.querySelector("#year").value;
-//     const month = document.querySelector("#month").value;
-//     const day = document.querySelector("#day").value;
+// ------------------------------------------------------------------
+// 생년월일 연도 미체크 시 
+birthYearEl.addEventListener("change", e => {
 
-//     // 생년 월일 중 하나라도 선택되지 않은 경우
-//     if (year === "출생연도" || month === "월" || day === "일") {
-//         alert("생년 월일을 선택해주세요.");
-//         event.preventDefault(); // 폼 제출을 막음
-//     }
+  if(e.target.value == 'year'){
+    alert("년도를 선택해주세요.");
+    checkObj.year = false;
+    console.log(e);
+    return;
+  }
+  checkObj.year = true;
+
+});
+// 생년 월 미체크 시
+
+birthMonthEl.addEventListener("change",e =>{
+  if(e.target.value == 'month'){
+    alert("월을 선택해주세요.");
+    checkObj.month = false;
+    return;
+  }
+  checkObj.month = true;
+});
+
+birthDayEl.addEventListener("change", e=> {
+
+  if(e.target.value == 'day'){
+    alert("일을 선택해주세요.");
+    checkObj.day = false;
+    return;
+  }
+  checkObj.day = true;
+});
+
+// -----------------------------------------------------------------------------
+// // 주소를 만약에 하나라도 넣었을 경우 
+// const memberAddress = document.querySelectorAll("[name='memberAddress']");
+
+// memberAddress.forEach(Address => {
+//   Address.addEventListener("input", e => {
+
+//    // 주소 
+//    const addr0 = memberAddress[0].value.trim().length == 0;
+//    const addr1 = memberAddress[1].value.trim().length == 0;
+//    const addr2 = memberAddress[2].value.trim().length == 0;
+  
+//    // 모두 true인 경우 
+//    const result1 = addr0 && addr1 && addr2;
+//    // 모두 flase인 경우
+//    const result2 = !(addr0 || addr1 || addr2);
+   
+//    // 모두 입력 또는 모두 미입력이 아니면
+//    if( !(result1 || result2) ) {
+//        alert("주소를 모두 작성 또는 미작성 해주세요.");
+//        checkObj.memberAddress = false;
+//        return;
+//    }
+
+//    checkObj.memberAddress = true;
+
+//   });
 
 // });
 
-  // --------------------------------------------
+
+// -----------------------------------------------------------------------------
+
+  // 회원 가입 폼 제출 
+  const signUpForm = document.querySelector("#signUpForm");
+
+  signUpForm.addEventListener("submit", e =>{
+    const memberAddress = document.querySelectorAll("[name='memberAddress']");
+
+    // 주소 
+    const addr0 = memberAddress[0].value.trim().length == 0;
+    const addr1 = memberAddress[1].value.trim().length == 0;
+    const addr2 = memberAddress[2].value.trim().length == 0;
+    
+    // 모두 true인 경우 
+    const result1 = addr0 && addr1 && addr2;
+    // 모두 flase인 경우
+    const result2 = !(addr0 || addr1 || addr2);
+    
+    // 모두 입력 또는 모두 미입력이 아니면
+    if( !(result1 || result2) ) {
+        alert("주소를 모두 작성 또는 미작성 해주세요.");
+        e.preventDefault();
+        checkObj.memberAddress = false;
+        return;
+    }
+
+    checkObj.memberAddress = true;
+    
+    for(let key in checkObj){
+
+      if( !checkObj[key] ){
+
+        let str; 
+
+        switch(key){
+          case "memberEmail" : str = "이메일이 유효하지 않습니다"; break;
+          case "emailCheck" : str = "이메일이 인증되지 않았습니다."; break;
+          case "memberPw" : str = "비밀번호가 유효하지 않습니다."; break;
+          case "memberPwConfirm" : str = "비밀번호가 일치하지 않습니다."; break;
+          case "memberNickname" : str = "닉네임이 유효하지 않습니다."; break;
+          case "gender" : str ="성별을 선택해주세요"; break;
+          case "memberTel" : str = "전화번호가 유효하지 않습니다."; break; 
+          case "year" : str ="연도를 선택해주세요."; break;
+          case "month" : str ="월을 선택해주세요."; break;
+          case "day" : str = "일을 선택해주세요."; break;
+          case "memberAddress" : str = "주소를 모두 입력 또는 미작성 해주세요."; break
+        }
+        alert(str);
+
+        document.getElementById(key).focus();
+        e.preventDefault();
+        return;
+      }
+    }
+
+  });
+
 
 

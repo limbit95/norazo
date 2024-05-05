@@ -53,16 +53,22 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int signUp(Member inputMember, String[] memberAddress) {
+		
 		// 주소 처리 
-		if(inputMember.getMemberAddres().equals(",,")) {
+		// 주소가 입력된 경우
+		if( !inputMember.getMemberAddress().equals(",,")) {
 			
 			String address = String.join("^^^", memberAddress);
-			inputMember.setMemberAddres(address);
+			
+			inputMember.setMemberAddress(address);
+			
+		// 입력 안했을시 null 주입 
 		} else {
 			
-			inputMember.setMemberAddres(null);
+			inputMember.setMemberAddress(null);
 		}
-		
+		log.debug("address : "+ inputMember.getMemberAddress());
+		// 비밀번호 암호화 
 		String encPw = bcrypt.encode(inputMember.getMemberPw());
 		inputMember.setMemberPw(encPw);
 		

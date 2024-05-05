@@ -4,6 +4,7 @@
     border: none;
 
 }
+
 /* h2 문구  */
 pre{
     text-align: center;
@@ -66,22 +67,9 @@ form div{
 .birthdayDiv select:nth-child(2), :nth-child(3){
     width: 100px;
 }
-#memberPw{
+/* #memberPwDiv{
     padding-bottom: 10px;
-}
-
-#address{
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-#detailAddress{
-    padding-bottom: 10px;
-}
-.genderDiv{
-    width: 250px;
-    height: 70px;
-
-}
+} */
 
 .genderDiv select{
     width: 100px; 
