@@ -39,8 +39,12 @@ public class MemberController {
 	 * @return
 	 */
 	@GetMapping("logout")
-	public String logout(SessionStatus status) {
+	public String logout(SessionStatus status, 
+						 RedirectAttributes ra) {
 		status.setComplete();
+		
+		ra.addFlashAttribute("message","로그아웃 되었습니다.");
+		
 		return "redirect:/";
 	}
 	
@@ -132,13 +136,27 @@ public class MemberController {
 						 @RequestParam("memberAddress")String[]memberAddress,
 						 @RequestParam("birthday")String[]birthday,
 						 RedirectAttributes ra) {
-		Map<String, Object> map = null;
 		
 		String birthdayString = birthday[0] + "-" + birthday[1] + "-" + birthday[2];
 		
-		inputMember.setMemberAddres(birthdayString);
-		
+		log.debug("birthdayString : " + birthdayString);
+		inputMember.setBirthDate(birthdayString);
+
 		int result = service.signUp(inputMember, memberAddress);
-		return "";
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+			message = inputMember.getMemberNickname() + "님의 가입을 환영 합니다!";
+			path = "/member/login";
+		
+		} else {
+			message = "회원 가입 실패";
+			path = "/member/signUp";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		return "redirect:"+path;
 	}
 }

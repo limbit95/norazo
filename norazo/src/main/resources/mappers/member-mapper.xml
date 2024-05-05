@@ -26,7 +26,20 @@
 		AND MEMBER_NICKNAME = #{memberNickname}
 	</select>
 	
+	<!--  회원 가입 SQL  -->
 	<insert id="signUp">
-	
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL,
+			  #{memberEmail},
+			  #{memberPw},
+			  #{memberNickname},
+			  #{memberTel},
+			  #{memberAddress},
+			  #{gender},
+			  #{birthDate},
+			  NULL,
+			  DEFAULT,
+			  DEFAULT,
+			  NULL)
 	</insert>
 </mapper>

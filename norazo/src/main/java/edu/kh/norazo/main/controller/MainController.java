@@ -41,14 +41,7 @@ public class MainController {
 		ra.addFlashAttribute("message", "로그인 후 이용해주세요");
 		return "redirect:/";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	@GetMapping("modal")
 	public String modal() {
