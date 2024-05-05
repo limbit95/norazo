@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.main.model.mapper.MainMapper;
 import edu.kh.norazo.main.model.service.MainService;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,15 @@ import lombok.RequiredArgsConstructor;
 public class MainController {
 	
 	private final MainService service;
-
+	
 	@RequestMapping("/")
-	public String mainPage() {
+	public String mainPage(Model model) {
+		List<Board> sportsBoardList = service.selectSportsBoardList();
+		List<Board> freeBoardList = service.selectFreeBoardList();
+		
+		model.addAttribute("recentSportsBoardList", sportsBoardList);
+		model.addAttribute("recentFreeBoardList", freeBoardList);
+		
 		return "common/main";
 	}
 	
@@ -46,18 +53,5 @@ public class MainController {
 	
 	
 	
-	
-	
-	
-	
-	@GetMapping("modal")
-	public String modal() {
-		return "common/modal";
-	}
-	
-	@GetMapping("boardWrite")
-	public String bordWrite() {
-		return "board/boardWrite";
-	}
 
 }

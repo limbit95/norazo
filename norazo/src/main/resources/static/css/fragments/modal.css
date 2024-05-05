@@ -17,13 +17,18 @@
 }
 
 .modal-header {
-    height: 50px;
+    height: 60px;
     display: flex;
     align-items: center;
 }
 
-.modal-title {
+.modal-header > div {
+    flex-basis: 80%;
     margin-left: 20px;
+}
+
+.modal-title {
+    width: auto;
     font-size: 20px;
 }
 
@@ -31,12 +36,12 @@
     font-size: 30px; 
     color: #FFD332; 
     cursor: pointer; 
-    margin-left: 150px;
+    margin-left: 10px;
 }
 
 .close-btn {
     font-size: 30px;
-    margin-left: 10px;
+    margin-left: 5px;
     margin-bottom: 5px;
     background-color: white;
     border: none;
@@ -77,7 +82,15 @@
     text-align: center;
 }
 
-.info-content { 
+.date { 
+    margin-left: 10px;
+}
+
+.place { 
+    margin-left: 10px;
+}
+
+.member { 
     margin-left: 10px;
 }
 

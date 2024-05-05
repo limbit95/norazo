@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import edu.kh.project.myPage.model.mapper.MyPageMapper;
+import edu.kh.norazo.myPage.model.mapper.MyPageMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service

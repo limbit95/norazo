@@ -56,5 +56,11 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		
 		return map;
 	}
+
+	// 모임 게시글 모달창 조회
+	@Override
+	public Board modalView(int boardNo) {
+		return mapper.modalView(boardNo);
+	}
 	
 }

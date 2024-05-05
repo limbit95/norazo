@@ -37,9 +37,9 @@
             </th:block>
             <th:block th:if="${boardList}" th:each="board : ${boardList}">
                 <div>
-                    <img src="" class="thumbnail"></img>
+                    <img th:src="${board.thumbnail}" class="thumbnail" th:data-board-no="${board.boardNo}"></img>
                     <div>
-                        <h4 class="board-title">[[${board.boardTitle}]]</h4>
+                        <h4 class="board-title" th:data-board-no="${board.boardNo}">[[${board.boardTitle}]]</h4>
                     </div>
                 </div>
             </th:block>
@@ -51,5 +51,7 @@
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
     
+    
+
 </body>
 </html>
