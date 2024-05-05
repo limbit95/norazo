@@ -30,4 +30,10 @@ public interface SportsBoardMapper {
 	 */
 	String getSportsKrName(String sportsCode);
 
+	/** 모임 게시글 모달창 조회
+	 * @param boardNo
+	 * @return
+	 */
+	Board modalView(int boardNo);
+
 }

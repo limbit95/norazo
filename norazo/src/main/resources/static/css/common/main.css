@@ -189,16 +189,21 @@ article {
     border-bottom: 1px solid var(--gray3);
 }
 
-.freeBoard-list > a {
+.freeBoard-list > div {
     width: 70%;
+    margin-left: 20px;
+}
+
+.freeBoard-list > div > a {
+    width: auto;
     font-weight: 1000;
-    margin-left: 30px;
     font-family: 'main';
     font-size: 25px;
+    font-weight: 500;
     text-decoration: none;
 }
 
-.freeBoard-list > a:visited { color: black; } 
+.freeBoard-list > div > a:visited { color: black; } 
 
 .freeBoard-nickname {
     width: 10%;

@@ -24,8 +24,15 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 
 	@Override
 	public Map<String, Object> selectBoardList(String sportsCode, int cp) {
-		// 스포츠 종목별 게시판 게시글 수 조회
-		int listCount = mapper.getListCount(sportsCode);
+		int listCount = 0;
+		
+		if(sportsCode.equals("main")) {
+			// 모임 게시판 모든 게시글 수 조회
+			listCount = mapper.getListCount(sportsCode);
+		} else {
+			// 스포츠 종목별 게시판 게시글 수 조회
+			listCount = mapper.getListCount(sportsCode);
+		}
 		
 		String sportsKrName = mapper.getSportsKrName(sportsCode);
 		
@@ -35,9 +42,9 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		int offset = (cp - 1) * limit;
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		List<Board> boardList = mapper.selectBoardList(sportsCode, rowBounds);
-		
 		Map<String, Object> map = new HashMap<String, Object>();
+		
+		List<Board> boardList = mapper.selectBoardList(sportsCode, rowBounds);
 		
 		if(listCount == 0) {
 			map.put("sportsKrName", sportsKrName);
@@ -48,6 +55,12 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		map.put("sportsKrName", sportsKrName);
 		
 		return map;
+	}
+
+	// 모임 게시글 모달창 조회
+	@Override
+	public Board modalView(int boardNo) {
+		return mapper.modalView(boardNo);
 	}
 	
 }
