@@ -48,6 +48,16 @@ public class SportsBoardController {
 		return service.modalView(boardNo);
 	}
 	
+	
+	/** 스포츠 게시글 상세조회 페이지
+	 * @return
+	 */
+	@GetMapping("sportsBoard")
+	public String sportsBoardDetail() {
+		
+		
+		return "board/sportsBoardDetail";
+	}
 	// "sportsBoard/{sportsType:[0-9]+}/{boardNo:[0-9]+}/detail" = ex : 축구 게시판 1번 게시글
 	
 }
