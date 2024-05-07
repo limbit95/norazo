@@ -399,39 +399,149 @@
 
 .creatorDetaileBotContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 550px;
 }
 .creatorDetaileBotContainer > div {
-    justify-content: center;
-    align-items: center;
+    justify-content: space-evenly;
     display: flex;
+}
 
-}
-.creatorRightContainer {
-    width: 320px; 
-    height: 200px;
-    /* position: absolute;  */
-    background: var(--primary3);
-    border-radius: 30px;
-}
 
 .creatorImg {
     width: 200px; 
     height: 200px;
     border-radius: 9999px;
 }
+
+
+
+.creatorRightContainer {
+    width: 320px; 
+    height: 200px;
+    /* position: absolute;  */
+    background: var(--primary3);
+    border-radius: 30px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.userProfile {
+    justify-content: space-evenly;
+    /* align-items: center; */
+    display: flex;
+    width: 100%;
+}
+
+.userNameContainer {
+  width: 120px; 
+  height: 40px; 
+  background: var(--primary1); 
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userEmailContainer {
+    width: 150px; 
+    height: 40px; 
+    background: var(--primary1); 
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userInfoContainer {
+    width: 280px; 
+    height: 120px; 
+    background: var(--primary1); 
+    border-radius: 30px;
+}
+
+.userName {
+    text-align: center; 
+    color: var(--white); 
+    font-size: 25px; 
+    font-family: 'main';
+    font-weight: 400; 
+    word-wrap: break-word;
+    
+   
+    margin-top: 3px;
+}
+
+.userEmail {
+    text-align: center; 
+    color: var(--white); 
+    font-size: 15px; 
+    font-family: 'main';
+    font-weight: 400; 
+    word-wrap: break-word;
+   
+}
+
+.userInfo {
+    text-align: center; 
+    color: var(--white); 
+    font-size: 15px; 
+    font-family: 'regular';
+    /* font-weight: 400;  */
+    word-wrap: break-word;
+    line-height: 20px;
+    word-spacing: 5px;
+    padding: 15px;
+}
+
+
+
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 /* 대화내용 컨테이너 */
+
 .boardCommentDiv {
     width: 430px; 
-    height: 640px; 
-    left: 642px; 
-    top: 946px;
+    height: 635px; 
+    left: 640px; 
+    top: 950px;
     position: absolute;
+    background: var(--white); 
+    border-radius: 30px;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
 }
 
 
+.chatSubmitMainContainer {
+    display: flex;
+    width: 380px; 
+    height: 110px; 
+    background: var(--primary3); 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+    border-radius: 30px; 
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatSubmitContainer {
+    width: 250px; 
+    height: 90px; 
+    background: var(--white); 
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.detailCommentSubmitBtn {
+    margin-right: 10px;
+}

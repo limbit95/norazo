@@ -315,6 +315,9 @@ input::placeholder {
     color: var(--gray3); 
 }
 
+input:focus {
+    outline: none;
+}
 
 /* ----------------------------------------------------------- */
 
@@ -464,7 +467,7 @@ input::placeholder {
 .boardDetailCommentInput {
     width: 250px; 
     height: 90px;
-
+    border: none;
     font-size: 20px;
 }
 
