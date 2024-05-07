@@ -1,5 +1,14 @@
 package edu.kh.norazo.myPage.model.mapper;
 
-public class MyPageMapper {
+import org.apache.ibatis.annotations.Mapper;
+
+import edu.kh.norazo.member.model.dto.Member;
+
+@Mapper
+public interface MyPageMapper {
+
+	int profile(Member mem);
+
+	int updateInfo(Member inputMember);
 
 }

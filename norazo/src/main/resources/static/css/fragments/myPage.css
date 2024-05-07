@@ -15,6 +15,22 @@
     width: 200px;
     height: 200px;
 }
+
+#profile {
+	border-radius: 100%;
+	width: 200px;
+    height: 200px;
+}
+
+#profilelabel {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	border: 0;
+	margin: -1px;
+}
+
 .backGround {
     width: 400px;
     height: 1020px;
@@ -171,6 +187,24 @@ h2 {
     margin: 10px;
 }
 
+#gender {
+    background: var(--white); 
+    border-radius: 30px; 
+    color: var(--gray3);
+    /* 폰트 */
+    font-family: 'main';
+    padding-left: 10px;
+}
+
+#gender1 {
+    background: var(--white); 
+    border-radius: 30px; 
+
+    /* 폰트 */
+    font-family: 'main';
+    color: var(--gray1);
+}
+
 a {
     text-decoration-line: none;
 }
@@ -191,10 +225,32 @@ ion-icon {
     height: 50px;
 }
 
+#memberinfo {
+    width: 500px;
+    height: 100px;
+    overflow-y:auto;
+    resize: none;
+    background: var(--white); 
+    border-radius: 30px; 
+    padding: 10px;
+    /* 폰트 */
+    font-family: 'main';
+    color: var(--gray1);
+}
+
 .myPage-submit {
     width: 500px;
     height: 50px;
     background-color: var(--primary2);
-    
+}
 
+#imageInput {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	border: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
 }
