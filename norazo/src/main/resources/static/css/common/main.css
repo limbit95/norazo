@@ -70,6 +70,7 @@ main {
     align-items: center;
     flex-direction: column;
     width: 1090px;
+    /* height: 1080px; */
 }
 article {
     height: 35.185vh;
@@ -78,8 +79,6 @@ article {
     align-items: center;
     flex-direction: column;
 }
-
-
 
 
 /* 신규 모임글 */
