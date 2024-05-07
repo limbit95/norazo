@@ -367,3 +367,29 @@ memberNickname.addEventListener("input", e =>{
     .catch(err=> console.log(err));
 
 });
+
+
+// 페이지가 로드될 때 실행되는 함수
+window.onload = function() {
+	var dropdown = document.getElementById('gender1');
+    // 성별 값에 따라 기본값을 설정합니다.
+    if (logingender !== null) {
+        if (logingender === 'M') {
+            dropdown.value = '남자';
+        } else {
+            dropdown.value = '여자';
+        }
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
