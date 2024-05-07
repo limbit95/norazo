@@ -19,7 +19,7 @@
       <a href="/faq"><ion-icon name="help-circle"></ion-icon></a>
       <a href="#"><ion-icon name="heart"></ion-icon></a>
       <th:block th:unless="${session.loginMember}">
-        <a href="/myPage/main"><ion-icon class="myPage-btn" name="person"></ion-icon></a>
+        <a href="/member/login"><ion-icon class="myPage-btn" name="enter"></ion-icon></a>
       </th:block>
       <th:block th:if="${session.loginMember}">
         <!-- <a href="/myPage/main">

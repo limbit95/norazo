@@ -58,8 +58,31 @@
 		ORDER BY BOARD_NO DESC
 	</select>
 	
-	<select id="modalView">
-		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCATION, MEETING_DATE,
+	
+	
+	 <resultMap type="Board" id="modal_rm">
+	 	<id property="boardNo" column="BOARD_NO"/>
+	 	
+		<collection 
+			property="member"
+			select="selectAttendMemberList"
+			column="BOARD_NO"
+			javaType="java.util.ArrayList"
+			ofType="Member"
+		/>
+	 </resultMap>
+	 
+	 <select id="selectAttendMemberList" resultType="Member">
+	 	SELECT MEMBER_NO, PROFILE_IMG
+	 	FROM MEMBER
+	 	JOIN ATTEND_MEMBER USING(MEMBER_NO)
+	 	WHERE BOARD_NO = #{boardNo}
+	 </select>
+	 
+	<!-- 모임 게시글 정보 modal으로 조회 -->
+	<select id="modalView" resultMap="modal_rm">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCATION, 
+		TO_CHAR(MEETING_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') MEETING_DATE,
 		
 			(SELECT IMG_PATH || IMG_RENAME 
 			FROM "BOARD_IMG" C 
@@ -67,7 +90,7 @@
 			
 			(SELECT COUNT(*)
 			FROM "ATTEND_MEMBER" A
-			WHERE A.BOARD_NO = B.BOARD_NO) ATTEND_MEMBER
+			WHERE A.BOARD_NO = B.BOARD_NO) ATTEND_MEMBER_COUNT
 			
 		FROM "BOARD" B
 		JOIN "MEMBER" USING(MEMBER_NO)

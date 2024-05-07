@@ -142,12 +142,17 @@ article {
     margin-top: 10px;
 }
 
-.sportsBoard-title {
-    color: #3C3C3C; 
+.writeDate {
+    color: var(--gray2);
+}
+
+.board-title {
+    color: var(--gray1); 
     font-size: 18px; 
     text-align: start; 
     width: auto;
     cursor: pointer;
+    margin-top: 5px;
 }
 
 

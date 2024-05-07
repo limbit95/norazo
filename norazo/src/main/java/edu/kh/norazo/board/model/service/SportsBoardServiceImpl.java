@@ -36,7 +36,7 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		
 		String sportsKrName = mapper.getSportsKrName(sportsCode);
 		
-		Pagination pagination = new Pagination(cp, listCount);
+		Pagination pagination = new Pagination(cp, listCount, 16, 10);
 		
 		int limit = pagination.getLimit();
 		int offset = (cp - 1) * limit;

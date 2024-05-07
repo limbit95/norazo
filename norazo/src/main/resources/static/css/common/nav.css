@@ -113,7 +113,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid blue;
     }
 
     .nav-div > :nth-child(1) {
@@ -332,7 +331,6 @@
     width: 35px;
     height: 35px;
     border-radius: 20px;
-    border: 1px solid var(--secondary);
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     cursor: pointer;
 }
@@ -344,7 +342,7 @@
     min-width : 120px;
     border-radius: 10px;
     border: 2px solid var(--secondary);
-    top: 104%;
+    top: 102%;
     right: 0%;
 }
 

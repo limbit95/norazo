@@ -6,36 +6,88 @@ const boardTitle = document.querySelectorAll(".board-title");
 const modalContent = document.querySelector(".modal-content");
 const closeBtn = document.querySelector(".close-btn"); 
 
+// 게시글 내용 담을 모달창 요소
 const modalTitle = document.querySelector(".modal-title");
 const modalThumbnail = document.querySelector(".modal-thumbnail");
 const date = document.querySelector(".date");
 const place = document.querySelector(".place");
-const member = document.querySelector(".member");
+const memberCount = document.querySelector(".memberCount");
 
+// 참석 인원 현황 영억
+const memberListDiv = document.querySelector(".memberList-div");
+
+// 썸네일 클릭시 모달창 조회
 thumbnail.forEach( (i) => {
     i.addEventListener("click", e => {
         modalContent.classList.remove("popup-hidden");
-
         const boardNo = e.target.dataset.boardNo;
+
+        memberListDiv.removeChild(memberListDiv.childNodes[0]);
 
         fetch("/sportsBoard/modal?boardNo=" + boardNo)
         .then(resp => resp.json())
-        .then(board => { 
+        .then(board => {
             modalTitle.innerText = board.boardTitle;
             modalThumbnail.setAttribute("src", board.thumbnail);
             date.innerText = board.meetingDate;
             place.innerText = board.meetingLocation;
-            member.innerText = board.attendMember + " / " + board.memberCountLimit + " (" + (board.memberCountLimit-board.attendMember) + "자리 남음)";
+            memberCount.innerText = board.attendMemberCount + " / " + board.memberCountLimit + " (" + (board.memberCountLimit-board.attendMemberCount) + "자리 남음)";
+            
+            const memberList = document.createElement("div");
+            memberList.classList.add("memberList"); 
+
+            board.member.forEach( (i) =>{
+                const img = document.createElement("img");
+                img.classList.add("member");
+                if(i.profileImg == null){
+                    img.setAttribute("src", "/images/profile/default-profileImg.png");
+                } else{
+                    img.setAttribute("src", i.profileImg);
+                }
+                memberList.append(img);
+            });
+
+            memberListDiv.append(memberList)   ;       
         });
 
     });
 
 });
 
+// 게시글 제목 클릭시 모달창 조회
 boardTitle.forEach( (i) => {
-    i.addEventListener("click", (e) => {
+    i.addEventListener("click", e => {
         modalContent.classList.remove("popup-hidden");
-        console.log(e.target.dataset.boardNo);
+        const boardNo = e.target.dataset.boardNo;
+
+        memberListDiv.removeChild(memberListDiv.childNodes[0]);
+
+        fetch("/sportsBoard/modal?boardNo=" + boardNo)
+        .then(resp => resp.json())
+        .then(board => {
+            modalTitle.innerText = board.boardTitle;
+            modalThumbnail.setAttribute("src", board.thumbnail);
+            date.innerText = board.meetingDate;
+            place.innerText = board.meetingLocation;
+            memberCount.innerText = board.attendMemberCount + " / " + board.memberCountLimit + " (" + (board.memberCountLimit-board.attendMemberCount) + "자리 남음)";
+            
+            const memberList = document.createElement("div");
+            memberList.classList.add("memberList"); 
+
+            board.member.forEach( (i) =>{
+                const img = document.createElement("img");
+                img.classList.add("member");
+                if(i.profileImg == null){
+                    img.setAttribute("src", "/images/profile/default-profileImg.png");
+                } else{
+                    img.setAttribute("src", i.profileImg);
+                }
+                memberList.append(img);
+            });
+
+            memberListDiv.append(memberList)   ;       
+        });
+
     });
 });
 

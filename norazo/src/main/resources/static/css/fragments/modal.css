@@ -2,8 +2,8 @@
 .modal-content {
     border-radius: 30px; 
     border: 3px solid #076DF2; 
-    width: 500px; 
-    height: 400px;
+    width: 600px; 
+    height: 500px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 6px 6px rgba(0,0,0,0.45);
     background-color: white;
 
@@ -36,7 +36,7 @@
     font-size: 30px; 
     color: #FFD332; 
     cursor: pointer; 
-    margin-left: 10px;
+    margin-left: 30px;
 }
 
 .close-btn {
@@ -56,20 +56,28 @@
 }
 
 .modal-thumbnail {
-    width: 230px; 
-    height: 230px; 
+    width: 300px; 
+    height: 270px; 
     border: 3px solid #076DF2; 
     border-radius: 30px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .modal-info {
-    width: 225px; 
-    height: 120px; 
+    width: 250px; 
+    height: 270px; 
     margin-left: 10px; 
     display: flex; 
     flex-direction: column; 
-    justify-content: space-around;
+    justify-content: start;
+}
+
+.modal-info > div {
+    width: 250px; 
+    height: 100px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
 }
 
 .modal-info-line {
@@ -82,6 +90,10 @@
     text-align: center;
 }
 
+.modal-info-line > h2:nth-child(2) {
+    width: 190px;
+}
+
 .date { 
     margin-left: 10px;
 }
@@ -90,15 +102,38 @@
     margin-left: 10px;
 }
 
-.member { 
+.memberCount { 
     margin-left: 10px;
+}
+
+.modal-content > div:nth-child(3){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-top: 5px;
+}
+
+.memberList{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 560px;
+    height: 70px;
+}
+
+.member {
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+    border-radius: 40px;
 }
 
 .join-btn-div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
+    height: 70px;
 }
 
 .join-btn {
