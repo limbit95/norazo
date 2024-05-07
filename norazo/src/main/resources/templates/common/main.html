@@ -29,10 +29,17 @@
         <div class="sportsBoard-list">
             <th:block th:each="sportsBoard : ${recentSportsBoardList}">
                 <div>
-                    <img th:src="${sportsBoard.thumbnail}" class="thumbnail" th:data-board-no="${sportsBoard.boardNo}"></img>
+                    <img th:src="${sportsBoard.thumbnail}" 
+                         class="thumbnail" 
+                         th:data-board-no="${sportsBoard.boardNo}"
+                         th:data-member-no="${sportsBoard.memberNo}"
+                         th:data-sports-code="${sportsBoard.sportsCode}"></img>
                     <div>
                         <h4 class="writeDate">[[${sportsBoard.boardWriteDate}]]</h4>
-                        <h4 class="board-title" th:data-board-no="${sportsBoard.boardNo}">[[${sportsBoard.boardTitle}]]</h4>
+                        <h4 class="board-title" 
+                        th:data-board-no="${sportsBoard.boardNo}"
+                        th:data-member-no="${sportsBoard.memberNo}"
+                        th:data-sports-code="${sportsBoard.sportsCode}">[[${sportsBoard.boardTitle}]]</h4>
                     </div>
                 </div>
             </th:block>

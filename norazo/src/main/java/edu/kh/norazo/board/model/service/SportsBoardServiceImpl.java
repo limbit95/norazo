@@ -62,5 +62,27 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 	public Board modalView(int boardNo) {
 		return mapper.modalView(boardNo);
 	}
+
+	// 모임 참석 여부 확인
+	@Override
+	public int attendFl(Map<String, Object> map) {
+		return mapper.attendFl(map);
+	}
 	
+	// 로그인한 회원 특정 모임 참석
+	@Override
+	public int join(Map<String, Object> map) {
+//		// 모임 참석한 회원 수 얻어오기
+//		int AttendMemberCount = mapper.AttendMemberCount(map);
+//		
+//		// 모임에 참석 가능한 회원 제한 수 얻어오기
+//		int memberCountLimit = mapper.memberCountLimit(map);
+//		
+//		if(memberCountLimit == AttendMemberCount) {
+//			return 0;
+//		}
+		
+		return mapper.join(map);
+	}
+
 }

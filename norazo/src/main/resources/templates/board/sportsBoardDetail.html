@@ -13,30 +13,40 @@
 </head>
 <body>
     <th:block th:replace="~{common/nav}"></th:block>
-
+    
     <main>
-        <section>
-            <div class="boardDetailSec">
-                <div>
 
-                </div>
-                <div>
-                    <div class="left-side">
-                        <div class="left-side-top">
+        <th:block th:if="${board}">
 
+            <section>
+                <div class="boardDetailSec">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        <div class="left-side">
+                            <div class="left-side-top">
+                                
+                            </div>
+                            <div class="left-side-bot">
+                                
+                            </div>
                         </div>
-                        <div class="left-side-bot">
-
+                        <div class="right-side">
+                            
                         </div>
                     </div>
-                    <div class="right-side">
-
-                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            
+        </th:block>
+
+        <th:block th:unless="${board}">
+            잘못된 페이지 접근입니다
+        </th:block>
+
     </main>
-
+    
     <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>
