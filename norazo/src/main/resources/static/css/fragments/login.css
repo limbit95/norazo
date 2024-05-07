@@ -1,0 +1,81 @@
+/* 임성혁 수정 */
+main * {
+    width: 1090px;
+}
+
+body{
+    background-color: var(--primary3);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 666px;
+    height: 596px;
+    background-color: var(--gray4);
+    border-radius: 80px;
+}
+input[type="password"] {
+    flex-direction: column;
+} 
+
+#logo{
+    margin-top: 50px;
+    width: 279px;
+    height: 56px;
+
+}
+.saveId{
+    width: auto;
+    padding-left: 10px;
+}
+.login-input-area{
+    display: flex;
+    flex-basis: 200px;
+
+    align-items: center;
+    flex-direction: column;
+}
+.login-input-area div:nth-child(1),div:nth-child(2){
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+   
+}
+.radioDiv{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding-left: 330px;
+}
+.radioDiv[type="checkbox"] {
+    width: 20%;
+}
+.login-input-area div:last-child input{
+    display: flex;
+    flex-direction: row;
+}
+.pwSignDiv{
+    display: flex;
+    width: 410px;
+    justify-content: space-between;
+}
+
+.pwSignDiv > a {
+    margin-top: 25px;
+    width: auto;
+    font-family: 'regular';
+    font-size: 20px;
+
+}
+
+.saveIdCheckBox {
+    flex-direction: column;
+}
+/* .pwSignDiv > div > a{
+    display: flex;
+    justify-content: center;
+   
+} */

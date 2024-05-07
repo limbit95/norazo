@@ -1,32 +1,52 @@
-* {box-sizing:border-box}
 
 /* Slideshow container */
 .slideshow-container {
   position: relative;
   margin: auto;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
 }
 
-
+.circle {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  margin: 10px;
+}
 /* text */
-
-
 
 .pagination {
   text-align: center;
+  justify-content: center;
+  font-family: 'main';
+  font-size: 15px;
+  color: var(--primary1);
+  /* margin: 10px; */
+  padding: 10px;
+
+  /* width: 100%; */
 }
 /* Hide the images by default */
 .mySlides {
   display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.adBannerImg {
+  border-radius: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
   position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
+  width: 30px;
+  height: 30px;
+  margin: 15px;
   color: white;
   font-weight: bold;
   font-size: 18px;
@@ -52,12 +72,20 @@
 /* Caption text */
 .text {
   color: #f2f2f2;
+<<<<<<< HEAD
   font-size: 2.604vw;
   padding: 8px 12px;
+=======
+  font-size: 40px;
+  /* padding: 8px 12px; */
+>>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
   position: absolute;
-  bottom: 30px;
-  width: 100%;
+  display: flex;
+  bottom: 50%;
+  /* width: 100%; */
+  width: 1090px; /* 임성혁 수정 */
   text-align: center;
+  justify-content: center;
   font-family: BM DoHyeon OTF;
   word-wrap: break-word;
   text-shadow: 0px 6px 4px rgba(0, 0, 0, 0.50);
@@ -98,24 +126,3 @@
   from {opacity: .4}
   to {opacity: 1}
 }
-
-
-/* 목업된 베너로 변경 해야할 스타일 */
-
-/* <div style="width: 1090px; height: 361.12px; position: relative">
-    <img style="width: 1090px; height: 361.12px; left: 0px; top: 0px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)" src="https://via.placeholder.com/1090x361" />
-    <div style="width: 55.71px; height: 46px; left: 1034.29px; top: 158px; position: absolute">
-      <div style="width: 33.41px; height: 46px; left: 11.61px; top: 0px; position: absolute; background: #FAFAFA"></div>
-      <div style="width: 33.41px; height: 46px; left: 11.61px; top: 0px; position: absolute; background: #FAFAFA"></div>
-      <div style="width: 55.71px; height: 46px; left: 0px; top: 0px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-        <div style="width: 56px; height: 46px; background: #FAFAFA"></div>
-      </div>
-    </div>
-    <div style="width: 55.71px; height: 46px; left: 60.56px; top: 204px; position: absolute; transform: rotate(180deg); transform-origin: 0 0">
-      <div style="width: 33.41px; height: 46px; left: 11.61px; top: 0px; position: absolute; background: #FAFAFA"></div>
-      <div style="width: 33.41px; height: 46px; left: 11.61px; top: 0px; position: absolute; background: #FAFAFA"></div>
-      <div style="width: 55.71px; height: 46px; left: 0px; top: 0px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-        <div style="width: 56px; height: 46px; background: #FAFAFA"></div>
-      </div>
-    </div>
-  </div> */

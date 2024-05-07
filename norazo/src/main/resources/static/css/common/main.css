@@ -1,12 +1,20 @@
 * {
     box-sizing: border-box;
+<<<<<<< HEAD
     border: 1px solid red;
+=======
+    /* border: 1px solid red; */
+>>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
     padding: 0;
     margin: 0;
 }
 
 main * {
+<<<<<<< HEAD
     width: 56.771vw;
+=======
+    /* width: 1090px; 임성혁 수정 */
+>>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
 }
 
 /* 폰트 */
@@ -33,6 +41,7 @@ main * {
 /* h태그 */
 h1 {
     font-family: 'main';
+<<<<<<< HEAD
     font-size: 2.083vw;
 }
 h2 {
@@ -46,6 +55,21 @@ h3 {
 h4 {
     font-family: 'regular';
     font-size: 0.781vw;
+=======
+    font-size: 40px;
+}
+h2 {
+    font-family: 'main';
+    font-size: 25px;
+}
+h3 {
+    font-family: 'regular';
+    font-size: 20px;
+}
+h4 {
+    font-family: 'regular';
+    font-size: 15px;
+>>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
 }
 
 /* color */
@@ -65,12 +89,21 @@ h4 {
 body {
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
+=======
+    align-items: center;
+    flex-direction: column;
+>>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
 }
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+<<<<<<< HEAD
+=======
+    width: 1090px; /* 임성혁 수정 */
+>>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
 }
 article {
     height: 35.185vh;
@@ -79,3 +112,135 @@ article {
     align-items: center;
     flex-direction: column;
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+/* 신규 모임글 */
+.sportsBoard-header {
+    display: flex;
+    width: 1090px;
+    align-items: end;
+}
+
+.sportsBoard-header-title {
+    text-align: start;
+    margin-left: 35px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    width: 950px;
+}
+
+.sportsBoard-whole-view {
+    text-decoration: none;
+    width: auto;
+    height: 50px;
+    font-size: 15px;
+    font-family: 'main';
+    color: black;
+}
+
+.whole-view:visited { color: black; }    
+
+.sportsBoard-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1090px;
+}
+
+.sportsBoard-list > div {
+    display: flex;
+    flex-wrap: wrap;
+    width: 230px;
+    height: 275px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-left: 35px;
+}
+
+.sportsBoard-list > div > img {
+    width: 230px; 
+    height: 200px; 
+    border-radius: 30px; 
+    background-color: rgb(255, 255, 255); 
+    padding: 0px;
+    margin: 0;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+}
+
+.sportsBoard-list > div > div {
+    height: 65px;
+    margin-top: 10px;
+}
+
+.sportsBoard-title {
+    color: #3C3C3C; 
+    font-size: 18px; 
+    text-align: start; 
+    width: auto;
+    cursor: pointer;
+}
+
+
+
+/* 자유게시판 */
+.freeBoard-header {
+    display: flex;
+    width: 1090px;
+    align-items: end;
+}
+
+.freeBoard-header-title {
+    text-align: start;
+    margin-left: 35px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    width: 950px;
+}
+
+.freeBoard-whole-view {
+    text-decoration: none;
+    width: auto;
+    height: 50px;
+    font-size: 15px;
+    font-family: 'main';
+    color: black;
+}
+
+.freeBoard-list {
+    display: flex;
+    width: 1020px;
+    height: 100px;
+    align-items: center;
+    border-bottom: 1px solid var(--gray3);
+}
+
+.freeBoard-list > a {
+    width: 70%;
+    font-weight: 1000;
+    margin-left: 30px;
+    font-family: 'main';
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.freeBoard-list > a:visited { color: black; } 
+
+.freeBoard-nickname {
+    width: 10%;
+    font-weight: 1000;
+    color: var(--gray2);
+}
+
+.freeBoard-date {
+    width: auto;
+    font-weight: 1000;
+    color: var(--gray2);
+}
+>>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 광고 베너 CSS 테스트중 -->
+    <link rel="stylesheet" href="/css/fragments/adBanner.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/main.css">
+
+    <title>NORAZO</title>
+</head>
+<body>
+    <th:block th:replace="~{common/nav}"></th:block>
+    
+    <main>
+        <div class="category-header">
+            <h1>카테고리</h1>
+        </div>
+        
+        <div class="category-container">
+            <div class="category-list-div">
+                <th:block th:each="sportsType : ${sportsTypeList}">
+                    <a class="category-div" th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsType.sportsEnName})}">
+                        <img class="category-img" th:src="|${sportsType.imgPath}${sportsType.imgName}|">
+                        <h2 class="category-title" th:text="${sportsType.sportsName}"></h2>
+                    </a>
+                </th:block>
+            </div>
+            
+        </div>
+        
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>

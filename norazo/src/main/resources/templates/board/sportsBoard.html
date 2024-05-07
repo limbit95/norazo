@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/fragments/adBanner.css">
+    <link rel="stylesheet" href="/css/fragments/modal.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/board/sportsBoard.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+    <title>스포츠 게시판</title>
+</head>
+<body>
+    
+    <th:block th:replace="~{common/nav}"></th:block>
+
+    <main>
+
+        <div class="board-page-header">
+            <h1 th:text="${application.boardTypeList.get(0).boardName}" class="boardType-title"></h1>
+            <button class="newMoim">새 모임</button>
+        </div>
+
+        <div class="board-list">
+            <div>
+                <img src="" class="thumbnail"></img>
+                <div>
+                    <h4 class="board-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <th:block th:replace="~{common/fragments/modal}"></th:block>
+    <th:block th:replace="~{common/footer}"></th:block>
+    
+</body>
+</html>
