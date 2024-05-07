@@ -1,5 +1,5 @@
 
-section{
+.div-box {
     background-color: var(--primary3);
     height: 900px;
     width: 1020px;
@@ -7,17 +7,32 @@ section{
 } 
 .boardCreateDiv {
     height: 1130px;
-    width: 1090px;
+    width: 1020px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
 }
+
 h1{
     text-align: center;
     margin: 30px;
 }
+textarea {
+    resize: none;
+    width: 1000px;
+    height: 720px;
+    border-radius: 30px;
+}
 
- 
+.board-title-div{
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 1000px;
+    height: 100px;
+    border-radius: 30px;
+}
+/*  
 .boardCreateDiv div:first-child {
     height: 160px;
 }
@@ -36,4 +51,4 @@ h1{
 }
 .board-write {
     text-align: center;
-}
+} */

@@ -3,6 +3,10 @@ main * {
     width: 1090px;
 }
 
+main {
+    margin-bottom: 100px;
+}
+
 body{
     background-color: var(--primary3);
 }

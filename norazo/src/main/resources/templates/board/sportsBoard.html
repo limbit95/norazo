@@ -19,7 +19,6 @@
     <th:block th:replace="~{common/nav}"></th:block>
 
     <main>
-
         <div class="board-page-header">
             <th:block th:if="${sportsKrName} != null">
                 <h1 th:text="|${sportsKrName} ${application.boardTypeList.get(0).boardName}|" class="boardType-title"></h1>
@@ -37,10 +36,15 @@
             </th:block>
             <th:block th:if="${boardList}" th:each="board : ${boardList}">
                 <div>
-                    <img th:src="${board.thumbnail}" class="thumbnail" th:data-board-no="${board.boardNo}"></img>
+                    <img th:src="${board.thumbnail}" 
+                         class="thumbnail" 
+                         th:data-board-no="${board.boardNo}"
+                         th:data-member-no="${board.memberNo}"></img>
                     <div>
                         <h4 class="writeDate">[[${board.boardWriteDate}]]</h4>
-                        <h4 class="board-title" th:data-board-no="${board.boardNo}">[[${board.boardTitle}]]</h4>
+                        <h4 class="board-title" 
+                        th:data-board-no="${board.boardNo}"
+                        th:data-member-no="${board.memberNo}">[[${board.boardTitle}]]</h4>
                     </div>
                 </div>
             </th:block>

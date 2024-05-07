@@ -19,4 +19,16 @@ public interface SportsBoardService {
 	 */
 	Board modalView(int boardNo);
 
+	/** 로그인한 회원 특정 모임 참석
+	 * @param map
+	 * @return
+	 */
+	int join(Map<String, Object> map);
+
+	/** 모임 참석 여부 확인
+	 * @param map
+	 * @return
+	 */
+	int attendFl(Map<String, Object> map);
+
 }
