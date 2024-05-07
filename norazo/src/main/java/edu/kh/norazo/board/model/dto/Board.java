@@ -46,5 +46,5 @@ public class Board {
 	private String meetingLocation; // 모임 장소
 	private String meetingDate; // 모임 일시
 	
-	private List<Member> member;
+	private List<Member> memberList;
 }

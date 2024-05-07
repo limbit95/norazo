@@ -26,23 +26,17 @@ let boardNo;
 // 썸네일 클릭시 모달창 조회
 thumbnail.forEach( (i) => {
     i.addEventListener("click", e => {
-
-        // 조회한 게시글 작성자 회원 번호
+        // 조회한 모임글 작성자 회원 번호
         boardWriteMemberNo = e.target.dataset.memberNo;
-        // 조회한 게시글 스포츠 종류
+        // 조회한 모임글 스포츠 종류
         sportsCode = e.target.dataset.sportsCode;
-        // 조회한 게시글 번호
+        // 조회한 모임글 번호
         boardNo = e.target.dataset.boardNo;
-        if(loginMember != null) {
-            if(loginMember.memberNo == boardWriteMemberNo){
-                location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
-                return;
-            }
-        }
-
-        modalContent.classList.remove("popup-hidden");
+        
+        // 참석 버튼에 현재 조회한 모임글 번호 데이터 삽입
         joinBtn.setAttribute("data-board-no", boardNo);
 
+        // 기존에 조회했던 회원 리스트 div 비우기
         memberListDiv.removeChild(memberListDiv.childNodes[0]);
 
         fetch("/sportsBoard/modal?boardNo=" + boardNo)
@@ -54,6 +48,7 @@ thumbnail.forEach( (i) => {
             place.innerText = board.meetingLocation;
             memberCount.innerText = board.attendMemberCount + " / " + board.memberCountLimit + " (" + (board.memberCountLimit-board.attendMemberCount) + "자리 남음)";
             
+            // 참석 인원 가득차면 버튼 속성 변경
             if(board.memberCountLimit == board.attendMemberCount){
                 joinBtn.innerText = "FULL";
                 joinBtn.classList.add("full-member");
@@ -67,7 +62,9 @@ thumbnail.forEach( (i) => {
             const memberList = document.createElement("div");
             memberList.classList.add("memberList"); 
 
-            board.member.forEach( (i, index) =>{
+            
+            // ---------- 현재 참석한 회원 리스트 ----------
+            board.memberList.forEach( (i, index) =>{
                 const img = document.createElement("img");
                 img.classList.add("member");
 
@@ -81,15 +78,26 @@ thumbnail.forEach( (i) => {
                 }
 
                 if(index == 6){
-                    // 새로운 사진 구해야함
                     img.setAttribute("src", "/images/profile/01_assets.png");
                     memberList.append(img);
                 }
             });
+            memberListDiv.append(memberList);
+            // ---------- 현재 참석한 회원 리스트 ----------
 
-            memberListDiv.append(memberList)   ;       
+
+            // 참석되어 있는 모임글은 모달창 조회가 아닌 상세 조회 페이지로 바로 이동
+            if(loginMember != null) {
+                board.memberList.forEach( (i) => {
+                    if(loginMember.memberNo == i.memberNo){
+                        location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
+                        return;
+                    }
+                });
+            }
         });
-
+        // 모달창 보이기
+        modalContent.classList.remove("popup-hidden");
     });
 
 });
@@ -138,7 +146,7 @@ boardTitle.forEach( (i) => {
             const memberList = document.createElement("div");
             memberList.classList.add("memberList"); 
 
-            board.member.forEach( (i, index) =>{
+            board.memberList.forEach( (i, index) =>{
                 const img = document.createElement("img");
                 img.classList.add("member");
                 if(index < 6){
