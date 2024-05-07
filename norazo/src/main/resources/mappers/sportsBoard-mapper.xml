@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- 특정 게시판의 지정된 페이지 목록 조회 -->
-	<select id="selectBoardList">
+	<select id="selectBoardList" resultMap="modal_rm">
 		SELECT BOARD_NO, BOARD_TITLE, SPORTS_KR_NAME, MEMBER_NO, SPORTS_CODE, 
 		
 			(SELECT IMG_PATH || IMG_RENAME 
@@ -64,7 +64,7 @@
 	 	<id property="boardNo" column="BOARD_NO"/>
 	 	
 		<collection 
-			property="member"
+			property="memberList"
 			select="selectAttendMemberList"
 			column="BOARD_NO"
 			javaType="java.util.ArrayList"
