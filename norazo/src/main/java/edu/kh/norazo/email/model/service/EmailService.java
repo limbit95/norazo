@@ -2,6 +2,8 @@ package edu.kh.norazo.email.model.service;
 
 import java.util.Map;
 
+
+
 public interface EmailService {
 
 	/** 이메일 전송
@@ -16,5 +18,7 @@ public interface EmailService {
 	 * @return
 	 */
 	int checkAuthKey(Map<String, Object> map);
+
+
 		
 }

@@ -75,7 +75,51 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.signUp(inputMember);
 	}
 
+	// 비밀번호 찾기 
+	@Override
+	public int findPw(Member inputMember) {
+		
+		String findPassword = createPassword();
+		
+		findPassword = bcrypt.encode(findPassword);
+		
+		inputMember.setMemberPw(findPassword);
+		
+		log.debug("findPassword : " + findPassword);
+		
+		return mapper.findPw(inputMember);
+	}
 
 
+	/** 임시 비밀번호 생성 
+	 * @return 8 자리 비밀번호 
+	 */
+	private String createPassword() {
+		String key = "";
+	       for(int i=0 ; i< 8 ; i++) {
+	          
+	           int sel1 = (int)(Math.random() * 3); // 0:숫자 / 1,2:영어
+	          
+	           if(sel1 == 0) {
+	              
+	               int num = (int)(Math.random() * 10); // 0~9
+	               key += num;
+	              
+	           }else {
+	              
+	               char ch = (char)(Math.random() * 26 + 65); // A~Z
+	              
+	               int sel2 = (int)(Math.random() * 2); // 0:소문자 / 1:대문자
+	              
+	               if(sel2 == 0) {
+	                   ch = (char)(ch + ('a' - 'A')); // 대문자로 변경
+	               }
+	              
+	               key += ch;
+	           }
+	          
+	       }
+	       return key;
+	}
 
 }

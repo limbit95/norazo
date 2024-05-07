@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>노라조</title>
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/fragments/findPw.css">
+</head>
+<body>
+    <th:block th:replace="~{common/nav}"></th:block>
+    <main>
+        <section class="sectionDiv">
+             <!-- 로고 -->
+             <img src="/images/logo.png" alt="homeLogo" id="logo">
+        
+             <!-- 비밀번호찾기 폼-->
+             <form action="/member/findPw" method="post" id="findPwForm">
+                
+                <div>
+                    <!-- 이메일 -->
+                    <div class="signUp-input-area">
+                        <input type="text" name="memberEmail" id="memberEmail" 
+                        placeholder="아이디(이메일)" maxlength="30" autocomplete="off">
+                        
+                        <button id="sendAuthKeyBtn" type="button">인증번호 받기</button>
+                    </div>
+
+                    <span class="signUp-message" id="emailMessage">메일을 받을 수 있는 이메일을 입력해주세요.</span>
+
+                    <div class="signUp-input-area">
+                        <input type="text" name="authKey" id="authKey" placeholder="인증번호 입력" maxlength="6" autocomplete="off" >
+                        
+                        <button id="checkAuthKeyBtn" type="button">인증하기</button>
+                      </div>
+              
+                      <span class="signUp-message" id="authKeyMessage"></span>
+                </div>
+                     
+                 <button id="findPwBtn">비밀번호 찾기</button>
+             </form>
+
+ 
+        </section>
+     </main>
+     <th:block th:replace="~{common/footer}"></th:block>
+     <script src="/js/member/findPw.js"></script>
+</body>
+</html>
