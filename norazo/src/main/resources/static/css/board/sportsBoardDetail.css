@@ -1,44 +1,437 @@
-.boardDetailSec {
-    height: 1610px;
-    width: 1090px;
-    border: none;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
+
+/* 메인 CSS */
+.main-div {
+    width: 1090px; 
+    height: 1610px; 
+    position: relative; 
+    background: var(--primary3); 
+    border-radius: 20px; 
+    overflow: hidden;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.boardDetailSec div:first-child {
-    height: 1090px;
-    /* margin: 20px; */
-    /* margin-bottom: 0px; */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+
+/* 메인 모임글 컨테이너 */
+.boardMainDetailDiv {
+    width: 1050px; 
+    height: 500px; 
+    left: 20px; 
+    top: 20px; 
+    position: absolute;
 }
-.boardDetailSec div:nth-child(2) {
-    height: 1090px;
+
+.boardMainDetailContainer {
+    
+    width: 1050px; 
+    height: 500px; 
+    left: 0px; 
+    top: 0px; 
+    /* position: absolute;  */
+    background: var(--white); 
+    border-radius: 30px;
+}
+
+.mainImg {
+    width: 450px; 
+    height: 450px; 
+    left: 30px; 
+    top: 25px; 
+    position: absolute; 
+    border-radius: 30px 
+}
+
+.titleContainer {
+    width: 530px; 
+    height: 70px; 
+    left: 500px; 
+    top: 25px; 
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Rectangle60 {
+    width: 530px; 
+    height: 70px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background: var(--primary3); 
+    border-radius: 30px;
+}
+
+.title {
+    width: 410px;
+    left: 60px;
+    position: absolute; 
+    text-align: center; 
+    color: var(--white); 
+    /* word-wrap: break-word; */
+    font-weight: 400;
+}
+
+.type-date-container {
+    width: 530px; 
+    height: 50px; 
+    left: 500px; 
+    top: 110px; 
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.type {
+    width: 260px; 
+    height: 50px; 
+    left: 0px; 
+    top: 0px; 
+    background: var(--primary3); 
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type-name, .type-date {
+    color: var(--white);
+    /* font-family: 'regular'; */
+    font-weight: 400;
+}
+
+.date {
+    width: 250px; 
+    height: 50px; 
+    left: 0px; 
+    top: 0px;
+    background: #3889F2; 
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.joinMemberContainer {
+    width: 530px; 
+    height: 180px; 
+    left: 510px; 
+    top: 300px; 
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.joinMemberTitleContainer {
+    /* width: 250px; 
+    height: 70px;  */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.joinMemberTitle {
+    height: 70px;
+    width: 250px;
+    border-radius: 30px;
+    background-color: var(--primary2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.joinTitle {
+    color: var(--white);
+    font-size: 25px;
+    font-family: 'main';
+    font-weight: 400;
+    
+}
+
+.joinMemberImgContainer {
+    height: 50%; 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.joinMemberImg{
+    width: 80px; 
+    height: 80px; 
+    border-radius: 10000px;
+}
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+
+/* 모임 소개 컨테이너 */
+
+.boardDetailWriteDiv {
+    width: 600px; 
+    height: 700px; 
+    left: 20px; 
+    top: 543px; 
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.boardDetailWriteContainer {
+    width: 600px; 
+    height: 700px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: var(--white); 
+    border-radius: 30px;
+}
+
+.boardWriteTitleContainer {
+    width: 560px; 
+    height: 50px; 
+    justify-content: center;
+    align-items: center;
+}
+
+.boardWriteContentContainer {
+    width: 560px; 
+    height: 580px; 
+
+    justify-content: center;
+    align-items: center;
+}
+
+.boardWriteTitle {
+    width: 560px; 
+    height: 50px; 
+    background: var(--primary3); 
+    border-radius: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.writeTitle {
+    color: var(--white);
+    font-size: 25px;
+    font-family: 'main';
+    font-weight: 400;
+    text-align: center;
+}
+
+.boardContentContainer {
+    width: 560px; 
+    height: 580px; 
+    background: var(--white); 
+    border-radius: 30px;
+}
+
+.boardContent {
+    text-align: center; 
+    color: var(--gray1); 
+    /* font-weight: 400;  */
+    letter-spacing: 2px;
+    line-height: 25px;
+    word-wrap: break-word;
+    padding: 15px;
+    
+}
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+/* 모임 정보 컨테이너 */
+.boardDetailDiv {
+    width: 430px; 
+    height: 380px; 
+    left: 640px; 
+    top: 543px; 
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.boardDetailContainer {
+    width: 430px; 
+    height: 380px; 
+    background: var(--white); 
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.detailTitleContainer {
+    width: 390px; 
+    height: 50px; 
+    background: var(--primary3); 
+    border-radius: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.boardDetailTitle {
+    color: var(--white);
+    font-size: 25px;
+    font-family: 'main';
+    font-weight: 400;
+    text-align: center;
+}
+
+
+.detailContainer {
+    width: 400px;
+    height: 200px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.titleContainer2 {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--gray2);
+    /* box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);  */
 }
 
-.left-side {
+.detailTitle {
+    width: 30%;
+    text-align: center; 
+    color: var(--gray1); 
+    font-size: 20px; 
+    font-family: 'main';
+    font-weight: 400; 
+    word-wrap: break-word;
+}
+
+.detail-user {
+    width: 70%;
+    text-align: center; 
+    color: var(--gray2); 
+    font-size: 20px; 
+    font-family: 'main';
+    font-weight: 400; 
+    word-wrap: break-word;
+}
+
+
+
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+/* 모임장 소개 컨테이너 */
+
+.boardCreatorDetailDiv {
+    width: 600px; 
+    height: 320px; 
+    left: 20px; 
+    top: 1266px; 
+    position: absolute;
+    
+}
+
+.creatorContainer {
+    width: 600px; 
+    height: 320px; 
+    /* position: absolute;  */
+    background: var(--white); 
+    border-radius: 30px;
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     flex-direction: column;
-    /* height: 1090px; */
-    width: 600px;
-    /* margin: 20px; */
-    margin-bottom: 0px;
-    background-color: blue;
 }
 
-.left-side-top {
-    width: 100%;
-    height: 730px;
-}
-.left-side-bot {
-    width: 100%;
-    height: 380px;
+.aboutCreatorDiv {
+    width: 280px; 
+    height: 120px; 
+    left: 0px; 
+    top: 52px; 
+    /* position: absolute;  */
+    background: #0554F2; 
+    border-radius: 30px;
 }
 
-.right-side {
-    height: 100%;
-    width: 430px;
-    background-color: green;
+.creatorDetailContainer {
+    width: 550px; 
+    height: 50px; 
+    background: var(--primary3); 
+    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
 }
+.creatorTitle {
+    text-align: center; 
+    color: var(--white); 
+    font-size: 25px; 
+    font-family: 'main';
+    font-weight: 400; 
+    word-wrap: break-word;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.creatorDetaileBotContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 550px;
+}
+.creatorDetaileBotContainer > div {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+.creatorRightContainer {
+    width: 320px; 
+    height: 200px;
+    /* position: absolute;  */
+    background: var(--primary3);
+    border-radius: 30px;
+}
+
+.creatorImg {
+    width: 200px; 
+    height: 200px;
+    border-radius: 9999px;
+}
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* 대화내용 컨테이너 */
+.boardCommentDiv {
+    width: 430px; 
+    height: 640px; 
+    left: 642px; 
+    top: 946px;
+    position: absolute;
+}
+
+
