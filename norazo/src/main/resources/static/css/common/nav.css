@@ -113,7 +113,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 2px solid blue;
     }
 
     .nav-div > :nth-child(1) {

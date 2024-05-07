@@ -38,7 +38,7 @@
         display: flex;
         flex-wrap: wrap;
         width: 230px;
-        height: 295px;
+        height: 300px;
         padding: 0px;
         margin-top: 10px;
         margin-left: 33px;
@@ -57,7 +57,7 @@
     }
 
     .board-list > div > div {
-        height: 85px;
+        height: 90px;
         margin-top: 10px;
     }
 
@@ -117,7 +117,7 @@
         display: flex;
         flex-wrap: wrap;
         width: 230px;
-        height: 275px;
+        height: 300px;
         padding: 0px;
         margin-top: 10px;
         margin-left: 33px;
@@ -136,7 +136,7 @@
     }
 
     .board-list > div > div {
-        height: 65px;
+        height: 90px;
         margin-top: 10px;
     }
 
@@ -185,7 +185,7 @@
         display: flex;
         flex-wrap: wrap;
         width: 18vw;
-        height: 160px;
+        height: 185px;
         padding: 0px;
         margin-top: 10px;
         margin-left: 20px;
@@ -204,7 +204,7 @@
     }
 
     .board-list > div > div {
-        height: 50px;
+        height: 90px;
         margin-top: 10px;
     }
 
@@ -228,7 +228,9 @@
 
 
 
-
+.pagination-area {
+    margin-top: 20px;
+}
 
 .pagination{
     list-style: none;
