@@ -96,7 +96,7 @@
 
                 <div class="genderDiv">
                     <select id="gender" name="gender">
-                        <option>성별</option>
+                        <option value="gender">성별</option>
                         <option value="M">남성</option>
                         <option value="F">여성</option>
                     </select>
@@ -133,18 +133,19 @@
                 </label>
 
                     <div class="signUp-input-area" id="postcodeDiv">
-                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode" class="signupInput2">                       
+                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode" class="signupInput2" readonly>                       
                         
                         <button type="button" class="singupBtn" id="searchAddress">검색</button>
                     </div>
 
                     <div class="signUp-input-area" id="addressDiv">
-                        <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address" class="signupInput1">
+                        <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address" class="signupInput1" readonly>
                     </div>
 
                     <div class="signUp-input-area" id= detailAddressDiv> 
                         <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress" class="signupInput1">
                     </div>
+                    <span class="signUp-message" id="addressMessage"><h4></h4></span>
 
                 <button class="signupSubmitBtn" id="signupSubmitBtn">가입하기</button>
             </form>
