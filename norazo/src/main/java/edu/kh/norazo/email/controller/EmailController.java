@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import edu.kh.norazo.email.model.service.EmailService;
 import edu.kh.norazo.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 @Controller
 @RequestMapping("email")
@@ -39,22 +41,8 @@ public class EmailController {
 		return 0;
 	}
 	
-	@ResponseBody
-	@PostMapping("findPw")
-	public int findPw(@RequestBody String email,
-					  Member member) {
-		
-		String findPw = service.sendEmail("findPw", email);
-		
-		if(findPw != null) {
-			
-			return 1;
-		}
-		
-		return 0;
-	}
 
-	
+
 	@ResponseBody
 	@PostMapping("checkAuthKey")
 	public int checkAuthKey(@RequestBody Map<String, Object> map) {

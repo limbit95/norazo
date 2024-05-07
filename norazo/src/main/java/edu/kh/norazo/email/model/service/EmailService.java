@@ -2,6 +2,8 @@ package edu.kh.norazo.email.model.service;
 
 import java.util.Map;
 
+import edu.kh.norazo.member.model.dto.Member;
+
 
 
 public interface EmailService {
@@ -19,6 +21,8 @@ public interface EmailService {
 	 */
 	int checkAuthKey(Map<String, Object> map);
 
+	
+	String sendPwEmail(Member inputMember, String findPassword);
 
 		
 }

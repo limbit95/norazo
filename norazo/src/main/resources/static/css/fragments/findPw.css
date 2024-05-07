@@ -1,7 +1,3 @@
-/* main {
-    width: 1090px;
-} */
-
 body{
     background-color: var(--primary3);
 }
@@ -17,18 +13,28 @@ body{
     border-radius: 80px;
 }
 
+#findPwForm {
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+}
+
+#findPwBtn {
+    display: block;
+    margin: 0 auto;
+}
+
+.findPwDiv{
+    display: flex;
+    width: 666px;
+    flex-direction: column;
+    align-items: center;
+}
+
 #logo{
     margin-top: 50px;
     width: 279px;
     height: 56px;
-
-}
-section 안 div
-.findPw-input-area{
-    display: flex;
-    flex-direction: row;
-    width: 666px;
-    height: 596px;
 
 }
 

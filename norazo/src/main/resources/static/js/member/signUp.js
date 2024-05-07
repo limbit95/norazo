@@ -20,6 +20,8 @@ function execDaumPostcode() {
           document.getElementById("address").value = addr;
           // 커서를 상세주소 필드로 이동한다.
           document.getElementById("detailAddress").focus();
+
+
       }
   }).open();
 }
@@ -27,6 +29,8 @@ function execDaumPostcode() {
 // 주소 검색 버튼 클릭시 
 document.querySelector("#searchAddress").addEventListener("click", execDaumPostcode);
 console.log(execDaumPostcode);
+// ---------------------------------------------------------------------------------
+
 // 회원 가입 유효성 검사 항목 
 const checkObj ={
   "memberEmail" : false,
@@ -40,7 +44,7 @@ const checkObj ={
   "month" : false,
   "day" : false,
   "memberAddress" : false
-};    
+};   
 // ------------------------------------------------------------------
 
 const memberEmail = document.querySelector("#memberEmail");
@@ -69,6 +73,7 @@ memberEmail.addEventListener("input", e => {
 
     return;
   }
+  // 이메일 정규식 
   const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 if( !regExp.test(inputEmail)){
@@ -336,6 +341,7 @@ memberTel.addEventListener("input", e=>{
 
         return;
      }
+     // 전화번호 정규식 
      const regExp = /^01[0-9]{1}[0-9]{3,4}[0-9]{4}$/;
 
      if(!regExp.test(inputTel)){
@@ -367,6 +373,7 @@ memberNickname.addEventListener("input", e =>{
         memberNickname.value = "";
         return;
     }
+    // 닉네임 정규식 
     const regExp = /^[가-힣\w\d]{2,10}$/;
 
     if( !regExp.test(inputNickname)){
@@ -404,12 +411,19 @@ memberNickname.addEventListener("input", e =>{
 const gender = document.querySelector("#gender");
 
 gender.addEventListener("change", function() {
+
+
     const selectedGender = this.value;
-    
-    // "성별" 이외의 값을 선택한 경우에만 경고창 표시
+
+    if(selectedGender === 'gender'){
+      checkObj.gender = false;
+      return;
+    }   
+    // "성별" 이외의 값을 선택한 경우
     if (selectedGender !== "F" && selectedGender !== "M") {
-        alert("성별을 선택해주세요.");
+
         checkObj.gender = false;
+        return;
     }
 
     checkObj.gender = true;
@@ -509,35 +523,6 @@ birthDayEl.addEventListener("change", e=> {
 });
 
 // -----------------------------------------------------------------------------
-// // 주소를 만약에 하나라도 넣었을 경우 
-// const memberAddress = document.querySelectorAll("[name='memberAddress']");
-
-// memberAddress.forEach(Address => {
-//   Address.addEventListener("input", e => {
-
-//    // 주소 
-//    const addr0 = memberAddress[0].value.trim().length == 0;
-//    const addr1 = memberAddress[1].value.trim().length == 0;
-//    const addr2 = memberAddress[2].value.trim().length == 0;
-  
-//    // 모두 true인 경우 
-//    const result1 = addr0 && addr1 && addr2;
-//    // 모두 flase인 경우
-//    const result2 = !(addr0 || addr1 || addr2);
-   
-//    // 모두 입력 또는 모두 미입력이 아니면
-//    if( !(result1 || result2) ) {
-//        alert("주소를 모두 작성 또는 미작성 해주세요.");
-//        checkObj.memberAddress = false;
-//        return;
-//    }
-
-//    checkObj.memberAddress = true;
-
-//   });
-
-// });
-
 
 // -----------------------------------------------------------------------------
 
@@ -546,7 +531,7 @@ birthDayEl.addEventListener("change", e=> {
 
   signUpForm.addEventListener("submit", e =>{
     const memberAddress = document.querySelectorAll("[name='memberAddress']");
-
+    const addressMessage = document.querySelector("#addressMessage");
     // 주소 
     const addr0 = memberAddress[0].value.trim().length == 0;
     const addr1 = memberAddress[1].value.trim().length == 0;

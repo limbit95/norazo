@@ -31,6 +31,6 @@ public interface MemberMapper {
 	 * @param inputMember
 	 * @return
 	 */
-	int findPw(Member inputMember);
+	int updatePw(Member inputMember);
 	
 }

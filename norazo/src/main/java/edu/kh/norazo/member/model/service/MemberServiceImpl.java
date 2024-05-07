@@ -6,6 +6,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.kh.norazo.email.model.service.EmailService;
 import edu.kh.norazo.member.model.dto.Member;
 import edu.kh.norazo.member.model.mapper.MemberMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberServiceImpl implements MemberService{
 
 	private final MemberMapper mapper;
-	
+	private final EmailService emailService;
 	private final BCryptPasswordEncoder bcrypt;
 	
 	// 로그인 서비스 
@@ -81,13 +82,18 @@ public class MemberServiceImpl implements MemberService{
 		
 		String findPassword = createPassword();
 		
-		findPassword = bcrypt.encode(findPassword);
+		// 평문인 findPassword를 메일로 보내기
+		String result = emailService.sendPwEmail(inputMember, findPassword);
+		
+		// 암호화된 비밀번호를 디비에 업데이트
+		
+		findPassword = bcrypt.encode(result);
 		
 		inputMember.setMemberPw(findPassword);
 		
 		log.debug("findPassword : " + findPassword);
 		
-		return mapper.findPw(inputMember);
+		return mapper.updatePw(inputMember);
 	}
 
 
