@@ -36,4 +36,29 @@ public interface SportsBoardMapper {
 	 */
 	Board modalView(int boardNo);
 
+	/** 모임 참석한 회원 수 얻어오기
+	 * @param map
+	 * @return
+	 */
+	int AttendMemberCount(Map<String, Object> map);
+
+	/** 모임에 참석 가능한 회원 제한 수 얻어오기
+	 * @param map
+	 * @return
+	 */
+	int memberCountLimit(Map<String, Object> map);
+
+	/** 로그인한 회원 특정 모임 참석 기능
+	 * @param map
+	 * @return
+	 */
+	int join(Map<String, Object> map);
+
+	/** 모임 참석 여부 확인
+	 * @param map
+	 * @return
+	 */
+	int attendFl(Map<String, Object> map);
+
+
 }

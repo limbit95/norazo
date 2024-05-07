@@ -143,7 +143,7 @@
     font-size: 20px;
     height: 50px;
     color: white;
-    background-color: #076DF2;
+    background-color: var(--primary1);
     cursor: pointer;
 }
 
@@ -153,4 +153,15 @@
 
 .like-hidden {
     display: none !important;
+}
+
+.full-member {
+    width: 90%;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    height: 50px;
+    color: white;
+    background-color: var(--gray3);
+    pointer-events: none;
 }

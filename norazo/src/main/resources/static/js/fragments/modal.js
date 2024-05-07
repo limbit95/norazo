@@ -16,11 +16,32 @@ const memberCount = document.querySelector(".memberCount");
 // 참석 인원 현황 영억
 const memberListDiv = document.querySelector(".memberList-div");
 
+// join 버튼 요소
+const joinBtn = document.querySelector("#join-btn");
+
+let boardWriteMemberNo;
+let sportsCode;
+let boardNo;
+
 // 썸네일 클릭시 모달창 조회
 thumbnail.forEach( (i) => {
     i.addEventListener("click", e => {
+
+        // 조회한 게시글 작성자 회원 번호
+        boardWriteMemberNo = e.target.dataset.memberNo;
+        // 조회한 게시글 스포츠 종류
+        sportsCode = e.target.dataset.sportsCode;
+        // 조회한 게시글 번호
+        boardNo = e.target.dataset.boardNo;
+        if(loginMember != null) {
+            if(loginMember.memberNo == boardWriteMemberNo){
+                location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
+                return;
+            }
+        }
+
         modalContent.classList.remove("popup-hidden");
-        const boardNo = e.target.dataset.boardNo;
+        joinBtn.setAttribute("data-board-no", boardNo);
 
         memberListDiv.removeChild(memberListDiv.childNodes[0]);
 
@@ -33,18 +54,37 @@ thumbnail.forEach( (i) => {
             place.innerText = board.meetingLocation;
             memberCount.innerText = board.attendMemberCount + " / " + board.memberCountLimit + " (" + (board.memberCountLimit-board.attendMemberCount) + "자리 남음)";
             
+            if(board.memberCountLimit == board.attendMemberCount){
+                joinBtn.innerText = "FULL";
+                joinBtn.classList.add("full-member");
+                joinBtn.classList.remove("join-btn");
+            } else {
+                joinBtn.innerText = "JOIN";
+                joinBtn.classList.add("join-btn");
+                joinBtn.classList.remove("full-member");
+            }
+
             const memberList = document.createElement("div");
             memberList.classList.add("memberList"); 
 
-            board.member.forEach( (i) =>{
+            board.member.forEach( (i, index) =>{
                 const img = document.createElement("img");
                 img.classList.add("member");
-                if(i.profileImg == null){
-                    img.setAttribute("src", "/images/profile/default-profileImg.png");
-                } else{
-                    img.setAttribute("src", i.profileImg);
+
+                if(index < 5){
+                    if(i.profileImg == null){
+                        img.setAttribute("src", "/images/profile/default-profileImg.png");
+                    } else{
+                        img.setAttribute("src", i.profileImg);
+                    }
+                    memberList.append(img);
                 }
-                memberList.append(img);
+
+                if(index == 6){
+                    // 새로운 사진 구해야함
+                    img.setAttribute("src", "/images/profile/01_assets.png");
+                    memberList.append(img);
+                }
             });
 
             memberListDiv.append(memberList)   ;       
@@ -57,8 +97,22 @@ thumbnail.forEach( (i) => {
 // 게시글 제목 클릭시 모달창 조회
 boardTitle.forEach( (i) => {
     i.addEventListener("click", e => {
+
+        // 조회한 게시글 작성자 회원 번호
+        boardWriteMemberNo = e.target.dataset.memberNo;
+        // 조회한 게시글 스포츠 종류
+        sportsCode = e.target.dataset.sportsCode;
+        // 조회한 게시글 번호
+        boardNo = e.target.dataset.boardNo;
+        if(loginMember != null) {
+            if(loginMember.memberNo == boardWriteMemberNo){
+                location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
+                return;
+            }
+        }
+
         modalContent.classList.remove("popup-hidden");
-        const boardNo = e.target.dataset.boardNo;
+        joinBtn.setAttribute("data-board-no", boardNo);
 
         memberListDiv.removeChild(memberListDiv.childNodes[0]);
 
@@ -71,18 +125,30 @@ boardTitle.forEach( (i) => {
             place.innerText = board.meetingLocation;
             memberCount.innerText = board.attendMemberCount + " / " + board.memberCountLimit + " (" + (board.memberCountLimit-board.attendMemberCount) + "자리 남음)";
             
+            if(board.memberCountLimit == board.attendMemberCount){
+                joinBtn.innerText = "full";
+                joinBtn.classList.add("full-member");
+                joinBtn.classList.remove("join-btn");
+            } else {
+                joinBtn.innerText = "join";
+                joinBtn.classList.add("join-btn");
+                joinBtn.classList.remove("full-member");
+            }
+
             const memberList = document.createElement("div");
             memberList.classList.add("memberList"); 
 
-            board.member.forEach( (i) =>{
+            board.member.forEach( (i, index) =>{
                 const img = document.createElement("img");
                 img.classList.add("member");
-                if(i.profileImg == null){
-                    img.setAttribute("src", "/images/profile/default-profileImg.png");
-                } else{
-                    img.setAttribute("src", i.profileImg);
+                if(index < 6){
+                    if(i.profileImg == null){
+                        img.setAttribute("src", "/images/profile/default-profileImg.png");
+                    } else{
+                        img.setAttribute("src", i.profileImg);
+                    }
+                    memberList.append(img);
                 }
-                memberList.append(img);
             });
 
             memberListDiv.append(memberList)   ;       
@@ -91,19 +157,43 @@ boardTitle.forEach( (i) => {
     });
 });
 
-
-
-
-
+// 닫기 버튼 클릭시 모달창 닫기
 if(closeBtn != null){
     closeBtn.addEventListener("click", () => {
         modalContent.classList.add("popup-hidden");
     });
 };
 
-
+// 키보드 Esc 눌렀을 시 모달창 닫기
 window.addEventListener("keydown", (e) => {
     if(e.key == 'Escape'){
         modalContent.classList.add("popup-hidden");
     };
 });
+
+
+// 좋아요 버튼
+
+// const boardLike = document.querySelector(".boardList");
+
+// boardLike.addEventListener("click", e => {
+    
+// });
+
+
+// join 버튼 눌렀을 시
+
+if(joinBtn != null){
+    joinBtn.addEventListener("click", e => {
+        if(loginMember == null){
+            if(confirm("로그인을 해야 이용할 수 있습니다. 로그인 페이지로 이동하시겠습니까?")){
+                location.href = "/member/login";
+            }
+            return;
+        }
+
+        if(confirm("해당 모임에 참석하시겠습니까?")){
+            location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
+        }
+    });
+}
