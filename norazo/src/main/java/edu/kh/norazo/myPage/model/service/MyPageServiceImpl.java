@@ -20,10 +20,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @PropertySource("classpath:/config.properties")
 public class MyPageServiceImpl implements MyPageService {
+	
 	@Value("${my.profile.web-path}")
 	private String profileWebPath;
+	
 	public static int seqNum = 1; // 1~99999 반복;
+	
 	private final MyPageMapper mapper;
+	
 	@Value("${my.profile.folder-path}")
 	private String profileFolderPath;
 	@Override
