@@ -1,11 +1,17 @@
 <div class="MyProfileLeft">
     <div class="backGround">
-        <img class="profile"
-             th:with="user=#{user.default.image}"
-             th:src="${session.loginMember.profileImg ?: user}">
-        <div class="div1">
+		<form action="profile" method="POST" name="myPageFrm" id="profile" enctype="multipart/form-data">
+			<label for="imageInput" id="profilelabel">
+				<img class="profile"
+		             th:with="user=#{user.default.image}"
+		             th:src="${session.loginMember.profileImg ?: user}"
+					 id="profileImg">
+			</label>
+			<input type="file" name="profileImg" id="imageInput" accept="image/*">
+		</form>
+        <div class="div1" th:object="${session.loginMember}">
             <div class="Rectangle1"><h3>닉네임</h3></div>
-            <div class="Rectangle2"><h3>아스날</h3></div>
+            <div class="Rectangle2" ><h3 th:text="*{memberNickname}"></h3></div>
         </div>
         <div class="div1">
             <div class="Rectangle1"><h3>이메일</h3></div>
@@ -19,3 +25,7 @@
         </div>
     </div>
 </div>
+<script src="/js/myPage/myPage.js"></script>
+<script th:inline="javascript">
+  const loginMemberProfileImg = "회원프로필이미지";
+</script>
