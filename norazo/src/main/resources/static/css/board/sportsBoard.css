@@ -67,6 +67,7 @@
         text-align: start; 
         width: auto;
         cursor: pointer;
+        line-height: 120%;
     }
     
 }
@@ -204,3 +205,15 @@
         cursor: pointer;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

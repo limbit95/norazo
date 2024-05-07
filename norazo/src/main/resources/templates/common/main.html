@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 광고 베너 CSS 테스트중 -->
     <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/common/nav.css">
@@ -34,36 +33,17 @@
             <h1 class="sportsBoard-header-title">신규 모임글</h1>
             <a href="/sportsBoard/main" class="sportsBoard-whole-view">전체보기</a>
         </div>
-
+        
         <!-- 신규 모임글 -->
         <div class="sportsBoard-list">
-            <div>
-                <img src="" class="thumbnail"></img>
+            <th:block th:each="sportsBoard : ${recentSportsBoardList}">
                 <div>
-                    <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
+                    <img th:src="${sportsBoard.thumbnail}" class="thumbnail" th:data-board-no="${sportsBoard.boardNo}"></img>
+                    <div>
+                        <h4 class="sportsBoard-title" th:data-board-no="${sportsBoard.boardNo}">[[${sportsBoard.boardTitle}]]</h4>
+                    </div>
                 </div>
-            </div>
-            
-            <div>
-                <img src="" class="thumbnail"></img>
-                <div>
-                    <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
-                </div>
-            </div>
-
-            <div>
-                <img src="" class="thumbnail"></img>
-                <div>
-                    <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
-                </div>
-            </div>
-
-            <div>
-                <img src="" class="thumbnail"></img>
-                <div>
-                    <h4 class="sportsBoard-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
-                </div>
-            </div>
+            </th:block>
         </div>
 
         <!-- 자유 게시판 (최신글) -->
@@ -73,38 +53,47 @@
         </div>
         
         <div class="freeBoard-list">
-            <a href="">암벽화 추천 부탁드립니다</a>
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
             <h3 class="freeBoard-nickname">유저일</h3>
             <h3 class="freeBoard-date">2024-04-24 12:45</h3>
         </div>
 
-        <div class="freeBoard-list">
-            <a href="">암벽화 추천 부탁드립니다</a>
-            <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
-        </div>
-
-        <div class="freeBoard-list">
-            <a href="">암벽화 추천 부탁드립니다</a>
-            <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
-        </div>
-
-        <div class="freeBoard-list">
-            <a href="">암벽화 추천 부탁드립니다</a>
-            <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
-        </div>
-
-        <div class="freeBoard-list">
-            <a href="">암벽화 추천 부탁드립니다</a>
-            <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
-        </div> 
 
     </main>
-    
-    <br><br><br><br>
     
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>

@@ -12,4 +12,34 @@
 		AND MEMBER_DEL_FL ='N'	
 	</select>
 	
+	<select id="checkEmail" resultType="_int">
+		SELECT COUNT(*) 
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL ='N'
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	<select id="checkNickname" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL ='N'
+		AND MEMBER_NICKNAME = #{memberNickname}
+	</select>
+	
+	<!--  회원 가입 SQL  -->
+	<insert id="signUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL,
+			  #{memberEmail},
+			  #{memberPw},
+			  #{memberNickname},
+			  #{memberTel},
+			  #{memberAddress},
+			  #{gender},
+			  #{birthDate},
+			  NULL,
+			  DEFAULT,
+			  DEFAULT,
+			  NULL)
+	</insert>
 </mapper>

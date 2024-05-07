@@ -22,9 +22,9 @@
         <div class="category-container">
             <div class="category-list-div">
                 <th:block th:each="sportsType : ${sportsTypeList}">
-                    <a class="category-div" th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsType.sportsEnName})}">
+                    <a class="category-div" th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsType.sportsCode})}">
                         <img class="category-img" th:src="|${sportsType.imgPath}${sportsType.imgName}|">
-                        <h2 class="category-title" th:text="${sportsType.sportsName}"></h2>
+                        <h2 class="category-title" th:text="${sportsType.sportsKrName}"></h2>
                     </a>
                 </th:block>
             </div>

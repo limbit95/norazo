@@ -1,20 +1,8 @@
 * {
     box-sizing: border-box;
-<<<<<<< HEAD
     border: 1px solid red;
-=======
-    /* border: 1px solid red; */
->>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
     padding: 0;
     margin: 0;
-}
-
-main * {
-<<<<<<< HEAD
-    width: 56.771vw;
-=======
-    /* width: 1090px; 임성혁 수정 */
->>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
 }
 
 /* 폰트 */
@@ -41,21 +29,6 @@ main * {
 /* h태그 */
 h1 {
     font-family: 'main';
-<<<<<<< HEAD
-    font-size: 2.083vw;
-}
-h2 {
-    font-family: 'main';
-    font-size: 1.302vw;
-}
-h3 {
-    font-family: 'regular';
-    font-size: 1.042vw;
-}
-h4 {
-    font-family: 'regular';
-    font-size: 0.781vw;
-=======
     font-size: 40px;
 }
 h2 {
@@ -69,7 +42,6 @@ h3 {
 h4 {
     font-family: 'regular';
     font-size: 15px;
->>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
 }
 
 /* color */
@@ -89,21 +61,15 @@ h4 {
 body {
     display: flex;
     justify-content: center;
-<<<<<<< HEAD
-=======
     align-items: center;
     flex-direction: column;
->>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
 }
 main {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-<<<<<<< HEAD
-=======
-    width: 1090px; /* 임성혁 수정 */
->>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b
+    width: 1090px;
 }
 article {
     height: 35.185vh;
@@ -112,8 +78,6 @@ article {
     align-items: center;
     flex-direction: column;
 }
-<<<<<<< HEAD
-=======
 
 
 
@@ -221,16 +185,21 @@ article {
     border-bottom: 1px solid var(--gray3);
 }
 
-.freeBoard-list > a {
+.freeBoard-list > div {
     width: 70%;
+    margin-left: 20px;
+}
+
+.freeBoard-list > div > a {
+    width: auto;
     font-weight: 1000;
-    margin-left: 30px;
     font-family: 'main';
     font-size: 25px;
+    font-weight: 500;
     text-decoration: none;
 }
 
-.freeBoard-list > a:visited { color: black; } 
+.freeBoard-list > div > a:visited { color: black; } 
 
 .freeBoard-nickname {
     width: 10%;
@@ -243,4 +212,3 @@ article {
     font-weight: 1000;
     color: var(--gray2);
 }
->>>>>>> 1dad46ee37d9475106be97505717301ba6b6c53b

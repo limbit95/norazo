@@ -1,4 +1,4 @@
-package edu.kh.project.myPage.model.dto;
+package edu.kh.norazo.myPage.model.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

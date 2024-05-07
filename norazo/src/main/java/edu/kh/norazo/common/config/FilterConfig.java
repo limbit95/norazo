@@ -1,4 +1,4 @@
-package edu.kh.norazo.common;
+package edu.kh.norazo.common.config;
 
 import java.util.Arrays;
 

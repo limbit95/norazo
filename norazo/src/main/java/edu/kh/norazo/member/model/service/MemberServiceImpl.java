@@ -1,5 +1,7 @@
 package edu.kh.norazo.member.model.service;
 
+import java.util.Map;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,9 +24,9 @@ public class MemberServiceImpl implements MemberService{
 	// 로그인 서비스 
 	@Override
 	public Member login(Member inputMember) {
-		
+								
 		Member loginMember = mapper.login(inputMember.getMemberEmail());
-		
+			
 		// 비밀번호가 일치하지 않는다면 ------------- 
 		if(loginMember == null) return null;
 		
@@ -36,4 +38,44 @@ public class MemberServiceImpl implements MemberService{
 		// -------------------------
 		return loginMember;
 	}
+
+	@Override
+	public int checkEmail(String memberEmail) {
+		
+		return mapper.checkEmail(memberEmail);
+	}
+
+	@Override
+	public int checkNickname(String memberNickname) {
+		// TODO Auto-generated method stub
+		return mapper.checkNickname(memberNickname);
+	}
+
+	@Override
+	public int signUp(Member inputMember, String[] memberAddress) {
+		
+		// 주소 처리 
+		// 주소가 입력된 경우
+		if( !inputMember.getMemberAddress().equals(",,")) {
+			
+			String address = String.join("^^^", memberAddress);
+			
+			inputMember.setMemberAddress(address);
+			
+		// 입력 안했을시 null 주입 
+		} else {
+			
+			inputMember.setMemberAddress(null);
+		}
+		log.debug("address : "+ inputMember.getMemberAddress());
+		// 비밀번호 암호화 
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		inputMember.setMemberPw(encPw);
+		
+		return mapper.signUp(inputMember);
+	}
+
+
+
+
 }

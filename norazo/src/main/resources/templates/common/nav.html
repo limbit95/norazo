@@ -15,10 +15,28 @@
 
     <!-- 버튼 요소들 -->
     <div class="btnlist">
-      <a href="/board"><ion-icon class="board-btn" name="easel"></ion-icon></a>
-      <a href="/faq"><ion-icon class="faq-btn" name="help-circle-outline"></ion-icon></a>
-      <a href="#"><ion-icon class="favorite-btn" name="heart-outline"></ion-icon></a>
-      <a href="/myPage"><ion-icon class="myPage-btn" name="person-outline"></ion-icon></a>
+      <a href="/board"><ion-icon name="easel"></ion-icon></a>
+      <a href="/faq"><ion-icon name="help-circle"></ion-icon></a>
+      <a href="#"><ion-icon name="heart"></ion-icon></a>
+      <th:block th:unless="${session.loginMember}">
+        <a href="/myPage/main"><ion-icon class="myPage-btn" name="person"></ion-icon></a>
+      </th:block>
+      <th:block th:if="${session.loginMember}">
+        <!-- <a href="/myPage/main">
+          <img th:with="user=#{user.default.image}"
+               th:src="${session.loginMember.profileImg ?: user}">
+        </a> -->
+        <div class="dropdown">
+          <img class="dropbtn"
+                th:with="user=#{user.default.image}"
+                th:src="${session.loginMember.profileImg ?: user}">
+          <div class="dropdown-content">
+            <a href="/myPage/main">마이페이지</a>
+            <a href="/member/logout">로그아웃</a>
+          </div>
+        </div>
+      </th:block>
     </div>
   </div>
 </div>
+

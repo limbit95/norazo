@@ -1,4 +1,4 @@
-package edu.kh.norazo.common;
+package edu.kh.norazo.common.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
@@ -38,12 +38,32 @@ public class FileConfig implements WebMvcConfigurer{
 	@Value("${category.img.resource-location}")
 	private String categoryImgResourceLocation;
 	
+	// 프로필 이미지 파일 경로명, 서버 폴더 경로
+	@Value("${my.profile.resource-handler}")
+	private String profileResourceHandler;
+	@Value("${my.profile.resource-location}")
+	private String profileResourceLocation;
+	
+	// 게시글 이미지 파일 경로명, 서버 폴더 경로
+	@Value("${my.board.resource-handler}")
+	private String boardResourceHandler;
+	@Value("${my.board.resource-location}")
+	private String boardResourceLocation;
+	
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		// 카테고리 이미지
 		registry.addResourceHandler(categoryImgResourceHandler)
 		.addResourceLocations(categoryImgResourceLocation);
 	
+		// 프로필 이미지 요청 - 서버 폴더 연결 추가
+		registry.addResourceHandler(profileResourceHandler) // /myPage/profile/**
+		.addResourceLocations(profileResourceLocation); // file:///C:/uploadFiles/profile/
+		
+		registry.addResourceHandler(boardResourceHandler) // /images/board/**
+		.addResourceLocations(boardResourceLocation); // file:///C:/norazoServer/board/
+		
 	}
 	
 	

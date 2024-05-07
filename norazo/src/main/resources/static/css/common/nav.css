@@ -91,7 +91,6 @@
         color: #076DF2;
         cursor: pointer;
     }
-    
 }
 
 /* nav */
@@ -207,6 +206,7 @@
         height: 50px;
         display: flex;
         text-align: center;
+        margin-top: 20px;
     }
     
     .category-list-div {
@@ -245,8 +245,10 @@
         text-shadow: 2px 2px 4px #000000;
         color: #fafafa;
         position: absolute; 
-        top: 58%; 
-        left: 10%; 
+        font-weight: 500;
+        font-size: 23px;
+        top: 65%; 
+        left: 7%; 
     } 
 }  
 
@@ -303,7 +305,65 @@
         text-shadow: 2px 2px 4px #000000;
         color: #fafafa;
         position: absolute; 
-        top: 58%; 
-        left: 10%; 
+        font-weight: 500;
+        font-size: 23px;
+        top: 65%; 
+        left: 7%;  
     } 
 } 
+
+
+
+
+/* 드롭다운 메뉴 */
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.dropdown{
+    position : relative;
+    display : inline-block;
+    
+    width: 35px;
+    height: 35px;
+    margin-left: 10px; 
+}
+
+.dropbtn{
+    width: 35px;
+    height: 35px;
+    border-radius: 20px;
+    border: 1px solid var(--secondary);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+}
+.dropdown-content{
+    display : none;
+    position : absolute;
+    z-index : 1; /*다른 요소들보다 앞에 배치*/
+    background-color: var(--gray4);
+    min-width : 120px;
+    border-radius: 10px;
+    border: 2px solid var(--secondary);
+    top: 104%;
+    right: 0%;
+}
+
+.dropdown-content a{
+    display : block;
+    text-decoration : none;
+    color : var(--primary1);
+    font-family: 'regular';
+    font-weight: 1000;
+    font-size: 15px;
+    padding : 12px 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.dropdown-content a:hover{
+    background-color : #ececec
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

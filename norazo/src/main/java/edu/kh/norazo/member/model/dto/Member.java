@@ -19,10 +19,11 @@ public class Member {
 	private String memberPw;
 	private String memberNickname;
 	private String memberTel;
-	private String memberAddres;
+	private String memberAddress;
 	private String gender;
 	private String birthDate;
 	private String profileImg;
 	private String enrollDate;
-	private String memberEdlFl;
+	private String memberDelFl;
+	private String memberIntroduce;
 }

@@ -1,4 +1,4 @@
-package edu.kh.norazo.common;
+package edu.kh.norazo.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +27,7 @@ public class InterceptorConfig implements WebMvcConfigurer{
 							 "/js/**",
 							 "/images/**",
 							 "/favicon.ico");
+		
 	}
 	
 }

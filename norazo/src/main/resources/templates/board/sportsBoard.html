@@ -21,24 +21,37 @@
     <main>
 
         <div class="board-page-header">
-            <h1 th:text="${application.boardTypeList.get(0).boardName}" class="boardType-title"></h1>
+            <th:block th:if="${sportsKrName} != null">
+                <h1 th:text="|${sportsKrName} ${application.boardTypeList.get(0).boardName}|" class="boardType-title"></h1>
+            </th:block>
+            <th:block th:unless="${sportsKrName}">
+                <h1 th:text="${application.boardTypeList.get(0).boardName}" class="boardType-title"></h1>
+            </th:block>
             <button class="newMoim">새 모임</button>
         </div>
 
+        
         <div class="board-list">
-            <div>
-                <img src="" class="thumbnail"></img>
+            <th:block th:unless="${boardList}">
+                <!-- <h1>게시물이 존재하지 않습니다</h1> -->
+            </th:block>
+            <th:block th:if="${boardList}" th:each="board : ${boardList}">
                 <div>
-                    <h4 class="board-title">[AIDA1] 수영 전문가에게 배우는 프리다이빙 자격</h4>
+                    <img th:src="${board.thumbnail}" class="thumbnail" th:data-board-no="${board.boardNo}"></img>
+                    <div>
+                        <h4 class="board-title" th:data-board-no="${board.boardNo}">[[${board.boardTitle}]]</h4>
+                    </div>
                 </div>
-            </div>
+            </th:block>
         </div>
 
-
+        
     </main>
 
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
     
+    
+
 </body>
 </html>

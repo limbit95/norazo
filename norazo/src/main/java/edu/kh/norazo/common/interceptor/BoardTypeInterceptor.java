@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.kh.norazo.board.model.service.BoardService;
+import edu.kh.norazo.main.model.service.MainService;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardTypeInterceptor implements HandlerInterceptor{
 	
 	@Autowired
-	private BoardService service;
+	private MainService service;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, 

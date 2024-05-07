@@ -21,18 +21,14 @@
 <script src="/js/fragments/modal.js"></script>
 
 <script th:inline="javascript">
+    const loginMember = /*[[${session.loginMember}]]*/ "로그인 회원"; 
+    
     const message =  /*[[${message}]]*/ "전달 받은 message";
   
     if(message != null) {
         alert(message);
+        if(message =="로그인 후 이용해주세요"){
+            location.href = '/member/login';
+        }
     }
-
-    if(message == '로그인 후 이용해주세요'){
-        location.href = "/member/login";
-        return;
-    }
-
-    location.href = "/myPage/main";
-
-    const loginMember = /*[[${session.loginMember}]]*/ "로그인 회원"; 
 </script> 
