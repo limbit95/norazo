@@ -19,9 +19,12 @@ const memberListDiv = document.querySelector(".memberList-div");
 // join 버튼 요소
 const joinBtn = document.querySelector("#join-btn");
 
-let boardWriteMemberNo;
+// 좋아요 버튼
+const boardLike = document.querySelector(".board-like");
+
 let sportsCode;
 let boardNo;
+let likeCheck;
 
 // 썸네일 클릭시 모달창 조회
 thumbnail.forEach( (i) => {
@@ -57,6 +60,17 @@ thumbnail.forEach( (i) => {
                 joinBtn.innerText = "JOIN";
                 joinBtn.classList.add("join-btn");
                 joinBtn.classList.remove("full-member");
+            }
+
+            // boardLike.setAttribute("data-like-check", board.likeCheck);
+            likeCheck = board.likeCheck;
+
+            // 좋아요 체크 여부 확인
+            if(board.likeCheck > 0){
+                boardLike.setAttribute("name", "heart");
+                boardLike.removeAttribute("name", "heart-outline");
+            } else {
+                boardLike.setAttribute("name", "heart-outline");
             }
 
             const memberList = document.createElement("div");
@@ -180,21 +194,12 @@ window.addEventListener("keydown", (e) => {
 });
 
 
-// 좋아요 버튼
-
-// const boardLike = document.querySelector(".boardList");
-
-// boardLike.addEventListener("click", e => {
-    
-// });
-
-
 // join 버튼 눌렀을 시
 
 if(joinBtn != null){
     joinBtn.addEventListener("click", e => {
         if(loginMember == null){
-            if(confirm("로그인을 해야 이용할 수 있습니다. 로그인 페이지로 이동하시겠습니까?")){
+            if(confirm("로그인 후 이용가능합니다. 로그인 페이지로 이동하시겠습니까?")){
                 location.href = "/member/login";
             }
             return;
@@ -203,5 +208,49 @@ if(joinBtn != null){
         if(confirm("해당 모임에 참석하시겠습니까?")){
             location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
         }
+    });
+};
+
+
+
+// 좋아요 버튼 눌렀을 때
+
+if(boardLike != null){
+    boardLike.addEventListener("click", e => {
+        if(loginMember == null) {
+            alert("로그인 후 사용 가능한 기능입니다.");
+            return;
+        }
+
+        const obj = {
+            "memberNo"  : loginMember.memberNo,
+            "boardNo"   : boardNo,
+            "likeCheck" : likeCheck
+        }
+
+        fetch("/sportsBoard/like", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : JSON.stringify(obj)
+        })
+        .then(resp => resp.text())
+        .then(result => {
+            if(result > 0){
+                
+            }
+            likeCheck = likeCheck == 0 ? 1 : 0;
+        });
+
+        if(boardLike.getAttribute("name") == "heart-outline") {
+            boardLike.setAttribute("name", "heart");
+            boardLike.removeAttribute("name", "heart-outline");
+            return;
+        }
+
+        if(boardLike.getAttribute("name") == null) {
+            boardLike.setAttribute("name", "heart-outline");
+            return;
+        }
+        
     });
 }

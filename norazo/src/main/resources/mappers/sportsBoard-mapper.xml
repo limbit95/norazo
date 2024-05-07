@@ -90,13 +90,17 @@
 			
 			(SELECT COUNT(*)
 			FROM "ATTEND_MEMBER" A
-			WHERE A.BOARD_NO = B.BOARD_NO) ATTEND_MEMBER_COUNT
+			WHERE A.BOARD_NO = B.BOARD_NO) ATTEND_MEMBER_COUNT,
+			
+			(SELECT COUNT(*) FROM "BOARD_LIKE"
+			 WHERE MEMBER_NO = #{memberNo}
+			 AND BOARD_NO = #{boardNo}) LIKE_CHECK
 			
 		FROM "BOARD" B
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_DEL_FL = 'N'
 		AND BOARD_CODE = 1
-		AND BOARD_NO = ${boardNo}
+		AND BOARD_NO = #{boardNo}
 	</select>
 	
 	<!-- 모임 참석한 회원 수 조회 -->
@@ -113,6 +117,7 @@
 		WHERE BOARD_NO = ${boardNo}
 	</select>
 	
+	<!-- 로그인한 회원 모임 참석 -->
 	<insert id="join">
 		INSERT INTO ATTEND_MEMBER VALUES(
 			#{memberNo},
@@ -120,11 +125,27 @@
 		)
 	</insert>
 	
+	<!-- 참석 여부 확인 -->
 	<select id="attendFl">
 		SELECT COUNT(*)
 		FROM ATTEND_MEMBER
 		WHERE BOARD_NO = ${boardNo}
 		AND MEMBER_NO = ${memberNo}
 	</select>
+	
+	<!-- 좋아요 해제 -->
+	<delete id="deleteBoardLike">
+		DELETE FROM "BOARD_LIKE"
+		WHERE MEMBER_NO = #{memberNo}
+		AND BOARD_NO = #{boardNo}
+	</delete>
+	
+	<!-- 좋아요 체크 -->
+	<insert id="insertBoardLike">
+		INSERT INTO "BOARD_LIKE" VALUES(
+			#{memberNo},
+			#{boardNo}
+		)
+	</insert>
 	
 </mapper>
