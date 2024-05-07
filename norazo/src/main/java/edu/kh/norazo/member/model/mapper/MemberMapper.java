@@ -26,5 +26,11 @@ public interface MemberMapper {
 	int checkNickname(String memberNickname);
 
 	int signUp(Member inputMember);
+
+	/** 비밀번호 업데이트 SQL
+	 * @param inputMember
+	 * @return
+	 */
+	int findPw(Member inputMember);
 	
 }

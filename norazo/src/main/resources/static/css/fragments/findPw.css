@@ -1,0 +1,41 @@
+/* main {
+    width: 1090px;
+} */
+
+body{
+    background-color: var(--primary3);
+}
+
+.sectionDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 666px;
+    height: 596px;
+    background-color: var(--gray4);
+    border-radius: 80px;
+}
+
+#logo{
+    margin-top: 50px;
+    width: 279px;
+    height: 56px;
+
+}
+section 안 div
+.findPw-input-area{
+    display: flex;
+    flex-direction: row;
+    width: 666px;
+    height: 596px;
+
+}
+
+.required{
+    color: red;
+    padding: 0 5px;
+}
+
+.confirm{color : green; }
+.error{ color: red;}

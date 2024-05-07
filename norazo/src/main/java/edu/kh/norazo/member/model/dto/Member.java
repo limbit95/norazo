@@ -26,4 +26,6 @@ public class Member {
 	private String enrollDate;
 	private String memberDelFl;
 	private String memberIntroduce;
+	
+	private String authKey;
 }

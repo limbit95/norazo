@@ -31,4 +31,10 @@ public interface MemberService {
 	 */
 	int signUp(Member inputMember, String[] memberAddress);
 
+	/** 비밀번호 찾기 
+	 * @param inputMember
+	 * @return
+	 */
+	int findPw(Member inputMember);
+
 }
