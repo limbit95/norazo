@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.service.EditBoardService;
 import edu.kh.norazo.main.model.service.MainService;
 import lombok.RequiredArgsConstructor;
@@ -28,15 +30,22 @@ public class EditBoardController {
 	 * @param sportsCode
 	 * @return
 	 */
-	@GetMapping("{sportsCode:[a-z]+}/insert")
-	public String boardWrite(@PathVariable("sportsCode") String sportsCode,
-							 Model model) {
+	@GetMapping("sportsBoard/insert")
+	public String boardWrite(Model model) {
 		
 		List<Map<String, Object>> sportsTypeList = mainService.selectSportsTypeList();
-		
 		model.addAttribute("sportsTypeList", sportsTypeList);
 		
 		return "board/sportsBoardWrite";
+	}
+	
+	/** 모임글 작성
+	 * @return
+	 */
+	@PostMapping("insert")
+	public String boardWrite(Board inputBoard) {
+		
+		return "redirect:/sportsBoard/";
 	}
 	
 }

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/fragments/adBanner.css">
     <link rel="stylesheet" href="/css/fragments/modal.css">
@@ -41,12 +41,14 @@
                     <img th:src="${board.thumbnail}" 
                          class="thumbnail" 
                          th:data-board-no="${board.boardNo}"
-                         th:data-member-no="${board.memberNo}"></img>
+                         th:data-member-no="${board.memberNo}"
+                         th:data-sports-code="${board.sportsCode}"></img>
                     <div>
                         <h4 class="writeDate">[[${board.boardWriteDate}]]</h4>
                         <h4 class="board-title" 
                         th:data-board-no="${board.boardNo}"
-                        th:data-member-no="${board.memberNo}">[[${board.boardTitle}]]</h4>
+                        th:data-member-no="${board.memberNo}"
+                        th:data-sports-code="${board.sportsCode}">[[${board.boardTitle}]]</h4>
                     </div>
                 </div>
             </th:block>
@@ -92,7 +94,7 @@
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
     
-    
+    <script src="/js/board/sportsBoard.js"></script>
 
 </body>
 </html>
