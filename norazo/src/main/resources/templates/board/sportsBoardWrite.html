@@ -36,7 +36,7 @@
                 <div class="meeting-info">
                     <!-- 제목 -->
                     <label class="board-title" for="title-input">
-                        <input class="board-title-input" id="title-input" type="text" maxlength="25">
+                        <input class="board-title-input" id="title-input" type="text" maxlength="20" placeholder="20글자 이내 작성">
                     </label>
 
                     <!-- 모임 날짜 -->
@@ -51,26 +51,27 @@
                         <div class="category-select-div">
                             <select name="" id="" class="category-select">
                                 <option value="" class="category-option">카테고리</option>
-                                <option value="" class="category-option">축구</option>
-                                <option value="" class="category-option">농구</option>
+                                <th:block th:each="category : ${sportsTypeList}">
+                                    <option value="" class="category-option">[[${category.sportsKrName}]]</option>
+                                </th:block>
                             </select>
                         </div>
                     </div>
 
                     <!-- 모임 장소 -->
                     <div>
-                        <ion-icon name="compass-outline"></ion-icon>
-                        <input type="text">
+                        <ion-icon name="compass-outline" class="place-icon"></ion-icon>
+                        <input class="place-input" id="place-input" type="text" maxlength="15" placeholder="15글자 이내 작성">
                     </div>
 
                     <!-- 참석 인원 -->
                     <div>
                         <!-- 사람 아이콘, 정원(1~50명) -->
-                        <ion-icon name="person-outline"></ion-icon>
-                        <select name="" id="">
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
+                        <ion-icon name="person-outline" class="member-count-limit"></ion-icon>
+                        <h2>정원(1 ~ 50명)</h2>
+                        <select name="" id="" class="member-count-select"
+                                th:data-sports-type-list="${session.sportsTypeList}">
+                            <option value="null">인원수</option>
                         </select>
                     </div>
                 </div>
@@ -101,5 +102,6 @@
 
     <th:block th:replace="~{common/footer}"></th:block>
 
+    <script src="/js/board/sportsBoardWrite.js"></script>
 </body>
 </html>

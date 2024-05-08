@@ -68,7 +68,7 @@ public class SportsBoardController {
 	
 	
 	// 모임 게시글 상세 정보 조회
-	@GetMapping("{sportsCode:[a-z]+}/{boardNo:[0-9]+}")
+	@GetMapping("detail/{sportsCode:[a-z]+}/{boardNo:[0-9]+}")
 	public String sportsBoardDetail(@PathVariable("sportsCode") String sportsCode,
 									@PathVariable("boardNo") int boardNo,
 									@SessionAttribute("loginMember") Member loginMember, 

@@ -33,6 +33,7 @@
     height: 340px;
     border: 2px solid var(--primary1);
     border-radius: 30px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
 }
 
 /* 썸네일 */
@@ -40,6 +41,7 @@ img {
     width: 440px;
     height: 340px;
     border-radius: 30px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
 }
 
 /* 모임 정보 */
@@ -56,25 +58,37 @@ img {
     height: 70px;
     padding: 10px;
     background-color: var(--gray4);
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-top: 0;
     cursor: auto;
 }
 
+/* 모임 제목 input */
 .board-title-input {
+    width: 470px;
+    outline: none;
+    border: none;
     background-color: rgba(255, 255, 255, 0);
-    width: 475px;
-    font-size: 35px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 25px;
     font-family: 'main';
     font-weight: 100;
-    outline: none;
+    color: black;
+}
+
+/* 모임 제목 input::placeholder */
+.board-title-input::placeholder {
+    color: var(--gray2);
+    font-size: 25px;
 }
 
 /* 모임 날짜 영역 */
 .meeting-info > :nth-child(2) {
     display: flex;
     height: 70px;
-    margin-top: 15px;
+    margin-top: 25px;
 }
 
 /* date, time 감싸는 div */
@@ -97,9 +111,9 @@ img {
 
 /* date input */
 .datetime > input {
-    width: 270px;
+    width: 280px;
     height: 50px;
-    margin-left: 10px;
+    margin-left: 15px;
     border: none; 
     position: relative;
     background-color: var(--gray4);
@@ -143,23 +157,25 @@ img {
     justify-content: center;
 }
 
+/* 카테고리 select */
 .category-select {
-    width: 130px;
+    width: 140px;
     height: 50px;
     border-radius: 10px;
     font-size: 20px;
     font-family: 'main';
     font-weight: 100;
-}
-
-.category-option::content {
+    border: none; 
+    background-color: var(--gray4);
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+    text-align: center;
 }
 
+/* 카테고리 option */
+.category-option:hover {
 
-
-
-
+}
 
 
 /* 모임 장소 */
@@ -167,58 +183,75 @@ img {
     display: flex;
     height: 70px;
     margin-top: 15px;
+    align-items: center;
 }
+
+/* 모임 장소 아이콘 */
+.place-icon {
+    font-size: 35px;
+    margin-left: 10px;
+}
+
+/* 모임 장소 input */
+.place-input {
+    width: 440px;
+    height: 50px;
+    margin-left: 15px;
+    border: none; 
+    background-color: var(--gray4);
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'main';
+    font-weight: 100;
+}
+
+.place-input::placeholder {
+    color: var(--gray2);
+    font-size: 20px;
+}
+
 
 /* 참석 인원 */
 .meeting-info > :nth-child(4) {
     display: flex;
     height: 70px;
+    align-items: center;
     margin-top: 15px;
 }
 
-
-
-
-
-
-
-.content-div-box{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-}
-.board-title-div{
-    background-color: var(--white);
-    width: 1000px;
-    height: 100px;
-    border-radius: 30px;
-    text-align: left; 
-    padding-left: 20px;
-    display: flex;
-    align-items: center;
+/* 사람 아이콘 */
+.member-count-limit {
+    font-size: 35px;
+    margin-left: 10px;
 }
 
-textarea {
-    resize: none;
-    width: 1000px;
-    height: 720px;
-    border-radius: 30px;
-    padding-left: 20px;
-    padding-top: 20px;
-    font-family: 'regular';
-    font-size: 25px;
-}
-textarea:focus {
-    outline: none;
+/* h2 태그 "정원(1~50명)" */
+.meeting-info > :nth-child(4) > h2 {
+    width: 200px;
+    font-size: 23px;
+    font-family: 'main';
+    font-weight: 100;
+    margin-left: 10px;
+    color: var(--gray1);
 }
 
-form.board-write {
-    text-align: center; 
+/* 참석 인원 제한 수 선택 */
+.member-count-select {
+    width: 130px;
+    height: 50px;
+    margin-left: 130px;
+    border: none; 
+    background-color: var(--gray4);
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'main';
+    font-weight: 100;
 }
 
-.boardCreateBtn {
-    display: block; 
-    margin: 0 auto; 
-}
+
+
+

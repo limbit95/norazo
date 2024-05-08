@@ -104,7 +104,7 @@ thumbnail.forEach( (i) => {
             if(loginMember != null) {
                 board.memberList.forEach( (i) => {
                     if(loginMember.memberNo == i.memberNo){
-                        location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
+                        location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
                         return;
                     }
                 });
@@ -119,23 +119,17 @@ thumbnail.forEach( (i) => {
 // 게시글 제목 클릭시 모달창 조회
 boardTitle.forEach( (i) => {
     i.addEventListener("click", e => {
-
-        // 조회한 게시글 작성자 회원 번호
+        // 조회한 모임글 작성자 회원 번호
         boardWriteMemberNo = e.target.dataset.memberNo;
-        // 조회한 게시글 스포츠 종류
+        // 조회한 모임글 스포츠 종류
         sportsCode = e.target.dataset.sportsCode;
-        // 조회한 게시글 번호
+        // 조회한 모임글 번호
         boardNo = e.target.dataset.boardNo;
-        if(loginMember != null) {
-            if(loginMember.memberNo == boardWriteMemberNo){
-                location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
-                return;
-            }
-        }
-
-        modalContent.classList.remove("popup-hidden");
+        
+        // 참석 버튼에 현재 조회한 모임글 번호 데이터 삽입
         joinBtn.setAttribute("data-board-no", boardNo);
 
+        // 기존에 조회했던 회원 리스트 div 비우기
         memberListDiv.removeChild(memberListDiv.childNodes[0]);
 
         fetch("/sportsBoard/modal?boardNo=" + boardNo)
@@ -147,23 +141,38 @@ boardTitle.forEach( (i) => {
             place.innerText = board.meetingLocation;
             memberCount.innerText = board.attendMemberCount + " / " + board.memberCountLimit + " (" + (board.memberCountLimit-board.attendMemberCount) + "자리 남음)";
             
+            // 참석 인원 가득차면 버튼 속성 변경
             if(board.memberCountLimit == board.attendMemberCount){
-                joinBtn.innerText = "full";
+                joinBtn.innerText = "FULL";
                 joinBtn.classList.add("full-member");
                 joinBtn.classList.remove("join-btn");
             } else {
-                joinBtn.innerText = "join";
+                joinBtn.innerText = "JOIN";
                 joinBtn.classList.add("join-btn");
                 joinBtn.classList.remove("full-member");
             }
 
+            // boardLike.setAttribute("data-like-check", board.likeCheck);
+            likeCheck = board.likeCheck;
+
+            // 좋아요 체크 여부 확인
+            if(board.likeCheck > 0){
+                boardLike.setAttribute("name", "heart");
+                boardLike.removeAttribute("name", "heart-outline");
+            } else {
+                boardLike.setAttribute("name", "heart-outline");
+            }
+
             const memberList = document.createElement("div");
             memberList.classList.add("memberList"); 
-
+            
+            
+            // ---------- 현재 참석한 회원 리스트 ----------
             board.memberList.forEach( (i, index) =>{
                 const img = document.createElement("img");
                 img.classList.add("member");
-                if(index < 6){
+
+                if(index < 5){
                     if(i.profileImg == null){
                         img.setAttribute("src", "/images/profile/default-profileImg.png");
                     } else{
@@ -171,11 +180,28 @@ boardTitle.forEach( (i) => {
                     }
                     memberList.append(img);
                 }
+
+                if(index == 6){
+                    img.setAttribute("src", "/images/profile/01_assets.png");
+                    memberList.append(img);
+                }
             });
+            memberListDiv.append(memberList);
+            // ---------- 현재 참석한 회원 리스트 ----------
 
-            memberListDiv.append(memberList)   ;       
+
+            // 참석되어 있는 모임글은 모달창 조회가 아닌 상세 조회 페이지로 바로 이동
+            if(loginMember != null) {
+                board.memberList.forEach( (i) => {
+                    if(loginMember.memberNo == i.memberNo){
+                        location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
+                        return;
+                    }
+                });
+            }
         });
-
+        // 모달창 보이기
+        modalContent.classList.remove("popup-hidden");
     });
 });
 
@@ -208,7 +234,7 @@ if(joinBtn != null){
         }
 
         if(confirm("해당 모임에 참석하시겠습니까?")){
-            location.href = "/sportsBoard/" + sportsCode + "/" + boardNo;
+            location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
         }
     });
 };
