@@ -84,7 +84,7 @@ public class SportsBoardController {
 		
 		log.debug("sportsKrName : " + sportsBoardDetail.getSportsKrName());
 		
-		List<Member> memberList = sportsBoardDetail.getMemberList();
+//		List<Member> memberList = sportsBoardDetail.getMemberList();
 				
 		// 모임 참석 여부 확인
 		int attendFl = service.attendFl(map);
