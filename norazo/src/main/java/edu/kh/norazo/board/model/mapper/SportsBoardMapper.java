@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.member.model.dto.Member;
 
 @Mapper
 public interface SportsBoardMapper {
@@ -65,6 +66,7 @@ public interface SportsBoardMapper {
 	 * @return
 	 */
 	Board selectSportsBoard(Map<String, Object> map);
+	
 	/** 좋아요 해제(DELETE)
 	 * @param map
 	 * @return
@@ -76,6 +78,8 @@ public interface SportsBoardMapper {
 	 * @return
 	 */
 	int insertBoardLike(Map<String, Object> map);
+
+	Member boardCreateMember(int boardNo);
 
 
 }

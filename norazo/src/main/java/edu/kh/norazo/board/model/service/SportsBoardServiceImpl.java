@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.norazo.board.model.dto.Pagination;
 import edu.kh.norazo.board.model.mapper.SportsBoardMapper;
+import edu.kh.norazo.member.model.dto.Member;
 import edu.kh.norazo.board.model.dto.Board;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -108,6 +109,12 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		}
 		
 		return -1;
+	}
+
+	@Override
+	public Member boardCreateMember(int boardNo) {
+		
+		return mapper.boardCreateMember(boardNo);
 	}
 
 }

@@ -1,15 +1,13 @@
-/* main *{
-    border: 1px solid red;
-} */
 
 .title-div-box{
     margin: 20px;
     margin-top: 60px;
 }
+
 .div-box {
     margin-top: 50px;
     background-color: var(--primary3);
-    height: 980px;
+    height: 760px;
     width: 1090px;
     margin-bottom: 60px;
     border-radius: 30px;
@@ -19,27 +17,39 @@
 } 
 .board-create-div{
     display: flex;
-
+    justify-content: space-between; /* 수정 삭제 버튼을 좌우 정렬 */
 }
 
 .content-div-box{
     display: flex;
     flex-direction: column;
-
     padding-top: 30px;
-    align-items: center;
-
 }
-.board-title-div{
+
+.board-title-div {
     background-color: var(--white);
     width: 1000px;
     height: 100px;
     border-radius: 30px;
-    text-align: left; 
+    text-align: left;
     padding-left: 20px;
     display: flex;
+    justify-content: space-between; /* 요소들을 가능한 한 넓게 펼쳐서 배치합니다. */
     align-items: center;
 }
+.board-title-div h2 {
+    margin: 0; /* 기본 마진을 제거합니다. */
+}
+
+.board-title-div h3 {
+    margin: 0 20px; /* user와 sysdate 사이의 간격을 설정합니다. */
+}
+
+.board-user-div{
+    display: flex;
+    flex-direction: row;
+}
+
 
 textarea {
     resize: none;
@@ -50,16 +60,29 @@ textarea {
     padding-top: 20px;
     font-family: 'regular';
     font-size: 25px;
+    margin-top: 20px;
 }
+
 textarea:focus {
     outline: none;
 }
 
-form.board-write {
-    text-align: center; 
+#commentContent {
+    width: 1000px;
+    height: 100px;
 }
 
-.boardCreateBtn {
-    display: flex; 
-    margin: 0 auto; 
+.button-div {
+    display: flex;
+    justify-content: end;
 }
+
+.deleteBoardBtn {
+
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.updateBoardBtn{
+    margin-top: 20px;
+} 

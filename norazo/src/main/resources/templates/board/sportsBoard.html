@@ -32,7 +32,9 @@
         
         <div class="board-list">
             <th:block th:unless="${boardList}">
-                <!-- <h1>게시물이 존재하지 않습니다</h1> -->
+                <div>
+                    <h1>게시물이 존재하지 않습니다</h1>
+                </div>
             </th:block>
             <th:block th:if="${boardList}" th:each="board : ${boardList}">
                 <div>

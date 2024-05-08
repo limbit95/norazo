@@ -182,14 +182,15 @@ button:hover {
 
 
 /* 게시판 (변경하기) / (수정하기)  버튼 */
-.updateBoardBtn {
+.updateBoardBtn, .deleteBoardBtn {
     width: 130px;
     height: 50px;
+    background-color: var(--primary1);
 
     /* 폰트 */
     font-size: 25px;
 }
-.updateBoardBtn:hover {
+.updateBoardBtn:hover, .deleteBoardBtn:hover {
     width: 130px;
     height: 50px;
 
