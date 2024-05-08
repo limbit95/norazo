@@ -50,6 +50,8 @@ public class FileConfig implements WebMvcConfigurer{
 	@Value("${my.board.resource-location}")
 	private String boardResourceLocation;
 	
+	String fullClassPath = System.getProperty("java.class.path");
+	String classPath = fullClassPath.substring(0, 27) + "src/main/resources/static/images/";
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -59,7 +61,7 @@ public class FileConfig implements WebMvcConfigurer{
 	
 		// 프로필 이미지 요청 - 서버 폴더 연결 추가
 		registry.addResourceHandler(profileResourceHandler) // /myPage/profile/**
-		.addResourceLocations(profileResourceLocation); // file:///C:/uploadFiles/profile/
+		.addResourceLocations("file:///" + classPath + "/profile/"); // file:///C:/uploadFiles/profile/
 		
 		// 모임글 썸네일 이미지 요청 - 서버 폴더 연결 추가
 		registry.addResourceHandler(boardResourceHandler) // /images/board/**

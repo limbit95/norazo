@@ -19,6 +19,12 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="/js/fragments/modal.js"></script>
+<script src="/js/myPage/myPage.js"></script>
+<script th:inline="javascript">
+    const loginMemberProfileImg = "회원프로필이미지";
+</script>
+	<!-- 다음 주소 API 추가 -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script th:inline="javascript">
     const loginMember = /*[[${session.loginMember}]]*/ "로그인 회원"; 

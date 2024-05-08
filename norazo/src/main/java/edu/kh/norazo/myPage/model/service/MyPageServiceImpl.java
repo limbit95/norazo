@@ -86,7 +86,10 @@ public class MyPageServiceImpl implements MyPageService {
 			if(result > 0) {
 				// 프로필 이미지를 없앤 경우를 제외 -> 업로드한 이미지가 있을 경우
 				if(!profileImg.isEmpty()) {
-					profileImg.transferTo(new File(profileFolderPath +rename));
+					String fullClassPath = System.getProperty("java.class.path");
+					String classPath = fullClassPath.substring(0, 27) + "src\\main\\resources\\static\\images\\profile\\";
+					
+					profileImg.transferTo(new File(classPath +rename));
 				}
 				//세션 회원 정보에서 프로필 이미지 경로를 업데이트한 경로로 변경
 				loginMember.setProfileImg(updatePath);

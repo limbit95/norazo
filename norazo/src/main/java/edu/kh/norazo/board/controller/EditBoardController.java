@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.service.EditBoardService;
 import edu.kh.norazo.main.model.service.MainService;
+import edu.kh.norazo.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -42,8 +46,13 @@ public class EditBoardController {
 	/** 모임글 작성
 	 * @return
 	 */
-	@PostMapping("insert")
-	public String boardWrite(Board inputBoard) {
+	@PostMapping("sportsBoard/insert")
+	public String boardWrite(Board inputBoard,
+							 MultipartFile thumbnail,
+							 @SessionAttribute("loginMember") Member loginMember,
+							 RedirectAttributes ra) {
+		
+		log.debug("test : " + inputBoard);
 		
 		return "redirect:/sportsBoard/";
 	}
