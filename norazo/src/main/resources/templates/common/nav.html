@@ -1,32 +1,42 @@
 <div class="nav-container">
   <div class="nav-div">
     <!-- 카테고리 목록 버튼 -->
-    <a href="category"><ion-icon name="menu-outline" class="category-btn"></ion-icon></a>
+    <a href="/category"><ion-icon name="menu-outline" class="category-btn"></ion-icon></a>
  
     <!-- 노라조 로고 -->
-    <div class="logo-div">
-      <a href="/"><img src="/images/logo.png" alt=""></a>
-    </div>
-
+    <a href="/"><img src="/images/logo.png" class="logo"></a>
+    
     <!-- 검색창 -->
-    <div class="search-box-div">
-      <input type="text" placeholder="검색어를 입력해주세요">
-    </div>
+    <form action="/" method="get", id="searchAll" class="search-box-div">
+      <input type="text" name="query" id="searchQuery" placeholder="검색어를 입력해주세요">
+
+      <ion-icon name="search-outline" class="searchAllBtn"></ion-icon>
+    </form>
 
     <!-- 버튼 요소들 -->
-    <div class="nav-btnlist-div">
-      <div>
-        <a href="#"><ion-icon class="btn" name="easel-outline"></ion-icon></a>
-      </div>
-      <div>
-        <a href="#"><ion-icon class="btn" name="help-circle-outline"></ion-icon></a>
-      </div>
-      <div>
-        <a href="#"><ion-icon class="btn" name="heart-outline"></ion-icon></a>
-      </div>
-      <div>
-        <a href="#"><ion-icon class="btn" name="person-outline"></ion-icon></a>
-      </div>
+    <div class="btnlist">
+      <a href="/board"><ion-icon name="easel"></ion-icon></a>
+      <a href="/faq"><ion-icon name="help-circle"></ion-icon></a>
+      <a href="#"><ion-icon name="heart"></ion-icon></a>
+      <th:block th:unless="${session.loginMember}">
+        <a href="/member/login"><ion-icon class="myPage-btn" name="enter"></ion-icon></a>
+      </th:block>
+      <th:block th:if="${session.loginMember}">
+        <!-- <a href="/myPage/main">
+          <img th:with="user=#{user.default.image}"
+               th:src="${session.loginMember.profileImg ?: user}">
+        </a> -->
+        <div class="dropdown">
+          <img class="dropbtn"
+                th:with="user=#{user.default.image}"
+                th:src="${session.loginMember.profileImg ?: user}">
+          <div class="dropdown-content">
+            <a href="/myPage/main">마이페이지</a>
+            <a href="/member/logout">로그아웃</a>
+          </div>
+        </div>
+      </th:block>
     </div>
   </div>
 </div>
+

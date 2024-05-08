@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="/css/fragments/myPage.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+</head>
+<body>
+    <th:block th:replace="~{common/nav}"></th:block>
+    <main>
+        <div class="contents">
+            <th:block th:replace="~{common/fragments/myPageLeftSide}"></th:block>
+			<section class="editMain">
+                <div class="editTitle"><h1>프로필 수정</h1></div>
+                <form action="edit" method="POST" name="myPageFrm" id="updateInfo">
+                    <div class="myPage-row">
+                        <h2 class="editTitle">닉네임</h2>
+                        <div>
+                            <input type="text" name="memberNickname" 
+                                maxlength="10" id="memberNickname" class="profileUpdateInput2" th:value="${session.loginMember.memberNickname}"
+                                >
+                            <button class="button" type="button"><h3>중복확인</h3>
+								
+								</button>
+                        </div>
+                    </div>
+            
+                    <div class="info-title">
+						<label for="memberAddress">
+                        	<h2 class="editTitle">주소</h2>
+						</label>
+                    </div>
+            
+                    <div class="myPage-row info-address">
+                        <input type="text" name="memberAddress"
+                            placeholder="  우편번호" id="postcode" class="profileUpdateInput2" maxlength="6" th:value="${postcode}" readonly
+                            >
+                        
+                        <button class="button" type="button" id="searchAddress"><h3>검색</h3></button>
+                    </div>
+            
+                    <div class="myPage-row info-address">
+                        <input type="text" name="memberAddress"
+                            placeholder="  도로명/지번 주소" id="address" class="profileUpdateInput1" th:value="${address}"	readonly
+                            >
+                    </div>
+            
+                    <div class="myPage-row info-address">
+                        <input type="text" name="memberAddress"
+                            placeholder="  상세 주소" id="detailAddress" class="profileUpdateInput1" th:value="${detailAddress}"
+                            >
+                    </div>
+
+                    <div class="myPage-row info-gender">
+                        <h2 class="editTitle">성별</h2>
+                        <select id="gender1" name="gender" class="profileUpdateInput1" th:value="${gender}">
+                            <option id="gender" class="selected" value="select" th:selected="${gender}" disabled>  성별을 선택하세요</option>
+                            <option id="gender2" value="M" th:selected="${gender}">남성</option>
+                            <option id="gender2" value="F" th:selected="${gender}">여성</option>
+                        </select>
+                    </div>
+
+                    <div class="myPage-row info-myself">
+                        <h2 class="editTitle">자기소개</h2>
+                        <div>
+                            <textarea name="memberinfo" wrap="on" rows="3" placeholder="60자 이하로 작성해 주세요"
+                                maxlength="60" id="introduce" class="profileUpdateInput2"
+                                ></textarea>
+                        </div>
+                    </div>
+                    
+                    <button class="myPage-submit"><h3>수정하기</h3></button>
+                    </form>
+			</section>
+        </div>
+    </main>
+    <th:block th:replace="~{common/footer}"></th:block>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	<!-- 다음 주소 API 추가 -->
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="/js/myPage/myPage.js"></script>
+
+</body>
+</html>

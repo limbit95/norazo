@@ -1,5 +1,17 @@
 /* 버튼 */
 
+/* 240501 : 
+- button 
+cursor -> add
+
+- input
+padding add 
+text-size bigger
+onclick -> black to transparent
+*/
+
+
+
 /* 버튼 메인 CSS */
 button {
     left: 0px; 
@@ -7,6 +19,7 @@ button {
     border-radius: 30px;
     transition: background-color 0.3s;
     border-color: transparent;
+    cursor: pointer;
 
     /* 폰트 */
     font-family: 'main';
@@ -281,12 +294,192 @@ button:hover {
 
 
 /* ----------------------------------------------------------- */
-
-/*  */
-
- /* 5) 인풋 (확정)
-  - 체크박스 */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
 
 
-/* 6) a 테그 (확정) */
+/* 인풋 박스 */
 
+/* 인풋 메인 CSS */
+
+input {
+    background: var(--white); 
+    border-radius: 30px; 
+    padding-left: 15px;
+    /* 폰트 */
+    font-family: 'main';
+    color: var(--gray1);
+}
+
+input::placeholder {
+    color: var(--gray3); 
+}
+
+
+/* ----------------------------------------------------------- */
+
+/* 로그인 인풋 */
+
+.loginInput {
+    width: 420px; 
+    height: 60px; 
+    border: 3px var(--primary2) solid;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* 폰트 */
+   font-size: 20px;
+}
+
+.loginInputPw {
+    width: 420px; 
+    height: 60px; 
+    border: 3px var(--primary2) solid;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* 폰트 */
+   font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.loginInputPw::placeholder {
+    color: var(--primary3);
+    font-size: 20px;
+    font-family: 'main';
+}
+
+
+.loginInput::placeholder {
+    color: var(--primary3);
+    font-size: 20px;
+}
+
+/* ----------------------------------------------------------- */
+
+/* 회원가입 인풋 */
+
+.signupInput1 {
+    width: 1090px; 
+    height: 70px; 
+    border: 3px var(--primary3) solid;
+    
+
+    /* 폰트 */
+    font-size: 15px;
+}
+.signupInput1::placeholder {
+    font-size: 15px;
+    font-family: 'main';
+}
+
+
+.signupInput2 {
+    width: 800px; 
+    height: 70px; 
+    border: 3px var(--primary3) solid;
+
+    /* 폰트 */
+    font-size: 15px;
+}
+.signupInput2::placeholder {
+    font-size: 15px;
+    font-family: 'main';
+}
+
+.signupInputPw {
+    width: 1090px; 
+    height: 70px; 
+    border: 3px var(--primary3) solid;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* 폰트 */
+    font-size: 15px;
+}
+.signupInputPw::placeholder {
+    font-size: 15px;
+    font-family: 'main';
+}
+
+/* ----------------------------------------------------------- */
+
+/* 프로필 수정 인풋 */
+.profileUpdateInput1 {
+    width: 500px; 
+    height: 50px; 
+    border: 3px var(--gray3) solid;
+    border-radius: 30px; 
+    
+    /* 폰트 */
+    font-size: 20px;
+}
+.profileUpdateInput1::placeholder {
+    font-size: 20px;
+}
+
+
+.profileUpdateInput2 {
+    width: 370px; 
+    height: 50px; 
+    border: 3px var(--gray3) solid;
+    
+    /* 폰트 */
+    font-size: 20px;
+}
+.profileUpdateInput2::placeholder {
+    font-size: 20px;
+}
+
+
+/* ----------------------------------------------------------- */
+
+/* 게시판 관련 인풋 */
+
+/* 게시판 (댓글)등록 인풋 */
+
+.boardCommentInput {
+    width: 760px;
+    height: 110px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+
+
+/* 게시판 등록하기 인풋*/
+.boardCreateInput {
+    width: 1000px;
+    height: 720px;
+
+    /* 폰트 */
+    font-size: 25px;
+}
+.boardCreateInput::placeholder {
+    font-size: 25px;
+}
+
+
+/* ----------------------------------------------------------- */
+
+/* 모임글 상세조회 댓글등록 인풋 */
+
+.boardDetailCommentInput {
+    width: 250px; 
+    height: 90px;
+
+    font-size: 20px;
+}
+
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+/* ----------------------------------------------------------- */
+
+
+
+/* a 테그 */
+
+.loginTag {
+    text-align: center; 
+    color: var(--primary1); 
+    font-size: 20px; 
+    font-family: 'main';
+    word-wrap: break-word;
+}

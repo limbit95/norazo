@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+    <title>노라조</title>
+    
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/fragments/signUp.css">
+</head>
+<body>
+    <main>
+        <section>
+            <pre>
+                <h2>
+                노라조랑 함께하는 
+                스포츠 어때?
+                </h2>
+            </pre>
+            <form action="/member/signUp" method="post" name="signUpForm" id="signUpForm">
+
+                <!-- 이메일 입력 -->
+                <label for="memberEmail">
+                    <span class="required"><h2>이메일</h2></span>
+                </label>
+
+                <div>
+                    <input type="text" name="memberEmail" id="memberEmail" placeholder="이메일을 입력하세요." maxlength="30" autocomplete="off" class="signupInput2">
+
+                    <button id="sendAuthKeyBtn" class="singupBtn" type="button">인증요청</button>
+                </div>
+
+                <span class="signUp-message" id="signUpMessage"><h4>메일을 받을 수 있는 이메일을 입력해주세요.</h4></span>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 인증번호 입력 -->
+                <label for="emailCheck">
+                    <span class="required"><h2>인증번호</h2></span>
+                </label>
+                <div>
+                    <input type="text" name="emailCheck" id="emailCheck" placeholder="인증번호를 입력하세요." maxlength="6" autocomplete="off" class="signupInput2">
+
+                    <button id="authKeyBtn" class="singupBtn" type="button">인증하기</button>            
+                </div>
+                <span class="signUp-message" id="authKeyMessage"></span><!-- 인증 입력 틀력시 문구 변경용 -->
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 비밀번호 / 비밀번호 확인 -->
+                <label for="memberPw">
+                    <span class="required"><h2>비밀번호</h2></span>
+                </label>
+
+                <div class="signUp-input-area" id="memberPwDiv">
+                    <input name="memberPw" id="memberPw" type="password" placeholder="비밀번호를 입력하세요." maxlength="20" class="signupInputPw">
+                </div>
+
+                <div class="signUp-input-area">
+                    <input name="memberPwConfirm" id="memberPwConfirm" type="password" placeholder="비밀번호 확인" maxlength="20" class="signupInputPw">
+                </div>
+                <!-- 정규 표현식 -->
+                <span class="signUp-message" id="pwMessage"><h4>영어,숫자,특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</h4></span>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 전화 번호 -->
+                <label for="memberTel">
+                    <span class="required"><h2>전화번호</h2></span>
+                </label>
+
+                <div class="signUp-input-area">
+                    <input name="memberTel" id="memberTel" type="text" placeholder="(- 없이 숫자만 입력)" maxlength="11" class="signupInput1">
+                </div>
+
+                <span class="signUp-message" id="telMessage"><h4>전화번호를 입력해주세요.(-제외)</h4></span>
+
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 닉네임 -->
+                <label for="memberNickname">
+                    <span class="required"><h2>닉네임</h2></span>
+                </label>
+
+                <div class="signUp-input-area">
+                    <input name="memberNickname" id="memberNickname" type="text" placeholder="닉네임" maxlength="10" class="signupInput1">
+                </div>
+
+                <span class="signUp-message" id="nickMessage"><h4>한글,영어,숫자로만 2~10글자</h4></span>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 성별 선택 -->
+
+                <label for="memberGender">
+                    <span class="required"><h2>성별</h2></span>
+                </label>
+
+                <div class="genderDiv">
+                    <select id="gender" name="gender">
+                        <option value="gender">성별</option>
+                        <option value="M">남성</option>
+                        <option value="F">여성</option>
+                    </select>
+                </div>
+                <!------------------------------------------------------------------------------------------>
+
+                <!-- 생년 월일 -->
+                <label for="birthday">
+                    <span class="required"><h2>생년월일</h2></span>
+                </label>
+
+                <div class="birthdayDiv">
+                
+                    <select class="birthday" id="year" name="birthday">
+                        <option value="year">출생연도</option>
+                    </select>
+
+                    <select class="birthday" id="month" name="birthday">
+                        <option value="month">월</option>
+                    </select>
+
+                    <select class="birthday" id="day" name="birthday">
+                        <option value="day">일</option>
+                    </select>
+                    
+                </div>
+
+                 <!------------------------------------------------------------------------------------------>
+
+
+                 <!-- 주소 입력 -->
+                <label for="memberAddress">
+                    <span class="required"><h2>주소</h2></span>
+                </label>
+
+                    <div class="signUp-input-area" id="postcodeDiv">
+                        <input type="text" name="memberAddress" placeholder="우편번호" maxlength="6" id="postcode" class="signupInput2" readonly>                       
+                        
+                        <button type="button" class="singupBtn" id="searchAddress">검색</button>
+                    </div>
+
+                    <div class="signUp-input-area" id="addressDiv">
+                        <input type="text" name="memberAddress" placeholder="도로명/지번 주소" id="address" class="signupInput1" readonly>
+                    </div>
+
+                    <div class="signUp-input-area" id= detailAddressDiv> 
+                        <input type="text" name="memberAddress" placeholder="상세 주소" id="detailAddress" class="signupInput1">
+                    </div>
+                    <span class="signUp-message" id="addressMessage"><h4></h4></span>
+
+                <button class="signupSubmitBtn" id="signupSubmitBtn">가입하기</button>
+            </form>
+        </section>
+
+    </main>
+    <!-- 회원 가입 js -->
+    <script src="/js/member/signUp.js"></script>
+  <!-- 다음 주소 API 추가 -->
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</body>
+</html>

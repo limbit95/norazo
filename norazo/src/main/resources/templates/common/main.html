@@ -3,33 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 광고 베너 CSS 테스트중 -->
+    <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/common/nav.css">
     <link rel="stylesheet" href="/css/fragments/adBanner.css">
-    <!-- <link rel="stylesheet" href="/css/fragments/modal.css"> -->
-
-    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/fragments/modal.css">
+    
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <title>노라조</title>
 </head>
 
 <body>
     
-
     <th:block th:replace="~{common/nav}"></th:block>
-
-    <main> 
-       
-        <!--광고 배너 -->
+    
+    <main>
         <th:block th:replace="~{common/fragments/adBanner}"></th:block>
 
+        <div class="sportsBoard-header">
+            <h1 class="sportsBoard-header-title">신규 모임글</h1>
+            <a href="/sportsBoard/main" class="sportsBoard-whole-view">전체보기</a>
+        </div>
+        
+        <!-- 신규 모임글 -->
+        <div class="sportsBoard-list">
+            <th:block th:each="sportsBoard : ${recentSportsBoardList}">
+                <div>
+                    <img th:src="${sportsBoard.thumbnail}" 
+                         class="thumbnail" 
+                         th:data-board-no="${sportsBoard.boardNo}"
+                         th:data-member-no="${sportsBoard.memberNo}"
+                         th:data-sports-code="${sportsBoard.sportsCode}"></img>
+                    <div>
+                        <h4 class="writeDate">[[${sportsBoard.boardWriteDate}]]</h4>
+                        <h4 class="board-title" 
+                        th:data-board-no="${sportsBoard.boardNo}"
+                        th:data-member-no="${sportsBoard.memberNo}"
+                        th:data-sports-code="${sportsBoard.sportsCode}">[[${sportsBoard.boardTitle}]]</h4>
+                    </div>
+                </div>
+            </th:block>
+        </div>
 
+        <!-- 자유 게시판 (최신글) -->
+        <div class="freeBoard-header">
+            <h1 class="freeBoard-header-title">자유 게시판</h1>
+            <a th:href="@{/board/{boardCode}(boardCode=${application.boardTypeList.get(1).boardCode})}" class="freeBoard-whole-view">전체보기</a>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
+        
+        <div class="freeBoard-list">
+            <div>
+                <a href="">암벽화 추천 부탁드립니다</a>
+            </div>
+            <h3 class="freeBoard-nickname">유저일</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+        </div>
 
 
     </main>
-    <!-- 푸터 -->
-    <th:block th:replace="~{common/footer}"></th:block>
     
-
+    <th:block th:replace="~{common/fragments/modal}"></th:block>
+    <th:block th:replace="~{common/footer}"></th:block>
 </body>
 </html>

@@ -1,70 +1,9 @@
-
-
-.category-page {
-    width: 1090px; 
-    height: 100%; 
-    border: 1px solid black;
-}
-
-.category-title {
-    font-weight: bold; 
-    font-size: 40px;
-}
-
-.category-board-list {
-    display: flex; 
-    justify-content: space-between;
-}
-
-.board {
-    width: 250px;
-    height: 310px; 
-    padding: 0px; 
-    margin-top: 20px;
-}
-
-.board > img {
-    cursor: pointer;
-}
-
-.thumbnail {
-    width: 250px; 
-    height: 220px; 
-    border-radius: 30px; 
-    background-color: rgb(255, 255, 255); 
-    padding: 0px; 
-    border: none;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-}
-
-.address {
-    color: #8F8B8B; 
-    font-size: 15px; 
-    text-align: start; 
-    margin: 5px; 
-    margin-top: 10px;
-}
-
-.board-title {
-    color: #3C3C3C; 
-    font-size: 18px; 
-    text-align: start; 
-    margin: 5px 5px; 
-    cursor: pointer;
-}
-
-
-
 /* 모달창 css */
-/* * {
-    border: 1px solid red;
-} */
-
 .modal-content {
     border-radius: 30px; 
     border: 3px solid #076DF2; 
     width: 600px; 
-    height: 600px;
+    height: 500px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 6px 6px rgba(0,0,0,0.45);
     background-color: white;
 
@@ -78,26 +17,32 @@
 }
 
 .modal-header {
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
 }
 
-.modal-title {
+.modal-header > div {
+    flex-basis: 80%;
     margin-left: 20px;
-    font-size: 25px;
+}
+
+.modal-title {
+    width: auto;
+    font-size: 20px;
 }
 
 .board-like {
     font-size: 30px; 
     color: #FFD332; 
     cursor: pointer; 
-    margin-left: 260px;
+    margin-left: 30px;
 }
 
 .close-btn {
     font-size: 30px;
-    margin-left: 20px;
+    margin-left: 5px;
+    margin-bottom: 5px;
     background-color: white;
     border: none;
     cursor: pointer;
@@ -105,69 +50,118 @@
 
 .modal-body {
     margin-left: 20px;
-    height: 360px;
+    height: 280px;
     display: flex;
     align-items: center;
 }
 
 .modal-thumbnail {
-    width: 320px; 
-    height: 320px; 
+    width: 300px; 
+    height: 270px; 
     border: 3px solid #076DF2; 
     border-radius: 30px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .modal-info {
-    width: 330px; 
-    height: 320px; 
+    width: 250px; 
+    height: 270px; 
     margin-left: 10px; 
     display: flex; 
     flex-direction: column; 
-    justify-content: end;
+    justify-content: start;
+}
+
+.modal-info > div {
+    width: 250px; 
+    height: 100px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
 }
 
 .modal-info-line {
-    border-bottom: 3px solid #535353;
+    border-bottom: 1px solid #535353;
     display: flex;
 }
 
-.info-content {
+.modal-info-line > h2 {
+    font-size: 15px;
+    text-align: center;
+}
+
+.modal-info-line > h2:nth-child(2) {
+    width: 190px;
+}
+
+.date { 
     margin-left: 10px;
 }
 
-.attend-member-div {
-    height: 120px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-evenly;
+.place { 
+    margin-left: 10px;
 }
 
-.attend-member {
-    width: 80px; 
-    height: 80px; 
-    border-radius: 50px;
+.memberCount { 
+    margin-left: 10px;
+}
+
+.modal-content > div:nth-child(3){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    margin-top: 5px;
+}
+
+.memberList{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 560px;
+    height: 70px;
+}
+
+.member {
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+    border-radius: 40px;
 }
 
 .join-btn-div {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
+    height: 70px;
 }
 
 .join-btn {
-    width: 100%;
+    width: 90%;
     border: none;
     border-radius: 30px;
-    font-size: 25px;
-    height: 60px;
+    font-size: 20px;
+    height: 50px;
     color: white;
-    width: 650px;
-    background-color: #076DF2;
+    background-color: var(--primary1);
     cursor: pointer;
 }
 
 .popup-hidden {
     display: none !important;
+}
+
+.like-hidden {
+    display: none !important;
+}
+
+.full-member {
+    width: 90%;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    height: 50px;
+    color: white;
+    background-color: var(--gray3);
+    pointer-events: none;
 }

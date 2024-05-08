@@ -1,0 +1,202 @@
+/* 다음 주소 API 활용 */
+function execDaumPostcode() {
+    new daum.Postcode({
+        oncomplete: function(data) {
+            var addr = '';
+            if (data.userSelectedType === 'R') {
+                addr = data.roadAddress;
+            } else {
+                addr = data.jibunAddress;
+            }
+            document.getElementById('postcode').value = data.zonecode;
+            document.getElementById("address").value = addr;
+            document.getElementById("detailAddress").focus();
+        }
+    }).open();
+}
+if (document.querySelector("#searchAddress") !== null) {
+document.querySelector("#searchAddress").addEventListener("click", execDaumPostcode);
+
+}
+const updateInfo = document.querySelector("#updateInfo");
+
+if (updateInfo !== null) {
+    updateInfo.addEventListener("submit", e => {
+        const memberAddress = document.querySelectorAll("[name='memberAddress']");
+        const addr0 = memberAddress[0].value.trim().length == 0;
+        const addr1 = memberAddress[1].value.trim().length == 0;
+        const addr2 = memberAddress[2].value.trim().length == 0;
+        const result1 = addr0 && addr1 && addr2;
+        const result2 = !(addr0 || addr1 || addr2);
+        if (!(result1 || result2)) {
+            alert("주소를 모두 작성 또는 미작성 해주세요");
+            e.preventDefault();
+        }
+    });
+}
+
+const changePw = document.querySelector("#changePw");
+
+if (changePw !== null) {
+    changePw.addEventListener("submit", e => {
+        const currentPw = document.querySelector("#currentPw");
+        const newPw = document.querySelector("#newPw");
+        const newPwConfirm = document.querySelector("#newPwConfirm");
+        if (currentPw.value.trim().length == 0 || newPw.value.trim().length == 0 || newPwConfirm.value.trim().length == 0) {
+            alert("모든 비밀번호 필드를 입력하세요");
+            e.preventDefault();
+            return;
+        }
+        const regExp = /^[a-zA-Z0-9!@#_-]{6,20}$/;
+        if (!regExp.test(newPw.value)) {
+            alert("비밀번호는 6자 이상 20자 이하의 영문 대소문자, 숫자, 특수문자(!@#_-)만 사용할 수 있습니다");
+            e.preventDefault();
+            return;
+        }
+        if (newPw.value !== newPwConfirm.value) {
+            alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다");
+            e.preventDefault();
+            return;
+        }
+    });
+}
+
+const secession = document.querySelector("#secession");
+
+if (secession !== null) {
+    secession.addEventListener("submit", e => {
+        const memberPw = document.querySelector("#memberPw");
+        const agree = document.querySelector("#agree");
+        if (memberPw.value.trim().length == 0) {
+            alert("비밀번호를 입력하세요");
+            e.preventDefault();
+            return;
+        }
+        if (!agree.checked) {
+            alert("회원탈퇴를 위해 약관에 동의해주세요");
+            e.preventDefault();
+            return;
+        }
+        if (!confirm("정말 탈퇴 하시겠습니까?")) {
+            alert("취소 되었습니다.");
+            e.preventDefault();
+            return;
+        }
+    });
+}
+
+// 프로필 이미지 추가/변경/삭제
+const profile = document.querySelector("#profile");
+
+if (profile !== null) {
+    let statusCheck = -1;
+    let backupInput;
+
+    const profileImg = document.querySelector("#profileImg");
+    const imageInput = document.querySelector("#imageInput");
+    const deleteImage = document.querySelector("#deleteImage");
+
+    const changeImageFn = e => {
+        const maxSize = 1024 * 1024 * 5;
+        const file = e.target.files[0];
+
+        if (file == undefined) {
+            const temp = backupInput.cloneNode(true);
+            imageInput.after(backupInput);
+            imageInput.remove();
+            imageInput = backupInput;
+            imageInput.addEventListener("change", changeImageFn);
+            backupInput = temp;
+            return;
+        }
+
+        if (file.size > maxSize) {
+            alert("5MB 이하의 이미지 파일을 선택해 주세요.");
+            if (statusCheck == -1) imageInput.value = '';
+            else {
+                const temp = backupInput.cloneNode(true);
+                imageInput.after(backupInput);
+                imageInput.remove();
+                imageInput = backupInput;
+                imageInput.addEventListener("change", changeImageFn);
+                backupInput = temp;
+            }
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.addEventListener("load", e => {
+            const url = e.target.result;
+            profileImg.setAttribute("src", url);
+            statusCheck = 1;
+            backupInput = imageInput.cloneNode(true);
+        });
+    };
+
+    imageInput.addEventListener("change", changeImageFn);
+
+    deleteImage.addEventListener("click", () => {
+        profileImg.src = "/images/user.png";
+        imageInput.value = '';
+        backupInput = undefined;
+        statusCheck = 0;
+    });
+
+    profile.addEventListener("submit", e => {
+        let flag = true;
+        if (loginMemberProfileImg == null && statusCheck == 1) flag = false;
+        if (loginMemberProfileImg != null && statusCheck == 0) flag = false;
+        if (loginMemberProfileImg != null && statusCheck == 1) flag = false;
+        if (flag) {
+            e.preventDefault();
+            alert("이미지 변경 후 클릭하세요");
+        }
+    });
+}
+
+// 닉네임 유효성 검사
+const memberNickname = document.querySelector("#memberNickname");
+const nickMessage = document.querySelector("#nickMessage");
+
+if (memberNickname !== null) {
+	memberNickname.addEventListener("click", e => {
+        const inputNickname = e.target.value;
+
+        if (inputNickname.trim().length === 0) {
+            nickMessage.innerText = "한글,영어,숫자로만 2~10글자";
+            nickMessage.classList.remove("confirm", "error");
+            checkObj.memberNickname = false;
+            memberNickname.value = "";
+            return;
+        }
+
+        const regExp = /^[가-힣\w\d]{2,10}$/;
+
+        if (!regExp.test(inputNickname)) {
+            alert("유효하지 않은 닉네임 형식 입니다.");
+            nickMessage.classList.add("error");
+            nickMessage.classList.remove("confirm");
+            checkObj.memberNickname = false;
+            return;
+        }
+
+        fetch("/member/checkNickname?memberNickname=" + inputNickname)
+            .then(resp => resp.text())
+            .then(count => {
+                if (count == 1) {
+                    alert("이미 사용중인 닉네임 입니다.");
+                    nickMessage.classList.add("error");
+                    nickMessage.classList.remove("confirm");
+                    checkObj.memberNickname = false;
+                    return;
+                }
+                alert("사용 가능한 닉네임 입니다.");
+                nickMessage.classList.add("confirm");
+                nickMessage.classList.remove("error");
+                checkObj.memberNickname = true;
+            })
+            .catch(err => console.log(err));
+    });
+}

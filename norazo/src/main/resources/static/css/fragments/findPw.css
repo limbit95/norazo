@@ -1,0 +1,47 @@
+body{
+    background-color: var(--primary3);
+}
+
+.sectionDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    width: 666px;
+    height: 596px;
+    background-color: var(--gray4);
+    border-radius: 80px;
+}
+
+#findPwForm {
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+}
+
+#findPwBtn {
+    display: block;
+    margin: 0 auto;
+}
+
+.findPwDiv{
+    display: flex;
+    width: 666px;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo{
+    margin-top: 50px;
+    width: 279px;
+    height: 56px;
+
+}
+
+.required{
+    color: red;
+    padding: 0 5px;
+}
+
+.confirm{color : green; }
+.error{ color: red;}

@@ -1,0 +1,101 @@
+package edu.kh.norazo.board.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.board.model.service.SportsBoardService;
+import edu.kh.norazo.member.model.dto.Member;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Controller
+@RequiredArgsConstructor
+@Slf4j
+@RequestMapping("sportsBoard")
+
+public class SportsBoardController {
+
+	private final SportsBoardService service;
+	
+	// 모임 게시판 게시글 목록 조회
+	@GetMapping("{sportsCode:[a-z]+}")
+	public String sportsBoardList(@PathVariable("sportsCode") String sportsCode,
+					   @RequestParam(value="cp", required=false, defaultValue="1") int cp,
+					   Model model) {
+		
+		Map<String, Object> map = service.selectBoardList(sportsCode, cp);
+		
+		model.addAttribute("pagination", map.get("pagination"));
+		model.addAttribute("boardList", map.get("boardList"));
+		model.addAttribute("sportsKrName", map.get("sportsKrName"));
+		model.addAttribute("sportsCode", sportsCode);
+		
+		return "board/sportsBoard";
+	}
+	
+	// 모임 게시글 모달창 조회
+	@ResponseBody
+	@GetMapping("modal")
+	public Board modalView(@RequestParam("boardNo") int boardNo) {
+		return service.modalView(boardNo);
+	}
+	
+	@GetMapping("detail")
+	public String sportsBoardDetail() {
+		return "board/sportsBoardDetail";
+	}
+	
+	// 모임 게시글 상세 정보 조회
+	@GetMapping("{sportsCode:[a-z]+}/{boardNo:[0-9]+}")
+	public String sportsBoardDetail(@PathVariable("sportsCode") String sportsCode,
+									@PathVariable("boardNo") int boardNo,
+									RedirectAttributes ra,
+									@SessionAttribute("loginMember") Member loginMember) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardNo", boardNo);
+		map.put("memberNo", loginMember.getMemberNo());
+		
+		// 모임 참석 여부 확인
+		int attendFl = service.attendFl(map);
+		
+		if(attendFl > 0) {
+			return "redirect:/sportsBoard/detail";
+		}
+		
+		// 미참석인 모임 참석 클릭시 참석 기능
+		int join = service.join(map);
+		
+		String path = null;
+		String message = null;
+		
+		if(join > 0) {
+			path = "sportsBoard/detail";
+			message = "모임에 참석되셨습니다. 상세조회 페이지로 이동합니다.";
+		} else {
+			path = "sportsBoard/" + sportsCode;
+			message = "참석 실패";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:/" + path;
+	}
+	
+}

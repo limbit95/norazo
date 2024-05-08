@@ -1,47 +1,85 @@
-.page .page-title {
-    display: none;
-    }
+/* 임성혁 수정 */
+main * {
+    width: 1090px;
+}
+
+main {
+    margin-bottom: 100px;
+}
 
 body{
-    background-color: #3889F2;
+    background-color: var(--primary3);
 }
 
 section {
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column; 
-    background-color: var(--gray4);
-    border-radius: 30px;
-    height: 200px;
-    height: 300px;
-}
-
-#logo{
-    width: 279px;
-    height: 57px;
-    margin-bottom: 10px;
-}
-.login-input-area {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 세로 정렬 */
+    align-items: center;
+    margin-top: 50px;
+    width: 666px;
+    height: 596px;
+    background-color: var(--gray4);
+    border-radius: 80px;
+}
+input[type="password"] {
+    flex-direction: column;
+} 
+
+#logo{
+    margin-top: 50px;
+    width: 279px;
+    height: 56px;
+
+}
+.saveId{
+    width: auto;
+    padding-left: 10px;
+}
+.login-input-area{
+    display: flex;
+    flex-basis: 200px;
+
+    align-items: center;
+    flex-direction: column;
+}
+.login-input-area div:nth-child(1),div:nth-child(2){
+    display: flex;
+    justify-content: center;
+    margin: 15px;
    
 }
-
-/* 로그인/비밀번호 인풋 */
-.login-input-area input[type="text"],
-.login-input-area input[type="password"] {
-    margin-bottom: 10px; /* 입력 필드 사이의 간격 조정 */
-    border-radius: 30px;
-    margin: 5;  
+.radioDiv{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding-left: 330px;
+}
+.radioDiv[type="checkbox"] {
+    width: 20%;
+}
+.login-input-area div:last-child input{
+    display: flex;
+    flex-direction: row;
+}
+.pwSignDiv{
+    display: flex;
+    width: 410px;
+    justify-content: space-between;
 }
 
-.login-input-area h4 {
-    margin-bottom: 1px; /* 라디오 버튼 아래의 여백 조정 */
+.pwSignDiv > a {
+    margin-top: 25px;
+    width: auto;
+    font-family: 'regular';
+    font-size: 20px;
+
 }
 
-.login-input-area button {
-    margin-top: 10px; /* 로그인 버튼 위의 여백 조정 */
+.saveIdCheckBox {
+    flex-direction: column;
 }
+/* .pwSignDiv > div > a{
+    display: flex;
+    justify-content: center;
+   
+} */

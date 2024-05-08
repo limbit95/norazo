@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
 
     <link rel="stylesheet" href="/css/fragments/adBanner.css">
+    <link rel="stylesheet" href="/css/fragments/modal.css">
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/common/nav.css">
-    <link rel="stylesheet" href="/css/fragments/modal.css">
 
     <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/board/sportsBoard.css">
-
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <title>스포츠 게시판</title>
 </head>
 <body>
@@ -19,14 +19,78 @@
     <th:block th:replace="~{common/nav}"></th:block>
 
     <main>
-
-        <div class="boart-title">
-            <h1>OO 게시판</h1>
+        <div class="board-page-header">
+            <th:block th:if="${sportsKrName} != null">
+                <h1 th:text="|${sportsKrName} ${application.boardTypeList.get(0).boardName}|" class="boardType-title"></h1>
+            </th:block>
+            <th:block th:unless="${sportsKrName}">
+                <h1 th:text="${application.boardTypeList.get(0).boardName}" class="boardType-title"></h1>
+            </th:block>
+            <button class="newMoim">새 모임</button>
         </div>
 
+        
+        <div class="board-list">
+            <th:block th:unless="${boardList}">
+                <!-- <h1>게시물이 존재하지 않습니다</h1> -->
+            </th:block>
+            <th:block th:if="${boardList}" th:each="board : ${boardList}">
+                <div>
+                    <img th:src="${board.thumbnail}" 
+                         class="thumbnail" 
+                         th:data-board-no="${board.boardNo}"
+                         th:data-member-no="${board.memberNo}"></img>
+                    <div>
+                        <h4 class="writeDate">[[${board.boardWriteDate}]]</h4>
+                        <h4 class="board-title" 
+                        th:data-board-no="${board.boardNo}"
+                        th:data-member-no="${board.memberNo}">[[${board.boardTitle}]]</h4>
+                    </div>
+                </div>
+            </th:block>
+        </div>
 
+        <th:block th:if="${boardList}">
+            <div class="pagination-area">
+                
+                <ul class="pagination" th:object="${pagination}">
+                    
+                    <!-- 첫 페이지로 이동 -->
+                    <li><a th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsCode}, cp=1)}">&lt;&lt;</a></li>
+                    
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsCode}, cp=*{prevPage})}">&lt;</a></li>
+                    
+                    <!-- 특정 페이지로 이동 -->
+                    <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                        <!-- 현재 보고있는 페이지 -->
+                        <li th:if="${i} == *{currentPage}">
+                            <a class="current" th:text="${i}">현재페이지</a>
+                        </li>
+                        
+                        <!-- 보고있지 않은 페이지 -->
+                        <li th:unless="${i} == *{currentPage}">
+                            <a th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsCode}, cp=${i})}" 
+                            th:text="${i}">이동할 페이지</a>
+                        </li>
+                    </th:block>
+                    
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsCode}, cp=*{nextPage})}">&gt;</a></li>
+                    
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a th:href="@{/sportsBoard/{sportsCode}(sportsCode=${sportsCode}, cp=*{maxPage})}">&gt;&gt;</a></li>
+                </ul>
+            </div>
+        </th:block>
 
+        
     </main>
+
+    <th:block th:replace="~{common/fragments/modal}"></th:block>
+    <th:block th:replace="~{common/footer}"></th:block>
     
+    
+
 </body>
 </html>

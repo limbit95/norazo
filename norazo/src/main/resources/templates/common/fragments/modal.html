@@ -1,92 +1,53 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>modal</title>
-    <link rel="stylesheet" href="/css/fragments/modal.css">
-    <link rel="stylesheet" href="/css/fragments/adBanner.css">
-    <link rel="stylesheet" href="/css/fragments/footer.css">
-    <link rel="stylesheet" href="/css/fragments/nav.css">
+<div class="modal-content popup-hidden">
 
-    <link rel="stylesheet" href="/css/common/main.css">
-  </head>
-  <body>
-    <div class="category-page">
-
-
-      <div class="category-board-list">
-        
-        <div class="board">
-          <img src="/1.jpg" class="thumbnail"></img>
-          <h4 class="address">서울시 은평구</h4>
-          <h3 class="board-title">
-            [AIDA1] 수영 전문가에게 배우는 프리다이빙 자격
-          </h3>
-        </div>
-        
-      </div>
-
-      <br><br><br>
-
-      <div class="modal-content popup-hidden">
-
-        <!-- 헤더(제목) -->
-        <div class="modal-header">
-          <h2 class="modal-title" id="exampleModalLabel">운영진과 함께하는 고구마런</h2>
-          <i class="fa-heart fa-regular board-like"></i>
-          <span type="button" class="close-btn">X</span>
-        </div>
-
-        <!-- 모임 정보 -->
-        <div class="modal-body">
-          <!-- 썸네일 -->
-          <div>
-            <img class="modal-thumbnail" src="/001.png">
-          </div>
-          
-          <!-- 모임 정보 -->
-          <div class="modal-info">
-            
-              <div class="modal-info-line">
-                <h2>일시 : </h2>
-                <h2 class="info-content">4월 23일 (화) 오후 6시</h2>
-              </div>
-              <div class="modal-info-line">
-                <h2>위치 : </h2>
-                <h2 class="info-content">숙대입구역 1번 출구</h2>
-              </div>
-              <div class="modal-info-line">
-                <h2>참석 : </h2>
-                <h2 class="info-content">11 / 20 (9자리 남음)</h2>
-              </div>
-            
-          </div>
-        </div>
-
-        <div class="attend-member-div">
-          <!-- 참석 인원 현황 -->
-            <img class="attend-member" src="/Ellipse 1.png">
-            <img class="attend-member" src="/Ellipse 1.png">
-            <img class="attend-member" src="/Ellipse 1.png">
-            <img class="attend-member" src="/Ellipse 1.png">
-            <img class="attend-member" src="/Ellipse 1.png">
-            <img class="attend-member" src="/Ellipse 1.png">
-        </div>
-
-        <!-- 참석 버튼 -->
-        <div class="modal-footer join-btn-div">
-          <button type="button" class="join-btn">JOIN</button>
-        </div>
-        
-      </div>
-
+  <!-- 헤더(제목) -->
+  <div class="modal-header">
+    <div>
+      <h2 class="modal-title" id="exampleModalLabel">운영진과 함께하는 고구마런</h2>
     </div>
+    <ion-icon name="heart-outline" class="board-like"></ion-icon>
+    <ion-icon name="heart" class="board-like like-hidden"></ion-icon>
+    <span type="button" class="close-btn">&times;</span>
+  </div>
 
-          
+  <!-- 모임 정보 -->
+  <div class="modal-body">
+    <!-- 썸네일 -->
+    <div>
+      <img class="modal-thumbnail">
+    </div>
+    
+    <!-- 모임 정보 -->
+    <div class="modal-info">
 
+      <div>
+        
+      </div>
+      
+      <div>
+        <div class="modal-info-line">
+          <h2>일시 : </h2>
+          <h2 class="date">4월 23일 (화) 오후 6시</h2>
+        </div>
+        <div class="modal-info-line">
+          <h2>위치 : </h2>
+          <h2 class="place">숙대입구역 1번 출구</h2>
+        </div>
+        <div class="modal-info-line">
+          <h2>참석 : </h2>
+          <h2 class="memberCount">11 / 20 (9자리 남음)</h2>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
-    <script src="/js/fragments/modal.js"></script>
-    <script src="https://kit.fontawesome.com/4a8589de03.js" crossorigin="anonymous"></script>
-  </body>
-</html>
+  <!-- 참석 인원 현황 -->
+  <div class="memberList-div">
+  </div>
+
+  <div class="join-btn-div">
+    <button type="button" class="join-btn" id="join-btn">JOIN</button>
+  </div>
+  
+</div>
