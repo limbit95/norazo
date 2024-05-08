@@ -97,6 +97,7 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		map.put("sportsKrName", sportsKrName);
 		
 		return mapper.selectSportsBoard(map);
+	}
 	// 모임글 좋아요 체크/해제
 	@Override
 	public int boardLike(Map<String, Object> map) {
