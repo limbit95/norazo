@@ -45,9 +45,12 @@
   <!-- 참석 인원 현황 -->
   <div class="memberList-div">
   </div>
+  <form action="/sportsBoard/detail?boardNo=${boardNo}&sportsCode=${sportsCode}" method="get">
+    <input type="hidden" name="boardNo" value="${boardNo}">
+    <input type="hidden" name="sportsCode" value="${sportsCode}">
 
-  <div class="join-btn-div">
-    <button type="button" class="join-btn" id="join-btn">JOIN</button>
-  </div>
-  
+    <div class="join-btn-div">
+      <button type="button" class="join-btn" id="join-btn">JOIN</button>
+    </div>
+</form>
 </div>

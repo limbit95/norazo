@@ -85,6 +85,18 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		return mapper.join(map);
 	}
 
+	// 모임글 상세조회 페이지 필요한 정보 얻어오기
+	@Override
+	public Board selectSportsBoard(Map<String, Object> map) {
+		
+		String sportsCode = (String) map.get("sportsCode");
+		
+		String sportsKrName = mapper.getSportsKrName(sportsCode);
+		
+		
+		map.put("sportsKrName", sportsKrName);
+		
+		return mapper.selectSportsBoard(map);
 	// 모임글 좋아요 체크/해제
 	@Override
 	public int boardLike(Map<String, Object> map) {

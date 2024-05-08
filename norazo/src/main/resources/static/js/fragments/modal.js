@@ -196,6 +196,8 @@ window.addEventListener("keydown", (e) => {
 
 // join 버튼 눌렀을 시
 
+
+
 if(joinBtn != null){
     joinBtn.addEventListener("click", e => {
         if(loginMember == null){
