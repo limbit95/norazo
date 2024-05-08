@@ -1,6 +1,6 @@
 <div class="MyProfileLeft">
     <div class="backGround">
-		<form action="profile" method="POST" name="myPageFrm" id="profile" enctype="multipart/form-data">
+		<form action="/myPage/profile" method="POST" name="myPageFrm" id="profile" enctype="multipart/form-data">
 			<label for="imageInput" id="profilelabel">
 				<img class="profile"
 		             th:with="user=#{user.default.image}"
@@ -8,6 +8,8 @@
 					 id="profileImg">
 			</label>
 			<input type="file" name="profileImg" id="imageInput" accept="image/*">
+			<button id="deleteImage">기본 이미지</button>
+			<input type="submit" value="이미지 수정" id="imageEditBtn">
 		</form>
         <div class="div1" th:object="${session.loginMember}">
             <div class="Rectangle1"><h3>닉네임</h3></div>

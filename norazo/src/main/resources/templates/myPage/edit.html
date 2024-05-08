@@ -24,7 +24,9 @@
                             <input type="text" name="memberNickname" 
                                 maxlength="10" id="memberNickname" class="profileUpdateInput2" th:value="${session.loginMember.memberNickname}"
                                 >
-                            <button class="button" type="button"><h3>중복확인</h3></button>
+                            <button class="button" type="button"><h3>중복확인</h3>
+								
+								</button>
                         </div>
                     </div>
             
@@ -36,7 +38,7 @@
             
                     <div class="myPage-row info-address">
                         <input type="text" name="memberAddress"
-                            placeholder="  우편번호" id="postcode" class="profileUpdateInput2" maxlength="6" th:value="${postcode}"
+                            placeholder="  우편번호" id="postcode" class="profileUpdateInput2" maxlength="6" th:value="${postcode}" readonly
                             >
                         
                         <button class="button" type="button" id="searchAddress"><h3>검색</h3></button>
@@ -44,7 +46,7 @@
             
                     <div class="myPage-row info-address">
                         <input type="text" name="memberAddress"
-                            placeholder="  도로명/지번 주소" id="address" class="profileUpdateInput1" th:value="${address}"
+                            placeholder="  도로명/지번 주소" id="address" class="profileUpdateInput1" th:value="${address}"	readonly
                             >
                     </div>
             
@@ -57,17 +59,17 @@
                     <div class="myPage-row info-gender">
                         <h2 class="editTitle">성별</h2>
                         <select id="gender1" name="gender" class="profileUpdateInput1" th:value="${gender}">
-                            <option id="gender" class="selected" value="select" selected disabled>  성별을 선택하세요</option>
-                            <option id="gender2" value="man">남자</option>
-                            <option id="gender2" value="woman">여자</option>
+                            <option id="gender" class="selected" value="select" th:selected="${gender}" disabled>  성별을 선택하세요</option>
+                            <option id="gender2" value="M" th:selected="${gender}">남성</option>
+                            <option id="gender2" value="F" th:selected="${gender}">여성</option>
                         </select>
                     </div>
 
                     <div class="myPage-row info-myself">
                         <h2 class="editTitle">자기소개</h2>
                         <div>
-                            <textarea name="memberinfo" wrap="on" rows="3"
-                                maxlength="60" id="memberinfo" class="profileUpdateInput2"
+                            <textarea name="memberinfo" wrap="on" rows="3" placeholder="60자 이하로 작성해 주세요"
+                                maxlength="60" id="introduce" class="profileUpdateInput2"
                                 ></textarea>
                         </div>
                     </div>

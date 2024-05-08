@@ -34,7 +34,7 @@ public interface SportsBoardMapper {
 	 * @param boardNo
 	 * @return
 	 */
-	Board modalView(int boardNo);
+	Board modalView(Map<String, Object> map);
 
 	/** 모임 참석한 회원 수 얻어오기
 	 * @param map
@@ -65,6 +65,17 @@ public interface SportsBoardMapper {
 	 * @return
 	 */
 	Board selectSportsBoard(Map<String, Object> map);
+	/** 좋아요 해제(DELETE)
+	 * @param map
+	 * @return
+	 */
+	int deleteBoardLike(Map<String, Object> map);
+
+	/** 좋아요 체크(INSERT)
+	 * @param map
+	 * @return
+	 */
+	int insertBoardLike(Map<String, Object> map);
 
 
 }

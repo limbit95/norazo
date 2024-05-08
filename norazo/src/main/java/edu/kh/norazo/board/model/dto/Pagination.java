@@ -133,7 +133,11 @@ public class Pagination {
 		if(currentPage == maxPage) {
 			nextPage = maxPage;
 		} else { // 그 외 경우
-			nextPage = endPage + 1;
+			if(currentPage == 1) {
+				nextPage = maxPage;
+			} else {
+				nextPage = endPage + 1;
+			}
 		}
 	}
 	
