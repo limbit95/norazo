@@ -61,8 +61,12 @@ public class FileConfig implements WebMvcConfigurer{
 		registry.addResourceHandler(profileResourceHandler) // /myPage/profile/**
 		.addResourceLocations(profileResourceLocation); // file:///C:/uploadFiles/profile/
 		
+		// 모임글 썸네일 이미지 요청 - 서버 폴더 연결 추가
 		registry.addResourceHandler(boardResourceHandler) // /images/board/**
 		.addResourceLocations(boardResourceLocation); // file:///C:/norazoServer/board/
+		
+		registry.addResourceHandler("/images/**")
+		.addResourceLocations("classpath:/static/images/");
 		
 	}
 	
