@@ -3,6 +3,7 @@ package edu.kh.norazo.board.model.service;
 import java.util.Map;
 
 import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.member.model.dto.Member;
 
 public interface SportsBoardService {
 
@@ -42,5 +43,7 @@ public interface SportsBoardService {
 	 * @return
 	 */
 	int boardLike(Map<String, Object> map);
+
+	Member boardCreateMember(int boardNo);
 
 }

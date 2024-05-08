@@ -79,21 +79,14 @@ public class SportsBoardController {
 		map.put("memberNo", loginMember.getMemberNo());
 		map.put("sportsCode", sportsCode);
 		
-		
+		Member createMember = service.boardCreateMember(boardNo);
 		// 모임글 상세조회 페이지 필요한 서비스
 		Board sportsBoardDetail = service.selectSportsBoard(map);
-
 		
+		model.addAttribute("memberList", sportsBoardDetail.getMemberList());
+		model.addAttribute("board", sportsBoardDetail);
+		model.addAttribute("createMember", createMember);
 		
-		model.addAttribute("thumbnail", sportsBoardDetail.getThumbnail());
-		model.addAttribute("boardTitle", sportsBoardDetail.getBoardTitle());
-		model.addAttribute("sportsKrName", sportsBoardDetail.getSportsKrName());
-		model.addAttribute("mettingDate", sportsBoardDetail.getMeetingDate());
-		
-		log.debug("sportsKrName : " + sportsBoardDetail.getSportsKrName());
-		
-//		List<Member> memberList = sportsBoardDetail.getMemberList();
-				
 		// 모임 참석 여부 확인
 		int attendFl = service.attendFl(map);
 		

@@ -443,6 +443,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  padding: 5px;
 }
 
 .userEmailContainer {
@@ -453,6 +455,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    padding: 5px;
 }
 
 .userInfoContainer {
@@ -460,6 +464,7 @@
     height: 120px; 
     background: var(--primary1); 
     border-radius: 30px;
+    overflow: hidden;
 }
 
 .userName {
@@ -469,8 +474,11 @@
     font-family: 'main';
     font-weight: 400; 
     word-wrap: break-word;
-    
-   
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    word-wrap: break-word;
+    overflow: auto;
     margin-top: 3px;
 }
 
@@ -481,7 +489,7 @@
     font-family: 'main';
     font-weight: 400; 
     word-wrap: break-word;
-   
+    overflow: auto;
 }
 
 .userInfo {
@@ -494,6 +502,7 @@
     line-height: 20px;
     word-spacing: 5px;
     padding: 15px;
+    overflow-y: auto;
 }
 
 
