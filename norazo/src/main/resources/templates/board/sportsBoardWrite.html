@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/board/sportsBoardWrite.css">
+    
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+    <title>모임글 작성 페이지</title>
+</head>
+<body>
+
+    <th:block th:replace="~{common/nav}"></th:block>
+    
+    <main>
+
+        <div class="write-type">
+            <h1>모임 등록하기</h1>
+        </div>
+
+        <form action="insert" method="post" class="board-write" id="boardWriteFrm">
+
+            <div class="write-head">
+                <!-- 썸네일 -->
+                <label for="thumbnail" class="thumbnail-label">
+                    <img src="/images/board-default-thumbnail.svg"
+                            id="profileImg"
+                            alt="썸네일 이미지">
+                </label>
+                <input type="file" id="thumbnail" accept="imgae/*" hidden>
+
+                <!-- 모임 정보 -->
+                <div class="meeting-info">
+                    <!-- 제목 -->
+                    <label class="board-title" for="title-input">
+                        <input class="board-title-input" id="title-input" type="text" maxlength="25">
+                    </label>
+
+                    <!-- 모임 날짜 -->
+                    <div>   
+                        <!-- 날짜 선택 -->
+                        <div class="datetime">
+                            <ion-icon name="calendar-clear-outline" class="date-icon"></ion-icon>
+                            <input type="datetime-local">
+                        </div>
+
+                        <!-- 카테고리 선택 -->
+                        <div class="category-select-div">
+                            <select name="" id="" class="category-select">
+                                <option value="" class="category-option">카테고리</option>
+                                <option value="" class="category-option">축구</option>
+                                <option value="" class="category-option">농구</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 모임 장소 -->
+                    <div>
+                        <ion-icon name="compass-outline"></ion-icon>
+                        <input type="text">
+                    </div>
+
+                    <!-- 참석 인원 -->
+                    <div>
+                        <!-- 사람 아이콘, 정원(1~50명) -->
+                        <ion-icon name="person-outline"></ion-icon>
+                        <select name="" id="">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!-- <div class="board-create-div">
+
+                <div class="content-div-box">
+
+                    <div class="board-title-div">
+                        <h2>타이틀자리입니다</h2>
+                    </div>
+
+                    <div class="board-content">
+                        <textarea name="boardContent"></textarea>
+                    </div>
+                    
+                    <button class="boardCreateBtn">등록 하기</button>
+                </div>
+            </div> -->
+
+        </form>
+
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>

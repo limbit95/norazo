@@ -36,8 +36,8 @@ public class SportsBoardController {
 	// 모임 게시판 게시글 목록 조회
 	@GetMapping("{sportsCode:[a-z]+}")
 	public String sportsBoardList(@PathVariable("sportsCode") String sportsCode,
-					   @RequestParam(value="cp", required=false, defaultValue="1") int cp,
-					   Model model) {
+					   			  @RequestParam(value="cp", required=false, defaultValue="1") int cp,
+					   			  Model model) {
 		
 		Map<String, Object> map = service.selectBoardList(sportsCode, cp);
 		
@@ -46,16 +46,31 @@ public class SportsBoardController {
 		model.addAttribute("sportsKrName", map.get("sportsKrName"));
 		model.addAttribute("sportsCode", sportsCode);
 		
+		log.debug("test : " + map.get("pagination"));
+		
 		return "board/sportsBoard";
 	}
 	
 	// 모임 게시글 모달창 조회
 	@ResponseBody
 	@GetMapping("modal")
-	public Board modalView(@RequestParam("boardNo") int boardNo) {
-		return service.modalView(boardNo);
+	public Board modalView(@RequestParam("boardNo") int boardNo,
+						   @SessionAttribute(value="loginMember", required=false) Member loginMember) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("boardNo", boardNo);
+		if(loginMember != null) {
+			map.put("memberNo", loginMember.getMemberNo());
+		}
+		
+		Board board = service.modalView(map);
+		
+		return board;
 	}
 	
+	
+	
+	// 모임 게시글 상세 정보 조회 페이지 이동
 	@GetMapping("detail")
 	public String sportsBoardDetail() {
 		return "board/sportsBoardDetail";
@@ -97,5 +112,13 @@ public class SportsBoardController {
 		
 		return "redirect:/" + path;
 	}
+	
+	// 모임글 좋아요 체크/해제
+	@ResponseBody
+	@PostMapping("like")
+	public int boardLike(@RequestBody Map<String, Object> map) {
+		return service.boardLike(map);
+	}
+	
 	
 }
