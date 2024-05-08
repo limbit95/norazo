@@ -89,12 +89,6 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 	@Override
 	public Board selectSportsBoard(Map<String, Object> map) {
 		
-		String sportsCode = (String) map.get("sportsCode");
-		
-		String sportsKrName = mapper.getSportsKrName(sportsCode);
-		
-		
-		map.put("sportsKrName", sportsKrName);
 		
 		return mapper.selectSportsBoard(map);
 	}
