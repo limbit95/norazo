@@ -24,7 +24,7 @@
                             <input type="text" name="memberNickname" 
                                 maxlength="10" id="memberNickname" class="profileUpdateInput2" th:value="${session.loginMember.memberNickname}"
                                 >
-                            <button class="button" type="button"><h3>중복확인</h3>
+                            <button name="confirm" id="confirm" class="button" type="button"><h3>중복확인</h3>
 								
 								</button>
                         </div>
@@ -68,7 +68,7 @@
                     <div class="myPage-row info-myself">
                         <h2 class="editTitle">자기소개</h2>
                         <div>
-                            <textarea name="memberinfo" wrap="on" rows="3" placeholder="60자 이하로 작성해 주세요"
+                            <textarea name="memberIntroduce" wrap="on" rows="3" placeholder="60자 이하로 작성해 주세요"
                                 maxlength="60" id="introduce" class="profileUpdateInput2"
                                 ></textarea>
                         </div>

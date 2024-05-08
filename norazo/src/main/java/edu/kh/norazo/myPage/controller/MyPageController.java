@@ -82,7 +82,7 @@ public class MyPageController {
 		// inputMember에 로그인한 회원번호 추가
 		int memberNo = loginMember.getMemberNo();
 		inputMember.setMemberNo(memberNo);
-		
+		inputMember.setMemberIntroduce(loginMember.getMemberIntroduce());
 		
 		// 회원 정보 수정 서비스 호출
 		int result = service.updateInfo(inputMember, memberAddress);

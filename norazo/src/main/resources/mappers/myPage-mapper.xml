@@ -6,8 +6,9 @@
 	<update id="updateInfo">
 		UPDATE "MEMBER" SET
 		MEMBER_NICKNAME = #{memberNickname},
-		MEMBER_TEL = #{memberTel},
-		MEMBER_ADDRESS = #{memberAddress}
+		GENDER = #{gender},
+		MEMBER_ADDRESS = #{memberAddress},
+		MEMBER_INTRODUCE = #{memberIntroduce}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
