@@ -93,6 +93,7 @@ public class MyPageServiceImpl implements MyPageService {
 			}
 			return result;
 	}
+	
 	@Override
 	public int updateInfo(Member inputMember, String[] memberAddress) {
 			// 입력된 주소가 있을 경우
