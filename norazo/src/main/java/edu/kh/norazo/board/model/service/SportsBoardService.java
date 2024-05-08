@@ -31,4 +31,10 @@ public interface SportsBoardService {
 	 */
 	int attendFl(Map<String, Object> map);
 
+	/** 모임글 상세조회 페이지 필요한 정보 얻어오기
+	 * @param map
+	 * @return
+	 */
+	Board selectSportsBoard(Map<String, Object> map);
+
 }

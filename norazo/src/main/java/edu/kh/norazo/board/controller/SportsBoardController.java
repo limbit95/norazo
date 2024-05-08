@@ -1,14 +1,13 @@
 package edu.kh.norazo.board.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,9 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.service.SportsBoardService;
 import edu.kh.norazo.member.model.dto.Member;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -56,27 +52,45 @@ public class SportsBoardController {
 		return service.modalView(boardNo);
 	}
 	
-	@GetMapping("detail")
-	public String sportsBoardDetail() {
-		return "board/sportsBoardDetail";
-	}
+//	@GetMapping("detail")
+//	public String sportsBoardDetail() {
+//		
+//		
+//		return "board/sportsBoardDetail";
+//	}
 	
 	// 모임 게시글 상세 정보 조회
 	@GetMapping("{sportsCode:[a-z]+}/{boardNo:[0-9]+}")
 	public String sportsBoardDetail(@PathVariable("sportsCode") String sportsCode,
 									@PathVariable("boardNo") int boardNo,
-									RedirectAttributes ra,
-									@SessionAttribute("loginMember") Member loginMember) {
+									@SessionAttribute("loginMember") Member loginMember, 
+									Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardNo", boardNo);
 		map.put("memberNo", loginMember.getMemberNo());
+		map.put("sportsCode", sportsCode);
 		
+		
+		// 모임글 상세조회 페이지 필요한 서비스
+		Board sportsBoardDetail = service.selectSportsBoard(map);
+
+		
+		
+		model.addAttribute("thumbnail", sportsBoardDetail.getThumbnail());
+		model.addAttribute("boardTitle", sportsBoardDetail.getBoardTitle());
+		model.addAttribute("sportsKrName", sportsBoardDetail.getSportsKrName());
+		model.addAttribute("mettingDate", sportsBoardDetail.getMeetingDate());
+		
+		log.debug("sportsKrName : " + sportsBoardDetail.getSportsKrName());
+		
+		List<Member> memberList = sportsBoardDetail.getMemberList();
+				
 		// 모임 참석 여부 확인
 		int attendFl = service.attendFl(map);
 		
 		if(attendFl > 0) {
-			return "redirect:/sportsBoard/detail";
+			return "board/sportsBoardDetail";
 		}
 		
 		// 미참석인 모임 참석 클릭시 참석 기능
@@ -86,16 +100,16 @@ public class SportsBoardController {
 		String message = null;
 		
 		if(join > 0) {
-			path = "sportsBoard/detail";
+			path = "board/sportsBoardDetail";
 			message = "모임에 참석되셨습니다. 상세조회 페이지로 이동합니다.";
 		} else {
 			path = "sportsBoard/" + sportsCode;
 			message = "참석 실패";
 		}
 		
-		ra.addFlashAttribute("message", message);
+		model.addAttribute("message", message);
 		
-		return "redirect:/" + path;
+		return path;
 	}
 	
 }

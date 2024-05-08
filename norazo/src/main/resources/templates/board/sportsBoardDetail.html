@@ -23,102 +23,128 @@
           <!-- 메인 모임글 컨테이너 -->
             <div class="boardMainDetailDiv">
 
+
               <div class="boardMainDetailContainer"></div>
+              
+              <!-- 모임글 정보 / 참여인원 등 타임리프 -->
 
-              <img src="https://via.placeholder.com/450x450" class="mainImg"/>
+              <th:block>
+                <img th:src="${thumbnail}" class="mainImg"/>
 
-              <div class="titleContainer">
-                <div class="Rectangle60"></div>
-                <h2 class="title">TITLE</h2>
-              </div>
-
-
-              <div class="type-date-container">
-               
-                <div class="type">
-                  <h2 class="type-name">축구</h2>
+                <div class="titleContainer">
+                  <div class="Rectangle60"></div>
+                  <h2 class="title" th:text="${boardTitle}">TITLE</h2>
                 </div>
                 
-                <div class="date">
-                  <h3 class="type-date">2024-04-24 12:45</h3>
-                </div>
-              </div>
-            
 
-              <!-- ------------------------------------------- -->
-              <!-- 모임 소개 컨테이너 -->
-
-
-              <div class="joinMemberContainer">
-                <div class="joinMemberTitleContainer">
-                  <div class="joinMemberTitle">
-                    <h2 class="joinTitle">참여 회원 현황</h2>
+                <div class="type-date-container">
+                
+                  <div class="type">
+                    <h2 class="type-name" th:text="${sportsKrName}">SportType</h2>
+                  </div>
+                  
+                  <div class="date">
+                    <h3 class="type-date" th:text="${mettingDate}">2024-04-24 12:45</h3>
                   </div>
                 </div>
-                <div class="joinMemberImgContainer">
-                  <img class="joinMemberImg" src="https://via.placeholder.com/80x80"/>
-                  <img class="joinMemberImg" src="https://via.placeholder.com/80x80"/>
-                  <img class="joinMemberImg" src="https://via.placeholder.com/80x80"/>
-                  <img class="joinMemberImg" src="https://via.placeholder.com/80x80"/>
-                  <img class="joinMemberImg" src="https://via.placeholder.com/80x80"/>
+              
+
+                <div class="joinMemberContainer">
+                  <div class="joinMemberTitleContainer">
+                    <div class="joinMemberTitle">
+                      <h2 class="joinTitle">참여 회원 현황</h2>
+                    </div>
+                  </div>
+                  <th:block th:each="memberList : ${memberList}" th:object="${memberList}">
+                  <div class="joinMemberImgContainer">
+                    <img class="joinMemberImg" th:src="*{profileImg}"/>
+                    <img class="joinMemberImg" th:src="*{profileImg}"/>
+                    <img class="joinMemberImg" th:src="*{profileImg}"/>
+                    <img class="joinMemberImg" th:src="*{profileImg}"/>
+                    <img class="joinMemberImg" th:src="*{profileImg}"/>
+                  </div>
+                  </th:block>
                 </div>
-              </div>
+              </th:block>
+
+
+
             </div>
 
 
+            <!-- ------------------------------------------- -->
+            <!-- 모임 소개 컨테이너 -->
 
             <div class="boardDetailWriteDiv">
 
-              <div class="boardDetailWriteContainer">
+              <!-- 모임 소개 타임리프 -->
+              <th:block>
 
-                <div class="boardWriteTitleContainer">
-                  <div class="boardWriteTitle">
-                    <h3 class="writeTitle">모임 소개</h3>
+                <div class="boardDetailWriteContainer">
+
+                  <div class="boardWriteTitleContainer">
+                    <div class="boardWriteTitle">
+                      <h3 class="writeTitle">모임 소개</h3>
+                    </div>
+                    
                   </div>
-                  
+
+                  <div class="boardWriteContentContainer">
+                    <div class="boardContentContainer">
+                      <h4 class="boardContent">안녕하십니까 저희KOSS(코스)는 농구에 관심있고 농구를 좋아하는 학생과 선배들이 모여 만들어진 동아리입니다. 저희는 단순히 농구만하는 동아리가 아닌 여러가지 대회출전을 나가기 위해 철저히 훈련하고 단합심을 보여주는 동아리입니다. 저희 코스 동아리를 통해 농구도 배우고 대회 출전을 통해 농구에 관심을 가지고 흥미를 가질 수 있으며 대회 경험을 쌓아가는데 도움이 되는 동아리입니다.</h4>
+
+                    </div>
+                    
+                  </div>
                 </div>
 
-                <div class="boardWriteContentContainer">
-                  <div class="boardContentContainer">
-                    <h4 class="boardContent">안녕하십니까 저희KOSS(코스)는 농구에 관심있고 농구를 좋아하는 학생과 선배들이 모여 만들어진 동아리입니다. 저희는 단순히 농구만하는 동아리가 아닌 여러가지 대회출전을 나가기 위해 철저히 훈련하고 단합심을 보여주는 동아리입니다. 저희 코스 동아리를 통해 농구도 배우고 대회 출전을 통해 농구에 관심을 가지고 흥미를 가질 수 있으며 대회 경험을 쌓아가는데 도움이 되는 동아리입니다.</h4>
+              </th:block>
 
-                  </div>
-                  
-                </div>
-              </div>
+
+
             </div>
 
             <!-- ------------------------------------------- -->
             <!-- 모임 정보 컨테이너 -->
 
             <div class="boardDetailDiv">
-              <div class="boardDetailContainer">
 
-                <div class="detailTitleContainer">
-                  <h3 class="boardDetailTitle">모임 정보</h3>
+              <!-- 모임정보 타임리프 -->
+              <th:block>
+                <div class="boardDetailContainer">
+
+                  <div class="detailTitleContainer">
+                    <h3 class="boardDetailTitle">모임 정보</h3>
+                  </div>
+
+                  <div class="detailContainer">
+
+                    <div class="titleContainer2">
+                      <h3 class="detailTitle">일시</h3>
+                      <h3 class="detail-user">4/23일 (화) 오후 6시</h3>
+                    </div>
+
+                    <div class="titleContainer2">
+                      <h3 class="detailTitle">위치</h3>
+                      <h3 class="detail-user">숙대입구역 1번 출구</h3>
+                    </div>
+
+                    <div class="titleContainer2">
+                      <h3 class="detailTitle">참석</h3>
+                      <h3 class="detail-user">11 /20 (9자리 남음)</h3>
+                    </div>
+                    
+                  </div> 
+
+                  <!-- 취소 -->
+                  <form action="">
+                    <button class="detailCancelBtn">취소</button>
+                  </form>
                 </div>
+              </th:block>
 
-                <div class="detailContainer">
 
-                  <div class="titleContainer2">
-                    <h3 class="detailTitle">일시</h3>
-                    <h3 class="detail-user">4/23일 (화) 오후 6시</h3>
-                  </div>
 
-                  <div class="titleContainer2">
-                    <h3 class="detailTitle">위치</h3>
-                    <h3 class="detail-user">숙대입구역 1번 출구</h3>
-                  </div>
-
-                  <div class="titleContainer2">
-                    <h3 class="detailTitle">참석</h3>
-                    <h3 class="detail-user">11 /20 (9자리 남음)</h3>
-                  </div>
-                  
-                </div> 
-                
-                <button class="detailCancelBtn">취소</button>
-              </div>
             </div>
 
             
@@ -130,30 +156,32 @@
                 <div class="creatorDetailContainer">
                   <h3 class="creatorTitle">모임장 소개</h3>
                 </div>
-
-                <div class="creatorDetaileBotContainer">
-
-                  <div>
-                    <img src="https://via.placeholder.com/200x200" class ="creatorImg">
-                  </div>
-
-                  <div class="creatorRightContainer">
-
-                    <div class="userProfile">
-                      <div class="userNameContainer">
-                        <h3 class="userName">파이리</h3>
-                      </div>
-                      <div class="userEmailContainer">
-                        <h3 class="userEmail">user01@kh.or.kr</h3>
-                      </div>
+                <!-- 모임장 정보 타임리프 -->
+                <th:block>
+                  <div class="creatorDetaileBotContainer">
+                    <div>
+                      <img src="https://via.placeholder.com/200x200" class ="creatorImg">
                     </div>
 
-                    <div class="userInfoContainer">
-                      <h3 class="userInfo">꼬북 꼬북 우와 꽃이 너무 이쁘다 ~형 저 3년전만해도 F 80%였어요</h3>
-                    </div>
+                    <div class="creatorRightContainer">
 
+                      <div class="userProfile">
+                        <div class="userNameContainer">
+                          <h3 class="userName">파이리</h3>
+                        </div>
+                        <div class="userEmailContainer">
+                          <h3 class="userEmail">user01@kh.or.kr</h3>
+                        </div>
+                      </div>
+
+                      <div class="userInfoContainer">
+                        <h3 class="userInfo">꼬북 꼬북 우와 꽃이 너무 이쁘다 ~형 저 3년전만해도 F 80%였어요</h3>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </th:block>
+
+
 
               </div>
             </div>
@@ -165,35 +193,116 @@
             <div class="boardCommentDiv">
 
               <!-- 댓글 그룹 컨테이너 -->
-              <div class="chatMainContainer">
+              <th:block>
+                <div class="boardCommentDivTop">
 
-                <div class="chatContainer">
+                
+                  <div class="chatMainContainer">
 
-                  <div class="chatLeftContainer">
-                    <img src="" class="chatUserProfile">
-                    <h3 class="chatUserName"></h3>
-                    <span class="chatDate"></span>
+                    <div class="chatContainer">
+                      
+                        <div class="chatLeftContainer">
+                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
+                          <h3 class="chatUserName">파이리</h3>
+                          <span class="chatDate">2024-04-24 12:45</span>
+                          
+                        </div>
+
+                      <div class="chatUpdateDeleteContainer">
+                        <a href="" class="a-updateBtn">수정</a>
+                        <a href="" class="a-deleteBtn">삭제</a>
+                      </div>
+
+                    </div>
+
+                    <div class="chatContentContainer">
+                      <p class="chatContent">글글글글</p>
+                    </div>
                   </div>
 
-                  <div class="chatUpdateDeleteContainer">
-                    <a href="" class="a-updateBtn">수정</a>
-                    <a href="" class="a-deleteBtn">삭제</a>
+                  <div class="chatMainContainer">
+
+                    <div class="chatContainer">
+                      
+                        <div class="chatLeftContainer">
+                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
+                          <h3 class="chatUserName">파이리</h3>
+                          <span class="chatDate">2024-04-24 12:45</span>
+                          
+                        </div>
+
+                      <div class="chatUpdateDeleteContainer">
+                        <a href="" class="a-updateBtn">수정</a>
+                        <a href="" class="a-deleteBtn">삭제</a>
+                      </div>
+
+                    </div>
+
+                    <div class="chatContentContainer">
+                      <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
+                    </div>
+                  </div>
+                  
+                  <div class="chatMainContainer">
+
+                    <div class="chatContainer">
+                      
+                        <div class="chatLeftContainer">
+                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
+                          <h3 class="chatUserName">파이리</h3>
+                          <span class="chatDate">2024-04-24 12:45</span>
+                          
+                        </div>
+
+                      <div class="chatUpdateDeleteContainer">
+                        <a href="" class="a-updateBtn">수정</a>
+                        <a href="" class="a-deleteBtn">삭제</a>
+                      </div>
+
+                    </div>
+
+                    <div class="chatContentContainer">
+                      <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
+                    </div>
+                  </div>
+
+
+                  <div class="chatMainContainer">
+
+                    <div class="chatContainer">
+                      
+                        <div class="chatLeftContainer">
+                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
+                          <h3 class="chatUserName">파이리</h3>
+                          <span class="chatDate">2024-04-24 12:45</span>
+                          
+                        </div>
+
+                      <div class="chatUpdateDeleteContainer">
+                        <a href="" class="a-updateBtn">수정</a>
+                        <a href="" class="a-deleteBtn">삭제</a>
+                      </div>
+
+                    </div>
+
+                    <div class="chatContentContainer">
+                      <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
+                    </div>
                   </div>
 
                 </div>
-
-                <div class="chatContentContainer">
-                  <h3 class="chatContent">글</h3>
-                </div>
-              </div>
-
+              </th:block>
               <!-- 댓글 등록 컨테이너 -->
               <div class="chatSubmitMainContainer">
-                <div class="chatSubmitContainer">
-                  <input class="boardDetailCommentInput">
-                  </input>
-                </div>
-                <button class="detailCommentSubmitBtn">댓글등록</button>
+
+                <!-- 댓글 등록 -->
+
+                <form action="" class="chatSubmitForm">
+                  <div class="chatSubmitContainer">
+                    <textarea class="boardDetailCommentInput" placeholder="댓글등록"></textarea>
+                  </div>
+                  <button class="detailCommentSubmitBtn">댓글등록</button>
+                </form>
               </div>
 
             </div>
