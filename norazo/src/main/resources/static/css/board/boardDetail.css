@@ -25,8 +25,8 @@
 .content-div-box{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 30px;
+
+    padding-top: 30px;
     align-items: center;
 
 }
@@ -44,7 +44,7 @@
 textarea {
     resize: none;
     width: 1000px;
-    height: 720px;
+    height: 500px;
     border-radius: 30px;
     padding-left: 20px;
     padding-top: 20px;
@@ -60,6 +60,6 @@ form.board-write {
 }
 
 .boardCreateBtn {
-    display: block; 
+    display: flex; 
     margin: 0 auto; 
 }

@@ -13,7 +13,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.norazo.myPage.model.service.MyPageService;
 import edu.kh.norazo.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("myPage")
@@ -129,6 +131,7 @@ public class MyPageController {
 	public String profileImagedit(@RequestParam("profileImg") MultipartFile profileImg,
 			@SessionAttribute("loginMember") Member loginMember,
 			RedirectAttributes ra) throws Exception {
+		log.debug("test : " + profileImg);
 		// 서비스 호출
 		// /myPage/profile/변경된 파일명 형태의 문자열
 		// 현재 로그인한 회원의 PROFILE_IMG 컬럼값으로 수정 UPDATE

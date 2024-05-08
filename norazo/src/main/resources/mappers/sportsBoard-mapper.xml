@@ -23,7 +23,7 @@
 	</select>
 	
 	<!-- 특정 게시판의 지정된 페이지 목록 조회 -->
-	<select id="selectBoardList">
+	<select id="selectBoardList" resultMap="modal_rm">
 		SELECT BOARD_NO, BOARD_TITLE, SPORTS_KR_NAME, MEMBER_NO, SPORTS_CODE, 
 		
 			(SELECT IMG_PATH || IMG_RENAME 
@@ -64,7 +64,7 @@
 	 	<id property="boardNo" column="BOARD_NO"/>
 	 	
 		<collection 
-			property="member"
+			property="memberList"
 			select="selectAttendMemberList"
 			column="BOARD_NO"
 			javaType="java.util.ArrayList"
@@ -86,17 +86,21 @@
 		
 			(SELECT IMG_PATH || IMG_RENAME 
 			FROM "BOARD_IMG" C 
-			WHERE C.BOARD_NO = B.BOARD_NO) THUMBNAIL, 
+			WHERE C.BOARD_NO = B.BOARD_NO) AS THUMBNAIL, 
 			
 			(SELECT COUNT(*)
 			FROM "ATTEND_MEMBER" A
-			WHERE A.BOARD_NO = B.BOARD_NO) ATTEND_MEMBER_COUNT
+			WHERE A.BOARD_NO = B.BOARD_NO) ATTEND_MEMBER_COUNT,
+			
+			(SELECT COUNT(*) FROM "BOARD_LIKE"
+			 WHERE MEMBER_NO = #{memberNo}
+			 AND BOARD_NO = #{boardNo}) LIKE_CHECK
 			
 		FROM "BOARD" B
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE BOARD_DEL_FL = 'N'
 		AND BOARD_CODE = 1
-		AND BOARD_NO = ${boardNo}
+		AND BOARD_NO = #{boardNo}
 	</select>
 	
 	<!-- 모임 참석한 회원 수 조회 -->
@@ -113,6 +117,7 @@
 		WHERE BOARD_NO = ${boardNo}
 	</select>
 	
+	<!-- 로그인한 회원 모임 참석 -->
 	<insert id="join">
 		INSERT INTO ATTEND_MEMBER VALUES(
 			#{memberNo},
@@ -120,11 +125,46 @@
 		)
 	</insert>
 	
+	<!-- 참석 여부 확인 -->
 	<select id="attendFl">
 		SELECT COUNT(*)
 		FROM ATTEND_MEMBER
 		WHERE BOARD_NO = ${boardNo}
 		AND MEMBER_NO = ${memberNo}
 	</select>
+	
+	<select id="selectSportsBoard">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCATION, 
+		TO_CHAR(MEETING_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') MEETING_DATE,
+		
+			(SELECT IMG_PATH || IMG_RENAME 
+			FROM "BOARD_IMG" C 
+			WHERE C.BOARD_NO = B.BOARD_NO) THUMBNAIL, 
+			
+			(SELECT COUNT(*)
+			FROM "ATTEND_MEMBER" A
+			WHERE A.BOARD_NO = B.BOARD_NO) ATTEND_MEMBER_COUNT
+			
+		FROM "BOARD" B
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE BOARD_DEL_FL = 'N'
+		AND SPORTS_CODE = #{sportsCode}
+		AND BOARD_NO = #{boardNo}
+	</select>
+  
+	<!-- 좋아요 해제 -->
+	<delete id="deleteBoardLike">
+		DELETE FROM "BOARD_LIKE"
+		WHERE MEMBER_NO = #{memberNo}
+		AND BOARD_NO = #{boardNo}
+	</delete>
+	
+	<!-- 좋아요 체크 -->
+	<insert id="insertBoardLike">
+		INSERT INTO "BOARD_LIKE" VALUES(
+			#{memberNo},
+			#{boardNo}
+		)
+	</insert>
 	
 </mapper>

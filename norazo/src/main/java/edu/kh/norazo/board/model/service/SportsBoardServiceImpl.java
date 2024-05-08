@@ -59,8 +59,8 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 
 	// 모임 게시글 모달창 조회
 	@Override
-	public Board modalView(int boardNo) {
-		return mapper.modalView(boardNo);
+	public Board modalView(Map<String, Object> map) {
+		return mapper.modalView(map);
 	}
 
 	// 모임 참석 여부 확인
@@ -83,6 +83,36 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 //		}
 		
 		return mapper.join(map);
+	}
+
+	// 모임글 상세조회 페이지 필요한 정보 얻어오기
+	@Override
+	public Board selectSportsBoard(Map<String, Object> map) {
+		
+		String sportsCode = (String) map.get("sportsCode");
+		
+		String sportsKrName = mapper.getSportsKrName(sportsCode);
+		
+		
+		map.put("sportsKrName", sportsKrName);
+		
+		return mapper.selectSportsBoard(map);
+	// 모임글 좋아요 체크/해제
+	@Override
+	public int boardLike(Map<String, Object> map) {
+		int result = 0;
+		
+		// 1. 좋아요가 체크된 상태인 경우 (likeCheck == 1)
+		// -> BOARD_LIKE 테이블에 DELETE
+		if((int)map.get("likeCheck") == 1) {
+			result = mapper.deleteBoardLike(map);
+		} else {
+			// 2. 좋아요가 해제된 상태인 경우 (likeCheck == 0)
+			// -> BOARD_LIKE 테이블에 INSERT
+			result = mapper.insertBoardLike(map);
+		}
+		
+		return -1;
 	}
 
 }

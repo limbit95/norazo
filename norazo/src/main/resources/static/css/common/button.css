@@ -315,6 +315,9 @@ input::placeholder {
     color: var(--gray3); 
 }
 
+input:focus {
+    outline: none;
+}
 
 /* ----------------------------------------------------------- */
 
@@ -464,9 +467,28 @@ input::placeholder {
 .boardDetailCommentInput {
     width: 250px; 
     height: 90px;
-
-    font-size: 20px;
+    border: none;
+    font-size: 15px;
+    resize: none;
+    border-radius: 30px;
+    padding: 15px;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    font-family: 'main';
 }
+.boardDetailCommentInput::placeholder {
+    color: var(--gray3);
+    font-size: 15px;
+}
+
+::-webkit-scrollbar {
+    width: auto;
+}
+.boardDetailCommentInput:focus {
+    outline: none;
+}
+
+
 
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
@@ -480,6 +502,7 @@ input::placeholder {
     text-align: center; 
     color: var(--primary1); 
     font-size: 20px; 
-    font-family: 'main';
+    font-family: 'main' !important;
     word-wrap: break-word;
+    text-decoration: none;
 }

@@ -27,6 +27,8 @@ public class Board {
 	private String boardDelFl;
 	private int memberNo; // 게시글 작성한 회원 번호
 	private int boardCode; // 1 : 모임 게시판 / 2 : 자유 게시판 / 3 : 문의 게시판
+	private String boardName; // 게시판 유형 한글 이름 
+	private String memberNickname; // 멤버 닉네임
 	
 // 	private List<Comment> commentList; // Comment dto 아직 안 만듬
 	private int likeCheck;
@@ -46,5 +48,5 @@ public class Board {
 	private String meetingLocation; // 모임 장소
 	private String meetingDate; // 모임 일시
 	
-	private List<Member> member;
+	private List<Member> memberList;
 }

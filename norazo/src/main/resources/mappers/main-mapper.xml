@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.norazo.main.model.mapper.MainMapper">
+	
+	<!-- 회원 리스트 조회 resultMap -->
+	<resultMap type="Board" id="modal_rm">
+	 	<id property="boardNo" column="BOARD_NO"/>
+	 	
+		<collection 
+			property="memberList"
+			select="selectAttendMemberList"
+			column="BOARD_NO"
+			javaType="java.util.ArrayList"
+			ofType="Member"
+		/>
+	 </resultMap>
+	 
+	 <select id="selectAttendMemberList" resultType="Member">
+	 	SELECT MEMBER_NO, PROFILE_IMG
+	 	FROM MEMBER
+	 	JOIN ATTEND_MEMBER USING(MEMBER_NO)
+	 	WHERE BOARD_NO = #{boardNo}
+	 </select>
+
 
 	<!-- 게시판 종류 조회 -->
 	<select id="selectBoardTypeList">
@@ -17,8 +38,8 @@
 	</select>
 	
 	<!-- 모임 게시판 게시글 최신순 4개 조회 -->
-	<select id="selectSportsBoardList">
-		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, MEETING_DATE, MEETING_LOCATION, MEMBER_NO, SPORTS_CODE, 
+	<select id="selectSportsBoardList" resultMap="modal_rm">
+		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NO, SPORTS_CODE, 
 		
 			(SELECT IMG_PATH || IMG_RENAME 
 			FROM "BOARD_IMG" C 
