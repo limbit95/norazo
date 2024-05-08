@@ -11,15 +11,15 @@
 }
 
 .profile {
+    margin-top: 10px;
     border-radius: 100%;
     width: 200px;
     height: 200px;
 }
 
 #profile {
-	border-radius: 100%;
 	width: 200px;
-    height: 200px;
+    height: 240px;
 }
 
 #profilelabel {
@@ -225,7 +225,7 @@ ion-icon {
     height: 50px;
 }
 
-#memberinfo {
+#introduce {
     width: 500px;
     height: 100px;
     overflow-y:auto;
@@ -253,4 +253,34 @@ ion-icon {
 	margin: -1px;
 	overflow: hidden;
 	clip: rect(0,0,0,0);
+}
+
+#profile {
+    display: flex;
+    justify-content: space-between;
+}
+
+#deleteImage {
+    margin-top: 220px;
+    height: 30px;
+    width: 95px;
+    background-color: var(--primary2);
+    border-radius: 30px; 
+    border: 0px;
+    color: var(--white);
+    font-family: 'regular';
+    font-size: 15px;
+    color: var(--white);
+}
+
+#imageEditBtn {
+    margin-top: 220px;
+    height: 30px;
+    width: 95px;
+    background-color: var(--primary2);
+    border-radius: 30px; 
+    border: 0px;
+    font-family: 'regular';
+    font-size: 15px;
+    color: var(--white);
 }

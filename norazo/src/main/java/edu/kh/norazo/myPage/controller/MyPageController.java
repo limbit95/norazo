@@ -100,7 +100,7 @@ public class MyPageController {
 			
 			loginMember.setMemberNickname( inputMember.getMemberNickname() );
 			
-			loginMember.setMemberTel( inputMember.getMemberTel() );
+			loginMember.setGender( inputMember.getGender() );
 			
 			loginMember.setMemberAddress( inputMember.getMemberAddress() );
 			
@@ -120,8 +120,13 @@ public class MyPageController {
 		return "myPage/changePw";
 	}
 	
+	@GetMapping("profile")
+	public String profileImagedit() {
+		return "myPage/myPage";
+	}
+	
 	@PostMapping("profile")
-	public String profileImgedit(@RequestParam("profileImg") MultipartFile profileImg,
+	public String profileImagedit(@RequestParam("profileImg") MultipartFile profileImg,
 			@SessionAttribute("loginMember") Member loginMember,
 			RedirectAttributes ra) throws Exception {
 		// 서비스 호출
