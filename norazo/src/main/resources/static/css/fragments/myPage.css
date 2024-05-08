@@ -284,4 +284,5 @@ ion-icon {
     font-family: 'regular';
     font-size: 15px;
     color: var(--white);
+    padding-left: 0px;
 }
