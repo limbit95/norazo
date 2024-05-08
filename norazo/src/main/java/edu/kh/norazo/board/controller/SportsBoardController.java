@@ -46,6 +46,8 @@ public class SportsBoardController {
 		model.addAttribute("sportsKrName", map.get("sportsKrName"));
 		model.addAttribute("sportsCode", sportsCode);
 		
+		log.debug("test : " + map.get("pagination"));
+		
 		return "board/sportsBoard";
 	}
 	

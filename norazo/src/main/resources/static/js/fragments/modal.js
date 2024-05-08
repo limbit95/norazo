@@ -199,7 +199,7 @@ window.addEventListener("keydown", (e) => {
 if(joinBtn != null){
     joinBtn.addEventListener("click", e => {
         if(loginMember == null){
-            if(confirm("로그인 후 이용가능합니다. 로그인 페이지로 이동하시겠습니까?")){
+            if(confirm("로그인 후 사용 가능한 기능입니다. \n로그인 페이지로 이동하시겠습니까?")){
                 location.href = "/member/login";
             }
             return;
@@ -218,7 +218,9 @@ if(joinBtn != null){
 if(boardLike != null){
     boardLike.addEventListener("click", e => {
         if(loginMember == null) {
-            alert("로그인 후 사용 가능한 기능입니다.");
+            if(confirm("로그인 후 사용 가능한 기능입니다. \n로그인 페이지로 이동하시겠습니까?")){
+                location.href = "/member/login";
+            }
             return;
         }
 
