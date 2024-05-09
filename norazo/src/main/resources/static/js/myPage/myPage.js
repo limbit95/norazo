@@ -16,8 +16,8 @@ function execDaumPostcode() {
 }
 if (document.querySelector("#searchAddress") !== null) {
 document.querySelector("#searchAddress").addEventListener("click", execDaumPostcode);
-
 }
+
 const updateInfo = document.querySelector("#updateInfo");
 
 // 회원 가입 유효성 검사 항목 

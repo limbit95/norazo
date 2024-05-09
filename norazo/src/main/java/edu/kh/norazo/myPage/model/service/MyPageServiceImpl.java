@@ -13,8 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.norazo.member.model.dto.Member;
 import edu.kh.norazo.myPage.model.mapper.MyPageMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Service
 @Transactional(rollbackFor=Exception.class) // 모든 예외 발생 시 롤백
 @RequiredArgsConstructor
@@ -86,7 +87,12 @@ public class MyPageServiceImpl implements MyPageService {
 			if(result > 0) {
 				// 프로필 이미지를 없앤 경우를 제외 -> 업로드한 이미지가 있을 경우
 				if(!profileImg.isEmpty()) {
-					profileImg.transferTo(new File(profileFolderPath +rename));
+					String fullClassPath = System.getProperty("java.class.path");
+					int idx = fullClassPath.indexOf("bin");
+					String classPath = fullClassPath.substring(0, idx) + "src/main/resources/static/images/profile/";
+					log.debug(classPath);
+					
+					profileImg.transferTo(new File(classPath +rename));
 				}
 				//세션 회원 정보에서 프로필 이미지 경로를 업데이트한 경로로 변경
 				loginMember.setProfileImg(updatePath);

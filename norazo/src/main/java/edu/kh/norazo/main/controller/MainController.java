@@ -14,8 +14,9 @@ import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.main.model.mapper.MainMapper;
 import edu.kh.norazo.main.model.service.MainService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class MainController {
