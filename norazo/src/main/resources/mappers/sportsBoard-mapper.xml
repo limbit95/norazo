@@ -137,6 +137,7 @@
 	<select id="selectSportsBoard" resultMap="modal_rm">
 		SELECT BOARD_NO, BOARD_TITLE, SPORTS_KR_NAME, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCATION, 
 		TO_CHAR(MEETING_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') MEETING_DATE,
+		TO_CHAR(BOARD_WRITE_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') AS BOARD_WRITE_DATE,
 		
 			(SELECT IMG_PATH || IMG_RENAME 
 			FROM "BOARD_IMG" C 
@@ -176,5 +177,12 @@
 		JOIN "BOARD" USING (MEMBER_NO) 
 		WHERE BOARD_NO = #{boardNo}
 	</select>
+	
+	
+	<!-- 모임글 취소 -->
+	<delete id="deleteJoinMember">
+		DELETE FROM ATTEND_MEMBER 
+		WHERE MEMBER_NO = #{memberNo} AND BOARD_NO = #{boardNo}
+	</delete>
 	
 </mapper>

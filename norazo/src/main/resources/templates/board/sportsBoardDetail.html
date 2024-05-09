@@ -40,11 +40,11 @@
                 <div class="type-date-container">
                 
                   <div class="type">
-                    <h2 class="type-name" th:text="${board.sportsKrName}">SportType</h2>
+                    <h2 class="type-name" th:text="${board.sportsKrName}">SPORTS TYPE</h2>
                   </div>
                   
                   <div class="date">
-                    <h3 class="type-date" th:text="${board.meetingDate}">Date</h3>
+                    <h3 class="type-date" th:text="${board.boardWriteDate}">CREATE DATE</h3>
                   </div>
                 </div>
               
@@ -53,6 +53,10 @@
                   <div class="joinMemberTitleContainer">
                     <div class="joinMemberTitle">
                       <h2 class="joinTitle">참여 회원 현황</h2>
+                    </div> 
+                    <div class="joinMemberIconContainer">
+                      <ion-icon name="person" class="personIco joinMemberStatus"></ion-icon>
+                      <h4 class="joinMemberStatus" th:text="|*{attendMemberCount} / *{memberCountLimit}|">ATTENDED MEMBER</h4>
                     </div>
                   </div>
 
@@ -101,7 +105,7 @@
 
                   <div class="boardWriteContentContainer">
                     <div class="boardContentContainer">
-                      <h4 class="boardContent" th:text="${boardContent != null and boardContent != '' ? boardContent : '소개글이 존재하지 않습니다'}">BOARD CONTENT</h4>
+                      <h4 class="boardContent" th:text="${boardConten}" id="boardContent">BOARD CONTENT</h4>
                     </div>
                     
                   </div>
@@ -130,26 +134,29 @@
 
                     <div class="titleContainer2">
                       <h3 class="detailTitle">일시</h3>
-                      <h3 class="detail-user" th:text="*{meetingDate}">4/23일 (화) 오후 6시</h3>
+                      <h3 class="detail-user" th:text="*{meetingDate}">DATE</h3>
                     </div>
 
                     <div class="titleContainer2">
                       <h3 class="detailTitle">위치</h3>
-                      <h3 class="detail-user" th:text="*{meetingLocation}">숙대입구역 1번 출구</h3>
+                      <h3 class="detail-user" th:text="*{meetingLocation}">LOCATION</h3>
                     </div>
 
                     <div class="titleContainer2">
                       <h3 class="detailTitle">참석</h3>
                       <h3 class="detail-user" id="memberInfo" 
                       th:data-attend="*{attendMemberCount}" 
-                      th:data-limit="*{memberCountLimit}">11 /20 (9자리 남음)</h3>
+                      th:data-limit="*{memberCountLimit}">ATTENDED MEMBER</h3>
                     </div>
                     
                   </div> 
 
                   <!-- 취소 -->
-                  <form action="">
-                    <button class="detailCancelBtn">취소</button>
+                  <form action="/sportsBoard/deleteJoinMember" method="POST">
+                    <button class="detailCancelBtn" id="deleteJoinMember">취소</button>
+                    <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
+                    <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
+                    <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
                   </form>
                 </div>
               </th:block>
@@ -178,15 +185,15 @@
 
                       <div class="userProfile">
                         <div class="userNameContainer">
-                          <h3 class="userName" th:text="*{memberNickname}">파이리</h3>
+                          <h3 class="userName" th:text="*{memberNickname}">USER NAME</h3>
                         </div>
                         <div class="userEmailContainer">
-                          <h3 class="userEmail" th:text="*{memberEmail}">user01@kh.or.kr</h3>
+                          <h3 class="userEmail" th:text="*{memberEmail}">USER EMAIL</h3>
                         </div>
                       </div>
 
                       <div class="userInfoContainer">
-                        <h3 class="userInfo" th:text="${memberIntroduce != null and memberIntroduce != '' ? memberIntroduce : '자기소개 비어있어요~'}">꼬북 꼬북 우와 꽃이 너무 이쁘다 ~형 저 3년전만해도 F 80%였어요</h3>
+                        <h3 class="userInfo" th:text="${memberIntroduce}" id="memberIntroduce">USER INFO</h3>
                       </div>
                     </div>
                   </div>
@@ -201,126 +208,8 @@
             <!-- ------------------------------------------- -->
             <!-- 대화내용 컨테이너 -->
 
-            <div class="boardCommentDiv">
-
-              <!-- 댓글 그룹 컨테이너 -->
-              <th:block th:object="${board}">
-                <div class="boardCommentDivTop">
-
-                
-                  <div class="chatMainContainer">
-
-                    <div class="chatContainer">
-                      
-                        <div class="chatLeftContainer">
-                          <img th:src="*{thumbnail}" class="chatUserProfile">
-                          <h3 class="chatUserName">파이리</h3>
-                          <span class="chatDate">2024-04-24 12:45</span>
-                          
-                        </div>
-
-                      <div class="chatUpdateDeleteContainer">
-                        <a href="" class="a-updateBtn">수정</a>
-                        <a href="" class="a-deleteBtn">삭제</a>
-                      </div>
-
-                    </div>
-
-                    <div class="chatContentContainer">
-                      <p class="chatContent">글글글글</p>
-                    </div>
-                  </div>
-
-                  <div class="chatMainContainer">
-
-                    <div class="chatContainer">
-                      
-                        <div class="chatLeftContainer">
-                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
-                          <h3 class="chatUserName">파이리</h3>
-                          <span class="chatDate">2024-04-24 12:45</span>
-                          
-                        </div>
-
-                      <div class="chatUpdateDeleteContainer">
-                        <a href="" class="a-updateBtn">수정</a>
-                        <a href="" class="a-deleteBtn">삭제</a>
-                      </div>
-
-                    </div>
-
-                    <div class="chatContentContainer">
-                      <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
-                    </div>
-                  </div>
-                  
-                  <div class="chatMainContainer">
-
-                    <div class="chatContainer">
-                      
-                        <div class="chatLeftContainer">
-                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
-                          <h3 class="chatUserName">파이리</h3>
-                          <span class="chatDate">2024-04-24 12:45</span>
-                          
-                        </div>
-
-                      <div class="chatUpdateDeleteContainer">
-                        <a href="" class="a-updateBtn">수정</a>
-                        <a href="" class="a-deleteBtn">삭제</a>
-                      </div>
-
-                    </div>
-
-                    <div class="chatContentContainer">
-                      <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
-                    </div>
-                  </div>
-
-
-                  <div class="chatMainContainer">
-
-                    <div class="chatContainer">
-                      
-                        <div class="chatLeftContainer">
-                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
-                          <h3 class="chatUserName">파이리</h3>
-                          <span class="chatDate">2024-04-24 12:45</span>
-                          
-                        </div>
-
-                      <div class="chatUpdateDeleteContainer">
-                        <a href="" class="a-updateBtn">수정</a>
-                        <a href="" class="a-deleteBtn">삭제</a>
-                      </div>
-
-                    </div>
-
-                    <div class="chatContentContainer">
-                      <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
-                    </div>
-                  </div>
-
-                </div>
-              </th:block>
-              <!-- 댓글 등록 컨테이너 -->
-              <div class="chatSubmitMainContainer">
-
-                <!-- 댓글 등록 -->
-
-                <form action="" class="chatSubmitForm">
-                  <div class="chatSubmitContainer">
-                    <textarea class="boardDetailCommentInput" placeholder="댓글등록"></textarea>
-                  </div>
-                  <button class="detailCommentSubmitBtn">댓글등록</button>
-                </form>
-              </div>
-
-            </div>
-    
-          </div>
+            <th:block th:replace="~{common/fragments/sportsBoardDetailComment}"></th:block>
     </main>
-
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/sportsBoard/sportsBoardDetail.js"></script>
 </body>

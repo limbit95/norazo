@@ -125,17 +125,16 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
 }
 
 .joinMemberTitleContainer {
     /* width: 250px; 
     height: 70px;  */
     display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
+
 .joinMemberTitle {
     height: 70px;
     width: 250px;
@@ -146,6 +145,30 @@
     justify-content: center;
     margin-bottom: 20px;
 }
+.joinMemberIconContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.personIco {
+    color: var(--secondary);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.joinMemberStatus {
+    text-align: center; 
+    color: var(--secondary); 
+    font-size: 15px; 
+    font-family: 'main';
+    font-weight: 400; 
+    word-wrap: break-word;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
 
 .joinTitle {
     color: var(--white);
