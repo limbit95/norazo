@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/board/sportsBoardWrite.css">
     
     <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
-    <title>모임글 작성 페이지</title>
+    <title>모임글 수정 페이지</title>
 </head>
 <body>
 
@@ -19,10 +19,10 @@
     <main>
 
         <div class="write-type">
-            <h1>모임 등록하기</h1>
+            <h1>모임 수정하기</h1>
         </div>
 
-        <form th:action="@{/sportsBoard/update/{sportsCode}/{boardNo}(sportsCode=${board.sportsCode}, boardNo=${board.boardNo})}" method="post" class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
+        <form th:action="@{/editBoard/update/{sportsCode}/{boardNo}(sportsCode=${board.sportsCode}, boardNo=${board.boardNo})}" method="post" class="board-write" id="boardUpdateFrm" enctype="multipart/form-data">
             <div>
                 <h1>모임 정보</h1>
             </div>
@@ -30,18 +30,22 @@
             <div class="write-head">
                 <!-- 썸네일 -->
                 <label for="inputThumbnail" class="thumbnail-label">
-                    <img th:src="${board.thumbnail}"
-                            id="thumbnailImg"
-                            class="preview"
-                            alt="썸네일 이미지">
+                    <img class="preview" id="thumbnailImg">
+                    <span class="delete-image">x</span>
                 </label>
-                <input type="file" id="inputThumbnail" name="inputThumbnail" class="inputImage" accept="imagas/*" hidden>
+                <input type="file" id="inputThumbnail" name="inputThumbnail" class="inputImage" accept="image/*" hidden>
 
                 <!-- 모임 정보 -->
                 <div class="meeting-info">
                     <!-- 제목 -->
                     <label class="board-title" for="title-input">
-                        <input class="board-title-input" name="boardTitle" id="title-input" type="text" maxlength="20" placeholder="제목 (20글자 이내 작성)">
+                        <input class="board-title-input" 
+                               name="boardTitle" 
+                               id="title-input" 
+                               type="text" 
+                               maxlength="20" 
+                               placeholder="제목 (20글자 이내 작성)"
+                               th:value="${board.boardTitle}">
                     </label>
 
                     <!-- 모임 날짜 -->
@@ -49,14 +53,17 @@
                         <!-- 날짜 선택 -->
                         <div class="datetime">
                             <ion-icon name="calendar-clear-outline" class="date-icon"></ion-icon>
-                            <input type="datetime-local" name="meetingDate">
+                            <!-- 연도월일 양식 바꿔서 삽입해야함 -->
+                            <input type="datetime-local" name="meetingDate"> 
                         </div>
 
                         <!-- 카테고리 선택 -->
+                        <h1></h1>
                         <div class="category-select-div">
                             <select id="" class="category-select" name="sportsCode">
-                                <option value="" class="category-option">카테고리</option>
-                                <th:block th:each="category : ${sportsTypeList}">
+                                <option class="category-option" th:value="${board.sportsCode}">[[${board.sportsKrName}]]</option>
+                                <th:block th:each="category : ${sportsTypeList}"
+                                          th:if="${category.sportsKrName} != ${board.sportsKrName}">
                                     <option th:value="${category.sportsCode}" class="category-option-value">[[${category.sportsKrName}]]</option>
                                 </th:block>
                             </select>
@@ -66,7 +73,13 @@
                     <!-- 모임 장소 -->
                     <div>
                         <ion-icon name="compass-outline" class="place-icon"></ion-icon>
-                        <input class="place-input" name="meetingLocation" id="place-input" type="text" maxlength="15" placeholder="장소 (15글자 이내 작성)">
+                        <input class="place-input" 
+                               name="meetingLocation" 
+                               id="place-input" 
+                               type="text" 
+                               maxlength="15"
+                               placeholder="장소 (15글자 이내 작성)"
+                               th:value="${board.meetingLocation}">
                     </div>
 
                     <!-- 참석 인원 -->
@@ -87,11 +100,11 @@
             </div>
 
             <div class="write-body">
-                <textarea name="boardContent" maxlength="2000"></textarea>
+                <textarea name="boardContent" maxlength="2000" th:text="${board.boardContent}"></textarea>
             </div>
 
             <div>
-                <button class="joinMemberViewBtn" id="insertBtn">등록하기</button>
+                <button class="joinMemberViewBtn" id="updateBtn">수정하기</button>
             </div>
 
             <!-- 기존 이미지가 있다가 삭제된 이미지의 순서를 기록-->
@@ -106,10 +119,11 @@
 
     <th:block th:replace="~{common/footer}"></th:block>
 
-    <!-- 이미지 미리보기 설정 -->
+     <!-- 이미지 미리보기 설정 -->
     <script th:inline="javascript">
         const imageList = /*[[${board.imageList}]]*/ [];
         const previewList = document.querySelectorAll("img.preview");
+        const attendMemberCount = /*[[${board.attendMemberCount}]]*/ "";
 
         const orderList = []; // 기존에 존재하던 이미지 순서를 기록
 
@@ -122,6 +136,6 @@
         }
     </script>
 
-    <script src="/js/sportsBoard/sportsBoardWrite.js"></script>
+    <script src="/js/sportsBoard/sportsBoardUpdate.js"></script>
 </body>
 </html>

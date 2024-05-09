@@ -1,31 +1,10 @@
-// 인원수 1~50 옵션 생성 코드
-const memberCountSelect = document.querySelector(".member-count-select");
-
-isDayOptionExisted = false;
-memberCountSelect.addEventListener('focus', function() {
-    if(!isDayOptionExisted) {
-        isDayOptionExisted = true
-      for(var i = 1; i <= 50; i++) {
-       
-        const count = document.createElement('option')
-        count.setAttribute('value', i)
-        count.innerText = i
-      
-        this.appendChild(count);
-      }
-    }
-}); 
-
-
-
-
-
-
 
 /* 선택된 이미지 미리보기 */
 // const previewList = document.getElementsByClassName("preview"); // img 태그 5개
-const inputImageList = document.getElementsByClassName("inputImage"); // input 태그 5개
+const inputImageList = document.querySelectorAll(".inputImage"); // input 태그 5개
 const deleteImageList = document.getElementsByClassName("delete-image"); // x버튼 5개
+
+console.log(inputImageList[0]);
 
 // x버튼이 눌러져 삭제된 이미지의 순서를 저장
 // * Set : 중복 저장 X, 순서 유지 X
@@ -162,49 +141,34 @@ for(let i=0 ; i<inputImageList.length ; i++){
 }
 
 
+
+
 // -------------------------------------------
 
-// 제출 시 유효성 검사
-const boardUpdateFrm = document.querySelector("#boardUpdateFrm");
+// 인원수 1~50 옵션 생성 코드
+const memberCountSelect = document.querySelector(".member-count-select");
 
-boardUpdateFrm.addEventListener("submit", e => {
-
-  const boardTitle = document.querySelector("[name='boardTitle']");
-  const boardContent = document.querySelector("[name='boardContent']");
-
-  if(boardTitle.value.trim().length == 0){
-    alert("제목을 작성해 주세요");
-    boardTitle.focus();
-    e.preventDefault();
-    return;
-  }
-
-  if(boardContent.value.trim().length == 0){
-    alert("내용을 작성해 주세요");
-    boardContent.focus();
-    e.preventDefault();
-    return;
-  }
-
-  // input 태그에 삭제할 이미지 순서(Set)를 배열로 만든 후 대입
-  // -> value(문자열) 저장 시 배열은 toString()호출되서 양쪽 []가 사라짐
-  document.querySelector("[name='deleteOrder']").value
-    = Array.from( deleteOrder );
-
-	console.log(document.querySelector("[name='deleteOrder']"));
-	// deleteOrder에 {2, 3} 이 있다면
-	// <input type="hidden" name="deleteOrder" value="2,3">
-
-  // 현재 페이지에서 얻어온 querystring을 input 태그 hidden 타입에 value 값으로 대입하기
-  document.querySelector("[name='querystring']").value = location.search;
-});
+isDayOptionExisted = false;
+memberCountSelect.addEventListener('focus', function() {
+    if(!isDayOptionExisted) {
+        isDayOptionExisted = true
+      for(var i = 1; i <= 50; i++) {
+       
+        const count = document.createElement('option')
+        count.setAttribute('value', i)
+        count.innerText = i
+      
+        this.appendChild(count);
+      }
+    }
+}); 
 
 
 
 
 
 // 작성 폼 유효성 검사
-const boardWriteFrm = document.querySelector("#boardWriteFrm");
+const boardUpdateFrm = document.querySelector("#boardUpdateFrm");
 
 const inputThumbnail = document.querySelector("#inputThumbnail");
 const boardTitle = document.querySelector("[name='boardTitle']");
@@ -213,52 +177,59 @@ const categorySelect = document.querySelector(".category-select");
 const meetingLocation = document.querySelector("[name='meetingLocation']");
 const boardContent = document.querySelector("[name='boardContent']");
 
-boardWriteFrm.addEventListener("submit", e => {
-  if(inputThumbnail.value.length == 0){
-    alert("대표 사진을 첨부해주세요.");
-    e.preventDefault();
-    return;
-  }
-  
-  if(boardTitle.value.trim().length == 0){
-    alert("제목을 작성해주세요.");
-    boardTitle.focus();
-    e.preventDefault();
-    return;
-  }
-  
-  if(meetingDate.value.length == 0){
-    alert("날짜를 선택해주세요.");
-    meetingDate.focus();
-    e.preventDefault();
-    return;
-  }
-  
-  if(categorySelect.value.length == 0){
-    alert("카테고리를 선택해주세요.");
-    categorySelect.focus();
-    e.preventDefault();
-    return;
-  }
+boardUpdateFrm.addEventListener("submit", e => {
+    if(inputImageList[0].value == null){
+        alert("대표 사진을 첨부해주세요.");
+        e.preventDefault();
+        return;
+    }
 
-  if(meetingLocation.value.trim().length == 0){
-    alert("모임 장소를 작성해주세요.");
-    meetingLocation.focus();
-    e.preventDefault();
-    return;
-  }
+    if(boardTitle.value.trim().length == 0){
+        alert("제목을 작성해주세요.");
+        boardTitle.focus();
+        e.preventDefault();
+        return;
+    }
 
-  if(memberCountSelect.value.length == 0){
-    alert("참석 가능 인원 제한수를 선택해주세요.");
-    memberCountSelect.focus();
-    e.preventDefault();
-    return;
-  }
+    if(meetingDate.value.length == 0){
+        alert("날짜를 선택해주세요.");
+        meetingDate.focus();
+        e.preventDefault();
+        return;
+    }
 
-  if(boardContent.value.trim().length == 0){
-    alert("모임 소개글을 작성해주세요.");
-    boardContent.focus();
-    e.preventDefault();
-    return;
-  }
+    if(categorySelect.value.length == 0){
+        alert("카테고리를 선택해주세요.");
+        categorySelect.focus();
+        e.preventDefault();
+        return;
+    }
+
+    if(meetingLocation.value.trim().length == 0){
+        alert("모임 장소를 작성해주세요.");
+        meetingLocation.focus();
+        e.preventDefault();
+        return;
+    }
+
+    if(memberCountSelect.value.length == 0){
+        alert("참석 가능 인원 제한수를 선택해주세요.");
+        memberCountSelect.focus();
+        e.preventDefault();
+        return;
+    }
+
+    if(memberCountSelect.value < attendMemberCount){
+        alert("현재 참석한 회원수가 참석 가능 인원 제한수보다 많습니다.");
+        memberCountSelect.focus();
+        e.preventDefault();
+        return;
+    }
+
+    if(boardContent.value.trim().length == 0){
+        alert("모임 소개글을 작성해주세요.");
+        boardContent.focus();
+        e.preventDefault();
+        return;
+    }
 });
