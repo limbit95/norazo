@@ -26,7 +26,6 @@
 <script th:inline="javascript">
     const loginMember = /*[[${session.loginMember}]]*/ "로그인 회원"; 
     const message =  /*[[${message}]]*/ "전달 받은 message";
-    console.log(introduce);
     if(message != null) {
         alert(message);
         if(message =="로그인 후 이용해주세요"){

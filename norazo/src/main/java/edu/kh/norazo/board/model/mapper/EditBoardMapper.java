@@ -21,6 +21,12 @@ public interface EditBoardMapper {
 	 * @return
 	 */
 	int insertUploadList(List<BoardImg> uploadList);
+
+	/** 작성된 모임글에 작성한 회원이 가장 먼저 참석하게 하는 기능
+	 * @param inputBoard
+	 * @return
+	 */
+	int firstJoin(Board inputBoard);
 	
 	
 	

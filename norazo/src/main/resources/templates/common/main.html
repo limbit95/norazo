@@ -27,9 +27,10 @@
         
         <!-- 신규 모임글 -->
         <div class="sportsBoard-list">
-            <th:block th:each="sportsBoard : ${recentSportsBoardList}">
+            <th:block th:each="sportsBoard, i : ${recentSportsBoardList}"
+                      th:if="4 > ${i.index}">
                 <div>
-                    <img th:src="${sportsBoard.thumbnail}" 
+                    <img th:src="${sportsBoard.thumbnail}"
                          class="thumbnail" 
                          th:data-board-no="${sportsBoard.boardNo}"
                          th:data-member-no="${sportsBoard.memberNo}"
@@ -96,7 +97,6 @@
     
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
-    <script src="/js/fragments/adBanner.js"></script>
     <script src="/js/fragments/modal.js"></script>
 </body>
 </html>
