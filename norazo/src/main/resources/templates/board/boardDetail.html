@@ -15,13 +15,8 @@
     <main>
 
         <div class="title-div-box">                       
-            <h1>자유 게시판 등록하기</h1>
+            <h1>00 게시판</h1>
         </div>
-
-        <form action="/board/boardDetail"
-            method="post"
-            class="board-write"
-            id="boardWrite">
 
             <div class="div-box">
 
@@ -31,35 +26,27 @@
 
                         <div class="board-title-div">
                             <h2>타이틀자리입니다</h2>
-                            <h3>user</h3>
-                            <h3>sysdate</h3>
+
+                            <div class="board-user-div">
+                                <h3>user</h3>
+                                <h3>2024-05-08-sysdate</h3>
+
+                            </div>
                         </div>
 
                         <div class="board-content">
                             <textarea name="boardContent"></textarea>
                         </div>
                         
-                        <button class="updateBoardBtn">수정</button>
-                        <button class="deleteBoardBtn">삭제</button>
-
-
-                        <div>
-                            <div>
-                                <h3>user</h3>
-                                <h3>2024-05-08-sysdate</h3>
-                            </div>
-                            <div>
-                                <a href="">답글</a>
-                                <a href="">수정</a>
-                                <a href="">삭제</a>
-                            </div>
-                            <div class="board-title-div"></div>
+                        <div class="button-div">
+                            <button class="updateBoardBtn">수정</button>
+                            <button class="deleteBoardBtn">삭제</button>
                         </div>    
+
                     </div>
                 </div>
 
-            </div>       
-        </form>
+            </div>  
 
     </main>
     

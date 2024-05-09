@@ -28,23 +28,23 @@
               
               <!-- 모임글 정보 / 참여인원 등 타임리프 -->
 
-              <th:block>
-                <img th:src="${thumbnail}" class="mainImg"/>
+              <th:block th:object="${board}">
+                <img th:src="*{thumbnail}" class="mainImg"/>
 
                 <div class="titleContainer">
                   <div class="Rectangle60"></div>
-                  <h2 class="title" th:text="${boardTitle}">TITLE</h2>
+                  <h2 class="title" th:text="*{boardTitle}">TITLE</h2>
                 </div>
                 
 
                 <div class="type-date-container">
                 
                   <div class="type">
-                    <h2 class="type-name" th:text="${sportsKrName}">SportType</h2>
+                    <h2 class="type-name" th:text="${board.sportsKrName}">SportType</h2>
                   </div>
                   
                   <div class="date">
-                    <h3 class="type-date" th:text="${mettingDate}">2024-04-24 12:45</h3>
+                    <h3 class="type-date" th:text="${board.meetingDate}">Date</h3>
                   </div>
                 </div>
               
@@ -55,16 +55,26 @@
                       <h2 class="joinTitle">참여 회원 현황</h2>
                     </div>
                   </div>
-                  <th:block th:each="memberList : ${memberList}" th:object="${memberList}">
+
+
                   <div class="joinMemberImgContainer">
-                    <img class="joinMemberImg" th:src="*{profileImg}"/>
-                    <img class="joinMemberImg" th:src="*{profileImg}"/>
-                    <img class="joinMemberImg" th:src="*{profileImg}"/>
-                    <img class="joinMemberImg" th:src="*{profileImg}"/>
-                    <img class="joinMemberImg" th:src="*{profileImg}"/>
+
+                    <th:block th:each="memberList, stat : ${memberList}" th:object="${memberList}">
+                      <th:block th:if="${stat.index < 5}">
+                        <img class="joinMemberImg" th:src="*{profileImg}" id="profileImg"/>
+                      </th:block>
+                    </th:block>
+
+                    <th:block th:if="${#lists.size(memberList) < 5}">
+                      <th:block th:each="i : ${#numbers.sequence(#lists.size(memberList), 4)}">
+                        <img class="joinMemberImg" src="/images/profile/default-profileImg.png" id="profileImg"/>
+                      </th:block>
+                    </th:block>
+
                   </div>
-                  </th:block>
                 </div>
+
+
               </th:block>
 
 
@@ -78,7 +88,7 @@
             <div class="boardDetailWriteDiv">
 
               <!-- 모임 소개 타임리프 -->
-              <th:block>
+              <th:block th:object="${board}">
 
                 <div class="boardDetailWriteContainer">
 
@@ -91,8 +101,7 @@
 
                   <div class="boardWriteContentContainer">
                     <div class="boardContentContainer">
-                      <h4 class="boardContent">안녕하십니까 저희KOSS(코스)는 농구에 관심있고 농구를 좋아하는 학생과 선배들이 모여 만들어진 동아리입니다. 저희는 단순히 농구만하는 동아리가 아닌 여러가지 대회출전을 나가기 위해 철저히 훈련하고 단합심을 보여주는 동아리입니다. 저희 코스 동아리를 통해 농구도 배우고 대회 출전을 통해 농구에 관심을 가지고 흥미를 가질 수 있으며 대회 경험을 쌓아가는데 도움이 되는 동아리입니다.</h4>
-
+                      <h4 class="boardContent" th:text="${boardContent != null and boardContent != '' ? boardContent : '소개글이 존재하지 않습니다'}">BOARD CONTENT</h4>
                     </div>
                     
                   </div>
@@ -110,7 +119,7 @@
             <div class="boardDetailDiv">
 
               <!-- 모임정보 타임리프 -->
-              <th:block>
+              <th:block th:object="${board}">
                 <div class="boardDetailContainer">
 
                   <div class="detailTitleContainer">
@@ -121,17 +130,19 @@
 
                     <div class="titleContainer2">
                       <h3 class="detailTitle">일시</h3>
-                      <h3 class="detail-user">4/23일 (화) 오후 6시</h3>
+                      <h3 class="detail-user" th:text="*{meetingDate}">4/23일 (화) 오후 6시</h3>
                     </div>
 
                     <div class="titleContainer2">
                       <h3 class="detailTitle">위치</h3>
-                      <h3 class="detail-user">숙대입구역 1번 출구</h3>
+                      <h3 class="detail-user" th:text="*{meetingLocation}">숙대입구역 1번 출구</h3>
                     </div>
 
                     <div class="titleContainer2">
                       <h3 class="detailTitle">참석</h3>
-                      <h3 class="detail-user">11 /20 (9자리 남음)</h3>
+                      <h3 class="detail-user" id="memberInfo" 
+                      th:data-attend="*{attendMemberCount}" 
+                      th:data-limit="*{memberCountLimit}">11 /20 (9자리 남음)</h3>
                     </div>
                     
                   </div> 
@@ -157,25 +168,25 @@
                   <h3 class="creatorTitle">모임장 소개</h3>
                 </div>
                 <!-- 모임장 정보 타임리프 -->
-                <th:block>
+                <th:block th:object="${createMember}">
                   <div class="creatorDetaileBotContainer">
                     <div>
-                      <img src="https://via.placeholder.com/200x200" class ="creatorImg">
+                      <img th:src="*{profileImg}" class ="creatorImg">
                     </div>
 
                     <div class="creatorRightContainer">
 
                       <div class="userProfile">
                         <div class="userNameContainer">
-                          <h3 class="userName">파이리</h3>
+                          <h3 class="userName" th:text="*{memberNickname}">파이리</h3>
                         </div>
                         <div class="userEmailContainer">
-                          <h3 class="userEmail">user01@kh.or.kr</h3>
+                          <h3 class="userEmail" th:text="*{memberEmail}">user01@kh.or.kr</h3>
                         </div>
                       </div>
 
                       <div class="userInfoContainer">
-                        <h3 class="userInfo">꼬북 꼬북 우와 꽃이 너무 이쁘다 ~형 저 3년전만해도 F 80%였어요</h3>
+                        <h3 class="userInfo" th:text="${memberIntroduce != null and memberIntroduce != '' ? memberIntroduce : '자기소개 비어있어요~'}">꼬북 꼬북 우와 꽃이 너무 이쁘다 ~형 저 3년전만해도 F 80%였어요</h3>
                       </div>
                     </div>
                   </div>
@@ -193,7 +204,7 @@
             <div class="boardCommentDiv">
 
               <!-- 댓글 그룹 컨테이너 -->
-              <th:block>
+              <th:block th:object="${board}">
                 <div class="boardCommentDivTop">
 
                 
@@ -202,7 +213,7 @@
                     <div class="chatContainer">
                       
                         <div class="chatLeftContainer">
-                          <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
+                          <img th:src="*{thumbnail}" class="chatUserProfile">
                           <h3 class="chatUserName">파이리</h3>
                           <span class="chatDate">2024-04-24 12:45</span>
                           
@@ -311,5 +322,6 @@
     </main>
 
     <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/sportsBoard/sportsBoardDetail.js"></script>
 </body>
 </html>

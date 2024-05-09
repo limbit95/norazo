@@ -57,9 +57,18 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+	// 화면 보기용
 	@GetMapping("boardDetail")
 	public String boardDetail() {
 		
 		return "board/boardDetail";
 	}
+	// 화면 보기용 
+	@GetMapping("comment")
+	public String boardComment() {
+		
+		return "board/comment";
+	}
+	
+	
 }
