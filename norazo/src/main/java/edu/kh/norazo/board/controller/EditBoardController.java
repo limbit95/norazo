@@ -169,7 +169,6 @@ public class EditBoardController {
 		// 1. 커맨드 객체(inputBoard)에 boardCode, boardNo, memberNo 세팅(추가 삽입)
 		inputBoard.setSportsCode(sportsCode);
 		inputBoard.setBoardNo(boardNo);
-		inputBoard.setMemberNo(loginMember.getMemberNo());
 		// -> inputBoard 에 제목/내용/boardCode/boardNo/memberNo 세팅되어 있음
 		
 		// 2. 게시글 수정 서비스 호출 후 결과 반환 받기

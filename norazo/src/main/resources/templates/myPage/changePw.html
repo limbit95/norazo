@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="/css/fragments/myPage.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+</head>
+<body>
+    <th:block th:replace="~{common/nav}"></th:block>
+    <main>
+        <div class="contents">
+            <th:block th:replace="~{common/fragments/myPageLeftSide}"></th:block>
+			<section class="changePwmain">
+                <div class="editTitle"><h1>비밀번호 변경</h1></div>
+                <form action="changePw" method="POST" name="myPageFrm" id="changePw">
+                    <div class="myPage-row">
+                        <h2 class="editTitle">현재 비밀번호</h2>
+                        <div>
+                            <input type="password" class="profileUpdateInput1" name="currentPw" id="currentPw" maxlength="30" >  
+                        </div>
+                    </div>
+                    <div class="myPage-row">
+                        <h2 class="editTitle">현재 비밀번호</h2>
+                        <div>
+                            <input type="password" class="profileUpdateInput1" name="newPw" id="newPw" maxlength="30"> 
+                        </div>
+                    </div>
+                    <div class="myPage-row">
+                        <h2 class="editTitle">현재 비밀번호</h2>
+                        <div>
+                            <input type="password" class="profileUpdateInput1" name="newPwConfirm" id="newPwConfirm" maxlength="30">
+                        </div>
+                    </div>
+                    <button class="myPage-submit"><h3>변경하기</h3></button>
+                    </form>
+			</section>
+        </div>
+    </main>
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/myPage/myPage.js"></script>
+    <script th:inline="javascript">
+        const loginMemberProfileImg = "회원프로필이미지";
+    </script>
+</body>
+</html>
