@@ -25,9 +25,7 @@
 
 <script th:inline="javascript">
     const loginMember = /*[[${session.loginMember}]]*/ "로그인 회원"; 
-    const introduce = /*[[${session.loginMember.memberIntroduce}]]*/ "자기소개";
     const message =  /*[[${message}]]*/ "전달 받은 message";
-    const loginNickname = /*[[${session.loginMember.memberNickname}]]*/ "로그인 닉네임";
     console.log(introduce);
     if(message != null) {
         alert(message);
