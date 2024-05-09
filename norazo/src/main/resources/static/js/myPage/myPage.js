@@ -275,8 +275,21 @@ if(signUpForm != null) {
         }}
     }
   });
+
 }
-const introduce = loginMember.memberIntroduce;
+
+
+if(loginMember != null) {
+    let text = loginMember.memberIntroduce;
+    const introduced = text.replaceAll(/\n/g, "<br>");
+    if (introduced != null) {
+        document.getElementById('introduced').innerHTML = introduced;
+    }
+}
+
+
+const introduce = loginMember.memberIntroduce.replaceAll("<br>", "\r\n");
 if (introduce != null) {
     document.getElementById('introduce').innerHTML = introduce;
 }
+
