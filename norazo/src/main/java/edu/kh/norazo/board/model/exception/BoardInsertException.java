@@ -1,4 +1,4 @@
-package edu.kh.norazo.board.model.exeption;
+package edu.kh.norazo.board.model.exception;
 
 public class BoardInsertException extends RuntimeException {
 	
