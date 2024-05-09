@@ -277,8 +277,8 @@ if(signUpForm != null) {
   });
 
 }
-
-
+const a = document.getElementById("changePwbtn");
+a.addEventListener("click", e => {
 if(loginMember != null) {
     let text = loginMember.memberIntroduce;
     const introduced = text.replaceAll(/\n/g, "<br>");
@@ -286,10 +286,15 @@ if(loginMember != null) {
         document.getElementById('introduced').innerHTML = introduced;
     }
 }
-
-
+});
+if(loginMember != null) {
+    let text = loginMember.memberIntroduce;
+    const introduced = text.replaceAll(/\n/g, "<br>");
+    if (introduced != null) {
+        document.getElementById('introduced').innerHTML = introduced;
+    }};
 const introduce = loginMember.memberIntroduce.replaceAll("<br>", "\r\n");
 if (introduce != null) {
     document.getElementById('introduce').innerHTML = introduce;
-}
+};
 
