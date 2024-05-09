@@ -165,6 +165,7 @@ if (profile !== null) {
     });
 }
 
+const loginNickname = loginMember.memberNickname;
 // 닉네임 유효성 검사
 var flag1 = false;
 const memberNickname = document.querySelector("#memberNickname");
@@ -253,7 +254,7 @@ if(signUpForm != null) {
     }
   });
 }
-
+const introduce = loginMember.memberIntroduce;
 if (introduce != null) {
     document.getElementById('introduce').innerHTML = introduce;
 }
