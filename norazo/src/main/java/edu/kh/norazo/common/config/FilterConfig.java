@@ -22,7 +22,7 @@ public class FilterConfig {
 		// /myPage/* : myPage로 시작하는 모든 요청
 		String[] filteringURL = {"/myPage/*", 
 								 "/sportsBoard/detail/*",
-								 "/sportsBoard/detail/*"};
+								 "/editBoard/insert/*"};
 		
 		// 필터가 동작할 URL을 세팅
 		// Arrays.asList();

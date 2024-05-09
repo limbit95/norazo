@@ -29,8 +29,8 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	private final MyPageMapper mapper;
 	
-	@Value("${my.profile.folder-path}")
-	private String profileFolderPath;
+//	@Value("${my.profile.folder-path}")
+//	private String profileFolderPath;
 	@Override
 	public int profile(MultipartFile profileImg, Member loginMember) throws Exception {
 			// 수정할 경로

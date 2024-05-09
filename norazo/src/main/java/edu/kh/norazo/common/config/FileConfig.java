@@ -32,24 +32,19 @@ public class FileConfig implements WebMvcConfigurer{
 	@Value("${spring.servlet.multipart.location}")
 	private String location;
 	
-	// 카테고리 이미지 파일 경로명, 서버 폴더 경로
-	@Value("${category.img.resource-handler}")
-	private String categoryImgResourceHandler;
-	@Value("${category.img.resource-location}")
-	private String categoryImgResourceLocation;
-	
 	// 프로필 이미지 파일 경로명, 서버 폴더 경로
 	@Value("${my.profile.resource-handler}")
 	private String profileResourceHandler;
-	@Value("${my.profile.resource-location}")
-	private String profileResourceLocation;
+//	@Value("${my.profile.resource-location}")
+//	private String profileResourceLocation;
 	
 	// 게시글 이미지 파일 경로명, 서버 폴더 경로
 	@Value("${my.board.resource-handler}")
 	private String boardResourceHandler;
-	@Value("${my.board.resource-location}")
-	private String boardResourceLocation;
+//	@Value("${my.board.resource-location}")
+//	private String boardResourceLocation;
 	
+	// norazo 프로젝트 classpath"/static/images/ 하위 폴더 경로
 	String fullClassPath = System.getProperty("java.class.path");
 	int idx = fullClassPath.indexOf("bin");
 	String classPath = fullClassPath.substring(0, idx) + "src/main/resources/static/images/";
@@ -57,16 +52,16 @@ public class FileConfig implements WebMvcConfigurer{
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// 카테고리 이미지
-		registry.addResourceHandler(categoryImgResourceHandler)
-		.addResourceLocations(categoryImgResourceLocation);
+		registry.addResourceHandler("/category/**")
+		.addResourceLocations("file:///" + classPath + "/category/");
 	
 		// 프로필 이미지 요청 - 서버 폴더 연결 추가
 		registry.addResourceHandler(profileResourceHandler) // /myPage/profile/**
-		.addResourceLocations("file:///" + classPath + "/profile/"); // file:///C:/uploadFiles/profile/
+		.addResourceLocations("file:///" + classPath + "/profile/"); // classpath:/static/images/profile/
 		
-		// 모임글 썸네일 이미지 요청 - 서버 폴더 연결 추가
+		// 게시글 썸네일 이미지 요청 - 서버 폴더 연결 추가
 		registry.addResourceHandler(boardResourceHandler) // /images/board/**
-		.addResourceLocations(boardResourceLocation); // file:///C:/norazoServer/board/
+		.addResourceLocations("file:///" + classPath + "/board/"); // classpath:/static/images/board/
 		
 		registry.addResourceHandler("/images/**")
 		.addResourceLocations("classpath:/static/images/");
