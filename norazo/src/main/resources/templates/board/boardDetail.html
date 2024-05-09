@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/common/nav.css">
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/board/boardDetail.css">
-    <link rel="stylesheet" href="/css/board/comment.css">
     <link rel="stylesheet" href="/css/common/button.css">
 </head>
 <body>
@@ -16,7 +15,7 @@
     <main>
 
         <div class="title-div-box">                       
-            <h1>00 게시판</h1>
+            <h1 th:text="${board.boardName}">00 게시판</h1>
         </div>
 
             <div class="div-box">
@@ -26,17 +25,21 @@
                     <div class="content-div-box">
 
                         <div class="board-title-div">
-                            <h2>타이틀자리입니다</h2>
+                            <h2 class="title-font"
+                                th:text="${board.boardTitle}">타이틀자리입니다</h2>
 
                             <div class="board-user-div">
-                                <h3>user</h3>
-                                <h3>2024-05-08-sysdate</h3>
+                                <h3 id="detail-user-font"
+                                    th:text="${board.memberNickname}">user</h3>
+                                <h3 id="detail-sysdate-font"
+                                    th:text="${board.boardWriteDate}">2024-05-08-sysdate</h3>
 
                             </div>
                         </div>
 
                         <div class="board-content">
-                            <textarea name="boardContent"></textarea>
+                            <textarea id="boardContent"
+                                      th:text="${board.boardContent}"></textarea>
                         </div>
                         
                         <div class="button-div">

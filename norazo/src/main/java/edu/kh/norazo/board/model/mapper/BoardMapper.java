@@ -29,6 +29,8 @@ public interface BoardMapper {
 	 */
 	List<Board> selectFaqBoardList(String boardCode, RowBounds rowBounds);
 
+	Board selectOne(Map<String, Object> map);
+
 
 
 
