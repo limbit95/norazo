@@ -16,4 +16,14 @@ memberCountSelect.addEventListener('focus', function() {
     }
 }); 
 
-const 
+// 작성 폼 유효성 검사
+const boardWriteFrm = document.querySelector("#boardWriteFrm");
+
+const boardTitle = document.querySelector(".title-input");
+const thumbnail = document.querySelector("#thumbnail");
+const meetingDate = document.querySelector("[name='meetingDate']");
+const categoryOption = document.querySelector(".category-option");
+const meetingLocation = document.querySelector("[name='meetingLocation']");
+const memberCountLimit = document.querySelector("[name='memberCountLimit']");
+const boardContent = document.querySelector("[name='boardContent']");
+

@@ -51,7 +51,8 @@ public class FileConfig implements WebMvcConfigurer{
 	private String boardResourceLocation;
 	
 	String fullClassPath = System.getProperty("java.class.path");
-	String classPath = fullClassPath.substring(0, 27) + "src/main/resources/static/images/";
+	int idx = fullClassPath.indexOf("bin");
+	String classPath = fullClassPath.substring(0, idx) + "src/main/resources/static/images/";
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
