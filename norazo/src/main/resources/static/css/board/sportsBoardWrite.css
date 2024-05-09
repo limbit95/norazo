@@ -10,10 +10,23 @@
     flex-direction: column;
     background-color: var(--primary3);
     width: 1090px;
-    height: 1200px;
+    height: 1350px;
     padding: 30px;
     margin-top: 50px;
     border-radius: 30px;
+}
+
+/* <h1>모임 정보</h1> */
+.board-write > :nth-child(1) {
+    display: flex;
+    justify-content: center;
+}
+
+/* <h1>모임 소개글</h1> */
+.board-write > :nth-child(3) {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
 }
 
 /* 모임 작성 머릿부분 */
@@ -24,6 +37,7 @@
     overflow: auto;
     background-color: white;
     border-radius: 30px;
+    margin-top: 30px;
 }
 
 /* 썸네일 라벨 */
@@ -279,7 +293,7 @@
 }
 
 /* 등록하기 버튼 div */
-.board-write > :nth-child(3) {
+.board-write > :nth-child(5) {
     display: flex;
     justify-content: center;
     margin-top: 30px;

@@ -2,6 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.norazo.board.model.mapper.EditBoardMapper">
 	
-	
+	<insert id="boardInsert" useGeneratedKeys="true" parameterType="Board">
+		
+		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO "BOARD" VALUES(
+			#{boardNo},
+			#{boardTitle},
+			#{boardContent},
+			DEFAULT,
+			NULL,
+			DEFAULT,
+			#{memberNo},
+			#{boardCode},
+			#{sportsCode},
+			#{memberCountLimit},
+			#{meetingLocation},
+			#{meetingDate}
+		)
+	</insert>
+
+	<insert id="insertUploadList" parameterType="list">
+		INSERT INTO "BOARD_IMG" 
+		
+		<foreach collection="list" item="img"
+			open="(" close=")" separator=" UNION ">
+			SELECT NEXT_IMG_NO(), 
+			#{img.imgPath}, 
+			#{img.imgOriginalName}, 
+			#{img.imgRename}, 
+			#{img.imgOrder}, 
+			#{img.boardNo} 
+			FROM DUAL
+		</foreach>
+	</insert>
 
 </mapper>

@@ -169,6 +169,7 @@ if (profile !== null) {
 const memberNickname = document.querySelector("#memberNickname");
 const confirm = document.querySelector("#confirm");
 
+
 	confirm.addEventListener("click", e => {
         const inputNickname = e.target.value;
 
