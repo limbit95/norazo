@@ -46,24 +46,30 @@ if (memberIntroduce && memberIntroduce.innerHTML.trim() === "") {
     memberIntroduce.innerHTML = "자기소개 비어있어요~";
     memberIntroduce.style.color = "#E1E1E1";
 }
-
 // console.log("Sports Board Detail");
   
 
 // 모임글 취소
-const createMemberNo = document.querySelector("#deleteJoinMember");
+const deleteJoinMember = document.querySelector("#deleteJoinMember");
+const createMemberNo = document.querySelector("[name=createMemberNo]");
+const memberNo = document.querySelector("[name=memberNo]");
 
-if (createMemberNo != null) {
+if (deleteJoinMember != null) {
 
     
-    createMemberNo.addEventListener("click", () => {
+    deleteJoinMember.addEventListener("click", () => {
         
-
-        if(confirm("모임에 취소 하시겠습니까?")) {
-            alert("모임 취소 되었습니다");
+        if(confirm("모임 취소")) {
+            alert("모임에 취소 되었습니다");
         } else {
             alert("모임에 취소 되지 않았습니다");
         }
 
     });
 }
+
+// if (createMemberNo == memberNo) {
+//     deleteJoinMember.innerHTML = "모임 삭제";
+// } else {
+//     deleteJoinMember.innerHTMK = "모임 취소";
+// }

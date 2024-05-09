@@ -1,7 +1,7 @@
 <div class="boardCommentDiv">
 
     <!-- 댓글 그룹 컨테이너 -->
-    <th:block th:object="${board}">
+    <th:block th:object="${session.loginMember}">
       <div class="boardCommentDivTop">
 
       
@@ -10,8 +10,8 @@
           <div class="chatContainer">
             
               <div class="chatLeftContainer">
-                <img th:src="*{thumbnail}" class="chatUserProfile">
-                <h3 class="chatUserName">파이리</h3>
+                <img th:src="*{profileImg}" class="chatUserProfile">
+                <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
                 <span class="chatDate">2024-04-24 12:45</span>
                 
               </div>

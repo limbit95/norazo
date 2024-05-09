@@ -71,7 +71,7 @@
 
                     <th:block th:if="${#lists.size(memberList) < 5}">
                       <th:block th:each="i : ${#numbers.sequence(#lists.size(memberList), 4)}">
-                        <img class="joinMemberImg" src="/images/profile/default-profileImg.png" id="profileImg"/>
+                        <img class="joinMemberImg" src="/images/profile/blankprofile.png" id="profileImg"/>
                       </th:block>
                     </th:block>
 
@@ -105,7 +105,7 @@
 
                   <div class="boardWriteContentContainer">
                     <div class="boardContentContainer">
-                      <h4 class="boardContent" th:text="${boardConten}" id="boardContent">BOARD CONTENT</h4>
+                      <h4 class="boardContent" th:text="*{boardContent}" id="boardContent">BOARD CONTENT</h4>
                     </div>
                     
                   </div>
@@ -146,17 +146,27 @@
                       <h3 class="detailTitle">참석</h3>
                       <h3 class="detail-user" id="memberInfo" 
                       th:data-attend="*{attendMemberCount}" 
-                      th:data-limit="*{memberCountLimit}">ATTENDED MEMBER</h3>
+                      th:data-limit="*{memberCountLimit}">ATTENDED MEMBER
+                      </h3>
                     </div>
                     
                   </div> 
 
                   <!-- 취소 -->
                   <form action="/sportsBoard/deleteJoinMember" method="POST">
-                    <button class="detailCancelBtn" id="deleteJoinMember">취소</button>
-                    <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
-                    <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
-                    <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                    <th:block th:if="${createMember.memberNo == session.loginMember.memberNo}">
+                      <button class="detailCancelBtn" id="deleteJoinMember">모임 삭제</button>
+                      <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
+                      <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
+                      <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                    </th:block>
+
+                    <th:block th:if="${createMember.memberNo != session.loginMember.memberNo}">
+                      <button class="detailCancelBtn" id="deleteJoinMember">모임 취소</button>
+                      <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
+                      <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
+                      <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                    </th:block>
                   </form>
                 </div>
               </th:block>
@@ -171,6 +181,7 @@
             <div class="boardCreatorDetailDiv">
               <div class="creatorContainer">
    
+
                 <div class="creatorDetailContainer">
                   <h3 class="creatorTitle">모임장 소개</h3>
                 </div>
@@ -193,7 +204,7 @@
                       </div>
 
                       <div class="userInfoContainer">
-                        <h3 class="userInfo" th:text="${memberIntroduce}" id="memberIntroduce">USER INFO</h3>
+                        <h3 class="userInfo" th:text="*{memberIntroduce}" id="memberIntroduce">USER INFO</h3>
                       </div>
                     </div>
                   </div>
