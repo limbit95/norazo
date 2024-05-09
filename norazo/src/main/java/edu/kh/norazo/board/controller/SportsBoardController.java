@@ -92,6 +92,8 @@ public class SportsBoardController {
 		model.addAttribute("board", sportsBoardDetail);
 		model.addAttribute("createMember", createMember);
 		
+//		log.debug("create member number : " + createMember.toString());
+//		log.debug("loginMember : " + loginMember.toString());
 		
 		// 모임 참석 여부 확인
 		int attendFl = service.attendFl(map);

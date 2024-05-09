@@ -137,9 +137,9 @@
 
 .joinMemberTitle {
     height: 70px;
-    width: 250px;
+    width: 300px;
     border-radius: 30px;
-    background-color: var(--primary2);
+    background-color: var(--primary3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -150,12 +150,20 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
 }
 .personIco {
     color: var(--secondary);
     width: 50px;
     height: 50px;
     cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* 수정중 */
+.joinMemberStatus:hover, .personIco {
+    color: var(--primary3);
+    transition: color 0.3s;
 }
 
 .joinMemberStatus {
@@ -165,10 +173,8 @@
     font-family: 'main';
     font-weight: 400; 
     word-wrap: break-word;
-    margin-bottom: 20px;
     cursor: pointer;
 }
-
 
 .joinTitle {
     color: var(--white);
