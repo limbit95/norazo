@@ -19,18 +19,16 @@
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="/js/fragments/modal.js"></script>
-<script src="/js/myPage/myPage.js"></script>
-<script th:inline="javascript">
-    const loginMemberProfileImg = "회원프로필이미지";
-</script>
+
 	<!-- 다음 주소 API 추가 -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script th:inline="javascript">
     const loginMember = /*[[${session.loginMember}]]*/ "로그인 회원"; 
-    
+    const introduce = /*[[${session.loginMember.memberIntroduce}]]*/ "자기소개";
     const message =  /*[[${message}]]*/ "전달 받은 message";
-  
+    const loginNickname = /*[[${session.loginMember.memberNickname}]]*/ "로그인 닉네임";
+    console.log(introduce);
     if(message != null) {
         alert(message);
         if(message =="로그인 후 이용해주세요"){

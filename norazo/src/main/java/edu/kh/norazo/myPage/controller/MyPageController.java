@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -82,6 +83,8 @@ public class MyPageController {
 		// inputMember에 로그인한 회원번호 추가
 		int memberNo = loginMember.getMemberNo();
 		inputMember.setMemberNo(memberNo);
+		System.out.println(inputMember);
+		
 		
 		// 회원 정보 수정 서비스 호출
 		int result = service.updateInfo(inputMember, memberAddress);
@@ -144,7 +147,13 @@ public class MyPageController {
 	}
 	
 	
-	
+	@ResponseBody
+	@GetMapping("checkNickname")
+	public int checkNickname(Member inputMember, @SessionAttribute("loginMember") Member loginMember, @RequestParam("memberNickname")String memberNickname) throws Exception {
+		int memberNo = loginMember.getMemberNo();
+		inputMember.setMemberNo(memberNo);
+		return service.checkNickname(memberNickname, inputMember);
+	}
 	
 	
 	
