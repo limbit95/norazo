@@ -219,22 +219,6 @@ const confirm = document.querySelector("#confirm");
     }
 	checkObj.memberAddress = true;
     
-    for(let key in checkObj){
 
-      if( !checkObj[key] ){
-
-        let str; 
-
-        switch(key){
-          case "memberNickname" : str = "닉네임이 유효하지 않습니다."; break;
-          case "memberAddress" : str = "주소를 모두 입력 또는 미작성 해주세요."; break;
-        }
-        alert(str);
-
-        document.getElementById(key).focus();
-        e.preventDefault();
-        return;
-      }
-    }
 
   });
