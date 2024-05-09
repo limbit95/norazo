@@ -158,7 +158,7 @@
     border-bottom: 1px solid gray;
 }
 
-.editMain {
+.editMain, .changePwmain {
     width: 620px;
     height: 1020px;
     display: flex;
