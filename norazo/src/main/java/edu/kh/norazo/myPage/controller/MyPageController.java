@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -13,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.norazo.myPage.model.service.MyPageService;
 import edu.kh.norazo.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("myPage")
@@ -80,6 +83,7 @@ public class MyPageController {
 		// inputMember에 로그인한 회원번호 추가
 		int memberNo = loginMember.getMemberNo();
 		inputMember.setMemberNo(memberNo);
+		System.out.println(inputMember);
 		
 		
 		// 회원 정보 수정 서비스 호출
@@ -104,6 +108,7 @@ public class MyPageController {
 			
 			loginMember.setMemberAddress( inputMember.getMemberAddress() );
 			
+			loginMember.setMemberIntroduce( inputMember.getMemberIntroduce() );
 			
 		} else {
 			message = "회원 정보 수정 실패..";
@@ -129,6 +134,7 @@ public class MyPageController {
 	public String profileImagedit(@RequestParam("profileImg") MultipartFile profileImg,
 			@SessionAttribute("loginMember") Member loginMember,
 			RedirectAttributes ra) throws Exception {
+		log.debug("test : " + profileImg);
 		// 서비스 호출
 		// /myPage/profile/변경된 파일명 형태의 문자열
 		// 현재 로그인한 회원의 PROFILE_IMG 컬럼값으로 수정 UPDATE
@@ -141,7 +147,13 @@ public class MyPageController {
 	}
 	
 	
-	
+	@ResponseBody
+	@GetMapping("checkNickname")
+	public int checkNickname(Member inputMember, @SessionAttribute("loginMember") Member loginMember, @RequestParam("memberNickname")String memberNickname) throws Exception {
+		int memberNo = loginMember.getMemberNo();
+		inputMember.setMemberNo(memberNo);
+		return service.checkNickname(memberNickname, inputMember);
+	}
 	
 	
 	

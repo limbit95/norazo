@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="stylesheet" href="/css/board/sportsBoardWrite.css">
+    
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+    <title>모임글 작성 페이지</title>
+</head>
+<body>
+
+    <th:block th:replace="~{common/nav}"></th:block>
+    
+    <main>
+
+        <div class="write-type">
+            <h1>모임 등록하기</h1>
+        </div>
+
+        <form th:action="@{{boardCode}(boardCode=${application.boardTypeList.get(0).boardCode})}" method="post" class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
+            <div>
+                <h1>모임 정보</h1>
+            </div>
+
+            <div class="write-head">
+                <!-- 썸네일 -->
+                <label for="inputThumbnail" class="thumbnail-label">
+                    <img src="/images/board-default-thumbnail.svg"
+                            id="thumbnailImg"
+                            class="preview"
+                            alt="썸네일 이미지">
+                </label>
+                <input type="file" id="inputThumbnail" name="inputThumbnail" class="inputImage" accept="imagas/*" hidden>
+
+                <!-- 모임 정보 -->
+                <div class="meeting-info">
+                    <!-- 제목 -->
+                    <label class="board-title" for="title-input">
+                        <input class="board-title-input" name="boardTitle" id="title-input" type="text" maxlength="20" placeholder="제목 (20글자 이내 작성)">
+                    </label>
+
+                    <!-- 모임 날짜 -->
+                    <div>   
+                        <!-- 날짜 선택 -->
+                        <div class="datetime">
+                            <ion-icon name="calendar-clear-outline" class="date-icon"></ion-icon>
+                            <input type="datetime-local" name="meetingDate">
+                        </div>
+
+                        <!-- 카테고리 선택 -->
+                        <div class="category-select-div">
+                            <select id="" class="category-select" name="sportsCode">
+                                <option value="" class="category-option">카테고리</option>
+                                <th:block th:each="category : ${sportsTypeList}">
+                                    <option th:value="${category.sportsCode}" class="category-option-value">[[${category.sportsKrName}]]</option>
+                                </th:block>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- 모임 장소 -->
+                    <div>
+                        <ion-icon name="compass-outline" class="place-icon"></ion-icon>
+                        <input class="place-input" name="meetingLocation" id="place-input" type="text" maxlength="15" placeholder="장소 (15글자 이내 작성)">
+                    </div>
+
+                    <!-- 참석 인원 -->
+                    <div>
+                        <!-- 사람 아이콘, 정원(1~50명) -->
+                        <ion-icon name="person-outline" class="member-count-limit"></ion-icon>
+                        <h2>정원(1 ~ 50명)</h2>
+                        <select id="" class="member-count-select" name="memberCountLimit"
+                                th:data-sports-type-list="${session.sportsTypeList}">
+                            <option value="">인원수</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h1>모임 소개글</h1>
+            </div>
+
+            <div class="write-body">
+                <textarea name="boardContent" maxlength="2000"></textarea>
+            </div>
+
+            <div>
+                <button class="joinMemberViewBtn" id="insertBtn">등록하기</button>
+            </div>
+
+        </form>
+
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script src="/js/board/sportsBoardWrite.js"></script>
+</body>
+</html>

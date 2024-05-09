@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/common/main.css">
     <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
 </head>
 <body>
     <th:block th:replace="~{common/nav}"></th:block>
@@ -25,8 +26,9 @@
         </div>
     </main>
     <th:block th:replace="~{common/footer}"></th:block>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-	<script src="/js/myPage/myPage.js"></script>
+    <script src="/js/myPage/myPage.js"></script>
+    <script th:inline="javascript">
+        const loginMemberProfileImg = "회원프로필이미지";
+    </script>
 </body>
 </html>

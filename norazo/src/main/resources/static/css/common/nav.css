@@ -334,19 +334,22 @@
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     cursor: pointer;
 }
-.dropdown-content{
+
+
+
+.dropdown-content {
     display : none;
     position : absolute;
     z-index : 1; /*다른 요소들보다 앞에 배치*/
     background-color: var(--gray4);
     min-width : 120px;
-    border-radius: 10px;
-    border: 2px solid var(--secondary);
+    border-radius: 20px;
+    border: 3px solid var(--secondary);
     top: 102%;
     right: 0%;
 }
 
-.dropdown-content a{
+.dropdown-content a {
     display : block;
     text-decoration : none;
     color : var(--primary1);
@@ -355,7 +358,17 @@
     font-size: 15px;
     padding : 12px 20px;
     text-align: center;
-    border-radius: 10px;
+}
+
+.dropdown-content > a:nth-child(1) {
+    border-bottom: 3px solid var(--gray3);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.dropdown-content > a:nth-child(2) {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .dropdown-content a:hover{

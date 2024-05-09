@@ -190,7 +190,7 @@ article {
 }
 
 .freeBoard-list > div {
-    width: 70%;
+    width: 65%;
     margin-left: 20px;
 }
 
@@ -201,12 +201,13 @@ article {
     font-size: 25px;
     font-weight: 500;
     text-decoration: none;
+    color: black;
 }
 
 .freeBoard-list > div > a:visited { color: black; } 
 
 .freeBoard-nickname {
-    width: 10%;
+    width: 20%;
     font-weight: 1000;
     color: var(--gray2);
 }

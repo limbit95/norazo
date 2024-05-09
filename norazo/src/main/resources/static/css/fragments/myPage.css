@@ -15,6 +15,7 @@
     border-radius: 100%;
     width: 200px;
     height: 200px;
+    cursor: pointer;
 }
 
 #profile {
@@ -264,23 +265,26 @@ ion-icon {
     margin-top: 220px;
     height: 30px;
     width: 95px;
-    background-color: var(--primary2);
+    background-color: var(--primary1);
     border-radius: 30px; 
     border: 0px;
     color: var(--white);
     font-family: 'regular';
     font-size: 15px;
     color: var(--white);
+    cursor: pointer;
 }
 
 #imageEditBtn {
     margin-top: 220px;
     height: 30px;
     width: 95px;
-    background-color: var(--primary2);
+    background-color: var(--primary1);
     border-radius: 30px; 
     border: 0px;
     font-family: 'regular';
     font-size: 15px;
     color: var(--white);
+    padding-left: 0px;
+    cursor: pointer;
 }

@@ -9,11 +9,16 @@
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/board/boardWrite.css">
     <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
 </head>
 <body>
     <th:block th:replace="~{common/nav}"></th:block>
     <main>
-   
+
+        <div class="title-div-box">                       
+            <h1>자유 게시판 등록하기</h1>
+        </div>
+
         <form action="/board/boardWrite"
             method="post"
             class="board-write"
@@ -21,11 +26,7 @@
 
             <div class="div-box">
 
-                <div class="boardCreateDiv">
-
-                    <div class="title-div-box">                       
-                        <h1>자유 게시판 등록하기</h1>
-                    </div>
+                <div class="board-create-div">
 
                     <div class="content-div-box">
 
