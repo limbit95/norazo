@@ -502,7 +502,7 @@ input:focus {
 
 .loginTag {
     text-align: center; 
-    color: var(--white); 
+    color: var(--primary1); 
     font-size: 20px; 
     font-family: 'main' !important;
     word-wrap: break-word;

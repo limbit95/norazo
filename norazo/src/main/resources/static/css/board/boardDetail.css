@@ -221,3 +221,22 @@ img{
     align-items: center;
     margin-left: 20px;
 }
+
+
+
+.action-btn {
+    text-align: center; 
+    color: var(--white); 
+    font-size: 20px; 
+    font-family: 'main' !important;
+    word-wrap: break-word;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.action-btn:hover {
+
+    color: var(--secondary);
+    transition: color 0.3s;
+
+}

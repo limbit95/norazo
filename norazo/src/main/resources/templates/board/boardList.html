@@ -24,8 +24,12 @@
             <h1 class="freeBoard-header-title"
                 th:text="${boardName}">
                 게시판 종류</h1>
+
+                <a th:if="${session.loginMember}"
+                   th:href="@{/board/{boardCode}/insert(boardCode=${boardCode})}" 
+                   class="freeBoard-whole-view"
+                   id="insertA">작성하기</a>
             
-            <a th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo})}">작성하기</a>
         </div>
 
         <!-- 게시글이 존재 하지 않을 때-->
@@ -99,6 +103,7 @@
     </main>
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
-    
+
+    <script src="/js/board/boardList.js"></script>
 </body>
 </html>
