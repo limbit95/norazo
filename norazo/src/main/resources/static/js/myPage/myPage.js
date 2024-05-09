@@ -166,26 +166,36 @@ if (profile !== null) {
 }
 
 // 닉네임 유효성 검사
+var flag1 = false;
 const memberNickname = document.querySelector("#memberNickname");
 const confirm1 = document.querySelector("#confirm");
-
+if(confirm1 != null){
 	confirm1.addEventListener("click", e => {
-        const inputNickname = e.target.value;
-
+        flag1 = true;
+        if(memberNickname.value.trim().length === 0) {
+            alert("닉네임을 입력해주세요");
+            e.preventDefault(); // 제출 막기
+            return;
+        }
         const regExp = /^[가-힣\w\d]{2,10}$/;
-
-        if (!regExp.test(inputNickname)) {
-            alert("유효하지 않은 닉네임 형식 입니다.");
-            checkObj.memberNickname = false;
+        if( !regExp.test(memberNickname.value)) {
+            alert("닉네임이 유효하지 않습니다.");
+            e.preventDefault(); // 제출 막기
             return;
         }
 
-        fetch("/member/checkNickname?memberNickname=" + inputNickname)
+        fetch("/member/checkNickname?memberNickname=" + memberNickname.value)
             .then(resp => resp.text())
             .then(count => {
                 if (count == 1) {
                     alert("이미 사용중인 닉네임 입니다.");
-                    checkObj.memberNickname = false;
+                    
+                    if(loginNickname == memberNickname) {
+                        checkObj.memberNickname = true;
+                    }else{
+                        checkObj.memberNickname = false;
+                        console.log("안됨0");
+                    }
                     return;
                 }
                 alert("사용 가능한 닉네임 입니다.");
@@ -193,10 +203,10 @@ const confirm1 = document.querySelector("#confirm");
             })
             .catch(err => console.log(err));
     });
-    
+}   
       // 회원 가입 폼 제출 
   const signUpForm = document.querySelector("#updateInfo");
-
+if(signUpForm != null) {
   signUpForm.addEventListener("submit", e =>{
     const memberAddress = document.querySelectorAll("[name='memberAddress']");
     const addressMessage = document.querySelector("#addressMessage");
@@ -219,6 +229,31 @@ const confirm1 = document.querySelector("#confirm");
     }
 	checkObj.memberAddress = true;
     
+    if (flag1){
+    for(let key in checkObj){
+
+        
+        if( !checkObj[key] ){
+          let str; 
+  
+          switch(key){
+            case "memberNickname" : str = "닉네임이 유효하지 않습니다.";
+            break;
+            case "gender" : str ="성별을 선택해주세요"; break;
+            case "memberAddress" : str = "주소를 모두 입력 또는 미작성 해주세요."; break
+          }
+          alert(str);
+  
+          document.getElementById(key).focus();
+          e.preventDefault();
+          return;
 
 
+        }}
+    }
   });
+}
+
+if (introduce != null) {
+    document.getElementById('introduce').innerHTML = introduce;
+}

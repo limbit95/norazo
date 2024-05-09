@@ -3,6 +3,8 @@ package edu.kh.norazo.board.model.service;
 import java.util.List;
 import java.util.Map;
 
+import edu.kh.norazo.board.model.dto.Board;
+
 public interface BoardService {
 
 	/** 자유 게시판의 지정된 페이지 목록 조회
@@ -18,6 +20,12 @@ public interface BoardService {
 	 * @return
 	 */
 	Map<String, Object> selectFaqBoardList(String boardCode, int cp);
+
+	/** 게시글 상세 조회
+	 * @param map
+	 * @return
+	 */
+	Board selectOne(Map<String, Object> map);
 
 	
 

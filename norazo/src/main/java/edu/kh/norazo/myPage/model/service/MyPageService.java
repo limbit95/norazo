@@ -10,4 +10,6 @@ public interface MyPageService {
 
 	int updateInfo(Member inputMember, String[] memberAddress);
 
+	int checkNickname(String memberNickname, Member loginMember) throws Exception;
+
 }

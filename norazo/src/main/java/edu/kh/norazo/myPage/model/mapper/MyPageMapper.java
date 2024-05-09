@@ -11,4 +11,5 @@ public interface MyPageMapper {
 
 	int updateInfo(Member inputMember);
 
+	int checkNickname(String nickname, Member inputMember);
 }

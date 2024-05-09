@@ -22,16 +22,20 @@
             <h1>모임 등록하기</h1>
         </div>
 
-        <form action="insert" method="post" class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
+        <form th:action="@{{boardCode}(boardCode=${application.boardTypeList.get(0).boardCode})}" method="post" class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
+            <div>
+                <h1>모임 정보</h1>
+            </div>
 
             <div class="write-head">
                 <!-- 썸네일 -->
-                <label for="thumbnail" class="thumbnail-label">
+                <label for="inputThumbnail" class="thumbnail-label">
                     <img src="/images/board-default-thumbnail.svg"
-                            id="profileImg"
+                            id="thumbnailImg"
+                            class="preview"
                             alt="썸네일 이미지">
                 </label>
-                <input type="file" id="thumbnail" accept="imgae/*" hidden>
+                <input type="file" id="inputThumbnail" name="inputThumbnail" class="inputImage" accept="imagas/*" hidden>
 
                 <!-- 모임 정보 -->
                 <div class="meeting-info">
@@ -50,10 +54,10 @@
 
                         <!-- 카테고리 선택 -->
                         <div class="category-select-div">
-                            <select name="" id="" class="category-select">
+                            <select id="" class="category-select" name="sportsCode">
                                 <option value="" class="category-option">카테고리</option>
                                 <th:block th:each="category : ${sportsTypeList}">
-                                    <option value="" class="category-option" name="sportsKrName">[[${category.sportsKrName}]]</option>
+                                    <option th:value="${category.sportsCode}" class="category-option-value">[[${category.sportsKrName}]]</option>
                                 </th:block>
                             </select>
                         </div>
@@ -70,12 +74,16 @@
                         <!-- 사람 아이콘, 정원(1~50명) -->
                         <ion-icon name="person-outline" class="member-count-limit"></ion-icon>
                         <h2>정원(1 ~ 50명)</h2>
-                        <select name="" id="" class="member-count-select"
+                        <select id="" class="member-count-select" name="memberCountLimit"
                                 th:data-sports-type-list="${session.sportsTypeList}">
-                            <option value="null" name="memberCountLimit">인원수</option>
+                            <option value="">인원수</option>
                         </select>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                <h1>모임 소개글</h1>
             </div>
 
             <div class="write-body">

@@ -201,6 +201,7 @@ article {
     font-size: 25px;
     font-weight: 500;
     text-decoration: none;
+    color: black;
 }
 
 .freeBoard-list > div > a:visited { color: black; } 

@@ -9,5 +9,5 @@ newMoim.addEventListener("click", e => {
             return;
         }
     }
-    location.href = "/editBoard/sportsBoard/insert";
+    location.href = "/editBoard/insert/" + boardTypeList[0].boardCode;
 });

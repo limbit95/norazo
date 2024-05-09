@@ -25,6 +25,7 @@
                 th:text="${boardName}">
                 게시판 종류</h1>
             
+            <a th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo})}">작성하기</a>
         </div>
 
         <!-- 게시글이 존재 하지 않을 때-->
@@ -50,7 +51,8 @@
 
             <div class="freeBoard-list">
                 <div>
-                    <a href="" th:text="*{boardTitle}">타이틀 제목</a>
+                    <a th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo}, cp=${pagination.currentPage})}" 
+                       th:text="*{boardTitle}">게시판 제목</a>
                 </div>
 
                 <h3 class="freeBoard-nickname" th:text=*{memberNickname}>닉네임</h3>
@@ -97,5 +99,6 @@
     </main>
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
+    
 </body>
 </html>

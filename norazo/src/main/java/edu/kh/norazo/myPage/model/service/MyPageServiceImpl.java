@@ -29,8 +29,8 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	private final MyPageMapper mapper;
 	
-	@Value("${my.profile.folder-path}")
-	private String profileFolderPath;
+//	@Value("${my.profile.folder-path}")
+//	private String profileFolderPath;
 	@Override
 	public int profile(MultipartFile profileImg, Member loginMember) throws Exception {
 			// 수정할 경로
@@ -121,6 +121,11 @@ public class MyPageServiceImpl implements MyPageService {
 			
 			// SQL 수행 후 결과 반환
 			return mapper.updateInfo(inputMember);
+	}
+
+	@Override
+	public int checkNickname(String memberNickname, Member inputMember) throws Exception {
+		return mapper.checkNickname(memberNickname, inputMember);
 	}
 
 }

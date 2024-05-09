@@ -39,6 +39,10 @@
 }
 .board-title-div h2 {
     margin: 0; /* 기본 마진을 제거합니다. */
+    
+}
+.title-font{
+    color: var(--gray1);
 }
 
 .board-title-div h3 {
@@ -49,8 +53,31 @@
     display: flex;
     flex-direction: row;
 }
+#detail-user-font{
+    color: var(--gray1); 
+    font-size: 20px; 
+    font-family: 'main' !important;
+    word-wrap: break-word;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+#sysdate-font{
+    color: var(--gray4); 
+    font-size: 18px; 
+    font-family: 'main' !important;
+    word-wrap: break-word;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 
-
+#detail-sysdate-font{
+    color: var(--gray3); 
+    font-size: 18px; 
+    font-family: 'main' !important;
+    word-wrap: break-word;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 textarea {
     resize: none;
     width: 1000px;
@@ -58,11 +85,16 @@ textarea {
     border-radius: 30px;
     padding-left: 20px;
     padding-top: 20px;
-    font-family: 'regular';
-    font-size: 25px;
     margin-top: 20px;
 }
-
+#boardContent{
+    color: var(--gray1); 
+    font-size: 20px; 
+    font-family: 'main' !important;
+    word-wrap: break-word;
+    text-decoration: none;
+    transition: color 0.3s;
+}
 textarea:focus {
     outline: none;
 }
@@ -101,7 +133,7 @@ textarea:focus {
     align-items: center;
     background-color: var(--primary3);
     width: 1090px;
-    height: 500px;
+    height: 400px;
     border-radius: 30px;
     padding: 15px;
 }
@@ -114,14 +146,16 @@ textarea:focus {
     align-items: center;
 }
 
+
+
 .user-icon{
-    width: 95%;
+    width: 980px;
     display: flex;
     justify-content: space-between;
 }
 
 .user-profile-info{
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -167,13 +201,19 @@ img{
     padding-top: 20px;
     font-family: 'regular';
     font-size: 15px;
-
+}
+#comment-user-font{
+    color: var(--white); 
+    font-size: 20px; 
+    font-family: 'main' !important;
+    word-wrap: break-word;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 .comment-container{
-    width: 850px;
+    width: 1000px;
     display: flex;
     flex-direction: row;
-    padding-top: 20px;
 }
 
 .comment-submit{

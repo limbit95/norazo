@@ -1,5 +1,6 @@
 package edu.kh.norazo.board.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.service.BoardService;
@@ -57,18 +59,47 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
-	// 화면 보기용
-	@GetMapping("boardDetail")
-	public String boardDetail() {
+	/** 게시글 상세 조회
+	 * @param boardCode
+	 * @param boardNo
+	 * @param model
+	 * @param ra
+	 * @return
+	 */
+	@GetMapping("{boardCode:[a-z]+}/{boardNo:[0-9]+}")
+	public String boardDetail(@PathVariable("boardCode") String boardCode,
+							  @PathVariable("boardNo") int boardNo,
+							  Model model,
+							  RedirectAttributes ra) {
 		
-		return "board/boardDetail";
-	}
-	// 화면 보기용 
-	@GetMapping("comment")
-	public String boardComment() {
+		Map<String, Object> map = new HashMap<>();
+		map.put("boardCode", boardCode);
+		map.put("boardNo", boardNo);
+					
+			if(boardCode.equals("free")) {
+				map.put("boardCode", 2);
+			}
+			
+			if(boardCode.equals("faq")) {
+				map.put("boardCode", 3);
+			}
+			
+
+		Board board = service.selectOne(map);
 		
-		return "board/comment";
+		String path = null;
+		
+		if(board == null) {
+			path = "redirect:/board" + boardCode;
+			ra.addFlashAttribute("message","게시글이 존재하지 않습니다.");
+			
+		} else {
+			
+			path = "board/boardDetail";
+			
+			model.addAttribute("board",board);
+		}
+		return path;
 	}
-	
 	
 }
