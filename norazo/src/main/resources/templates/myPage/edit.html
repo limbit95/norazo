@@ -68,8 +68,8 @@
                     <div class="myPage-row info-myself">
                         <h2 class="editTitle">자기소개</h2>
                         <div>
-                            <textarea name="memberIntroduce" wrap="on" rows="3" placeholder="60자 이하로 작성해 주세요"
-                                maxlength="60" id="introduce" class="profileUpdateInput2"
+                            <textarea name="memberIntroduce" wrap="on" rows="3"
+                                maxlength="60" id="introduce" class="profileUpdateInput2" th:placeholder="${session.loginMember.memberIntroduce}"
                                 ></textarea>
                         </div>
                     </div>
