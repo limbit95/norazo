@@ -67,3 +67,53 @@ if (createMemberNo != null) {
 
     });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 게시글 수정 삭제 테스트 코드
+const updateBtn = document.querySelector("#updateBtn");
+const deleteBtn = document.querySelector("#deleteBtn");
+
+if(updateBtn != null){
+    updateBtn.addEventListener("click", e =>{
+        const boardNo = e.target.dataset.boardNo;
+        const sportsCode = e.target.dataset.sportsCode;
+        location.href = "/editBoard/update/" + sportsCode + "/" + boardNo;
+    });
+};
+
+if(deleteBtn != null){
+    deleteBtn.addEventListener("click", e => {
+        const boardNo = e.target.dataset.boardNo;
+        const sportsCode = e.target.dataset.sportsCode;
+        if(!confirm("정말로 삭제하시겠습니까?")){
+            return;
+        }
+        
+        location.href = "/sportsBoard/delete/" + sportsCode + "/" + boardNo;
+    });  
+};

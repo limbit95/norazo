@@ -209,6 +209,17 @@
             <!-- 대화내용 컨테이너 -->
 
             <th:block th:replace="~{common/fragments/sportsBoardDetailComment}"></th:block>
+            
+            <th:block th:if="${session.loginMember.memberNo}  == ${board.memberNo}">
+              <button id="updateBtn" 
+                      th:data-board-no="${board.boardNo}" 
+                      th:data-sports-code="${board.sportsCode}"
+                      style="width: 100px; height: 50px; color: white; background-color: var(--primary3); font-size: 20px;">수정</button>
+              <button id="deleteBtn" 
+                      th:data-board-no="${board.boardNo}" 
+                      th:data-sports-code="${board.sportsCode}"
+                      style="width: 100px; height: 50px; color: white; background-color: var(--primary3); font-size: 20px; margin-top: 10px;">삭제</button>
+            </th:block>
     </main>
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/sportsBoard/sportsBoardDetail.js"></script>

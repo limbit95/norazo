@@ -22,7 +22,7 @@
             <h1>모임 등록하기</h1>
         </div>
 
-        <form th:action="@{{boardCode}(boardCode=${application.boardTypeList.get(0).boardCode})}" method="post" class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
+        <form th:action="@{/sportsBoard/update/{sportsCode}/{boardNo}(sportsCode=${board.sportsCode}, boardNo=${board.boardNo})}" method="post" class="board-write" id="boardWriteFrm" enctype="multipart/form-data">
             <div>
                 <h1>모임 정보</h1>
             </div>
@@ -30,7 +30,7 @@
             <div class="write-head">
                 <!-- 썸네일 -->
                 <label for="inputThumbnail" class="thumbnail-label">
-                    <img src="/images/board-default-thumbnail.svg"
+                    <img th:src="${board.thumbnail}"
                             id="thumbnailImg"
                             class="preview"
                             alt="썸네일 이미지">
@@ -94,11 +94,33 @@
                 <button class="joinMemberViewBtn" id="insertBtn">등록하기</button>
             </div>
 
+            <!-- 기존 이미지가 있다가 삭제된 이미지의 순서를 기록-->
+            <input type="hidden" name="deleteOrder" value="">
+
+            <!-- 수정 성공 시 주소(쿼리스트링) 유지용도 -->
+            <input type="hidden" name="querystring">
+
         </form>
 
     </main>
 
     <th:block th:replace="~{common/footer}"></th:block>
+
+    <!-- 이미지 미리보기 설정 -->
+    <script th:inline="javascript">
+        const imageList = /*[[${board.imageList}]]*/ [];
+        const previewList = document.querySelectorAll("img.preview");
+
+        const orderList = []; // 기존에 존재하던 이미지 순서를 기록
+
+        for(let img of imageList){
+            previewList[img.imgOrder].src = img.imgPath + img.imgRename;
+
+            orderList.push(img.imgOrder);
+            // 다섯개 이미지가 전부 다 있을 경우
+            // -> [0, 1, 2, 3, 4]
+        }
+    </script>
 
     <script src="/js/sportsBoard/sportsBoardWrite.js"></script>
 </body>

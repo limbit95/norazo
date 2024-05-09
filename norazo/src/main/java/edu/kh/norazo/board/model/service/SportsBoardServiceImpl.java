@@ -134,4 +134,10 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		return mapper.deleteJoinMember(map);
 	}
 
+	// 게시글 삭제
+	@Override
+	public int sportsBoardDelete(Map<String, Object> map) {
+		return mapper.sportsBoardDelete(map);
+	}
+
 }

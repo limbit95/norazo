@@ -158,4 +158,39 @@ public class SportsBoardController {
 		return path;
 	}
 	
+	
+	/** 게시글 삭제
+	 * @param boardCode
+	 * @param boardNo
+	 * @param cp
+	 * @param ra
+	 * @return
+	 */
+	@GetMapping("delete/{sportsCode:[a-z]+}/{boardNo:[0-9]+}")
+	public String boardDelete(@PathVariable("sportsCode") String sportsCode,
+						      @PathVariable("boardNo") int boardNo,
+						      RedirectAttributes ra) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sportsCode", sportsCode);
+		map.put("boardNo", boardNo);
+		
+		int result = service.sportsBoardDelete(map);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			message = "게시글이 삭제 되었습니다";
+			path = "/sportsBoard/" + sportsCode;
+		} else {
+			message = "게시글 삭제 실패";
+			path = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
+	
 }

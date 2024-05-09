@@ -90,5 +90,11 @@ public interface SportsBoardMapper {
 	 */
 	int deleteJoinMember(Map<String, Integer> map);
 
+	/** 게시글 삭제
+	 * @param map
+	 * @return
+	 */
+	int sportsBoardDelete(Map<String, Object> map);
+
 
 }
