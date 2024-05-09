@@ -2,6 +2,7 @@ package edu.kh.norazo.myPage.model.service;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -28,6 +29,8 @@ public class MyPageServiceImpl implements MyPageService {
 	public static int seqNum = 1; // 1~99999 반복;
 	
 	private final MyPageMapper mapper;
+	
+	private final BCryptPasswordEncoder bcrypt;
 	
 //	@Value("${my.profile.folder-path}")
 //	private String profileFolderPath;
@@ -126,6 +129,31 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public int checkNickname(String memberNickname, Member inputMember) throws Exception {
 		return mapper.checkNickname(memberNickname, inputMember);
+	}
+
+	@Override
+	public int changePw(Map<String, Object> paramMap, int memberNo) {
+		// 현재 로그인한 회원의 암호화된 비밀번호를 DB에서 조회
+				String originPw = mapper.selectPw(memberNo);
+				
+				// 입력받은 현재 비밀번호와(평문)
+				// DB에서 조회한 비밀번호 비교(암호화)
+				// BCryptPasswordEncoder.matches(평문, 암호화된비밀번호)
+				
+				// 다를 경우
+				if( !bcrypt.matches((String)paramMap.get("currentPw"), originPw) ) {
+					return 0;
+				}
+				
+				// 같을 경우
+				
+				// 새 비밀번호를 암호화 진행
+				String encPw = bcrypt.encode((String)paramMap.get("newPw"));
+				
+				paramMap.put("encPw", encPw);
+				paramMap.put("memberNo", memberNo);
+				
+				return mapper.changePw(paramMap);
 	}
 
 }

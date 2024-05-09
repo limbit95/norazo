@@ -24,7 +24,7 @@ const updateInfo = document.querySelector("#updateInfo");
 
 const checkObj ={
   "memberNickname" : false,
-  "gender" : false,
+  "gender" : true,
   "memberAddress" : false
 };   
 
@@ -195,7 +195,7 @@ if(confirm1 != null){
                         checkObj.memberNickname = true;
                     }else{
                         checkObj.memberNickname = false;
-                        console.log("안됨0");
+                        console.log("안됨");
                     }
                     return;
                 }
@@ -205,6 +205,29 @@ if(confirm1 != null){
             .catch(err => console.log(err));
     });
 }   
+
+
+// 성별 선택이 안되었을 시 
+const gender = document.querySelector("#gender");
+
+gender.addEventListener("change", function() {
+
+
+    const selectedGender = this.value;
+
+    if (selectedGender !== "F" && selectedGender !== "M") {
+
+        checkObj.gender = false;
+        return;
+    }
+
+    checkObj.gender = true;
+});
+
+
+
+
+
       // 회원 가입 폼 제출 
   const signUpForm = document.querySelector("#updateInfo");
 if(signUpForm != null) {
@@ -238,8 +261,7 @@ if(signUpForm != null) {
           let str; 
   
           switch(key){
-            case "memberNickname" : str = "닉네임이 유효하지 않습니다.";
-            break;
+            case "memberNickname" : str = "닉네임이 유효하지 않습니다."; break;
             case "gender" : str ="성별을 선택해주세요"; break;
             case "memberAddress" : str = "주소를 모두 입력 또는 미작성 해주세요."; break
           }

@@ -1,5 +1,8 @@
 package edu.kh.norazo.myPage.controller;
 
+import java.io.Console;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -105,6 +108,8 @@ public class MyPageController {
 			loginMember.setMemberNickname( inputMember.getMemberNickname() );
 			
 			loginMember.setGender( inputMember.getGender() );
+			System.out.println(inputMember.getGender());
+			System.out.println(loginMember.getGender());
 			
 			loginMember.setMemberAddress( inputMember.getMemberAddress() );
 			
@@ -123,6 +128,33 @@ public class MyPageController {
 	@GetMapping("changePw")
 	public String changePw() {
 		return "myPage/changePw";
+	}
+	
+	@PostMapping("changePw")
+	public String changePw(@RequestParam Map<String, Object> paramMap,
+			@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra) {
+				// 로그인한 회원 번호
+				int memberNo = loginMember.getMemberNo();
+				
+				// 현재 + 새 + 회원번호를 서비스로 전달
+				int result = service.changePw(paramMap, memberNo);
+				
+				String path = null;
+				String message = null;
+				
+				if(result > 0) {
+					path = "/myPage/info";
+					message = "비밀번호가 변경 되었습니다";
+				} else {
+					path = "/myPage/changePw";
+					message = "현재 비밀번호가 일치하지 않습니다";
+				}
+				
+				ra.addFlashAttribute("message", message);
+				
+				return "redirect:" + path;
+				
 	}
 	
 	@GetMapping("profile")

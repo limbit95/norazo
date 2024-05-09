@@ -24,7 +24,7 @@ memberCountSelect.addEventListener('focus', function() {
 /* 선택된 이미지 미리보기 */
 const previewList = document.querySelectorAll(".preview"); // img 태그 5개
 const inputImageList = document.querySelectorAll(".inputImage"); // input 태그 5개
-const deleteImageList = document.querySelectorAll(".delete-image"); // x버튼 5개
+// const deleteImageList = document.querySelectorAll(".delete-image"); // x버튼 5개
 
 // 이미지 선택 이후 취소를 누를 경우를 대비한 백업 이미지
 // (백업 원리 -> 복제품으로 기존 요소를 대체함)
@@ -125,14 +125,14 @@ for(let i=0 ; i<inputImageList.length ; i++){
 
 
   // **** x 버튼 클릭 시 ****
-  deleteImageList[i].addEventListener("click", () => {
+  // deleteImageList[i].addEventListener("click", () => {
 
-    // img, input, backup의 인덱스가 모두 일치한다는 특징을 이용
+  //   // img, input, backup의 인덱스가 모두 일치한다는 특징을 이용
 
-    previewList[i].src       = ""; // 미리보기 이미지 제거
-    inputImageList[i].value  = ""; // input에 선택된 파일 제거
-    backupInputList[i].value = ""; // 백업본 제거
-  });
+  //   previewList[i].src       = ""; // 미리보기 이미지 제거
+  //   inputImageList[i].value  = ""; // input에 선택된 파일 제거
+  //   backupInputList[i].value = ""; // 백업본 제거
+  // });
 
 }
 
