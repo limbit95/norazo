@@ -1,26 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판 등록하기</title>
-    <link rel="stylesheet" href="/css/common/main.css">
-    <link rel="stylesheet" href="/css/common/nav.css">
-    <link rel="stylesheet" href="/css/common/footer.css">
-    <link rel="stylesheet" href="/css/board/boardDetail.css">
-    <link rel="stylesheet" href="/css/common/button.css">
-</head>
-<body>
+<div class="commnet-area">
 
-    <main>
+    <div class="user-info-area">
 
-        <div>
+        <div class="user-icon">
+
+            <div class="user-profile-info">
+                <img src="/images/profile/default-profileImg.png">
+                <h3>닉네임</h3>
+                <h3>2024-05-08-sysdate</h3>                    
+            </div>
+
+            <div class="a-area">
             
+                <a href="">답글</a>
+                <a href="">수정</a>
+                <a href="">삭제</a>
 
+            </div>
         </div>
-       
-    </main>
-    
-    <th:block th:replace="~{common/footer}"></th:block>
-</body>
-</html>
+
+        <div class="textarea-div">
+            <textarea name="" id="comment-textarea"></textarea>
+        </div>
+
+    </div>
+
+    <div class="comment-container">
+        <textarea name="" id="reply-textarea"></textarea>
+        
+        <div class="comment-submit">           
+            <button class="detailCommentSubmitBtn">댓글 등록</button>
+        </div> 
+    </div>
+
+</div>
+
