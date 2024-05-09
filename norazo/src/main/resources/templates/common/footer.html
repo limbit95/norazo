@@ -17,7 +17,7 @@
       <!-- 오른쪽 왼쪽 화살표 필요한 아이콘 -->
       <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
       <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-      <script src="/js/fragments/adBanner.js"></script>
+      
 
 
 	<!-- 다음 주소 API 추가 -->
@@ -25,9 +25,7 @@
 
 <script th:inline="javascript">
     const loginMember = /*[[${session.loginMember}]]*/ "로그인 회원"; 
-    const introduce = /*[[${session.loginMember.memberIntroduce}]]*/ "자기소개";
     const message =  /*[[${message}]]*/ "전달 받은 message";
-    const loginNickname = /*[[${session.loginMember.memberNickname}]]*/ "로그인 닉네임";
     console.log(introduce);
     if(message != null) {
         alert(message);
