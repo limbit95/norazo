@@ -111,10 +111,27 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		return -1;
 	}
 
+	/** 모임글 모임장 정보 조회
+	 *
+	 */
 	@Override
 	public Member boardCreateMember(int boardNo) {
 		
 		return mapper.boardCreateMember(boardNo);
+	}
+
+	/** 모임글 참여 취소
+	 *
+	 */
+	@Override
+	public int deleteJoinMember(int boardNo, int memberNo) {
+		
+		Map<String, Integer> map = new HashMap<>();
+		
+		map.put("boardNo", boardNo);
+		map.put("memberNo", memberNo);
+		
+		return mapper.deleteJoinMember(map);
 	}
 
 }

@@ -44,6 +44,17 @@ public interface SportsBoardService {
 	 */
 	int boardLike(Map<String, Object> map);
 
+	/** 모임글 모임장 정보 조회
+	 * @param boardNo
+	 * @return
+	 */
 	Member boardCreateMember(int boardNo);
+
+	/** 모임글 참여 취소
+	 * @param memberNo 
+	 * @param boardNo 
+	 * @return
+	 */
+	int deleteJoinMember(int boardNo, int memberNo);
 
 }

@@ -167,9 +167,9 @@ if (profile !== null) {
 
 // 닉네임 유효성 검사
 const memberNickname = document.querySelector("#memberNickname");
-const confirm = document.querySelector("#confirm");
+const confirm1 = document.querySelector("#confirm");
 
-	confirm.addEventListener("click", e => {
+	confirm1.addEventListener("click", e => {
         const inputNickname = e.target.value;
 
         const regExp = /^[가-힣\w\d]{2,10}$/;

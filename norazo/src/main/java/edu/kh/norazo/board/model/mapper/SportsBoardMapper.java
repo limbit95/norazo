@@ -79,7 +79,16 @@ public interface SportsBoardMapper {
 	 */
 	int insertBoardLike(Map<String, Object> map);
 
+	/** 모임글 모임장 정보 조회
+	 * @param boardNo
+	 * @return
+	 */
 	Member boardCreateMember(int boardNo);
+
+	/** 모임글 참여 취소
+	 * @return
+	 */
+	int deleteJoinMember(Map<String, Integer> map);
 
 
 }

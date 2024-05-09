@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,7 +45,7 @@ public class SportsBoardController {
 		model.addAttribute("sportsKrName", map.get("sportsKrName"));
 		model.addAttribute("sportsCode", sportsCode);
 		
-		log.debug("test : " + map.get("pagination"));
+//		log.debug("test : " + map.get("pagination"));
 		
 		return "board/sportsBoard";
 	}
@@ -79,13 +80,18 @@ public class SportsBoardController {
 		map.put("memberNo", loginMember.getMemberNo());
 		map.put("sportsCode", sportsCode);
 		
-		Member createMember = service.boardCreateMember(boardNo);
+		
+		
 		// 모임글 상세조회 페이지 필요한 서비스
+		
 		Board sportsBoardDetail = service.selectSportsBoard(map);
+		
+		Member createMember = service.boardCreateMember(boardNo);
 		
 		model.addAttribute("memberList", sportsBoardDetail.getMemberList());
 		model.addAttribute("board", sportsBoardDetail);
 		model.addAttribute("createMember", createMember);
+		
 		
 		// 모임 참석 여부 확인
 		int attendFl = service.attendFl(map);
@@ -120,5 +126,36 @@ public class SportsBoardController {
 		return service.boardLike(map);
 	}
 	
+	
+	/** 모임글 참여 취소
+	 * @return
+	 */
+	@PostMapping("deleteJoinMember")
+	public String deleteJoinMember(RedirectAttributes ra, 
+									@RequestParam("boardNo") int boardNo, 
+									@SessionAttribute("loginMember") Member loginMember, 
+									@RequestParam("createMemberNo") int createMemberNo,
+									Model model) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+//		log.debug("board number : " + boardNo);
+//		log.debug("member number : " + memberNo);
+		
+		int result = service.deleteJoinMember(boardNo, memberNo);
+		
+		String path = null;
+		
+		
+		if (result > 0) {
+			path = "redirect:/";
+		} else {
+			path = "redirect:boardNo" + boardNo;
+		}
+		
+		
+		
+		return path;
+	}
 	
 }
