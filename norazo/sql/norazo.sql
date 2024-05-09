@@ -88,9 +88,11 @@ CREATE SEQUENCE SEQ_BOARD_NO;
 
 -- 스포츠 타입 조회
 SELECT * FROM SPORTS_TYPE;
+
 SELECT * FROM BOARD 
 WHERE BOARD_CODE = 1
 ORDER BY BOARD_NO DESC;
+
 
 ------------------- 모임 게시글 샘플 데이터 -------------------
 INSERT INTO "BOARD" VALUES(SEQ_BOARD_NO.NEXTVAL, '5:5 풋살 하실 분들 모집합니다', 'A', DEFAULT, NULL, DEFAULT, 1, 1, 'football', 10, '월드컵 경기장');

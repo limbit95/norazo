@@ -57,4 +57,10 @@ public interface SportsBoardService {
 	 */
 	int deleteJoinMember(int boardNo, int memberNo);
 
+	/** 게시글 삭제
+	 * @param map
+	 * @return
+	 */
+	int sportsBoardDelete(Map<String, Object> map);
+
 }
