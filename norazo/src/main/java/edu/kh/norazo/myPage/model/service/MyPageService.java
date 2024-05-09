@@ -1,5 +1,7 @@
 package edu.kh.norazo.myPage.model.service;
 
+import java.util.Map;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.norazo.member.model.dto.Member;
@@ -12,4 +14,5 @@ public interface MyPageService {
 
 	int checkNickname(String memberNickname, Member loginMember) throws Exception;
 
+	int changePw(Map<String, Object> paramMap, int memberNo);
 }
