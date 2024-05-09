@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0/EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="edu.kh.norazo.board.model.mapper.EditBoardMapper">
 	
+	<!-- 게시글 삽입 -->
 	<insert id="boardInsert" useGeneratedKeys="true" parameterType="Board">
 		
 		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
@@ -24,6 +25,7 @@
 		)
 	</insert>
 
+	<!-- 게시글 이미지 삽입 -->
 	<insert id="insertUploadList" parameterType="list">
 		INSERT INTO "BOARD_IMG" 
 		
@@ -37,6 +39,14 @@
 			#{img.boardNo} 
 			FROM DUAL
 		</foreach>
+	</insert>
+	
+	<!-- 작성한 모임글에 작성한 회원이 가장 먼저 참석 -->
+	<insert id="firstJoin">
+		INSERT INTO ATTEND_MEMBER VALUES(
+			#{memberNo},
+			#{boardNo}
+		)
 	</insert>
 
 </mapper>

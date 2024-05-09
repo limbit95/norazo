@@ -11,7 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.dto.BoardImg;
-import edu.kh.norazo.board.model.exeption.BoardInsertException;
+import edu.kh.norazo.board.model.exception.AttendException;
+import edu.kh.norazo.board.model.exception.BoardInsertException;
 import edu.kh.norazo.board.model.mapper.EditBoardMapper;
 import edu.kh.norazo.common.util.Utility;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,17 @@ public class EditBoardServiceImpl implements EditBoardService{
 		}
 		
 		int boardNo = inputBoard.getBoardNo();
+		
+		// 모임 게시글일 경우 작성한 회원이 모임장이므로 
+		// 작성한 모임에 가장 첫 번째로 참석하 회원이 되어야 한다
+		int firstJoin = 0;
+		if(inputBoard.getBoardCode() == 1) {
+			firstJoin = mapper.firstJoin(inputBoard);
+		}
+		
+		if(firstJoin == 0) {
+			throw new AttendException("작성자가 작성한 모임에 참석이 되지 않음");
+		}
 		
 		// 실제 업로드된 이미지의 정보를 모아둘 List 생성
 		List<BoardImg> uploadList = new ArrayList<BoardImg>();
