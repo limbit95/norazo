@@ -123,4 +123,9 @@ public class MyPageServiceImpl implements MyPageService {
 			return mapper.updateInfo(inputMember);
 	}
 
+	@Override
+	public int checkNickname(String memberNickname, Member inputMember) throws Exception {
+		return mapper.checkNickname(memberNickname, inputMember);
+	}
+
 }
