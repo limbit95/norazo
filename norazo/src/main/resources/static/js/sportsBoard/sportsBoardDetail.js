@@ -1,7 +1,7 @@
 // 모임글 상세조회
 
 // 메인 참여인원 아이콘
-const joinMemberStatus = document.querySelector(".joinMemberStatus]");
+const joinMemberStatus = document.querySelector(".joinMemberStatus");
 
 
 
