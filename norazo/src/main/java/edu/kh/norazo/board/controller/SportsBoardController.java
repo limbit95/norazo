@@ -87,7 +87,7 @@ public class SportsBoardController {
 		Board sportsBoardDetail = service.selectSportsBoard(map);
 		
 		Member createMember = service.boardCreateMember(boardNo);
-		
+
 		model.addAttribute("memberList", sportsBoardDetail.getMemberList());
 		model.addAttribute("board", sportsBoardDetail);
 		model.addAttribute("createMember", createMember);
@@ -105,6 +105,9 @@ public class SportsBoardController {
 		
 		// 미참석인 모임 참석 클릭시 참석 기능
 		int join = service.join(map);
+		
+		List<Member> memberList = service.selectAttendMemberList(map);
+		model.addAttribute("memberList", memberList);
 		
 		String path = null;
 		String message = null;

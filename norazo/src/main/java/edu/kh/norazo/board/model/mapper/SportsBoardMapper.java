@@ -96,5 +96,11 @@ public interface SportsBoardMapper {
 	 */
 	int sportsBoardDelete(Map<String, Object> map);
 
+	/** 멤버 리스트 최신화
+	 * @param map
+	 * @return
+	 */
+	List<Member> selectAttendMemberList(Map<String, Object> map);
+
 
 }

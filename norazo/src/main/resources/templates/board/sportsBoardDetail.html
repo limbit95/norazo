@@ -70,12 +70,12 @@
                   <div class="joinMemberImgContainer">
 
                     <th:block th:each="memberList, stat : ${memberList}" th:object="${memberList}">
-                      <th:block th:if="${stat.index < 5}">
+                      <th:block th:if="${5 > stat.index}">
                         <img class="joinMemberImg" th:src="*{profileImg}" id="profileImg"/>
                       </th:block>
                     </th:block>
 
-                    <th:block th:if="${#lists.size(memberList) < 5}">
+                    <th:block th:if="${5 > #lists.size(memberList)}">
                       <th:block th:each="i : ${#numbers.sequence(#lists.size(memberList), 4)}">
                         <img class="joinMemberImg" src="/images/profile/blankprofile.png" id="profileImg"/>
                       </th:block>
