@@ -21,14 +21,15 @@ public interface MainMapper {
 	List<Map<String, Object>> selectSportsTypeList();
 
 	/** 모임 게시판 게시글 최신순 4개 조회
+	 * @param paramMap 
 	 * @return
 	 */
-	List<Board> selectSportsBoardList();
+	List<Board> selectSportsBoardList(Map<String, Object> paramMap);
 
 	/** 자유 게시판 게시글 최신순 5개 조회
 	 * @return
 	 */
-	List<Board> selectFreeBoardList();
+	List<Board> selectFreeBoardList(Map<String, Object> paramMap);
 
 	
 	

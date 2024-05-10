@@ -30,12 +30,13 @@
         </div>
 
         
+        <div class="nothing-div" th:unless="${boardList}">
+            <div>
+                <h1>게시물이 존재 하지 않습니다</h1>
+            </div>
+        </div>
+
         <div class="board-list">
-            <th:block th:unless="${boardList}">
-                <div>
-                    <h1>게시물이 존재하지 않습니다</h1>
-                </div>
-            </th:block>
             <th:block th:if="${boardList}" th:each="board : ${boardList}">
                 <div>
                     <img th:src="${board.thumbnail}" 
@@ -100,5 +101,6 @@
     <script th:inline="javascript">
         const boardTypeList = /*[[${application.boardTypeList}]]*/ "";        
     </script>
+    <script src="https://kit.fontawesome.com/4a8589de03.js" crossorigin="anonymous"></script>
 </body>
 </html>

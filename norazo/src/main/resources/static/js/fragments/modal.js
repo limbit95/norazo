@@ -104,6 +104,7 @@ thumbnail.forEach( (i) => {
             if(loginMember != null) {
                 board.memberList.forEach( (i) => {
                     if(loginMember.memberNo == i.memberNo){
+                        modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
                         return;
                     }
@@ -194,6 +195,7 @@ boardTitle.forEach( (i) => {
             if(loginMember != null) {
                 board.memberList.forEach( (i) => {
                     if(loginMember.memberNo == i.memberNo){
+                        modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
                         return;
                     }
@@ -227,13 +229,15 @@ window.addEventListener("keydown", (e) => {
 if(joinBtn != null){
     joinBtn.addEventListener("click", e => {
         if(loginMember == null){
-            if(confirm("로그인 후 사용 가능한 기능입니다. \n로그인 페이지로 이동하시겠습니까?")){
+            if(confirm("로그인 후 이용해주세요. \n로그인 페이지로 이동하시겠습니까?")){
+                modalContent.classList.add("popup-hidden");
                 location.href = "/member/login";
             }
             return;
         }
 
         if(confirm("해당 모임에 참석하시겠습니까?")){
+            modalContent.classList.add("popup-hidden");
             location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
         }
     });
@@ -246,7 +250,7 @@ if(joinBtn != null){
 if(boardLike != null){
     boardLike.addEventListener("click", e => {
         if(loginMember == null) {
-            if(confirm("로그인 후 사용 가능한 기능입니다. \n로그인 페이지로 이동하시겠습니까?")){
+            if(confirm("로그인 후 이용해주세요.")){
                 location.href = "/member/login";
             }
             return;
