@@ -557,6 +557,7 @@
     flex-direction: column;
     align-items: center;
     padding: 15px;
+    overflow: hidden;
 }
 
 .boardCommentDivTop {
@@ -569,16 +570,25 @@
     background-color: transparent;
 }
 
+.chatMainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 .chatContainer {
     display: flex;
-    height: 50px;
-    align-items: center;
+    height: 80px;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
 }
+
 .chatLeftContainer {
-    width: 100%;
+    width: 80%;
     display: flex;
     height: inherit;
+
 }
 
 .chatUserProfile {
@@ -617,9 +627,8 @@
 }
 
 .chatUpdateDeleteContainer {
-    width: 40%;
-    display: flex;
-    justify-content: space-evenly;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 .a-updateBtn, .a-deleteBtn {
@@ -630,6 +639,7 @@
     word-wrap: break-word;
     text-decoration: none;
     transition: color 0.3s;
+    margin: 5px;
 }
 .a-updateBtn:hover, .a-deleteBtn:hover {
     color: var(--secondary);
@@ -637,6 +647,7 @@
 }
 
 .chatContent {
+    width: 70%;
     white-space: pre-wrap;
     border-radius: 30px;
     background-color: var(--primary3);
@@ -646,9 +657,49 @@
     line-height: 1.5;
     letter-spacing: 1px;
     color: var(--white);
+    overflow: hidden;
+}
+
+.chatContentContainerUser {
+    display: flex;
+    justify-content: flex-end;
 }
 
 
+.chatContentUser {
+    width: 70%;
+    white-space: pre-wrap;
+    border-radius: 30px;
+    background-color: var(--primary1);
+    padding: 15px;
+    font-family: 'main';
+    font-size: 15px;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+.chatContainerUser {
+    display: flex;
+    height: 80px;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.chatLeftContainerUser {
+    width: 80%;
+    display: flex;
+    height: inherit;
+    justify-content: flex-end;
+}
+
+.chatUpdateDeleteContainerUser {
+    width: 100%;
+    left: 73%;
+    margin-bottom: 10px;
+    position: relative;
+}
 
 .chatSubmitMainContainer {
     display: flex;
