@@ -130,6 +130,9 @@
     overflow-x: hidden;
     padding: 10px;
     text-align: center;
+    line-height: 70px;
+
+    padding: 15px;
 }
 
 .MyProfileRight {

@@ -155,17 +155,20 @@
                   <!-- 취소 -->
                   <form action="/sportsBoard/deleteJoinMember" method="POST">
                     <th:block th:if="${createMember.memberNo == session.loginMember.memberNo}">
-                      <button class="detailCancelBtn" id="deleteJoinMember">모임 삭제</button>
+                      <button class="detailCancelBtn" id="updateJoinMember">모임 수정</button>
                       <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
                       <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
                       <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                      <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
+                      <button class="detailCancelBtn" id="deleteJoinMember">모임 삭제</button>
                     </th:block>
 
                     <th:block th:if="${createMember.memberNo != session.loginMember.memberNo}">
-                      <button class="detailCancelBtn" id="deleteJoinMember">모임 취소</button>
+                      <button class="detailCancelBtn" id="deleteJoinMember">참여 취소</button>
                       <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
                       <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
                       <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                      <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
                     </th:block>
                   </form>
                 </div>
