@@ -1,11 +1,13 @@
 package edu.kh.norazo.myPage.controller;
 
 import java.io.Console;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.norazo.myPage.model.service.MyPageService;
+import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.board.model.service.BoardService;
 import edu.kh.norazo.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -173,8 +177,52 @@ public class MyPageController {
 	}
 	
 	
-	
-	
+	@GetMapping("{boardCode:[a-z,A-Z]+}")
+	public String selectBoardList(@PathVariable("boardCode") String boardCode,
+								  @SessionAttribute("loginMember") Member loginMember,
+								  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp,
+								  Model model) {
+		
+		
+		log.debug("boardCode : " + boardCode);
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> map = null;
+		
+		if(boardCode.equals("myCreate")) {
+			
+			map = service.selectmyCreateBoardList(boardCode,cp,memberNo);
+		}
+		
+		if(boardCode.equals("myBelong")) {
+			
+			map = service.selectmyBelongBoardList(boardCode,cp,memberNo);
+		}
+		
+		if(boardCode.equals("myHeart")) {
+			
+			map = service.selectmyHeartBoardList(boardCode,cp,memberNo);
+		}
+		
+		
+		model.addAttribute("pagination",map.get("pagination"));
+		
+		model.addAttribute("boardList",map.get("boardList"));
+		
+		if(boardCode.equals("myCreate")) {
+	         model.addAttribute("boardName", "자유 게시판");
+	      } 
+		if(boardCode.equals("myBelong")) {
+			model.addAttribute("boardName", "자유 게시판");
+		} 
+		if(boardCode.equals("myHeart")) {
+			model.addAttribute("boardName", "자유 게시판");
+		} 
+
+		
+		return "board/boardList";
+	}
 	
 	
 	

@@ -37,22 +37,6 @@ public interface BoardMapper {
 	 */
 	int boardUpdate(Board inputBoard);
 
-	int getMyCreateListCount(String boardCode, int memberNo);
 
-	List<Board> selectMyCreateBoardList(String boardCode, RowBounds rowBounds, int memberNo);
-
-	int getMyBelongListCount(String boardCode, int memberNo);
-
-	List<Board> selectMyBelongBoardList(String boardCode, RowBounds rowBounds, int memberNo);
-
-	int getMyHeartListCount(String boardCode, int memberNo);
-
-	List<Board> selectMyHeartBoardList(String boardCode, RowBounds rowBounds, int memberNo);
-
-
-
-
-
-	
 	
 }

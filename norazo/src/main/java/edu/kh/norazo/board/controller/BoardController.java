@@ -30,35 +30,30 @@ public class BoardController {
 	
 	@GetMapping("{boardCode:[a-z,A-Z]+}")
 	public String selectBoardList(@PathVariable("boardCode") String boardCode,
-								  @SessionAttribute("loginMember") Member loginMember,
 								  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp,
 								  Model model) {
 
 		Board board = new Board();
 		
-		Map<String, Object> map = null;
-		
 		if(boardCode.equals("free")) {
-			board.setBoardCode(2);
-			
-
-		}
-			
-		if(boardCode.equals("faq")) {
-			
-			board.setBoardCode(3);
-
-
-		}
+        model.addAttribute("boardName", "자유 게시판");
+        board.setBoardCode(2);
+	    }   
+    if(boardCode.equals("faq")) {
+        model.addAttribute("boardName", "문의 게시판");
+        board.setBoardCode(3);
+    }
+		log.debug("boardCode : " + boardCode);
 		
+		Map<String, Object> map = null;
 
 		map = service.selectBoardList(board.getBoardCode(),cp);
 		
-		
 		model.addAttribute("pagination",map.get("pagination"));
 		
-		model.addAttribute("boardList",map.get("boardList"));
+// 		List<Board> boardList = (List<Board>) map.get("boardList");
 		
+	
 		return "board/boardList";
 	}
 	

@@ -144,7 +144,7 @@
 	<!-- 로그인한 회원 모임 참석 -->
 	<insert id="join">
 		INSERT INTO ATTEND_MEMBER VALUES(
-			SEQ_ATTEND_NO,
+			SEQ_ATTEND_NO.NEXTVAL,
 			#{memberNo},
 			#{boardNo}
 		)
