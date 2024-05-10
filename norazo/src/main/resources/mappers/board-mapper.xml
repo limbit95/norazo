@@ -93,6 +93,7 @@
 		VALUES(#{boardNo},#{boardTitle},#{boardContent},SYSDATE,NULL,DEFAULT,#{memberNo},#{boardCode},NULL,NULL,NULL,NULL)
 	</insert>
 	
+	<!-- 게시판 수정 -->
 	<update id="boardUpdate">
 		UPDATE "BOARD" SET 
 		BOARD_TITLE = #{boardTitle},

@@ -21,35 +21,36 @@
       
             <div class="div-box">
 
-                <div class="board-create-div">
+                <form action="/board/update/boardUpdate" 
+                      th:object="${board}" 
+                      method="post">
+                      
+                    <div class="board-create-div">
 
-                    <div class="content-div-box">
+                        <div class="content-div-box">
 
-                        <div class="board-title-div">
-                            <input type="text"
-                                   th:value="${board.boardTitle}"
-                                   class="board-title-input"
-                                   id="boardTitle">
+                            <div class="board-title-div">
+                                <input type="text"
+                                    th:value="${board.boardTitle}"
+                                    class="board-title-input"
+                                    id="boardTitle">
+                            </div>
+
+                            <div class="board-content">
+                                <textarea id="boardContent"
+                                        th:text="${board.boardContent}"></textarea>
+                            </div>
                             
-                            <span id="detailUser" th:text="${board.memberNickname}">user</span>
-                            <span id="detailSysdate" th:text="${board.boardWriteDate}">2024-05-08-sysdate</span>
+                            <div class="button-div">
+                                <th:block th:if="${board.memberNo == session.loginMember?.memberNo}">
+                                    <button class="updateBoardBtn" id="updateBoardBtn">수정</button>
+                                    <button class="deleteBoardBtn" id="deleteBoardBtn">삭제</button>
+                                </th:block>
+                            </div>    
 
                         </div>
-
-                        <div class="board-content">
-                            <textarea id="boardContent"
-                                      th:text="${board.boardContent}"></textarea>
-                        </div>
-                        
-                        <div class="button-div">
-                            <th:block th:if="${board.memberNo == session.loginMember?.memberNo}">
-                                <button class="updateBoardBtn" id="updateBoardBtn">수정</button>
-                                <button class="deleteBoardBtn" id="deleteBoardBtn">삭제</button>
-                            </th:block>
-                        </div>    
-
                     </div>
-                </div>
+                </form>
 
             </div>  
 
