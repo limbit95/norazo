@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/board/sportsBoardDetail.css">
     <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/fragments/sportsBoardDetailModal.css">
     <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <title>노라조 스포츠 게시판</title>
 </head>
@@ -54,12 +55,17 @@
                     <div class="joinMemberTitle">
                       <h2 class="joinTitle">참여 회원 현황</h2>
                     </div> 
+
+                    <!-- 참여회원 현황 클릭시 모달창 -->
                     <div class="joinMemberIconContainer">
                       <ion-icon name="person" class="personIco joinMemberStatus"></ion-icon>
                       <h4 class="joinMemberStatus" th:text="|*{attendMemberCount} / *{memberCountLimit}|">ATTENDED MEMBER</h4>
                     </div>
                   </div>
 
+
+                  <!-- modal fragment -->
+                 <th:block th:replace="~{common/fragments/sportsBoardDetailModal}"></th:block>
 
                   <div class="joinMemberImgContainer">
 
@@ -237,5 +243,6 @@
     </main>
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/sportsBoard/sportsBoardDetail.js"></script>
+    <script src="/js/fragments/sportsBoardDetailModal.js"></script>
 </body>
 </html>

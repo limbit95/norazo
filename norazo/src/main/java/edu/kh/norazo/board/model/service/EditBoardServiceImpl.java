@@ -106,5 +106,11 @@ public class EditBoardServiceImpl implements EditBoardService{
 		
 		return boardNo;
 	}
+
+	@Override
+	public int sportsBoardUpdate(Board inputBoard, List<MultipartFile> inputThumbnail, String deleteOrder) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

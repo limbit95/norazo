@@ -15,4 +15,6 @@ public interface EditBoardService {
 	 */
 	int boardInsert(Board inputBoard, List<MultipartFile> inputThumbnail) throws Exception;
 
+	int sportsBoardUpdate(Board inputBoard, List<MultipartFile> inputThumbnail, String deleteOrder);
+
 }
