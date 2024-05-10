@@ -21,7 +21,7 @@
       
             <div class="div-box">
 
-                <form action="/board/update/boardUpdate" 
+                <form action="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo})}" 
                       th:object="${board}" 
                       method="post"
                       id="boardUpdateFrm">

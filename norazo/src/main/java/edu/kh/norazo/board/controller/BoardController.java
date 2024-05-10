@@ -35,9 +35,12 @@ public class BoardController {
 
 		Board board = new Board();
 		
+		Map<String, Object> map = null;
+		
 		if(boardCode.equals("free")) {
         model.addAttribute("boardName", "자유 게시판");
         board.setBoardCode(2);
+        
 	    }   
 	    if(boardCode.equals("faq")) {
 	        model.addAttribute("boardName", "문의 게시판");
@@ -45,9 +48,18 @@ public class BoardController {
 	    }
 		log.debug("boardCode : " + boardCode);
 		
-		Map<String, Object> map = null;
+	    if(boardCode.equals("faq")) {
+	        model.addAttribute("boardName", "문의 게시판");
+	        board.setBoardCode(3);
+	        
+	    }
+
+		
+
 		
 		map = service.selectBoardList(board.getBoardCode(),cp);
+		
+		model.addAttribute("boardList",map.get("boardList"));
 		
 		model.addAttribute("pagination",map.get("pagination"));
 		
@@ -97,6 +109,7 @@ public class BoardController {
 			
 			model.addAttribute("board",board);
 		}
+		
 		return path;
 	}
 	
@@ -235,7 +248,7 @@ public class BoardController {
 			  				  Board inputBoard,
 			  				  @SessionAttribute("loginMember") Member loginMember,
 			  				  RedirectAttributes ra,
-			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
+			  				  @RequestParam(value = "queryString", required = false, defaultValue = "1")String queryString) {
 		
 
 		
@@ -258,7 +271,7 @@ public class BoardController {
 		
 		if(result > 0) {
 		
-			path = String.format("redirect:/board/%s/%d", boardName,boardNo);
+			path = String.format("redirect:/board/%s/%d%s", boardName,boardNo,queryString);
 			
 			message = "게시글이 수정 되었습니다.";
 	

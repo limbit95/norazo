@@ -63,7 +63,7 @@
         </th:block>
         
 
-        <th:block th:unless="${#lists.isEmpty(boardList)}">
+        <th:block th:if="${#lists.isEmpty(boardList)}">
             <div class="pagination-area">
 
                 <!-- 일반 목록 조회 (검색이 아닌 경우) -->
