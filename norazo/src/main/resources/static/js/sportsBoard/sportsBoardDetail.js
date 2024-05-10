@@ -93,8 +93,8 @@ if (deleteJoinMember != null) {
 
 
 // 게시글 수정 삭제 테스트 코드
-const updateBtn = document.querySelector("#updateBtn");
-const deleteBtn = document.querySelector("#deleteBtn");
+const updateBtn = document.querySelector("#updateSportsBoard");
+const deleteBtn = document.querySelector("#deleteSportsBoard");
 
 if(updateBtn != null){
     updateBtn.addEventListener("click", e =>{
