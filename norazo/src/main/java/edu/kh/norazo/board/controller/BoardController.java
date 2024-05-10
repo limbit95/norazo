@@ -32,39 +32,26 @@ public class BoardController {
 	public String selectBoardList(@PathVariable("boardCode") String boardCode,
 								  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp,
 								  Model model) {
+
+		Board board = new Board();
 		
 		if(boardCode.equals("free")) {
-	         model.addAttribute("boardName", "자유 게시판");
-	      }   
-	      if(boardCode.equals("faq")) {
-	         model.addAttribute("boardName", "문의 게시판");
-	      }
+        model.addAttribute("boardName", "자유 게시판");
+        board.setBoardCode(2);
+	    }   
+    if(boardCode.equals("faq")) {
+        model.addAttribute("boardName", "문의 게시판");
+        board.setBoardCode(3);
+    }
 		log.debug("boardCode : " + boardCode);
 		
 		Map<String, Object> map = null;
-		
-		if(boardCode.equals("free")) {
-			
-			map = service.selectFreeBoardList(boardCode,cp);
-		}	
-		
-		if(boardCode.equals("faq")) {
-			
-			map = service.selectFaqBoardList(boardCode,cp);
-		}
-		
+
+		map = service.selectBoardList(board.getBoardCode(),cp);
 		
 		model.addAttribute("pagination",map.get("pagination"));
 		
-		
-		List<Board> boardList = (List<Board>) map.get("boardList");
-		
-		model.addAttribute("boardList",map.get("boardList"));
-		
-		log.debug("board list : " + boardList.toString());
-		
-		model.addAttribute("boardName", boardList.get(0).getBoardName());
-		
+// 		List<Board> boardList = (List<Board>) map.get("boardList");
 		
 	
 		return "board/boardList";
@@ -240,7 +227,7 @@ public class BoardController {
 	 * @param loginMember
 	 * @param ra
 	 * @param queryString
-	 * @return
+	 * @return 
 	 */
 	@PostMapping("{boardName:[a-z]+}/{boardNo:[0-9]+}/update")
 	public String boardUpdate(@PathVariable("boardName")String boardName,
@@ -250,6 +237,7 @@ public class BoardController {
 			  				  RedirectAttributes ra,
 			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
 		
+
 		
 		if(boardName.equals("free")) {
 			inputBoard.setBoardCode(2);
