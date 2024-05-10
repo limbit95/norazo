@@ -28,13 +28,16 @@ public class BoardController {
 	
 	private final BoardService service;
 	
-	@GetMapping("{boardCode:[a-z]+}")
+	@GetMapping("{boardCode:[a-z,A-Z]+}")
 	public String selectBoardList(@PathVariable("boardCode") String boardCode,
+								  @SessionAttribute("loginMember") Member loginMember,
 								  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp,
 								  Model model) {
 		
 		
 		log.debug("boardCode : " + boardCode);
+		
+		int memberNo = loginMember.getMemberNo();
 		
 		Map<String, Object> map = null;
 		
@@ -46,6 +49,21 @@ public class BoardController {
 		if(boardCode.equals("faq")) {
 			
 			map = service.selectFaqBoardList(boardCode,cp);
+		}
+		
+		if(boardCode.equals("myCreate")) {
+			
+			map = service.selectmyCreateBoardList(boardCode,cp,memberNo);
+		}
+		
+		if(boardCode.equals("myBelong")) {
+			
+			map = service.selectmyBelongBoardList(boardCode,cp,memberNo);
+		}
+		
+		if(boardCode.equals("myHeart")) {
+			
+			map = service.selectmyHeartBoardList(boardCode,cp,memberNo);
 		}
 		
 		
@@ -110,7 +128,14 @@ public class BoardController {
 	 * @return
 	 */
 	@GetMapping("{boardCode:[a-z]+}/insert")
-	public String boadWrite(@PathVariable("boardCode")String boardCode) {
+	public String boadWrite(@PathVariable("boardCode")String boardCode,
+							Model model) {
+		
+		if(boardCode.equals("free")) {
+			model.addAttribute("boardName", "자유 게시판");
+		} else if (boardCode.equals("faq")) {
+			model.addAttribute("boardName", "문의 게시판");
+		}
 		
 		return "board/boardWrite";
 	}
@@ -120,24 +145,96 @@ public class BoardController {
 	 * @param inputBoard
 	 * @return
 	 */
-	@PostMapping("{boardCode:[a-z]+}/insert")
-	public String boadWrite(@PathVariable("boardCode")String boardCode,
+	@PostMapping("{boardName:[a-z]+}/insert")
+	public String boadWrite(@PathVariable("boardName")String boardName,
 							Board inputBoard,
 							@SessionAttribute("loginMember") Member member,
 							RedirectAttributes ra) {
 		
+			inputBoard.setMemberNo(member.getMemberNo());
 		
-			if(boardCode.equals("free")) {
-
+		
+			if(boardName.equals("free")) {
+				inputBoard.setBoardCode(2);
 			}
 			
-			if(boardCode.equals("faq")) {
-
+			if(boardName.equals("faq")) {
+				inputBoard.setBoardCode(3);
 			}
 			
-
+			int boardNo = service.insertBoard(inputBoard);
+			
+			String message = null;
+			
+			String path = null;
+			
+			if(boardNo > 0) {
+				message = "게시글이 등록 되었습니다.";
+				
+				path = "redirect:/board/"+boardName;
+			
+			} else {
+				message = "게시글이 등록 되지 않았습니다.";
+				
+				path = "board/boardWrite";
+			}
 		
-		return "board/boardWrite";
+			ra.addFlashAttribute("message", message);
+			
+		return path;
+	}
+
+	/** 게시글 수정 
+	 * @param boardName
+	 * @return
+	 */
+	@GetMapping("{boardName:[a-z]+}/update/{boardNo:[0-9]+}")
+	public String boardUpdate(@PathVariable("boardName")String boardCode,
+							  @PathVariable("boardNo") int boardNo,
+							  @SessionAttribute("loginMember")Member loginMember,
+							  Board inputBoard,
+							  Model model, 
+							  RedirectAttributes ra) {
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("boardCode", boardCode);
+		map.put("boardNo", boardNo);
+					
+		if(boardCode.equals("free")) {
+			map.put("boardCode", 2);
+		}
+		
+		if(boardCode.equals("faq")) {
+			map.put("boardCode", 3);
+		}
+		log.debug("inputBoard : "+inputBoard);
+		Board board = service.selectOne(map);
+		
+		String message = null; 
+		String path = null; 
+		
+		if(board == null) {
+			message = "해당 게시글이 존재하지 않습니다.";
+			
+			path = "redirect:/";
+			
+			ra.addFlashAttribute("message",message);
+			
+		} else if(board.getMemberNo() != loginMember.getMemberNo()) {
+			message = "자신이 작성한 글만 수정할 수 있습니다.";
+			
+			path = "redirect:/board/"+boardCode;
+			
+			ra.addFlashAttribute("message",message);
+			
+		} else {
+			
+			
+			}
+			
+		
+		
+		return "";
 	}
 	
 }

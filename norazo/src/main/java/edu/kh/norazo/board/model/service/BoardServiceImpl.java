@@ -76,5 +76,91 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.selectOne(map);
 	}
 
+	@Override
+	public int insertBoard(Board inputBoard) {
+		
+		
+		
+		return mapper.insertBoard(inputBoard);
+	}
+	public Map<String, Object> selectmyCreateBoardList(String boardCode, int cp, int memberNo) {
+		
+		int listCount = mapper.getMyCreateListCount(boardCode, memberNo);
+		
+		Pagination pagination = new Pagination(cp,listCount); 
+		
+		int limit = pagination.getLimit();
+		
+		int offset = (cp - 1) * limit;
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+
+		List<Board> boardList = mapper.selectMyCreateBoardList(boardCode,rowBounds, memberNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> selectmyBelongBoardList(String boardCode, int cp, int memberNo) {
+		
+		int listCount = mapper.getMyBelongListCount(boardCode, memberNo);
+		
+		Pagination pagination = new Pagination(cp,listCount); 
+		
+		int limit = pagination.getLimit();
+		
+		int offset = (cp - 1) * limit;
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+
+		List<Board> boardList = mapper.selectMyBelongBoardList(boardCode,rowBounds, memberNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> selectmyHeartBoardList(String boardCode, int cp, int memberNo) {
+		
+		int listCount = mapper.getMyHeartListCount(boardCode, memberNo);
+		
+		Pagination pagination = new Pagination(cp,listCount); 
+		
+		int limit = pagination.getLimit();
+		
+		int offset = (cp - 1) * limit;
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+
+		List<Board> boardList = mapper.selectMyHeartBoardList(boardCode,rowBounds, memberNo);
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+		
+
+		return map;
+	}
+
 	
+	// 게시글 수정
+	@Override
+	public int boardUpdate(Board inputBoard) {
+		
+		
+		
+		return mapper.boardUpdate(inputBoard);
+	}
 }

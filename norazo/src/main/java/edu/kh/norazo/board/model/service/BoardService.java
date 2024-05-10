@@ -27,6 +27,25 @@ public interface BoardService {
 	 */
 	Board selectOne(Map<String, Object> map);
 
+	/** 00 게시판 작성 
+	 * @param inputBoard
+	 * @return
+	 */
+	int insertBoard(Board inputBoard);
+
+	/** 게시글 수정
+	 * @param inputBoard
+	 * @return
+	 */
+	int boardUpdate(Board inputBoard);
+
+
+	Map<String, Object> selectmyCreateBoardList(String boardCode, int cp, int memberNo);
+
+	Map<String, Object> selectmyBelongBoardList(String boardCode, int cp, int memberNo);
+
+	Map<String, Object> selectmyHeartBoardList(String boardCode, int cp, int memberNo);
+
 	
 
 }

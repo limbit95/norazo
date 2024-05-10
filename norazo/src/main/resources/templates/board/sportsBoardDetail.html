@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/common/button.css">
     <link rel="stylesheet" href="/css/board/sportsBoardDetail.css">
     <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/fragments/sportsBoardDetailModal.css">
     <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
     <title>노라조 스포츠 게시판</title>
 </head>
@@ -54,12 +55,17 @@
                     <div class="joinMemberTitle">
                       <h2 class="joinTitle">참여 회원 현황</h2>
                     </div> 
+
+                    <!-- 참여회원 현황 클릭시 모달창 -->
                     <div class="joinMemberIconContainer">
                       <ion-icon name="person" class="personIco joinMemberStatus"></ion-icon>
                       <h4 class="joinMemberStatus" th:text="|*{attendMemberCount} / *{memberCountLimit}|">ATTENDED MEMBER</h4>
                     </div>
                   </div>
 
+
+                  <!-- modal fragment -->
+                 <th:block th:replace="~{common/fragments/sportsBoardDetailModal}"></th:block>
 
                   <div class="joinMemberImgContainer">
 
@@ -155,17 +161,20 @@
                   <!-- 취소 -->
                   <form action="/sportsBoard/deleteJoinMember" method="POST">
                     <th:block th:if="${createMember.memberNo == session.loginMember.memberNo}">
-                      <button class="detailCancelBtn" id="deleteJoinMember">모임 삭제</button>
+                      <button class="detailCancelBtn" id="updateJoinMember">모임 수정</button>
                       <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
                       <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
                       <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                      <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
+                      <button class="detailCancelBtn" id="deleteJoinMember">모임 삭제</button>
                     </th:block>
 
                     <th:block th:if="${createMember.memberNo != session.loginMember.memberNo}">
-                      <button class="detailCancelBtn" id="deleteJoinMember">모임 취소</button>
+                      <button class="detailCancelBtn" id="deleteJoinMember">참여 취소</button>
                       <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
                       <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
                       <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                      <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
                     </th:block>
                   </form>
                 </div>
@@ -234,5 +243,6 @@
     </main>
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/sportsBoard/sportsBoardDetail.js"></script>
+    <script src="/js/fragments/sportsBoardDetailModal.js"></script>
 </body>
 </html>
