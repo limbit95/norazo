@@ -162,73 +162,67 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 
-	public Map<String, Object> selectmyCreateBoardList(String boardCode, int cp, int memberNo) {
+	public Map<String, Object> selectmyCreateBoardList(Map<String, Object> map) {
+		int listCount = mapper.getMyCreateListCount(map);
 		
-		int listCount = mapper.getMyCreateListCount(boardCode, memberNo);
-		
-		Pagination pagination = new Pagination(cp,listCount); 
+		Pagination pagination = new Pagination((int) map.get("cp"),listCount); 
 		
 		int limit = pagination.getLimit();
 		
-		int offset = (cp - 1) * limit;
+		int offset = ((int) map.get("cp") - 1) * limit;
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 
-		List<Board> boardList = mapper.selectMyCreateBoardList(boardCode,rowBounds, memberNo);
+		List<Board> boardList = mapper.selectMyCreateBoardList(map, rowBounds);
 		
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map2 = new HashMap<>();
 		
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-		
 
 		return map;
 	}
 
 	@Override
-	public Map<String, Object> selectmyBelongBoardList(String boardCode, int cp, int memberNo) {
+	public Map<String, Object> selectmyBelongBoardList(Map<String, Object> map) {
+		int listCount = mapper.getMyBelongListCount(map);
 		
-		int listCount = mapper.getMyBelongListCount(boardCode, memberNo);
-		
-		Pagination pagination = new Pagination(cp,listCount); 
+		Pagination pagination = new Pagination((int) map.get("cp"),listCount); 
 		
 		int limit = pagination.getLimit();
 		
-		int offset = (cp - 1) * limit;
+		int offset = ((int) map.get("cp") - 1) * limit;
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 
-		List<Board> boardList = mapper.selectMyBelongBoardList(boardCode,rowBounds, memberNo);
+		List<Board> boardList = mapper.selectMyBelongBoardList(map, rowBounds);
 		
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map2 = new HashMap<>();
 		
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-		
 
 		return map;
 	}
 
 	@Override
-	public Map<String, Object> selectmyHeartBoardList(String boardCode, int cp, int memberNo) {
+	public Map<String, Object> selectmyHeartBoardList(Map<String, Object> map) {
+		int listCount = mapper.getMyHeartListCount(map);
 		
-		int listCount = mapper.getMyHeartListCount(boardCode, memberNo);
-		
-		Pagination pagination = new Pagination(cp,listCount); 
+		Pagination pagination = new Pagination((int) map.get("cp"),listCount); 
 		
 		int limit = pagination.getLimit();
 		
-		int offset = (cp - 1) * limit;
+		int offset = ((int) map.get("cp") - 1) * limit;
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 
-		List<Board> boardList = mapper.selectMyHeartBoardList(boardCode,rowBounds, memberNo);
+		List<Board> boardList = mapper.selectMyHeartBoardList(map, rowBounds);
 		
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map2 = new HashMap<>();
 		
 		map.put("pagination", pagination);
 		map.put("boardList", boardList);
-		
 
 		return map;
 	}
