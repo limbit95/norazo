@@ -49,4 +49,9 @@ public class Board {
 	private String meetingDate; // 모임 일시
 	
 	private List<Member> memberList;
+	
+	
+	private List<BoardImg> imageList;
+	// 모임글 수정할 때 삽입할 date 형식
+	
 }

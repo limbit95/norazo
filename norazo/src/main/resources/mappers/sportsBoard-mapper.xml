@@ -63,6 +63,14 @@
 	 <resultMap type="Board" id="modal_rm">
 	 	<id property="boardNo" column="BOARD_NO"/>
 	 	
+	 	<collection 
+			property="imageList"
+			select="selectImageList"
+			column="BOARD_NO"
+			javaType="java.util.ArrayList"
+			ofType="BoardImg"
+		/>
+	 	
 		<collection 
 			property="memberList"
 			select="selectAttendMemberList"
@@ -83,6 +91,13 @@
 		/>
 	 </resultMap>
 	 
+	 
+	 <select id="selectImageList" resultType="BoardImg">
+		SELECT * 
+		FROM "BOARD_IMG"
+		WHERE BOARD_NO = #{boardNo}
+		ORDER BY IMG_ORDER
+	</select>
 	 
 	 <select id="selectAttendMemberList" resultType="Member">
 	 	SELECT MEMBER_NO, PROFILE_IMG, MEMBER_NICKNAME
