@@ -209,7 +209,7 @@ if(confirm1 != null){
 
 // 성별 선택이 안되었을 시 
 const gender = document.querySelector("#gender");
-
+if(gender!=null){
 gender.addEventListener("change", function() {
 
 
@@ -222,7 +222,7 @@ gender.addEventListener("change", function() {
     }
 
     checkObj.gender = true;
-});
+})};
 
 
 
@@ -278,6 +278,7 @@ if(signUpForm != null) {
 
 }
 const a = document.getElementById("changePwbtn");
+if(a != null) {
 a.addEventListener("click", e => {
 if(loginMember != null) {
     let text = loginMember.memberIntroduce;
@@ -286,7 +287,7 @@ if(loginMember != null) {
         document.getElementById('introduced').innerHTML = introduced;
     }
 }
-});
+})};
 if(loginMember != null) {
     let text = loginMember.memberIntroduce;
     const introduced = text.replaceAll(/\n/g, "<br>");
@@ -294,7 +295,10 @@ if(loginMember != null) {
         document.getElementById('introduced').innerHTML = introduced;
     }};
 const introduce = loginMember.memberIntroduce.replaceAll("<br>", "\r\n");
-if (introduce != null) {
-    document.getElementById('introduce').innerHTML = introduce;
-};
+if( document.getElementById('introduce') != null) {
+    if (introduce != null) {
+        document.getElementById('introduce').innerHTML = introduce;
+    }
+}
+
 
