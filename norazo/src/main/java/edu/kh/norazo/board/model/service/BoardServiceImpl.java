@@ -77,6 +77,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
+	public int insertBoard(Board inputBoard) {
+		
+		
+		
+		return mapper.insertBoard(inputBoard);
+	}
 	public Map<String, Object> selectmyCreateBoardList(String boardCode, int cp, int memberNo) {
 		
 		int listCount = mapper.getMyCreateListCount(boardCode, memberNo);
@@ -149,4 +155,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	
+	// 게시글 수정
+	@Override
+	public int boardUpdate(Board inputBoard) {
+		
+		
+		
+		return mapper.boardUpdate(inputBoard);
+	}
 }

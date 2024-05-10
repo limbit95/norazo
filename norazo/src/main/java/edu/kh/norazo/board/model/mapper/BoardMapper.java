@@ -31,7 +31,11 @@ public interface BoardMapper {
 
 	Board selectOne(Map<String, Object> map);
 
-	int getMyCreateListCount(String boardCode, int memberNo);
+  int insertBoard(Board inputBoard);
+
+	int boardUpdate(Board inputBoard);
+
+  int getMyCreateListCount(String boardCode, int memberNo);
 
 	List<Board> selectMyCreateBoardList(String boardCode, RowBounds rowBounds, int memberNo);
 

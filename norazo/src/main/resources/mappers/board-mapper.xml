@@ -83,7 +83,26 @@
 		AND BOARD_NO = #{boardNo}
 	</select>
 	
-	<select id="getMyCreateListCount">	
+	<insert id="insertBoard" useGeneratedKeys="true" parameterType="Board">
+   
+      <selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+         SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+      </selectKey>
+      
+		INSERT INTO BOARD
+		VALUES(#{boardNo},#{boardTitle},#{boardContent},SYSDATE,NULL,DEFAULT,#{memberNo},#{boardCode},NULL,NULL,NULL,NULL)
+	</insert>
+	
+	<update id="boardUpdate">
+		UPDATE "BOARD" SET 
+		BOARD_TITLE = #{boardTitle},
+		BOARD_CONTENT = #{boardContent}
+		WHERE BOARD_CODE = #{boardCode}
+		AND BOARD_NO = #{boardNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+
+  <select id="getMyCreateListCount">	
 		SELECT COUNT(*)  
 		FROM BOARD
 		WHERE BOARD_DEL_FL = 'N'
