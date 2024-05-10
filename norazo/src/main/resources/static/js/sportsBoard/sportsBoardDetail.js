@@ -51,18 +51,29 @@ if (memberIntroduce && memberIntroduce.innerHTML.trim() === "") {
 
 // 모임글 취소
 const deleteJoinMember = document.querySelector("#deleteJoinMember");
-const createMemberNo = document.querySelector("[name=createMemberNo]");
-const memberNo = document.querySelector("[name=memberNo]");
 
 if (deleteJoinMember != null) {
 
     
-    deleteJoinMember.addEventListener("click", () => {
-        
-        if(confirm("모임 취소")) {
-            alert("모임에 취소 되었습니다");
-        } else {
-            alert("모임에 취소 되지 않았습니다");
+    deleteJoinMember.addEventListener("click", (e) => {
+        const memberNo = document.querySelector("#memberNo").value;
+        const createMemberNo = document.querySelector("#createMemberNo").value;
+        const loginMemberNo = document.querySelector("#loginMemberNo").value;
+        if (memberNo == loginMemberNo) {
+
+            if(confirm("모임 삭제")) {
+                alert("모임이 삭제 되었습니다");
+            } else {
+                e.preventDefault();
+            }
+        } 
+
+        if (memberNo != loginMemberNo || createMemberNo != loginMemberNo) {
+            if(confirm("참여 취소")) {
+                alert("참여 취소 되었습니다");
+            } else {
+                e.preventDefault();
+            }
         }
 
     });

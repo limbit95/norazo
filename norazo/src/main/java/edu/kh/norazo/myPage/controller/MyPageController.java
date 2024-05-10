@@ -37,21 +37,6 @@ public class MyPageController {
 		return "myPage/myPage";
 	}
 	
-	@GetMapping("create")
-	public String create() {
-		return "myPage/create";
-	}
-	
-	@GetMapping("belong")
-	public String belong() {
-		return "myPage/belong";
-	}
-	
-	@GetMapping("heart")
-	public String heart() {
-		return "myPage/heart";
-	}
-	
 	@GetMapping("edit")
 	public String edit(@SessionAttribute("loginMember") Member loginMember,
 			Model model) {
@@ -144,7 +129,7 @@ public class MyPageController {
 				String message = null;
 				
 				if(result > 0) {
-					path = "/myPage/info";
+					path = "/myPage/main";
 					message = "비밀번호가 변경 되었습니다";
 				} else {
 					path = "/myPage/changePw";
