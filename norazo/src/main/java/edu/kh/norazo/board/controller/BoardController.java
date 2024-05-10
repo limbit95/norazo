@@ -56,7 +56,15 @@ public class BoardController {
 		
 		model.addAttribute("pagination",map.get("pagination"));
 		
+		
+		List<Board> boardList = (List<Board>) map.get("boardList");
+		
 		model.addAttribute("boardList",map.get("boardList"));
+		
+		log.debug("board list : " + boardList.toString());
+		
+		model.addAttribute("boardName", boardList.get(0).getBoardName());
+		
 		
 	
 		return "board/boardList";

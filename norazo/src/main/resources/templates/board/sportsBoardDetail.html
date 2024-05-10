@@ -70,12 +70,12 @@
                   <div class="joinMemberImgContainer">
 
                     <th:block th:each="memberList, stat : ${memberList}" th:object="${memberList}">
-                      <th:block th:if="${stat.index < 5}">
+                      <th:block th:if="${5 > stat.index}">
                         <img class="joinMemberImg" th:src="*{profileImg}" id="profileImg"/>
                       </th:block>
                     </th:block>
 
-                    <th:block th:if="${#lists.size(memberList) < 5}">
+                    <th:block th:if="${5 > #lists.size(memberList)}">
                       <th:block th:each="i : ${#numbers.sequence(#lists.size(memberList), 4)}">
                         <img class="joinMemberImg" src="/images/profile/blankprofile.png" id="profileImg"/>
                       </th:block>
@@ -163,11 +163,11 @@
                     <button class="detailCancelBtn" id="updateSportsBoard"
                             th:data-board-no="${board.boardNo}"
                             th:data-sports-code="${board.sportsCode}">모임 수정</button>
-                    <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
-                    <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
-                    <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
-                    <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
-                    <button class="detailCancelBtn" id="deleteSportsBoard"
+                            <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
+                            <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
+                            <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                            <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
+                            <button class="detailCancelBtn" id="deleteSportsBoard"
                             th:data-board-no="${board.boardNo}" 
                             th:data-sports-code="${board.sportsCode}">모임 삭제</button>
                   </th:block>
