@@ -202,5 +202,4 @@ public class EditBoardServiceImpl implements EditBoardService{
 			return result;
   }
     
-	
 }

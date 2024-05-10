@@ -79,19 +79,7 @@
 			ofType="Member"
 		/>
 	 </resultMap>
- 	 <resultMap type="Board" id="sporsDetailModal_rm">
-	 	<id property="boardNo" column="BOARD_NO"/>
-	 	
-		<collection 
-			property="memberList"
-			select="modalAttenedMemberList"
-			column="BOARD_NO"
-			javaType="java.util.ArrayList"
-			ofType="Member"
-		/>
-	 </resultMap>
-	 
-	 
+	  
 	 <select id="selectImageList" resultType="BoardImg">
 		SELECT * 
 		FROM "BOARD_IMG"
@@ -156,6 +144,7 @@
 	<!-- 로그인한 회원 모임 참석 -->
 	<insert id="join">
 		INSERT INTO ATTEND_MEMBER VALUES(
+			SEQ_ATTEND_NO,
 			#{memberNo},
 			#{boardNo}
 		)
@@ -170,7 +159,7 @@
 	</select>
 	
 	<!-- 모임글 상세조회 -->
-	<select id="selectSportsBoard" resultMap="sporsDetailModal_rm">
+	<select id="selectSportsBoard" resultMap="modal_rm">
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, SPORTS_KR_NAME, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCATION, MEMBER_NO, SPORTS_CODE, 
 		TO_CHAR(MEETING_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') MEETING_DATE,
 		TO_CHAR(BOARD_WRITE_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') AS BOARD_WRITE_DATE,
