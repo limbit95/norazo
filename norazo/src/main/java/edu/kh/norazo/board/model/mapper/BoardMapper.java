@@ -31,6 +31,10 @@ public interface BoardMapper {
 
 	Board selectOne(Map<String, Object> map);
 
+	int insertBoard(Board inputBoard);
+
+	int boardUpdate(Board inputBoard);
+
 
 
 

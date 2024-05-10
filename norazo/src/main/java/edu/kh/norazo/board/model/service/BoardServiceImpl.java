@@ -76,5 +76,20 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.selectOne(map);
 	}
 
+	@Override
+	public int insertBoard(Board inputBoard) {
+		
+		
+		
+		return mapper.insertBoard(inputBoard);
+	}
 	
+	// 게시글 수정
+	@Override
+	public int boardUpdate(Board inputBoard) {
+		
+		
+		
+		return mapper.boardUpdate(inputBoard);
+	}
 }

@@ -172,22 +172,22 @@ public class EditBoardController {
 		// -> inputBoard 에 제목/내용/boardCode/boardNo/memberNo 세팅되어 있음
 		
 		// 2. 게시글 수정 서비스 호출 후 결과 반환 받기
-		int result = service.sportsBoardUpdate(inputBoard, inputThumbnail, deleteOrder);
+//		int result = service.sportsBoardUpdate(inputBoard, inputThumbnail, deleteOrder);
 		
 		// 3. 서비스 결과에 따라 응답 제어
 		String message = null;
 		String path = null;
 		
-		if(result > 0) {
-			message = "게시글이 수정 되었습니다";
-			path = String.format("/sportsBoard/detail/%d/%d%s", sportsCode, boardNo, queryString);
-		} else {
-			message = "수정 실패";
-			path = "update"; // 수정 화면으로 전환 redirect
-		}
-		
-		ra.addFlashAttribute("message", message);
-		
+//		if(result > 0) {
+//			message = "게시글이 수정 되었습니다";
+//			path = String.format("/sportsBoard/detail/%d/%d%s", sportsCode, boardNo, queryString);
+//		} else {
+//			message = "수정 실패";
+//			path = "update"; // 수정 화면으로 전환 redirect
+//		}
+//		
+//		ra.addFlashAttribute("message", message);
+//		
 		return "redirect:" + path;
 	}
 	

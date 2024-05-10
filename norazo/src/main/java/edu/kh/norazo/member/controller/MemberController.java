@@ -191,6 +191,7 @@ public class MemberController {
 		}
 		
 		ra.addFlashAttribute("message", message);
+		
 		return "redirect:"+path;
 	}
 	
