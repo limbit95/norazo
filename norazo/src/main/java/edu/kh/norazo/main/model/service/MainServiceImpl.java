@@ -32,14 +32,14 @@ public class MainServiceImpl implements MainService{
 
 	// 모임 게시판 게시글 최신순 4개 조회
 	@Override
-	public List<Board> selectSportsBoardList() {
-		return mapper.selectSportsBoardList();
+	public List<Board> selectSportsBoardList(Map<String, Object> paramMap) {
+		return mapper.selectSportsBoardList(paramMap);
 	}
 
 	// 자유 게시판 게시글 최신순 5개 조회
 	@Override
-	public List<Board> selectFreeBoardList() {
-		return mapper.selectFreeBoardList();
+	public List<Board> selectFreeBoardList(Map<String, Object> paramMap) {
+		return mapper.selectFreeBoardList(paramMap);
 	}
 	
 }

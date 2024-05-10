@@ -7,14 +7,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.main.model.mapper.MainMapper;
 import edu.kh.norazo.main.model.service.MainService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class MainController {
@@ -22,9 +25,11 @@ public class MainController {
 	private final MainService service;
 	
 	@RequestMapping("/")
-	public String mainPage(Model model) {
-		List<Board> sportsBoardList = service.selectSportsBoardList();
-		List<Board> freeBoardList = service.selectFreeBoardList();
+	public String mainPage(Model model,
+						   @RequestParam Map<String, Object> paramMap) {
+		
+		List<Board> sportsBoardList = service.selectSportsBoardList(paramMap);
+		List<Board> freeBoardList = service.selectFreeBoardList(paramMap);
 		
 		model.addAttribute("recentSportsBoardList", sportsBoardList);
 		model.addAttribute("recentFreeBoardList", freeBoardList);

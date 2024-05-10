@@ -1,11 +1,15 @@
 package edu.kh.norazo.myPage.controller;
 
+import java.io.Console;
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -13,7 +17,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.norazo.myPage.model.service.MyPageService;
 import edu.kh.norazo.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("myPage")
@@ -29,21 +35,6 @@ public class MyPageController {
 	@PostMapping("main")
 	public String myPagePost() {
 		return "myPage/myPage";
-	}
-	
-	@GetMapping("create")
-	public String create() {
-		return "myPage/create";
-	}
-	
-	@GetMapping("belong")
-	public String belong() {
-		return "myPage/belong";
-	}
-	
-	@GetMapping("heart")
-	public String heart() {
-		return "myPage/heart";
 	}
 	
 	@GetMapping("edit")
@@ -80,6 +71,7 @@ public class MyPageController {
 		// inputMember에 로그인한 회원번호 추가
 		int memberNo = loginMember.getMemberNo();
 		inputMember.setMemberNo(memberNo);
+		System.out.println(inputMember);
 		
 		
 		// 회원 정보 수정 서비스 호출
@@ -101,9 +93,12 @@ public class MyPageController {
 			loginMember.setMemberNickname( inputMember.getMemberNickname() );
 			
 			loginMember.setGender( inputMember.getGender() );
+			System.out.println(inputMember.getGender());
+			System.out.println(loginMember.getGender());
 			
 			loginMember.setMemberAddress( inputMember.getMemberAddress() );
 			
+			loginMember.setMemberIntroduce( inputMember.getMemberIntroduce() );
 			
 		} else {
 			message = "회원 정보 수정 실패..";
@@ -120,6 +115,33 @@ public class MyPageController {
 		return "myPage/changePw";
 	}
 	
+	@PostMapping("changePw")
+	public String changePw(@RequestParam Map<String, Object> paramMap,
+			@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra) {
+				// 로그인한 회원 번호
+				int memberNo = loginMember.getMemberNo();
+				
+				// 현재 + 새 + 회원번호를 서비스로 전달
+				int result = service.changePw(paramMap, memberNo);
+				
+				String path = null;
+				String message = null;
+				
+				if(result > 0) {
+					path = "/myPage/main";
+					message = "비밀번호가 변경 되었습니다";
+				} else {
+					path = "/myPage/changePw";
+					message = "현재 비밀번호가 일치하지 않습니다";
+				}
+				
+				ra.addFlashAttribute("message", message);
+				
+				return "redirect:" + path;
+				
+	}
+	
 	@GetMapping("profile")
 	public String profileImagedit() {
 		return "myPage/myPage";
@@ -129,6 +151,7 @@ public class MyPageController {
 	public String profileImagedit(@RequestParam("profileImg") MultipartFile profileImg,
 			@SessionAttribute("loginMember") Member loginMember,
 			RedirectAttributes ra) throws Exception {
+		log.debug("test : " + profileImg);
 		// 서비스 호출
 		// /myPage/profile/변경된 파일명 형태의 문자열
 		// 현재 로그인한 회원의 PROFILE_IMG 컬럼값으로 수정 UPDATE
@@ -141,7 +164,13 @@ public class MyPageController {
 	}
 	
 	
-	
+	@ResponseBody
+	@GetMapping("checkNickname")
+	public int checkNickname(Member inputMember, @SessionAttribute("loginMember") Member loginMember, @RequestParam("memberNickname")String memberNickname) throws Exception {
+		int memberNo = loginMember.getMemberNo();
+		inputMember.setMemberNo(memberNo);
+		return service.checkNickname(memberNickname, inputMember);
+	}
 	
 	
 	

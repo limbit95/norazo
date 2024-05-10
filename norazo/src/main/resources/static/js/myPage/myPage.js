@@ -16,9 +16,18 @@ function execDaumPostcode() {
 }
 if (document.querySelector("#searchAddress") !== null) {
 document.querySelector("#searchAddress").addEventListener("click", execDaumPostcode);
-
 }
+
 const updateInfo = document.querySelector("#updateInfo");
+
+// 회원 가입 유효성 검사 항목 
+
+const checkObj ={
+  "memberNickname" : false,
+  "gender" : true,
+  "memberAddress" : false
+};   
+
 
 if (updateInfo !== null) {
     updateInfo.addEventListener("submit", e => {
@@ -156,47 +165,140 @@ if (profile !== null) {
     });
 }
 
+const loginNickname = loginMember.memberNickname;
 // 닉네임 유효성 검사
+var flag1 = false;
 const memberNickname = document.querySelector("#memberNickname");
-const nickMessage = document.querySelector("#nickMessage");
-
-if (memberNickname !== null) {
-	memberNickname.addEventListener("click", e => {
-        const inputNickname = e.target.value;
-
-        if (inputNickname.trim().length === 0) {
-            nickMessage.innerText = "한글,영어,숫자로만 2~10글자";
-            nickMessage.classList.remove("confirm", "error");
-            checkObj.memberNickname = false;
-            memberNickname.value = "";
+const confirm1 = document.querySelector("#confirm");
+if(confirm1 != null){
+	confirm1.addEventListener("click", e => {
+        flag1 = true;
+        if(memberNickname.value.trim().length === 0) {
+            alert("닉네임을 입력해주세요");
+            e.preventDefault(); // 제출 막기
             return;
         }
-
         const regExp = /^[가-힣\w\d]{2,10}$/;
-
-        if (!regExp.test(inputNickname)) {
-            alert("유효하지 않은 닉네임 형식 입니다.");
-            nickMessage.classList.add("error");
-            nickMessage.classList.remove("confirm");
-            checkObj.memberNickname = false;
+        if( !regExp.test(memberNickname.value)) {
+            alert("닉네임이 유효하지 않습니다.");
+            e.preventDefault(); // 제출 막기
             return;
         }
 
-        fetch("/member/checkNickname?memberNickname=" + inputNickname)
+        fetch("/member/checkNickname?memberNickname=" + memberNickname.value)
             .then(resp => resp.text())
             .then(count => {
                 if (count == 1) {
                     alert("이미 사용중인 닉네임 입니다.");
-                    nickMessage.classList.add("error");
-                    nickMessage.classList.remove("confirm");
-                    checkObj.memberNickname = false;
+                    
+                    if(loginNickname == memberNickname) {
+                        checkObj.memberNickname = true;
+                    }else{
+                        checkObj.memberNickname = false;
+                        console.log("안됨");
+                    }
                     return;
                 }
                 alert("사용 가능한 닉네임 입니다.");
-                nickMessage.classList.add("confirm");
-                nickMessage.classList.remove("error");
                 checkObj.memberNickname = true;
             })
             .catch(err => console.log(err));
     });
+}   
+
+
+// 성별 선택이 안되었을 시 
+const gender = document.querySelector("#gender");
+if(gender!=null){
+gender.addEventListener("change", function() {
+
+
+    const selectedGender = this.value;
+
+    if (selectedGender !== "F" && selectedGender !== "M") {
+
+        checkObj.gender = false;
+        return;
+    }
+
+    checkObj.gender = true;
+})};
+
+
+
+
+
+      // 회원 가입 폼 제출 
+  const signUpForm = document.querySelector("#updateInfo");
+if(signUpForm != null) {
+  signUpForm.addEventListener("submit", e =>{
+    const memberAddress = document.querySelectorAll("[name='memberAddress']");
+    const addressMessage = document.querySelector("#addressMessage");
+    // 주소 
+    const addr0 = memberAddress[0].value.trim().length == 0;
+    const addr1 = memberAddress[1].value.trim().length == 0;
+    const addr2 = memberAddress[2].value.trim().length == 0;
+    
+    // 모두 true인 경우 
+    const result1 = addr0 && addr1 && addr2;
+    // 모두 flase인 경우
+    const result2 = !(addr0 || addr1 || addr2);
+    
+    // 모두 입력 또는 모두 미입력이 아니면
+    if( !(result1 || result2) ) {
+        alert("주소를 모두 작성 또는 미작성 해주세요.");
+        e.preventDefault();
+        checkObj.memberAddress = false;
+        return;
+    }
+	checkObj.memberAddress = true;
+    
+    if (flag1){
+    for(let key in checkObj){
+
+        
+        if( !checkObj[key] ){
+          let str; 
+  
+          switch(key){
+            case "memberNickname" : str = "닉네임이 유효하지 않습니다."; break;
+            case "gender" : str ="성별을 선택해주세요"; break;
+            case "memberAddress" : str = "주소를 모두 입력 또는 미작성 해주세요."; break
+          }
+          alert(str);
+  
+          document.getElementById(key).focus();
+          e.preventDefault();
+          return;
+
+
+        }}
+    }
+  });
+
 }
+const a = document.getElementById("changePwbtn");
+if(a != null) {
+a.addEventListener("click", e => {
+if(loginMember != null) {
+    let text = loginMember.memberIntroduce;
+    const introduced = text.replaceAll(/\n/g, "<br>");
+    if (introduced != null) {
+        document.getElementById('introduced').innerHTML = introduced;
+    }
+}
+})};
+if(loginMember != null) {
+    let text = loginMember.memberIntroduce;
+    const introduced = text.replaceAll(/\n/g, "<br>");
+    if (introduced != null) {
+        document.getElementById('introduced').innerHTML = introduced;
+    }};
+const introduce = loginMember.memberIntroduce.replaceAll("<br>", "\r\n");
+if( document.getElementById('introduce') != null) {
+    if (introduce != null) {
+        document.getElementById('introduce').innerHTML = introduce;
+    }
+}
+
+

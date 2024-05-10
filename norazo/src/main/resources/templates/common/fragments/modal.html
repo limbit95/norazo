@@ -6,7 +6,7 @@
       <h2 class="modal-title" id="exampleModalLabel">운영진과 함께하는 고구마런</h2>
     </div>
     <ion-icon name="heart-outline" class="board-like"></ion-icon>
-    <ion-icon name="heart" class="board-like like-hidden"></ion-icon>
+    <!-- <ion-icon name="heart" class="board-like like-hidden"></ion-icon> -->
     <span type="button" class="close-btn">&times;</span>
   </div>
 
@@ -45,9 +45,16 @@
   <!-- 참석 인원 현황 -->
   <div class="memberList-div">
   </div>
+  <i class="fa-solid fa-crown" id="crwon1"></i>
+  <i class="fa-solid fa-crown" id="crwon2"></i>
+  <i class="fa-solid fa-crown" id="crwon3"></i>
+  <i class="fa-solid fa-crown" id="crwon4"></i>
+  <form action="/sportsBoard/detail?boardNo=${boardNo}&sportsCode=${sportsCode}" method="get">
+    <input type="hidden" name="boardNo" value="${boardNo}">
+    <input type="hidden" name="sportsCode" value="${sportsCode}">
 
-  <div class="join-btn-div">
-    <button type="button" class="join-btn" id="join-btn">JOIN</button>
-  </div>
-  
+    <div class="join-btn-div">
+      <button type="button" class="join-btn" id="join-btn">JOIN</button>
+    </div>
+</form>
 </div>

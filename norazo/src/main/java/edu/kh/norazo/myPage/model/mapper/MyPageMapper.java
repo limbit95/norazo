@@ -1,5 +1,7 @@
 package edu.kh.norazo.myPage.model.mapper;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.kh.norazo.member.model.dto.Member;
@@ -11,4 +13,9 @@ public interface MyPageMapper {
 
 	int updateInfo(Member inputMember);
 
+	int checkNickname(String nickname, Member inputMember);
+
+	String selectPw(int memberNo);
+
+	int changePw(Map<String, Object> paramMap);
 }

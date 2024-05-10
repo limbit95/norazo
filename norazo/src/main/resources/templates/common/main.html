@@ -26,10 +26,21 @@
         </div>
         
         <!-- 신규 모임글 -->
-        <div class="sportsBoard-list">
-            <th:block th:each="sportsBoard : ${recentSportsBoardList}">
-                <div>
-                    <img th:src="${sportsBoard.thumbnail}" 
+
+        <!-- 모임글이 존재하지 않을 때 -->
+        <div class="nothing-div" 
+             th:if="${#lists.isEmpty(recentSportsBoardList)}">
+            <div>
+                <h1>게시물이 존재 하지 않습니다</h1>
+            </div>
+        </div>
+
+        <!-- 모임글이 존재할 때 -->
+        <div class="sportsBoard-list"
+             th:if="${recentSportsBoardList}">
+            <th:block th:each="sportsBoard, i : ${recentSportsBoardList}">
+                <div th:if="4 > ${i.index}">
+                    <img th:src="${sportsBoard.thumbnail}"
                          class="thumbnail" 
                          th:data-board-no="${sportsBoard.boardNo}"
                          th:data-member-no="${sportsBoard.memberNo}"
@@ -48,7 +59,39 @@
         <!-- 자유 게시판 (최신글) -->
         <div class="freeBoard-header">
             <h1 class="freeBoard-header-title">자유 게시판</h1>
-            <a th:href="@{/board/{boardCode}(boardCode=${application.boardTypeList.get(1).boardCode})}" class="freeBoard-whole-view">전체보기</a>
+            <a href="/board/free" class="freeBoard-whole-view">전체보기</a>
+        </div>
+
+        <!-- 게시글이 존재 하지 않을 때-->
+        <div class="nothing-div"
+             th:if="${#lists.isEmpty(recentFreeBoardList)}">
+            <div>
+                <h1>게시물이 존재 하지 않습니다</h1>
+            </div>
+        </div>
+
+        <!-- 게시글이 존재 할 때 --> 
+        <th:block th:if="${recentFreeBoardList}"
+                  th:each="board, i : ${recentFreeBoardList}"
+                  th:object="${board}">
+
+            <div class="freeBoard-list"
+                 th:if="5 > ${i.index}">
+                <div>
+                    <a th:href="@{/board/free/{boardNo}(boardNo=*{boardNo})}" 
+                       th:text="*{boardTitle}">게시판 제목</a>
+                </div>
+
+                <h3 class="freeBoard-nickname" th:text=*{memberNickname}>닉네임</h3>
+
+                <h3 class="freeBoard-date" th:text="*{boardWriteDate}">sysdate</h3>
+            </div>
+
+        </th:block>
+
+        <!-- <div class="freeBoard-header">
+            <h1 class="freeBoard-header-title">자유 게시판</h1>
+            <a th:href="@{/board/free}" class="freeBoard-whole-view">전체보기</a>
         </div>
         
         <div class="freeBoard-list">
@@ -88,7 +131,7 @@
                 <a href="">암벽화 추천 부탁드립니다</a>
             </div>
             <h3 class="freeBoard-nickname">유저일</h3>
-            <h3 class="freeBoard-date">2024-04-24 12:45</h3>
+            <h3 class="freeBoard-date">2024-04-24 12:45</h3> -->
         </div>
 
 
@@ -96,5 +139,7 @@
     
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/fragments/modal.js"></script>
+    <script src="https://kit.fontawesome.com/4a8589de03.js" crossorigin="anonymous"></script>
 </body>
 </html>

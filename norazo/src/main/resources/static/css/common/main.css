@@ -190,7 +190,7 @@ article {
 }
 
 .freeBoard-list > div {
-    width: 70%;
+    width: 65%;
     margin-left: 20px;
 }
 
@@ -201,12 +201,13 @@ article {
     font-size: 25px;
     font-weight: 500;
     text-decoration: none;
+    color: black;
 }
 
 .freeBoard-list > div > a:visited { color: black; } 
 
 .freeBoard-nickname {
-    width: 10%;
+    width: 20%;
     font-weight: 1000;
     color: var(--gray2);
 }
@@ -215,4 +216,21 @@ article {
     width: auto;
     font-weight: 1000;
     color: var(--gray2);
+}
+
+
+/* 게시물이 존재하지 않을 때 */
+.nothing-div {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 600px;
+    height: 100px;
+    border-top: 2px solid var(--gray3);
+    border-bottom: 2px solid var(--gray3);
+}
+
+.nothing {
+    width: auto;
 }

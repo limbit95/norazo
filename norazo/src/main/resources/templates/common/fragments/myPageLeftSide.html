@@ -17,17 +17,13 @@
         </div>
         <div class="div1">
             <div class="Rectangle1"><h3>이메일</h3></div>
-            <div class="Rectangle2"><h3>user01@kh.or.kr</h3></div>
+            <div class="Rectangle2"><h4 th:text="${session.loginMember.memberEmail}"></h4></div>
         </div>
         <a href="/myPage/edit"><div class="Rectangle3"><h3>프로필 수정</h3></div></a>
-        <a href="/myPage/changePw"><div class="Rectangle3"><h3>비밀번호 수정</h3></div></a>
+        <a href="/myPage/changePw"><div class="Rectangle3" id="changePwbtn"><h3>비밀번호 수정</h3></div></a>
         <div class="div1">
             <div class="Rectangle4"><h3>자기소개</h3></div>
-            <div class="Rectangle5"><h3>안녕하세요<br>ISFP입니다<br>축구하러 왔어요</h3></div>
+            <div class="Rectangle5"><h3 id="introduced"></h3></div>
         </div>
     </div>
 </div>
-<script src="/js/myPage/myPage.js"></script>
-<script th:inline="javascript">
-  const loginMemberProfileImg = "회원프로필이미지";
-</script>

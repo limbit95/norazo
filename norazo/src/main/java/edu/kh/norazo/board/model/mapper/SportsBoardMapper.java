@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.member.model.dto.Member;
 
 @Mapper
 public interface SportsBoardMapper {
@@ -34,7 +35,7 @@ public interface SportsBoardMapper {
 	 * @param boardNo
 	 * @return
 	 */
-	Board modalView(int boardNo);
+	Board modalView(Map<String, Object> map);
 
 	/** 모임 참석한 회원 수 얻어오기
 	 * @param map
@@ -59,6 +60,41 @@ public interface SportsBoardMapper {
 	 * @return
 	 */
 	int attendFl(Map<String, Object> map);
+
+	/** 모임글 상세조회 페이지 필요한 정보 얻어오기
+	 * @param map
+	 * @return
+	 */
+	Board selectSportsBoard(Map<String, Object> map);
+	
+	/** 좋아요 해제(DELETE)
+	 * @param map
+	 * @return
+	 */
+	int deleteBoardLike(Map<String, Object> map);
+
+	/** 좋아요 체크(INSERT)
+	 * @param map
+	 * @return
+	 */
+	int insertBoardLike(Map<String, Object> map);
+
+	/** 모임글 모임장 정보 조회
+	 * @param boardNo
+	 * @return
+	 */
+	Member boardCreateMember(int boardNo);
+
+	/** 모임글 참여 취소
+	 * @return
+	 */
+	int deleteJoinMember(Map<String, Integer> map);
+
+	/** 게시글 삭제
+	 * @param map
+	 * @return
+	 */
+	int sportsBoardDelete(Map<String, Object> map);
 
 
 }

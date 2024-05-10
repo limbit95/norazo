@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판 등록하기</title>
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/board/boardDetail.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+</head>
+<body>
+    <th:block th:replace="~{common/nav}"></th:block>
+    <main>
+
+        <div class="title-div-box">                       
+            <h1 th:text="${board.boardName}">00 게시판</h1>
+        </div>
+
+            <div class="div-box">
+
+                <div class="board-create-div">
+
+                    <div class="content-div-box">
+
+                        <div class="board-title-div">
+                            <h2 class="title-font"
+                                th:text="${board.boardTitle}">타이틀자리입니다</h2>
+
+                            <div class="board-user-div">
+                                <h3 id="detail-user-font"
+                                    th:text="${board.memberNickname}">user</h3>
+                                <h3 id="detail-sysdate-font"
+                                    th:text="${board.boardWriteDate}">2024-05-08-sysdate</h3>
+
+                            </div>
+                        </div>
+
+                        <div class="board-content">
+                            <div id="boardContent"
+                                      th:text="${board.boardContent}"></div>
+                        </div>
+
+                        <div class="button-div">
+                            <th:block th:if="${board.memberNo == session.loginMember?.memberNo}">
+                                    <button class="updateBoardBtn">수정</button>
+                                    <button class="deleteBoardBtn">삭제</button>
+                            </th:block>
+                        </div>    
+
+                    </div>
+                </div>
+
+            </div>  
+
+            <th:block th:replace="~{board/comment}"></th:block>
+    </main>
+    <script src="/js/board/boardDetail.js"></script>
+    <th:block th:replace="~{common/footer}"></th:block>
+</body>
+</html>

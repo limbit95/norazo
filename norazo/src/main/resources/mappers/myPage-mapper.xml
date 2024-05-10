@@ -6,8 +6,9 @@
 	<update id="updateInfo">
 		UPDATE "MEMBER" SET
 		MEMBER_NICKNAME = #{memberNickname},
-		MEMBER_TEL = #{memberTel},
-		MEMBER_ADDRESS = #{memberAddress}
+		GENDER = #{gender},
+		MEMBER_ADDRESS = #{memberAddress},
+		MEMBER_INTRODUCE = #{memberIntroduce}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
@@ -38,5 +39,13 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 
+	<!-- 닉네임 중복 검사 -->
+	<select id="checkNickname" resultType="int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_NICKNAME = #{memberNickname}
+		AND MEMBER_NO != #{memberNo}
+	</select>
 
 </mapper>

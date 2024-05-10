@@ -9,32 +9,33 @@
     <link rel="stylesheet" href="/css/common/footer.css">
     <link rel="stylesheet" href="/css/board/boardWrite.css">
     <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
 </head>
 <body>
     <th:block th:replace="~{common/nav}"></th:block>
     <main>
-   
-        <form action="/board/boardWrite"
-            method="post"
+
+        <div class="title-div-box">                       
+            <h1 th:text="${boardName}"> 등록하기</h1>
+        </div>
+
+        <form action="insert"
+              method="post"
             class="board-write"
             id="boardWrite">
 
             <div class="div-box">
 
-                <div class="boardCreateDiv">
-
-                    <div class="title-div-box">                       
-                        <h1>자유 게시판 등록하기</h1>
-                    </div>
+                <div class="board-create-div">
 
                     <div class="content-div-box">
 
-                        <div class="board-title-div">
-                            <h2>타이틀자리입니다</h2>
+                        <div class="board-title-div">                      
+                            <input type="text" class="board-title-input" name="boardTitle" placeholder="제목을 입력해주세요.">
                         </div>
 
                         <div class="board-content">
-                            <textarea name="boardContent"></textarea>
+                            <textarea name="boardContent" placeholder="내용을 입력해주세요."></textarea>
                         </div>
                         
                         <button class="boardCreateBtn">등록 하기</button>
@@ -47,5 +48,6 @@
     </main>
     
     <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/board/boardWrite.js"></script>
 </body>
 </html>

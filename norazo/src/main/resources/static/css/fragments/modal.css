@@ -3,7 +3,7 @@
     border-radius: 30px; 
     border: 3px solid #076DF2; 
     width: 600px; 
-    height: 500px;
+    height: 520px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 6px 6px rgba(0,0,0,0.45);
     background-color: white;
 
@@ -20,6 +20,7 @@
     height: 60px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid var(--gray3);
 }
 
 .modal-header > div {
@@ -49,16 +50,18 @@
 }
 
 .modal-body {
-    margin-left: 20px;
-    height: 280px;
+    width: 595px;
+    height: 300px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid var(--gray3);
 }
 
 .modal-thumbnail {
     width: 300px; 
     height: 270px; 
     border: 3px solid #076DF2; 
+    margin-left: 15px;
     border-radius: 30px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -66,7 +69,7 @@
 .modal-info {
     width: 250px; 
     height: 270px; 
-    margin-left: 10px; 
+    margin-left: 15px; 
     display: flex; 
     flex-direction: column; 
     justify-content: start;
@@ -112,6 +115,7 @@
     align-items: center;
     height: 80px;
     margin-top: 5px;
+    border-bottom: 1px solid var(--gray3);
 }
 
 .memberList{
@@ -164,4 +168,36 @@
     color: white;
     background-color: var(--gray3);
     pointer-events: none;
+}
+
+
+
+#crwon1 {
+    position: absolute;
+    bottom: 75px;
+    left: 85px;
+    color: var(--secondary);
+    font-size: 25px;
+    z-index: 1;
+}
+#crwon2 {
+    position: absolute;
+    bottom: 75px;
+    left: 84px;
+    color: white;
+    font-size: 25px;
+}
+#crwon3 {
+    position: absolute;
+    bottom: 76px;
+    left: 85px;
+    color: white;
+    font-size: 25px;
+}
+#crwon4 {
+    position: absolute;
+    bottom: 75px;
+    left: 86px;
+    color: white;
+    font-size: 25px;
 }
