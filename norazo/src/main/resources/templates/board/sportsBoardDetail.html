@@ -163,11 +163,11 @@
                     <button class="detailCancelBtn" id="updateSportsBoard"
                             th:data-board-no="${board.boardNo}"
                             th:data-sports-code="${board.sportsCode}">모임 수정</button>
-                    <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
-                    <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
-                    <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
-                    <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
-                    <button class="detailCancelBtn" id="deleteSportsBoard"
+                            <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
+                            <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
+                            <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                            <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
+                            <button class="detailCancelBtn" id="deleteSportsBoard"
                             th:data-board-no="${board.boardNo}" 
                             th:data-sports-code="${board.sportsCode}">모임 삭제</button>
                   </th:block>

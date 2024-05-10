@@ -23,8 +23,9 @@
 
                 <form action="/board/update/boardUpdate" 
                       th:object="${board}" 
-                      method="post">
-                      
+                      method="post"
+                      id="boardUpdateFrm">
+
                     <div class="board-create-div">
 
                         <div class="content-div-box">
@@ -33,12 +34,14 @@
                                 <input type="text"
                                     th:value="${board.boardTitle}"
                                     class="board-title-input"
-                                    id="boardTitle">
+                                    id="boardTitle"
+                                    name="boardTitle">
                             </div>
 
                             <div class="board-content">
                                 <textarea id="boardContent"
-                                        th:text="${board.boardContent}"></textarea>
+                                        th:text="${board.boardContent}"
+                                        name="boardContent"></textarea>
                             </div>
                             
                             <div class="button-div">

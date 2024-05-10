@@ -15,4 +15,10 @@ public interface MyPageService {
 	int checkNickname(String memberNickname, Member loginMember) throws Exception;
 
 	int changePw(Map<String, Object> paramMap, int memberNo);
+
+	Map<String, Object> selectmyCreateBoardList(String boardCode, int cp, int memberNo);
+
+	Map<String, Object> selectmyBelongBoardList(String boardCode, int cp, int memberNo);
+
+	Map<String, Object> selectmyHeartBoardList(String boardCode, int cp, int memberNo);
 }
