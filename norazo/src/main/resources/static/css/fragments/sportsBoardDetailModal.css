@@ -79,7 +79,6 @@
 /* User name font */
 .userName-modal {
     color: var(--white);
-    font-weight: 400;
 }
 
 /* Container to group modal parts */

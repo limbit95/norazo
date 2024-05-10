@@ -25,7 +25,7 @@
                 th:text="${boardName}">
                 게시판 종류</h1>
 
-                <a th:if="${session.loginMember} and ${session.boardCode} != 4 and ${session.boardCode} != 5 and ${session.boardCode} != 6"
+                <a th:if="${session.loginMember} and ${boardCode} != 4 and ${boardCode} != 5 and ${boardCode} != 6"
                    th:href="@{/board/{boardCode}/insert(boardCode=${boardCode})}" 
                    class="freeBoard-whole-view"
                    id="insertA">작성하기</a>
