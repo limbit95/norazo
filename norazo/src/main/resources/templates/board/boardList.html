@@ -47,8 +47,12 @@
 
             <div class="freeBoard-list">
                 <div>
-                    <a th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo}, cp=${pagination.currentPage})}" 
-                       th:text="*{boardTitle}">게시판 제목</a>
+                    <a th:if="${boardCode} == 2 and ${boardCode} == 3"
+                    th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo}, cp=${pagination.currentPage})}" 
+                    th:text="*{boardTitle}">게시판 제목</a>
+                    <a th:if="${boardCode} == 1"
+                    th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo}, cp=${pagination.currentPage})}" 
+                    th:text="*{boardTitle}">게시판 제목</a>   
                 </div>
 
                 <h3 class="freeBoard-nickname" th:text=*{memberNickname}>닉네임</h3>

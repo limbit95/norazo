@@ -1,6 +1,7 @@
 package edu.kh.norazo.myPage.controller;
 
 import java.io.Console;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -184,43 +185,47 @@ public class MyPageController {
 								  Model model) {
 		
 		
-		log.debug("boardCode : " + boardCode);
-		
 		int memberNo = loginMember.getMemberNo();
 		
-		Map<String, Object> map = null;
+		// 파라미터로 넘길 객체
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("boardCode", boardCode);
+		map1.put("cp", cp);
+		map1.put("memberNo", memberNo);
+		
+		// model로 올릴 객체
+		Map<String, Object> map2 = new HashMap<String, Object>();
 		
 		if(boardCode.equals("myCreate")) {
 			
-			map = service.selectmyCreateBoardList(boardCode,cp,memberNo);
+			map2 = service.selectmyCreateBoardList(map1);
 		}
 		
 		if(boardCode.equals("myBelong")) {
 			
-			map = service.selectmyBelongBoardList(boardCode,cp,memberNo);
+			map2 = service.selectmyBelongBoardList(map1);
 		}
 		
 		if(boardCode.equals("myHeart")) {
 			
-			map = service.selectmyHeartBoardList(boardCode,cp,memberNo);
+			map2 = service.selectmyHeartBoardList(map1);
 		}
 		
 		
-		model.addAttribute("pagination",map.get("pagination"));
+		model.addAttribute("pagination",map2.get("pagination"));
 		
-		model.addAttribute("boardList",map.get("boardList"));
+		model.addAttribute("boardList",map2.get("boardList"));
 		
 		if(boardCode.equals("myCreate")) {
-	         model.addAttribute("boardName", "자유 게시판");
+	         model.addAttribute("boardName", "내가 만든 모임");
 	      } 
 		if(boardCode.equals("myBelong")) {
-			model.addAttribute("boardName", "자유 게시판");
+			model.addAttribute("boardName", "내가 속한 모임");
 		} 
 		if(boardCode.equals("myHeart")) {
-			model.addAttribute("boardName", "자유 게시판");
+			model.addAttribute("boardName", "내가 찜한 모임");
 		} 
 
-		
 		return "board/boardList";
 	}
 	

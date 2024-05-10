@@ -59,7 +59,7 @@
                     <!-- 참여회원 현황 클릭시 모달창 -->
                     <div class="joinMemberIconContainer">
                       <ion-icon name="person" class="personIco joinMemberStatus"></ion-icon>
-                      <h4 class="joinMemberStatus" th:text="|*{attendMemberCount} / *{memberCountLimit}|">ATTENDED MEMBER</h4>
+                      <h4 class="joinMemberStatus" th:text="|${attendMemberCount} / *{memberCountLimit}|">ATTENDED MEMBER</h4>
                     </div>
                   </div>
 

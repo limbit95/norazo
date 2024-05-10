@@ -42,6 +42,11 @@ public class BoardController {
         board.setBoardCode(2);
         
 	    }   
+	    if(boardCode.equals("faq")) {
+	        model.addAttribute("boardName", "문의 게시판");
+	        board.setBoardCode(3);
+	    }
+		log.debug("boardCode : " + boardCode);
 		
 	    if(boardCode.equals("faq")) {
 	        model.addAttribute("boardName", "문의 게시판");
