@@ -1,0 +1,26 @@
+ <!-- Modal Structure -->
+ <div class="sportsBoardDetail-Modal" id="modalContainer" style="display: none;" th:object="${memberList}" th:each="memberList : ${memberList}">
+
+    <div class="modal-backdrop"></div>
+    
+    <div class="modal-content">
+      <div class="sportsBoardTitleContainer-modal">
+        <h2 class="sportsBoardTitle-modal">참여 인원 현황</h2>
+        <h4 class="modal-joinMember" th:text="|${board.attendMemberCount} / ${board.memberCountLimit}|">ATTENDED MEMBER</h4>
+      </div>
+      <div class="userInfo-modal">
+        <th:block th:each="memberList : ${memberList}" th:object="${memberList}">
+          <img th:src="*{profileImg}" class="userImg-modal">
+          <h3 class="userName-modal" th:text="*{memberNickname}">UserName</h3>
+        </th:block>
+      </div>
+      <form action="" method="GET">
+        <button class="closeModal">닫기</button>
+        <input type="hidden" th:value="${board.memberNo}" id="modal-memberNo" name="modal-memberNo">
+        <input type="hidden" th:value="${boardNo}" id="modal-boardNo" name="modal-boardNo">
+        <input type="hidden" th:value="${createMember.memberNo}" id="modal-createMemberNo" name="modal-createMemberNo">
+        <input type="hidden" th:value="${session.loginMember.memberNo}" id="modal-loginMemberNo" name="modal-loginMemberNo">
+        <input type="hidden" th:value="${memberList}" id="modal-memberList" name="modal-memberList">
+      </form>
+    </div>
+  </div>

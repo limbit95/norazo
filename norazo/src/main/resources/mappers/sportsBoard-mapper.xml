@@ -71,13 +71,34 @@
 			ofType="Member"
 		/>
 	 </resultMap>
+ 	 <resultMap type="Board" id="sporsDetailModal_rm">
+	 	<id property="boardNo" column="BOARD_NO"/>
+	 	
+		<collection 
+			property="memberList"
+			select="modalAttenedMemberList"
+			column="BOARD_NO"
+			javaType="java.util.ArrayList"
+			ofType="Member"
+		/>
+	 </resultMap>
+	 
 	 
 	 <select id="selectAttendMemberList" resultType="Member">
-	 	SELECT MEMBER_NO, PROFILE_IMG
+	 	SELECT MEMBER_NO, PROFILE_IMG, MEMBER_NICKNAME
 	 	FROM MEMBER
 	 	JOIN ATTEND_MEMBER USING(MEMBER_NO)
 	 	WHERE BOARD_NO = #{boardNo}
 	 </select>
+	 
+	 <select id="modalAttenedMemberList" resultType="Member">
+	 	SELECT m.MEMBER_NO, m.PROFILE_IMG, m.MEMBER_NICKNAME
+	 	FROM MEMBER m
+	 	JOIN ATTEND_MEMBER a ON m.MEMBER_NO = a.MEMBER_NO
+	 	JOIN BOARD b ON a.BOARD_NO = b.BOARD_NO
+	 	WHERE b.BOARD_NO = #{boardNo}
+	 	ORDER BY b.MEMBER_NO
+	 	</select>
 	 
 	<!-- 모임 게시글 정보 modal으로 조회 -->
 	<select id="modalView" resultMap="modal_rm">
@@ -134,7 +155,7 @@
 	</select>
 	
 	<!-- 모임글 상세조회 -->
-	<select id="selectSportsBoard" resultMap="modal_rm">
+	<select id="selectSportsBoard" resultMap="sporsDetailModal_rm">
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, SPORTS_KR_NAME, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCATION, MEMBER_NO, SPORTS_CODE, 
 		TO_CHAR(MEETING_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') MEETING_DATE,
 		TO_CHAR(BOARD_WRITE_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') AS BOARD_WRITE_DATE,
