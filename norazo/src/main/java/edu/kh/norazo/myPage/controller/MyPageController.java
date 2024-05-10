@@ -144,7 +144,7 @@ public class MyPageController {
 				String message = null;
 				
 				if(result > 0) {
-					path = "/myPage/info";
+					path = "/myPage/main";
 					message = "비밀번호가 변경 되었습니다";
 				} else {
 					path = "/myPage/changePw";
