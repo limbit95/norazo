@@ -22,15 +22,15 @@ public interface MyPageMapper {
 
 	int changePw(Map<String, Object> paramMap);
 
-	int getMyCreateListCount(String boardCode, int memberNo);
+	int getMyCreateListCount(Map<String, Object> map);
 
-	List<Board> selectMyCreateBoardList(String boardCode, RowBounds rowBounds, int memberNo);
+	List<Board> selectMyCreateBoardList(Map<String, Object> map, RowBounds rowBounds);
 
-	int getMyBelongListCount(String boardCode, int memberNo);
+	int getMyBelongListCount(Map<String, Object> map);
 
-	List<Board> selectMyBelongBoardList(String boardCode, RowBounds rowBounds, int memberNo);
+	List<Board> selectMyBelongBoardList(Map<String, Object> map, RowBounds rowBounds);
 
-	int getMyHeartListCount(String boardCode, int memberNo);
+	int getMyHeartListCount(Map<String, Object> map);
 
-	List<Board> selectMyHeartBoardList(String boardCode, RowBounds rowBounds, int memberNo);
+	List<Board> selectMyHeartBoardList(Map<String, Object> map, RowBounds rowBounds);
 }

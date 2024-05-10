@@ -39,10 +39,10 @@ public class BoardController {
         model.addAttribute("boardName", "자유 게시판");
         board.setBoardCode(2);
 	    }   
-    if(boardCode.equals("faq")) {
-        model.addAttribute("boardName", "문의 게시판");
-        board.setBoardCode(3);
-    }
+	    if(boardCode.equals("faq")) {
+	        model.addAttribute("boardName", "문의 게시판");
+	        board.setBoardCode(3);
+	    }
 		log.debug("boardCode : " + boardCode);
 		
 		Map<String, Object> map = null;
