@@ -140,4 +140,10 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 		return mapper.sportsBoardDelete(map);
 	}
 
+	// 멤버 리스트 최신화
+	@Override
+	public List<Member> selectAttendMemberList(Map<String, Object> map) {
+		return mapper.selectAttendMemberList(map);
+	}
+
 }

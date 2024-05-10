@@ -1,5 +1,6 @@
 package edu.kh.norazo.board.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import edu.kh.norazo.board.model.dto.Board;
@@ -62,5 +63,11 @@ public interface SportsBoardService {
 	 * @return
 	 */
 	int sportsBoardDelete(Map<String, Object> map);
+
+	/** 멤버 리스트 최신화
+	 * @param map
+	 * @return
+	 */
+	List<Member> selectAttendMemberList(Map<String, Object> map);
 
 }

@@ -46,7 +46,7 @@ public class BoardController {
 		log.debug("boardCode : " + boardCode);
 		
 		Map<String, Object> map = null;
-
+		
 		map = service.selectBoardList(board.getBoardCode(),cp);
 		
 		model.addAttribute("pagination",map.get("pagination"));
