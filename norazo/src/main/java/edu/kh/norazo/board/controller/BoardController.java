@@ -184,11 +184,11 @@ public class BoardController {
 		return path;
 	}
 
-	/** 게시글 수정 
+	/** 게시글 수정 이동
 	 * @param boardName
 	 * @return
 	 */
-	@GetMapping("{boardName:[a-z]+}/update/{boardNo:[0-9]+}")
+	@GetMapping("{boardName:[a-z]+}/{boardNo:[0-9]+}/update")
 	public String boardUpdate(@PathVariable("boardName")String boardCode,
 							  @PathVariable("boardNo") int boardNo,
 							  @SessionAttribute("loginMember")Member loginMember,
@@ -207,13 +207,15 @@ public class BoardController {
 		if(boardCode.equals("faq")) {
 			map.put("boardCode", 3);
 		}
-		log.debug("inputBoard : "+inputBoard);
+		
+
 		Board board = service.selectOne(map);
 		
 		String message = null; 
 		String path = null; 
 		
 		if(board == null) {
+			
 			message = "해당 게시글이 존재하지 않습니다.";
 			
 			path = "redirect:/";
@@ -223,18 +225,74 @@ public class BoardController {
 		} else if(board.getMemberNo() != loginMember.getMemberNo()) {
 			message = "자신이 작성한 글만 수정할 수 있습니다.";
 			
-			path = "redirect:/board/"+boardCode;
+			path = String.format("redirect:/board/%s/%d", boardCode,boardNo);
 			
 			ra.addFlashAttribute("message",message);
 			
 		} else {
 			
+			path ="board/boardUpdate";
+			
+			model.addAttribute("board",board);
 			
 			}
 			
 		
 		
-		return "";
+		return path;
+	}
+	
+
+	/** 게시글 수정
+	 * @param boardCode
+	 * @param boardNo
+	 * @param inputBoard
+	 * @param loginMember
+	 * @param ra
+	 * @param queryString
+	 * @return
+	 */
+	@PostMapping("{boardName:[a-z]+}/{boardNo:[0-9]+}/update")
+	public String boardUpdate(@PathVariable("boardName")String boardName,
+			  				  @PathVariable("boardNo") int boardNo,
+			  				  Board inputBoard,
+			  				  @SessionAttribute("loginMember") Member loginMember,
+			  				  RedirectAttributes ra,
+			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
+		
+		
+		if(boardName.equals("free")) {
+			inputBoard.setBoardCode(2);
+		}
+		
+		if(boardName.equals("faq")) {
+			inputBoard.setBoardCode(3);
+		}
+		
+		inputBoard.setMemberNo(loginMember.getMemberNo());
+		
+		inputBoard.setBoardNo(boardNo);
+		
+		int result = service.boardUpdate(inputBoard);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+		
+			path = String.format("redirect:/board/%s/%d", boardName,boardNo);
+			
+			message = "게시글이 수정 되었습니다.";
+	
+		} else {
+			
+			path = String.format("redirect:/board/%s/%d", boardName,boardNo+"/update");
+			message = "게시글 수정 실패되었습니다.";
+		}
+		
+		ra.addFlashAttribute("message",message);
+		
+		return path;
 	}
 	
 }

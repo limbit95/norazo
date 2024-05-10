@@ -31,11 +31,19 @@ public interface BoardMapper {
 
 	Board selectOne(Map<String, Object> map);
 
-  int insertBoard(Board inputBoard);
+	/** 게시판 글쓰기 SQL
+	 * @param inputBoard
+	 * @return
+	 */
+	int insertBoard(Board inputBoard);
 
+	/** 00게시판 수정 
+	 * @param inputBoard
+	 * @return
+	 */
 	int boardUpdate(Board inputBoard);
 
-  int getMyCreateListCount(String boardCode, int memberNo);
+	int getMyCreateListCount(String boardCode, int memberNo);
 
 	List<Board> selectMyCreateBoardList(String boardCode, RowBounds rowBounds, int memberNo);
 
