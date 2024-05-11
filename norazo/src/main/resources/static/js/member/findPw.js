@@ -56,4 +56,5 @@ findPwForm.addEventListener("submit", e =>{
     return;
    }
    
+   alert("잠시만 기다려주세요");
 });
