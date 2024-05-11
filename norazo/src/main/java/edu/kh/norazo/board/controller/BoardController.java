@@ -81,8 +81,6 @@ public class BoardController {
 							  @PathVariable("boardNo") int boardNo,
 							  Model model,
 							  RedirectAttributes ra) {
-		log.debug("boardCode : " + boardCode);
-		log.debug("boardNo : " + boardNo);
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("boardNo", boardNo);
@@ -269,7 +267,7 @@ public class BoardController {
 		
 		if(result > 0) {
 		
-			path = String.format("redirect:/board/%s/%dupdate", boardCode,boardNo);
+			path = String.format("redirect:/board/%s/%d", boardCode,boardNo);
 			
 			message = "게시글이 수정 되었습니다.";
 	
