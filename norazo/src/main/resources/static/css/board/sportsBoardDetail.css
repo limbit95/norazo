@@ -561,6 +561,7 @@
 }
 
 .boardCommentDivTop {
+    width: 350px;
     white-space: wrap;
     overflow: scroll;
 }

@@ -197,17 +197,15 @@ public class MyPageController {
 		Map<String, Object> map2 = new HashMap<String, Object>();
 		
 		if(boardCode.equals("myCreate")) {
-			
+	        model.addAttribute("myGroup", "내가 만든 모임");
 			map2 = service.selectmyCreateBoardList(map1);
 		}
-		
 		if(boardCode.equals("myBelong")) {
-			
+			model.addAttribute("myGroup", "내가 속한 모임");
 			map2 = service.selectmyBelongBoardList(map1);
 		}
-		
 		if(boardCode.equals("myHeart")) {
-			
+			model.addAttribute("myGroup", "내가 찜한 모임");
 			map2 = service.selectmyHeartBoardList(map1);
 		}
 		
@@ -216,15 +214,6 @@ public class MyPageController {
 		
 		model.addAttribute("boardList",map2.get("boardList"));
 		
-		if(boardCode.equals("myCreate")) {
-	         model.addAttribute("boardName", "내가 만든 모임");
-	      } 
-		if(boardCode.equals("myBelong")) {
-			model.addAttribute("boardName", "내가 속한 모임");
-		} 
-		if(boardCode.equals("myHeart")) {
-			model.addAttribute("boardName", "내가 찜한 모임");
-		} 
 
 		return "board/boardList";
 	}

@@ -18,7 +18,7 @@
     
     <th:block th:replace="~{common/nav}"></th:block>
 
-    <main>
+    <main class="sportsBoardMain">
         <div class="board-page-header">
             <th:block th:if="${sportsKrName} != null">
                 <h1 th:text="|${sportsKrName} ${application.boardTypeList.get(0).boardName}|" class="boardType-title"></h1>
@@ -55,7 +55,9 @@
             </th:block>
         </div>
 
-        <th:block th:if="${boardList}">
+    </main>
+
+    <th:block th:if="${boardList}">
             <div class="pagination-area">
                 
                 <ul class="pagination" th:object="${pagination}">
@@ -88,9 +90,6 @@
                 </ul>
             </div>
         </th:block>
-
-        
-    </main>
 
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>

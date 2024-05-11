@@ -67,12 +67,12 @@ public class SportsBoardController {
 		return board;
 	}
 	
-	
 	// 모임 게시글 상세 정보 조회
 	@GetMapping("detail/{sportsCode:[a-z]+}/{boardNo:[0-9]+}")
 	public String sportsBoardDetail(@PathVariable("sportsCode") String sportsCode,
 									@PathVariable("boardNo") int boardNo,
 									@SessionAttribute("loginMember") Member loginMember, 
+									@RequestParam(value="myGroup", required=false, defaultValue="null") String myGroup,
 									Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -92,6 +92,7 @@ public class SportsBoardController {
 		model.addAttribute("createMember", createMember);
 		model.addAttribute("board", sportsBoardDetail);
 		model.addAttribute("attendMemberCount", sportsBoardDetail.getAttendMemberCount());
+		model.addAttribute("myGroup", myGroup);
 		
 //		log.debug("create member number : " + createMember.toString());
 //		log.debug("loginMember : " + loginMember.toString());
@@ -144,7 +145,9 @@ public class SportsBoardController {
 									@RequestParam("boardNo") int boardNo, 
 									@SessionAttribute("loginMember") Member loginMember, 
 									@RequestParam("createMemberNo") int createMemberNo,
+									@RequestParam(value="myGroup", required=false, defaultValue="null") String myGroup,
 									Model model) {
+		log.debug("myGroup : " + myGroup);
 		
 		int memberNo = loginMember.getMemberNo();
 		
@@ -155,8 +158,13 @@ public class SportsBoardController {
 		
 		String path = null;
 		
-		
 		if (result > 0) {
+			if(myGroup.equals("내가 만든 모임")) {
+				return "redirect:/myPage/myCreate";
+			} 
+			if(myGroup.equals("내가 속한 모임")) {
+				return "redirect:/myPage/myBelong";
+			}
 			path = "redirect:/";
 		} else {
 			path = "redirect:boardNo" + boardNo;

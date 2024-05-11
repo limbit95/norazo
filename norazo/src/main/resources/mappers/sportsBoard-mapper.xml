@@ -60,9 +60,10 @@
 	
 	
 	
-	 <resultMap type="Board" id="modal_rm">
-	 	<id property="boardNo" column="BOARD_NO"/>
+ 	<resultMap type="Board" id="modal_rm">
+ 		<id property="boardNo" column="BOARD_NO"/>
 	 	
+	 	<!-- 이미지 리스트 -->
 	 	<collection 
 			property="imageList"
 			select="selectImageList"
@@ -71,6 +72,7 @@
 			ofType="BoardImg"
 		/>
 	 	
+	 	<!-- 참석 인원 리스트 -->
 		<collection 
 			property="memberList"
 			select="selectAttendMemberList"
@@ -78,30 +80,50 @@
 			javaType="java.util.ArrayList"
 			ofType="Member"
 		/>
-	 </resultMap>
+		
+		<!-- 댓글 리스트 -->
+		<collection 
+			property="commentList"
+			select="selectCommentList"
+			column="BOARD_NO"
+			javaType="java.util.ArrayList"
+			ofType="Comment"
+		/>
+ 	</resultMap>
 	  
-	 <select id="selectImageList" resultType="BoardImg">
+	  <!-- 이미지 리스트 -->
+	<select id="selectImageList" resultType="BoardImg">
 		SELECT * 
 		FROM "BOARD_IMG"
 		WHERE BOARD_NO = #{boardNo}
 		ORDER BY IMG_ORDER
 	</select>
 	 
-	 <select id="selectAttendMemberList" resultType="Member">
+ <!-- 참석 인원 리스트 -->
+	<select id="selectAttendMemberList" resultType="Member">
 	 	SELECT MEMBER_NO, PROFILE_IMG, MEMBER_NICKNAME
 	 	FROM MEMBER
 	 	JOIN ATTEND_MEMBER USING(MEMBER_NO)
 	 	WHERE BOARD_NO = #{boardNo}
-	 </select>
+	</select>
 	 
-	 <select id="modalAttenedMemberList" resultType="Member">
-	 	SELECT m.MEMBER_NO, m.PROFILE_IMG, m.MEMBER_NICKNAME
-	 	FROM MEMBER m
-	 	JOIN ATTEND_MEMBER a ON m.MEMBER_NO = a.MEMBER_NO
-	 	JOIN BOARD b ON a.BOARD_NO = b.BOARD_NO
-	 	WHERE b.BOARD_NO = #{boardNo}
-	 	ORDER BY b.MEMBER_NO
-	 	</select>
+ 	<!-- 상세 조회한 게시글의 댓글 목록 조회 -->
+	<select id="selectCommentList" resultType="Comment">
+		SELECT LEVEL, C.* FROM
+			(SELECT COMMENT_NO, COMMENT_CONTENT,
+			    TO_CHAR(COMMENT_WRITE_DATE, 'YYYY-MM-DD HH24:MI') COMMENT_WRITE_DATE,
+			    BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, PROFILE_IMG, PARENT_COMMENT_NO, COMMENT_DEL_FL
+			FROM "COMMENT"
+			JOIN MEMBER USING(MEMBER_NO)
+			WHERE BOARD_NO = #{boardNo}) C
+		WHERE COMMENT_DEL_FL = 'N'
+		OR 0 != (SELECT COUNT(*) FROM "COMMENT" SUB
+						WHERE SUB.PARENT_COMMENT_NO = C.COMMENT_NO
+						AND COMMENT_DEL_FL = 'N')
+		START WITH PARENT_COMMENT_NO IS NULL
+		CONNECT BY PRIOR COMMENT_NO = PARENT_COMMENT_NO
+		ORDER SIBLINGS BY COMMENT_NO
+	</select>
 	 
 	<!-- 모임 게시글 정보 modal으로 조회 -->
 	<select id="modalView" resultMap="modal_rm">
@@ -190,6 +212,7 @@
 	<!-- 좋아요 체크 -->
 	<insert id="insertBoardLike">
 		INSERT INTO "BOARD_LIKE" VALUES(
+			SEQ_LIKE_NO.NEXTVAL, 
 			#{memberNo},
 			#{boardNo}
 		)

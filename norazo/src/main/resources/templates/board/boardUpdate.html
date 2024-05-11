@@ -18,11 +18,9 @@
         <div class="title-div-box">                       
             <h1 th:text="${board.boardName}">00 게시판</h1>
         </div>
-      
             <div class="div-box">
-
-                <form action="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo})}" 
-                      th:object="${board}" 
+                <form th:object="${board}"
+                      th:action="@{/board/{boardCode}/{boardNo}/update(boardCode=${boardCode},boardNo=*{boardNo})}" 
                       method="post"
                       id="boardUpdateFrm">
 
@@ -44,20 +42,13 @@
                                         name="boardContent"></textarea>
                             </div>
                             
-                            <div class="button-div">
-                                <th:block th:if="${board.memberNo == session.loginMember?.memberNo}">
-                                    <button class="updateBoardBtn" id="updateBoardBtn">수정</button>
-                                    <button class="deleteBoardBtn" id="deleteBoardBtn">삭제</button>
-                                </th:block>
-                            </div>    
-
+                            <button class="updateBoardSubmitBtn">수정 하기</button>
                         </div>
                     </div>
                 </form>
 
             </div>  
-
-            <th:block th:replace="~{board/comment}"></th:block>
+            
     </main>
     
     <th:block th:replace="~{common/footer}"></th:block>
