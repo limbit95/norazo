@@ -18,7 +18,6 @@
         <div class="title-div-box">                       
             <h1 th:text="${board.boardName}">00 게시판</h1>
         </div>
-      
             <div class="div-box">
                 <!-- {boardName:[a-z]+}/{boardNo:[0-9]+}/update -->
                 <form th:action="@{/board/{boardCode}/{boardNo}/update(boardCode=${boardCode},boardNo=*{boardNo})}" 
@@ -44,17 +43,13 @@
                                         name="boardContent"></textarea>
                             </div>
                             
-                            <div class="button-div">
-                                <button class="updateBoardBtn" id="updateBoardBtn">수정</button>
-                            </div>    
-
+                            <button class="updateBoardSubmitBtn">수정 하기</button>
                         </div>
                     </div>
                 </form>
 
             </div>  
-
-            <th:block th:replace="~{board/comment}"></th:block>
+            
     </main>
     
     <th:block th:replace="~{common/footer}"></th:block>

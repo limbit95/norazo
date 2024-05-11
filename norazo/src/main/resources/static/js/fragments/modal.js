@@ -223,9 +223,6 @@ window.addEventListener("keydown", (e) => {
 
 
 // join 버튼 눌렀을 시
-
-
-
 if(joinBtn != null){
     joinBtn.addEventListener("click", e => {
         if(loginMember == null){
@@ -244,10 +241,8 @@ if(joinBtn != null){
 };
 
 
-
 // 좋아요 버튼 눌렀을 때
-
-if(boardLike != null){
+if(boardLike != null) {
     boardLike.addEventListener("click", e => {
         if(loginMember == null) {
             if(confirm("로그인 후 이용해주세요.")){
@@ -283,6 +278,11 @@ if(boardLike != null){
 
         if(boardLike.getAttribute("name") == null) {
             boardLike.setAttribute("name", "heart-outline");
+            const pathRename = location.pathname.substring(1, 7);
+            if(pathRename === "myPage"){
+                location.href = location.pathname;
+            }
+            alert("모임 찜이 해제 되었습니다.");
             return;
         }
         

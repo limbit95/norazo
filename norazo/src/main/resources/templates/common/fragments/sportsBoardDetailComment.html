@@ -1,117 +1,112 @@
 <div class="boardCommentDiv">
 
-    <!-- 댓글 그룹 컨테이너 -->
-    <th:block th:object="${session.loginMember}">
-      <div class="boardCommentDivTop">
+  <!-- 댓글 그룹 컨테이너 -->
+  <th:block th:object="${session.loginMember}">
+    <!-- ul -->
+    <div class="boardCommentDivTop">
 
+      <!-- <ul> -->
+      <div class="chatMainContainer" id="commentList"
+      th:each="comment : ${board.commentList}" 
+      th:object="${comment}"> 
+
+          <th:block th:if="${session.loginMember.memberNo} != ${comment.memberNo}">
+            <!-- 남이 쓴 댓글 -->
+            <!-- <li> class=comment-row -->
+            <div class="chatContainer"> <!-- chatContainerUser -->
+
+              <th:block th:if="*{commentDelFl} == 'Y'">
+                삭제된 댓글 입니다
+              </th:block>
+              
+              <th:block th:if="*{commentDelFl} == 'N'">
+                <!-- <p> class=comment-writer -->
+                <div class="chatLeftContainer"> <!-- chatLeftContainerUser -->
+                  <img th:unless="*{profileImg}" th:src="#{user.default.image}" class="chatUserProfile">
+                  <img th:if="*{profileImg}" th:src="*{profileImg}" class="chatUserProfile">
+                  <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
+                  <span class="chatDate" th:text="*{commentWriteDate}"></span>
+                </div>
+                
+                <div class="chatUpdateDeleteContainer">  <!-- chatUpdateDeleteContainerUser -->
+                  <a href="" class="a-updateBtn">수정</a>
+                  <a href="" class="a-deleteBtn">삭제</a>
+                </div>
+                
+              </th:block>
+            </div>
+
+            <div class="chatContentContainer">  <!-- chatContentContainerUser -->
+              <p class="chatContent"  th:text="*{commentContent}">글글글글</p> <!-- chatContentUser -->
+            </div>
+        </th:block>
+
+        <th:block th:if="${session.loginMember.memberNo} == ${comment.memberNo}">
+            <!-- 남이 쓴 댓글 -->
+            <!-- <li> class=comment-row -->
+            <div class="chatContainerUser"> <!-- chatContainerUser -->
+
+              <th:block th:if="*{commentDelFl} == 'Y'">
+                삭제된 댓글 입니다
+              </th:block>
+              
+              <th:block th:if="*{commentDelFl} == 'N'">
+                <!-- <p> class=comment-writer -->
+                <div class="chatLeftContainerUser"> <!-- chatLeftContainerUser -->
+                  <img th:unless="*{profileImg}" th:src="#{user.default.image}" class="chatUserProfile">
+                  <img th:if="*{profileImg}" th:src="*{profileImg}" class="chatUserProfile">
+                  <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
+                  <span class="chatDate" th:text="*{commentWriteDate}"></span>
+                </div>
+                
+                <div class="chatUpdateDeleteContainerUser">  <!-- chatUpdateDeleteContainerUser -->
+                  <a href="" class="a-updateBtn">수정</a>
+                  <a href="" class="a-deleteBtn">삭제</a>
+                </div>
+                
+              </th:block>
+            </div>
+
+            <div class="chatContentContainerUser">  <!-- chatContentContainerUser -->
+              <p class="chatContentUser"  th:text="*{commentContent}">글글글글</p> <!-- chatContentUser -->
+            </div>
+        </th:block>
+
+      </div>
       
-        <div class="chatMainContainer">
+    </div>
+  </th:block>
 
-          <div class="chatContainer">
-            
-              <div class="chatLeftContainer">
-                <img th:src="*{profileImg}" class="chatUserProfile">
-                <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
-                <span class="chatDate">2024-04-24 12:45</span>
-                
-              </div>
-
-            <div class="chatUpdateDeleteContainer">
-              <a href="" class="a-updateBtn">수정</a>
-              <a href="" class="a-deleteBtn">삭제</a>
+  
+          <!-- <div class="chatContainerUser">
+                    
+            <div class="chatLeftContainerUser">
+              <img th:unless="*{profileImg}" th:src="#{user.default.image}" class="chatUserProfile">
+              <img th:if="*{profileImg}" th:src="*{profileImg}" class="chatUserProfile">
+              <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
+              <span class="chatDate" th:text="*{commentWriteDate}"></span>
             </div>
-
-          </div>
-
-          <div class="chatContentContainer">
-            <p class="chatContent">글글글글</p>
-          </div>
-        </div>
-
-        <div class="chatMainContainer">
-
-          <div class="chatContainer">
-            
-              <div class="chatLeftContainer">
-                <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
-                <h3 class="chatUserName">파이리</h3>
-                <span class="chatDate">2024-04-24 12:45</span>
-                
-              </div>
-
-            <div class="chatUpdateDeleteContainer">
-              <a href="" class="a-updateBtn">수정</a>
-              <a href="" class="a-deleteBtn">삭제</a>
-            </div>
-
-          </div>
-
-          <div class="chatContentContainer">
-            <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
-          </div>
-        </div>
         
-        <div class="chatMainContainer">
-
-          <div class="chatContainer">
-            
-              <div class="chatLeftContainer">
-                <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
-                <h3 class="chatUserName">파이리</h3>
-                <span class="chatDate">2024-04-24 12:45</span>
-                
-              </div>
-
-            <div class="chatUpdateDeleteContainer">
-              <a href="" class="a-updateBtn">수정</a>
-              <a href="" class="a-deleteBtn">삭제</a>
-            </div>
-
-          </div>
-
-          <div class="chatContentContainer">
-            <p class="chatContent">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
-          </div>
-        </div>
-
-
-        <div class="chatMainContainer">
-
-          <div class="chatContainerUser">
-            
-              <div class="chatLeftContainerUser">
-                <img src="https://via.placeholder.com/50x50" class="chatUserProfile">
-                <h3 class="chatUserName">파이리</h3>
-                <span class="chatDate">2024-04-24 12:45</span>
-                
-              </div>
-
             <div class="chatUpdateDeleteContainerUser">
               <a href="" class="a-updateBtn">수정</a>
               <a href="" class="a-deleteBtn">삭제</a>
             </div>
-
+        
           </div>
-
+        
           <div class="chatContentContainerUser">
-            <p class="chatContentUser">글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글글</p>
-          </div>
-        </div>
+            <p class="chatContentUser" >a</p>
+          </div> -->
 
+  <!-- 댓글 등록 컨테이너 -->
+  <div class="chatSubmitMainContainer">
+
+    <!-- 댓글 등록 -->
+
+      <div class="chatSubmitContainer">
+        <textarea class="boardDetailCommentInput" placeholder="댓글등록" id="commentContent"></textarea>
       </div>
-    </th:block>
-    <!-- 댓글 등록 컨테이너 -->
-    <div class="chatSubmitMainContainer">
-
-      <!-- 댓글 등록 -->
-
-      <form action="" class="chatSubmitForm">
-        <div class="chatSubmitContainer">
-          <textarea class="boardDetailCommentInput" placeholder="댓글등록"></textarea>
-        </div>
-        <button class="detailCommentSubmitBtn">댓글등록</button>
-      </form>
-    </div>
+      <button class="detailCommentSubmitBtn" id="addComment">댓글등록</button>
 
   </div>
 

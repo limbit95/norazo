@@ -81,9 +81,10 @@ public class BoardController {
 							  @PathVariable("boardNo") int boardNo,
 							  Model model,
 							  RedirectAttributes ra) {
+		log.debug("boardCode : " + boardCode);
+		log.debug("boardNo : " + boardNo);
 		
 		Map<String, Object> map = new HashMap<>();
-		map.put("boardCode", boardCode);
 		map.put("boardNo", boardNo);
 					
 			if(boardCode.equals("free")) {
@@ -100,7 +101,7 @@ public class BoardController {
 		String path = null;
 		
 		if(board == null) {
-			path = "redirect:/board" + boardCode;
+			path = "redirect:/board/" + boardCode;
 			ra.addFlashAttribute("message","게시글이 존재하지 않습니다.");
 			
 		} else {
@@ -186,16 +187,17 @@ public class BoardController {
 							  Model model, 
 							  RedirectAttributes ra) {
 		
-		Map<String, Object> map = new HashMap<>();
-		map.put("boardCode", boardCode);
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardNo", boardNo);
 					
 		if(boardCode.equals("free")) {
 			map.put("boardCode", 2);
+			model.addAttribute("boardCode", boardCode);
 		}
 		
 		if(boardCode.equals("faq")) {
 			map.put("boardCode", 3);
+			model.addAttribute("boardCode", boardCode);
 		}
 		
 
@@ -219,15 +221,12 @@ public class BoardController {
 			
 			ra.addFlashAttribute("message",message);
 			
-		} else {
+		} 
 			
-			path ="board/boardUpdate";
-			
-			model.addAttribute("board",board);
-			
-			}
-			
+		path ="board/boardUpdate";
 		
+		model.addAttribute("board",board);
+			
 		
 		return path;
 	}
@@ -248,9 +247,7 @@ public class BoardController {
 			  				  Board inputBoard,
 			  				  @SessionAttribute("loginMember") Member loginMember,
 			  				  RedirectAttributes ra,
-			  				  @RequestParam(value = "queryString", required = false, defaultValue = "1")String queryString) {
-		
-
+			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
 		
 		if(boardCode.equals("free")) {
 			inputBoard.setBoardCode(2);
@@ -259,6 +256,7 @@ public class BoardController {
 		if(boardCode.equals("faq")) {
 			inputBoard.setBoardCode(3);
 		}
+		
 		
 		inputBoard.setMemberNo(loginMember.getMemberNo());
 		

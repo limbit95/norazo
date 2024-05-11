@@ -1,3 +1,12 @@
+.boardListMain {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+    width: 1090px;
+    height: 1200px;
+}
+
 .pagination-area {
     margin-top: 50px;
     /* margin-bottom: 20px; */
@@ -28,4 +37,47 @@
     border-radius: 50%;
     color: white !important;
     letter-spacing: 0 !important;
+}
+
+
+
+/* 내가 만든, 속한, 찜한 모임 드롭 다운 */
+#myGroupDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 37px;
+    height: 37px;
+    margin-bottom: 26px;
+    margin-left: 5px;
+}
+
+#myGroupDropDown {
+    position: absolute;
+    font-size: 35px;
+}
+
+#myGroupSelect {
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    position: absolute;
+    width: 25px;
+    height: 16px;
+}
+
+#myGroupOption {
+    color: black;
+    font-size: 15px;
+    font-family: 'regular';
+    font-weight: 1000;
+}
+
+.thumbnail {
+    cursor: pointer;
 }

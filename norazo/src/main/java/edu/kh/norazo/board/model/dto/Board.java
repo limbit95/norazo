@@ -30,7 +30,7 @@ public class Board {
 	private String boardName; // 게시판 유형 한글 이름 
 	private String memberNickname; // 멤버 닉네임
 	
-// 	private List<Comment> commentList; // Comment dto 아직 안 만듬
+ 	private List<Comment> commentList;
 	private int likeCheck;
 	
 	// 게시글 작성자 프로필 이미지

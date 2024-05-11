@@ -172,7 +172,12 @@
                             th:data-sports-code="${board.sportsCode}">모임 삭제</button>
                   </th:block>
                   
-                  <form action="/sportsBoard/deleteJoinMember" method="POST">
+                  <th:block th:if="${myGroup}">
+                    <form th:action="@{/sportsBoard/deleteJoinMember(myGroup=${myGroup})}" method="POST">
+                  </th:block>
+                  <th:block th:unless="${myGroup}">
+                    <form action="/sportsBoard/deleteJoinMember" method="POST">
+                  </th:block>
                     <th:block th:if="${createMember.memberNo != session.loginMember.memberNo}">
                       <button class="detailCancelBtn" id="deleteJoinMember">참여 취소</button>
                       <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
@@ -234,19 +239,21 @@
 
             <th:block th:replace="~{common/fragments/sportsBoardDetailComment}"></th:block>
             
-            <!-- <th:block th:if="${session.loginMember.memberNo}  == ${board.memberNo}">
-              <button id="updateSportsBoard" 
-                      th:data-board-no="${board.boardNo}" 
-                      th:data-sports-code="${board.sportsCode}"
-                      style="width: 100px; height: 50px; color: white; background-color: var(--primary3); font-size: 20px;">수정</button>
-              <button id="deleteSportsBoard" 
-                      th:data-board-no="${board.boardNo}" 
-                      th:data-sports-code="${board.sportsCode}"
-                      style="width: 100px; height: 50px; color: white; background-color: var(--primary3); font-size: 20px; margin-top: 10px;">삭제</button>
-            </th:block> -->
     </main>
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/sportsBoard/sportsBoardDetail.js"></script>
     <script src="/js/fragments/sportsBoardDetailModal.js"></script>
+    <script src="/js/fragments/sportsBoardDetailcomment.js"></script>
+
+    <script th:inline="javascript">
+      // - loginMember 가 null 인 경우 null 반환
+      const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원 번호";
+
+      // 현재 게시글 번호를 전역 변수로 저장
+      const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
+
+      const userDefaultIamge = /*[[#{user.default.image}]]*/ "기본 이미지";
+    </script>
+  
 </body>
 </html>

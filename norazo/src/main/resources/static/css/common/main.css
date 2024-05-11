@@ -156,7 +156,10 @@ article {
 
 
 
+
+
 /* 자유게시판 */
+
 .freeBoard-header {
     display: flex;
     width: 1090px;
@@ -169,10 +172,11 @@ article {
     margin-top: 40px;
     margin-bottom: 20px;
     font-size: 40px;
-    width: 950px;
+    width: auto;
 }
 
 .freeBoard-whole-view {
+    margin-left: 746px;
     text-decoration: none;
     width: auto;
     height: 50px;
@@ -189,9 +193,19 @@ article {
     border-bottom: 1px solid var(--gray3);
 }
 
+.freeBoard-list > h2 {
+    width: 12%;
+    text-align: center;
+    border-right: 3px solid var(--gray4);
+    height: 50px;
+    line-height: 200%;
+}
+
 .freeBoard-list > div {
-    width: 65%;
-    margin-left: 20px;
+    width: 50%;
+    margin-left: 23px;
+    border-right: 3px solid var(--gray4);
+    height: 50px;
 }
 
 .freeBoard-list > div > a {
@@ -202,6 +216,7 @@ article {
     font-weight: 500;
     text-decoration: none;
     color: black;
+    line-height: 200%;
 }
 
 .freeBoard-list > div > a:visited { color: black; } 
@@ -210,18 +225,23 @@ article {
     width: 20%;
     font-weight: 1000;
     color: var(--gray2);
+    margin-left: 23px;
+    border-right: 3px solid var(--gray4);
+    height: 50px;
+    line-height: 260%;
 }
 
 .freeBoard-date {
     width: auto;
     font-weight: 1000;
     color: var(--gray2);
+    margin-left: 22px;
 }
 
 
 /* 게시물이 존재하지 않을 때 */
 .nothing-div {
-    margin-top: 15px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -229,8 +249,74 @@ article {
     height: 100px;
     border-top: 2px solid var(--gray3);
     border-bottom: 2px solid var(--gray3);
+    color: var(--primary3);
 }
 
 .nothing {
     width: auto;
+}
+
+
+
+
+
+.freeBoard-list-head {
+    display: flex;
+    width: 1020px;
+    height: 70px;
+    align-items: center;
+    background-color: var(--gray4);
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.freeBoard-list-head > h2 {
+    width: 12%;
+    text-align: center;
+    border-right: 3px solid white;
+    height: 50px;
+    line-height: 220%;
+    color: var(--primary2);
+    font-weight: 600;
+}
+
+.freeBoard-list-head > div {
+    width: 50%;
+    margin-left: 23px;
+    border-right: 3px solid white;
+    height: 50px;
+}
+
+.freeBoard-list-head > div > a {
+    width: auto;
+    font-weight: 1000;
+    font-family: 'main';
+    font-size: 25px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    line-height: 220%;
+    color: var(--primary2);
+}
+
+.freeBoard-nickname-head {
+    width: 20%;
+    font-weight: 1000;
+    font-family: 'main';
+    color: var(--gray2);
+    margin-left: 23px;
+    border-right: 3px solid white;
+    height: 50px;
+    line-height: 260%;
+    color: var(--primary2);
+}
+
+.freeBoard-date-head {
+    width: auto;
+    font-weight: 1000;
+    color: var(--gray2);
+    margin-left: 22px;
+    font-family: 'main';
+    line-height: 140%;
+    color: var(--primary2);
 }
