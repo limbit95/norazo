@@ -35,9 +35,13 @@ body{
     margin-top: 50px;
     width: 279px;
     height: 56px;
-
+    margin-bottom: 50px;
 }
 
+.signUp-message{
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
 .required{
     color: red;
     padding: 0 5px;

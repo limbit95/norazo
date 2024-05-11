@@ -75,8 +75,9 @@
             <div class="freeBoard-list" th:unless="${myGroup}">
                 <h2 th:text="${board.boardNo}"></h2>
                 <div>
-                    <a th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo}, cp=${pagination.currentPage})}" 
-                       th:text="*{boardTitle}">게시판 제목</a>
+                    <a th:if="${boardCode}"
+                    th:href="@{/board/{boardCode}/{boardNo}(boardCode=${boardCode},boardNo=*{boardNo}, cp=${pagination.currentPage})}" 
+                    th:text="*{boardTitle}">게시판 제목</a>
                 </div>
                 <h3 class="freeBoard-nickname" th:text=*{memberNickname}>닉네임</h3>
                 <h3 class="freeBoard-date" th:text="*{boardWriteDate}">sysdate</h3>

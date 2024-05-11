@@ -242,18 +242,18 @@ public class BoardController {
 	 * @return 
 	 */
 	@PostMapping("{boardName:[a-z]+}/{boardNo:[0-9]+}/update")
-	public String boardUpdate(@PathVariable("boardName")String boardName,
+	public String boardUpdate(@PathVariable("boardName")String boardCode,
 			  				  @PathVariable("boardNo") int boardNo,
 			  				  Board inputBoard,
 			  				  @SessionAttribute("loginMember") Member loginMember,
 			  				  RedirectAttributes ra,
 			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
 		
-		if(boardName.equals("free")) {
+		if(boardCode.equals("free")) {
 			inputBoard.setBoardCode(2);
 		}
 		
-		if(boardName.equals("faq")) {
+		if(boardCode.equals("faq")) {
 			inputBoard.setBoardCode(3);
 		}
 		
@@ -269,18 +269,20 @@ public class BoardController {
 		
 		if(result > 0) {
 		
-			path = String.format("redirect:/board/%s/%d%s", boardName,boardNo,queryString);
+			path = String.format("redirect:/board/%s/%dupdate", boardCode,boardNo);
 			
 			message = "게시글이 수정 되었습니다.";
 	
 		} else {
 			
-			path = String.format("redirect:/board/%s/%d", boardName,boardNo+"/update");
+			path = String.format("redirect:/board/%s/%d", boardCode,boardNo);
 			message = "게시글 수정 실패되었습니다.";
 		}
 		
 		ra.addFlashAttribute("message",message);
 		
+		
+		log.debug("주소 값 : "+ path);
 		return path;
 	}
 	
