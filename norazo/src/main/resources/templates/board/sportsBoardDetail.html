@@ -59,7 +59,7 @@
                     <!-- 참여회원 현황 클릭시 모달창 -->
                     <div class="joinMemberIconContainer">
                       <ion-icon name="person" class="personIco joinMemberStatus"></ion-icon>
-                      <h4 class="joinMemberStatus" th:text="|${attendMemberCount} / *{memberCountLimit}|">ATTENDED MEMBER</h4>
+                      <h4 class="joinMemberStatus" th:text="|*{attendMemberCount} / *{memberCountLimit}|">ATTENDED MEMBER</h4>
                     </div>
                   </div>
 
@@ -71,7 +71,7 @@
 
                     <th:block th:each="memberList, stat : ${memberList}" th:object="${memberList}">
                       <th:block th:if="${5 > stat.index}">
-                        <img class="joinMemberImg" th:src="*{profileImg}" id="profileImg"/>
+                        <img class="joinMemberImg" th:src="*{profileImg} ?: #{user.default.image}" id="profileImg"/>
                       </th:block>
                     </th:block>
 
@@ -159,13 +159,13 @@
                   </div> 
 
                   <!-- 취소 -->
-                  <th:block th:if="${createMember.memberNo == session.loginMember.memberNo}">
+                  <th:block th:if="${board.memberNo == session.loginMember.memberNo}">
                     <button class="detailCancelBtn" id="updateSportsBoard"
                             th:data-board-no="${board.boardNo}"
                             th:data-sports-code="${board.sportsCode}">모임 수정</button>
                             <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
                             <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
-                            <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                            <input type="hidden" th:value="${board.memberNo}" id="createMemberNo" name="createMemberNo">
                             <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
                             <button class="detailCancelBtn" id="deleteSportsBoard"
                             th:data-board-no="${board.boardNo}" 
@@ -176,13 +176,13 @@
                     <form th:action="@{/sportsBoard/deleteJoinMember(myGroup=${myGroup})}" method="POST">
                   </th:block>
                   <th:block th:unless="${myGroup}">
-                    <form action="/sportsBoard/deleteJoinMember" method="POST">
+                    <form th:action="@{/sportsBoard/deleteJoinMember(sportsCode=${board.sportsCode}, main=${main})}" method="POST">
                   </th:block>
-                    <th:block th:if="${createMember.memberNo != session.loginMember.memberNo}">
+                    <th:block th:if="${board.memberNo != session.loginMember.memberNo}">
                       <button class="detailCancelBtn" id="deleteJoinMember">참여 취소</button>
                       <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
                       <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
-                      <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                      <input type="hidden" th:value="${board.memberNo}" id="createMemberNo" name="createMemberNo">
                       <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
                     </th:block>
                   </form>
@@ -207,7 +207,7 @@
                 <th:block th:object="${createMember}">
                   <div class="creatorDetaileBotContainer">
                     <div>
-                      <img th:src="*{profileImg}" class ="creatorImg">
+                      <img th:src="*{profileImg} ?: #{user.default.image}" class ="creatorImg">
                     </div>
 
                     <div class="creatorRightContainer">

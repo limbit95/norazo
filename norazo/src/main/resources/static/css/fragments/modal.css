@@ -1,19 +1,33 @@
 /* 모달창 css */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+    z-index: 1000;
+}
+
 .modal-content {
     border-radius: 30px; 
+    position: fixed;
     border: 3px solid #076DF2; 
     width: 600px; 
-    height: 520px;
+    height: 530px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.45), 0 6px 6px rgba(0,0,0,0.45);
     background-color: white;
-
-    position: fixed;
+    z-index: 1010;
 
     margin: auto;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.modal-content-div {
+    z-index: 1010;
 }
 
 .modal-header {
@@ -113,8 +127,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px;
-    margin-top: 5px;
+    height: 90px;
     border-bottom: 1px solid var(--gray3);
 }
 
@@ -137,7 +150,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70px;
+    height: 80px;
 }
 
 .join-btn {
@@ -174,7 +187,7 @@
 
 #crwon1 {
     position: absolute;
-    bottom: 75px;
+    bottom: 83px;
     left: 85px;
     color: var(--secondary);
     font-size: 25px;
@@ -182,21 +195,21 @@
 }
 #crwon2 {
     position: absolute;
-    bottom: 75px;
+    bottom: 83px;
     left: 84px;
     color: white;
     font-size: 25px;
 }
 #crwon3 {
     position: absolute;
-    bottom: 76px;
+    bottom: 84px;
     left: 85px;
     color: white;
     font-size: 25px;
 }
 #crwon4 {
     position: absolute;
-    bottom: 75px;
+    bottom: 83px;
     left: 86px;
     color: white;
     font-size: 25px;

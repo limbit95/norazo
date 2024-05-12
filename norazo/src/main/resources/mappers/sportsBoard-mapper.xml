@@ -105,6 +105,7 @@
 	 	FROM MEMBER
 	 	JOIN ATTEND_MEMBER USING(MEMBER_NO)
 	 	WHERE BOARD_NO = #{boardNo}
+	 	ORDER BY ATTEND_NO
 	</select>
 	 
  	<!-- 상세 조회한 게시글의 댓글 목록 조회 -->

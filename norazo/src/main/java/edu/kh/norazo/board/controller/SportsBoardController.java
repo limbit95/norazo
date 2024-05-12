@@ -73,14 +73,13 @@ public class SportsBoardController {
 									@PathVariable("boardNo") int boardNo,
 									@SessionAttribute("loginMember") Member loginMember, 
 									@RequestParam(value="myGroup", required=false, defaultValue="null") String myGroup,
+									@RequestParam(value="main", required=false, defaultValue="main") String main,
 									Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardNo", boardNo);
 		map.put("memberNo", loginMember.getMemberNo());
 		map.put("sportsCode", sportsCode);
-		
-		
 		
 		// 모임글 상세조회 페이지 필요한 서비스
 		
@@ -91,27 +90,26 @@ public class SportsBoardController {
 		model.addAttribute("memberList", sportsBoardDetail.getMemberList());
 		model.addAttribute("createMember", createMember);
 		model.addAttribute("board", sportsBoardDetail);
-		model.addAttribute("attendMemberCount", sportsBoardDetail.getAttendMemberCount());
 		model.addAttribute("myGroup", myGroup);
-		
-//		log.debug("create member number : " + createMember.toString());
-//		log.debug("loginMember : " + loginMember.toString());
 		
 		// 모임 참석 여부 확인
 		int attendFl = service.attendFl(map);
 		
 		if(attendFl > 0) {
 			return "board/sportsBoardDetail";
-		} 
+		}
 		
 		// 미참석인 모임 참석 클릭시 참석 기능
 		int join = service.join(map);
 		
-		List<Member> memberList = service.selectAttendMemberList(map);
-		model.addAttribute("memberList", memberList);
+		if(join > 0) {
+			map.put("likeCheck", 1);
+			int boardLike = service.boardLike(map);
+		}
 		
-		model.addAttribute("attendMemberCount", memberList.size());
-		
+		sportsBoardDetail = service.selectSportsBoard(map);
+		model.addAttribute("board", sportsBoardDetail);
+		model.addAttribute("memberList", sportsBoardDetail.getMemberList());
 		
 		String path = null;
 		String message = null;
@@ -143,16 +141,17 @@ public class SportsBoardController {
 	@PostMapping("deleteJoinMember")
 	public String deleteJoinMember(RedirectAttributes ra, 
 									@RequestParam("boardNo") int boardNo, 
-									@SessionAttribute("loginMember") Member loginMember, 
+									@SessionAttribute(value="loginMember", required=false) Member loginMember, 
 									@RequestParam("createMemberNo") int createMemberNo,
 									@RequestParam(value="myGroup", required=false, defaultValue="null") String myGroup,
 									Model model) {
-		log.debug("myGroup : " + myGroup);
+		
+		if(loginMember == null) {
+			ra.addFlashAttribute("message", "로그아웃 상태입니다. 다시 로그인 해주세요.");
+			return "redirect:/member/login";
+		}
 		
 		int memberNo = loginMember.getMemberNo();
-		
-//		log.debug("board number : " + boardNo);
-//		log.debug("member number : " + memberNo);
 		
 		int result = service.deleteJoinMember(boardNo, memberNo);
 		
@@ -160,14 +159,18 @@ public class SportsBoardController {
 		
 		if (result > 0) {
 			if(myGroup.equals("내가 만든 모임")) {
+				ra.addFlashAttribute("message", "참여가 취소 되었습니다");
 				return "redirect:/myPage/myCreate";
 			} 
 			if(myGroup.equals("내가 속한 모임")) {
+				ra.addFlashAttribute("message", "참여가 취소 되었습니다");
 				return "redirect:/myPage/myBelong";
 			}
+			ra.addFlashAttribute("message", "참여가 취소 되었습니다");
 			path = "redirect:/";
 		} else {
-			path = "redirect:boardNo" + boardNo;
+			ra.addFlashAttribute("message", "참여 취소 실패");
+			path = "redirect:/boardNo" + boardNo;
 		}
 		
 		
@@ -198,10 +201,10 @@ public class SportsBoardController {
 		String path = null;
 		
 		if(result > 0) {
-			message = "게시글이 삭제 되었습니다";
+			message = "모임이 삭제 되었습니다";
 			path = "/sportsBoard/" + sportsCode;
 		} else {
-			message = "게시글 삭제 실패";
+			message = "모임 삭제 실패";
 			path = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
 		}
 		
