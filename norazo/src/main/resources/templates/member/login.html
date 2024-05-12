@@ -19,7 +19,7 @@
              <img src="/images/logo.png" alt="homeLogo" id="logo">
         
              <!-- 로그인 폼-->
-             <form action="/member/login" method="post" id="loginForm">
+             <form th:action="@{/member/login(sportsCode=${sportsCode})}" method="post" id="loginForm">
                  <div class="login-input-area">
 
                     <div class="idInput">

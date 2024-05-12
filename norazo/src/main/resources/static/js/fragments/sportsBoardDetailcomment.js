@@ -16,9 +16,7 @@
   수정 == PUT     (Update)
   삭제 == DELETE  (Delete)
 */
-// window.addEventListener("click", e =>{
-//   selectCommentList();
-// });
+
 /* ***** 댓글 목록 조회(ajax) ***** */
 const selectCommentList = () => {
   
@@ -112,55 +110,55 @@ const selectCommentList = () => {
      
         // ----------------------------------------------------
 
-        // if(loginMemberNo != comment.memberNo){
-        // } else if(loginMemberNo == comment.memberNo){
-        // }
-        // // 버튼 영역
-        // const commentBtnArea = document.createElement("div");
-        // commentBtnArea.classList.add("comment-btn-area");
+        if(loginMemberNo != comment.memberNo){
+        } else if(loginMemberNo == comment.memberNo){
+        }
+        // 버튼 영역
+        const commentBtnArea = document.createElement("div");
+        commentBtnArea.classList.add("comment-btn-area");
 
 
-        // // 답글 버튼
-        // const childCommentBtn = document.createElement("button");
-        // childCommentBtn.innerText = "답글";
+        // 답글 버튼
+        const childCommentBtn = document.createElement("button");
+        childCommentBtn.innerText = "답글";
 
-        // // 답글 버튼에 onclick 이벤트 리스너 추가 
-        // childCommentBtn.setAttribute("onclick", 
-        //   `showInsertComment(${comment.commentNo}, this)`);     
+        // 답글 버튼에 onclick 이벤트 리스너 추가 
+        childCommentBtn.setAttribute("onclick", 
+          `showInsertComment(${comment.commentNo}, this)`);     
           
-        // // 버튼 영역에 답글 추가
-        // commentBtnArea.append(childCommentBtn);
+        // 버튼 영역에 답글 추가
+        commentBtnArea.append(childCommentBtn);
 
 
-        // // 로그인한 회원 번호가 댓글 작성자 번호와 같을 때
-        // // 댓글 수정/삭제 버튼 출력
+        // 로그인한 회원 번호가 댓글 작성자 번호와 같을 때
+        // 댓글 수정/삭제 버튼 출력
 
-        // if(loginMemberNo != null && loginMemberNo == comment.memberNo){
+        if(loginMemberNo != null && loginMemberNo == comment.memberNo){
 
-        //   // 수정 버튼
-        //   const updateBtn = document.createElement("button");
-        //   updateBtn.innerText = "수정";
+          // 수정 버튼
+          const updateBtn = document.createElement("button");
+          updateBtn.innerText = "수정";
 
-        //   // 수정 버튼에 onclick 이벤트 리스너 추가 
-        //   updateBtn.setAttribute("onclick", 
-        //     `showUpdateComment(${comment.commentNo}, this)`); 
-
-
-        //   // 삭제 버튼
-        //   const deleteBtn = document.createElement("button");
-        //   deleteBtn.innerText = "삭제";
-
-        //   // 삭제 버튼에 onclick 이벤트 리스너 추가 
-        //   deleteBtn.setAttribute("onclick", 
-        //     `deleteComment(${comment.commentNo})`); 
+          // 수정 버튼에 onclick 이벤트 리스너 추가 
+          updateBtn.setAttribute("onclick", 
+            `showUpdateComment(${comment.commentNo}, this)`); 
 
 
-        //   // 버튼 영역에 수정, 삭제 버튼 추가
-        //   commentBtnArea.append(updateBtn, deleteBtn);
-        // }
+          // 삭제 버튼
+          const deleteBtn = document.createElement("button");
+          deleteBtn.innerText = "삭제";
 
-        // // 행에 버튼 영역 추가
-        // commentRow.append(commentBtnArea);
+          // 삭제 버튼에 onclick 이벤트 리스너 추가 
+          deleteBtn.setAttribute("onclick", 
+            `deleteComment(${comment.commentNo})`); 
+
+
+          // 버튼 영역에 수정, 삭제 버튼 추가
+          commentBtnArea.append(updateBtn, deleteBtn);
+        }
+
+        // 행에 버튼 영역 추가
+        commentRow.append(commentBtnArea);
 
 
         // ----------------------------------------------------

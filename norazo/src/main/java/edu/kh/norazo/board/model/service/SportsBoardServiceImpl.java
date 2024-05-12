@@ -89,7 +89,7 @@ public class SportsBoardServiceImpl implements SportsBoardService{
 	// 모임글 상세조회 페이지 필요한 정보 얻어오기
 	@Override
 	public Board selectSportsBoard(Map<String, Object> map) {
-		
+		List<Member> memberList = mapper.selectAttendMemberList(map);
 		
 		return mapper.selectSportsBoard(map);
 	}

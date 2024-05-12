@@ -25,16 +25,20 @@ const boardLike = document.querySelector(".board-like");
 let sportsCode;
 let boardNo;
 let likeCheck;
+let main;
+
+// 뒷배경 블러처리
+const backdrop = document.querySelector(".modal-backdrop");
 
 // 썸네일 클릭시 모달창 조회
 thumbnail.forEach( (i) => {
     i.addEventListener("click", e => {
-        // 조회한 모임글 작성자 회원 번호
-        boardWriteMemberNo = e.target.dataset.memberNo;
         // 조회한 모임글 스포츠 종류
         sportsCode = e.target.dataset.sportsCode;
         // 조회한 모임글 번호
         boardNo = e.target.dataset.boardNo;
+        // 메인에서 클릭하여 들어온 경우 쿼리스트링으로 main임으로 구분 지을 변수
+        main = e.target.dataset.main;
         
         // 참석 버튼에 현재 조회한 모임글 번호 데이터 삽입
         joinBtn.setAttribute("data-board-no", boardNo);
@@ -103,9 +107,14 @@ thumbnail.forEach( (i) => {
             // 참석되어 있는 모임글은 모달창 조회가 아닌 상세 조회 페이지로 바로 이동
             if(loginMember != null) {
                 board.memberList.forEach( (i) => {
-                    if(loginMember.memberNo == i.memberNo){
+                    if(loginMember.memberNo == i.memberNo && main == null){
                         modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
+                        return;
+                    }
+                    if(loginMember.memberNo == i.memberNo && main != null){
+                        modalContent.classList.add("popup-hidden");
+                        location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo + "?main";
                         return;
                     }
                 });
@@ -113,6 +122,7 @@ thumbnail.forEach( (i) => {
         });
         // 모달창 보이기
         modalContent.classList.remove("popup-hidden");
+        backdrop.classList.remove("popup-hidden");
     });
 
 });
@@ -120,12 +130,12 @@ thumbnail.forEach( (i) => {
 // 게시글 제목 클릭시 모달창 조회
 boardTitle.forEach( (i) => {
     i.addEventListener("click", e => {
-        // 조회한 모임글 작성자 회원 번호
-        boardWriteMemberNo = e.target.dataset.memberNo;
         // 조회한 모임글 스포츠 종류
         sportsCode = e.target.dataset.sportsCode;
         // 조회한 모임글 번호
         boardNo = e.target.dataset.boardNo;
+        // 메인에서 클릭하여 들어온 경우 쿼리스트링으로 main임으로 구분 지을 변수
+        main = e.target.dataset.main;
         
         // 참석 버튼에 현재 조회한 모임글 번호 데이터 삽입
         joinBtn.setAttribute("data-board-no", boardNo);
@@ -166,7 +176,7 @@ boardTitle.forEach( (i) => {
 
             const memberList = document.createElement("div");
             memberList.classList.add("memberList"); 
-            
+
             
             // ---------- 현재 참석한 회원 리스트 ----------
             board.memberList.forEach( (i, index) =>{
@@ -194,9 +204,14 @@ boardTitle.forEach( (i) => {
             // 참석되어 있는 모임글은 모달창 조회가 아닌 상세 조회 페이지로 바로 이동
             if(loginMember != null) {
                 board.memberList.forEach( (i) => {
-                    if(loginMember.memberNo == i.memberNo){
+                    if(loginMember.memberNo == i.memberNo && main == null){
                         modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
+                        return;
+                    }
+                    if(loginMember.memberNo == i.memberNo && main != null){
+                        modalContent.classList.add("popup-hidden");
+                        location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo + "?main";
                         return;
                     }
                 });
@@ -204,6 +219,7 @@ boardTitle.forEach( (i) => {
         });
         // 모달창 보이기
         modalContent.classList.remove("popup-hidden");
+        backdrop.classList.remove("popup-hidden");
     });
 });
 
@@ -211,6 +227,7 @@ boardTitle.forEach( (i) => {
 if(closeBtn != null){
     closeBtn.addEventListener("click", () => {
         modalContent.classList.add("popup-hidden");
+        backdrop.classList.add("popup-hidden");
     });
 };
 
@@ -218,6 +235,7 @@ if(closeBtn != null){
 window.addEventListener("keydown", (e) => {
     if(e.key == 'Escape'){
         modalContent.classList.add("popup-hidden");
+        backdrop.classList.add("popup-hidden");
     };
 });
 
@@ -228,6 +246,7 @@ if(joinBtn != null){
         if(loginMember == null){
             if(confirm("로그인 후 이용해주세요. \n로그인 페이지로 이동하시겠습니까?")){
                 modalContent.classList.add("popup-hidden");
+                backdrop.classList.add("popup-hidden");
                 location.href = "/member/login";
             }
             return;
@@ -235,6 +254,7 @@ if(joinBtn != null){
 
         if(confirm("해당 모임에 참석하시겠습니까?")){
             modalContent.classList.add("popup-hidden");
+            backdrop.classList.add("popup-hidden");
             location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
         }
     });

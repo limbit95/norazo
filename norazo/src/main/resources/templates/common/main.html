@@ -44,13 +44,15 @@
                          class="thumbnail" 
                          th:data-board-no="${sportsBoard.boardNo}"
                          th:data-member-no="${sportsBoard.memberNo}"
-                         th:data-sports-code="${sportsBoard.sportsCode}"></img>
+                         th:data-sports-code="${sportsBoard.sportsCode}"
+                         th:data-main="main"></img>
                     <div>
                         <h4 class="writeDate">[[${sportsBoard.boardWriteDate}]]</h4>
                         <h4 class="board-title" 
                         th:data-board-no="${sportsBoard.boardNo}"
                         th:data-member-no="${sportsBoard.memberNo}"
-                        th:data-sports-code="${sportsBoard.sportsCode}">[[${sportsBoard.boardTitle}]]</h4>
+                        th:data-sports-code="${sportsBoard.sportsCode}"
+                        th:data-main="main">[[${sportsBoard.boardTitle}]]</h4>
                     </div>
                 </div>
             </th:block>

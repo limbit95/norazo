@@ -60,11 +60,39 @@
 /* User info Container */
 .userInfo-modal {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    width: 80%;
+    height: 400px;
+    overflow: scroll;
+}
+
+.userInfo-modal::-webkit-scrollbar {
+    width: 10px;
+}
+.userInfo-modal::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+.userInfo-modal::-webkit-scrollbar-track:vertical {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.userInfo-modal::-webkit-scrollbar-track-piece:horizontal {
+    background-color: var(--primary3);
+}
+
+.userInfo-modal > div {
+    display: flex;
     justify-content: flex-start;
     align-items: center;
     width: 80%;
-
+    height: 80px;
+    margin-top: 15px;
 }
 
 
