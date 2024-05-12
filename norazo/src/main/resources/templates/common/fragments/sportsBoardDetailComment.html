@@ -5,61 +5,79 @@
     <!-- ul -->
     <div class="boardCommentDivTop">
 
+      <!-- 1 -->
       <div class="chatMainContainer" id="commentList"
       th:each="comment : ${board.commentList}" 
       th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
       th:object="${comment}"> 
 
-        <th:block th:if="${session.loginMember.memberNo} != ${comment.memberNo}">
-          <!-- 남이 쓴 댓글 -->
-          <div class="chatContainer">
-
-            <th:block th:if="*{commentDelFl} == 'Y'">
-              삭제된 댓글 입니다
-            </th:block>
-            
-            <th:block th:if="*{commentDelFl} == 'N'">
-              <img th:unless="*{profileImg}" th:src="#{user.default.image}" class="chatUserProfile">
-              <img th:if="*{profileImg}" th:src="*{profileImg}" class="chatUserProfile">
-              <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
-              <div>
-                <a class="a-insertBtn" th:onclick="|showInsertComment(*{commentNo}, this)|">답글</a>
-              </div>
-            </th:block>
-            
-          </div>
-
-          <div class="chatContentContainer">  <!-- chatContentContainerUser -->
-            <p class="chatContent"  th:text="*{commentContent}">글글글글</p> <!-- chatContentUser -->
-            <span class="chatDate" th:text="*{commentWriteDate}"></span>
-          </div>
+        <th:block th:if="*{commentDelFl} == 'Y'">
+          <th:block th:if="${session.loginMember.memberNo} != ${comment.memberNo}">
+            <div class="chatContentContainer"> 
+              <p class="chatContent">삭제된 댓글 입니다</p> 
+              <span class="chatDate" th:text="*{commentWriteDate}"></span>
+            </div>
+          </th:block>
         </th:block>
 
-        <th:block th:if="${session.loginMember.memberNo} == ${comment.memberNo}">
+        <th:block th:if="*{commentDelFl} == 'N'">
+        
+          <th:block th:if="${session.loginMember.memberNo} != ${comment.memberNo}">
             <!-- 남이 쓴 댓글 -->
-            <div class="chatContainerUser">
-
-              <th:block th:if="*{commentDelFl} == 'Y'">
-                삭제된 댓글 입니다
-              </th:block>
-              
-              <th:block th:if="*{commentDelFl} == 'N'">
+            <!-- 2-1 -->
+            <div class="chatContainer">
+                
                 <img th:unless="*{profileImg}" th:src="#{user.default.image}" class="chatUserProfile">
                 <img th:if="*{profileImg}" th:src="*{profileImg}" class="chatUserProfile">
                 <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
                 <div>
-                  <a class="a-insertBtn" th:onclick="|showInsertComment(*{commentNo}, this)|">답글</a>
-                  <a class="a-updateBtn" th:onclick="|showUpdateComment(*{commentNo}, this)|">수정</a>
-                  <a class="a-deleteBtn" th:onclick="|deleteComment(*{commentNo})|">삭제</a>
+                  <a class="a-insertBtn" th:value="*{memberNickname}" th:onclick="|showInsertComment(*{commentNo}, this.getAttribute('value'), this)|">답글</a>
                 </div>
-              </th:block>
               
             </div>
 
-            <div class="chatContentContainerUser">  <!-- chatContentContainerUser -->
-              <span class="chatDate" th:text="*{commentWriteDate}" style=":hover{color: red};"></span>
-              <p class="chatContentUser"  th:text="*{commentContent}">글글글글</p> <!-- chatContentUser -->
+            <!-- 2-2 -->
+            <div class="chatContentContainer">  <!-- chatContentContainerUser -->
+              <p class="chatContent"  th:text="*{commentContent}">글글글글</p> <!-- chatContentUser -->
+              <span class="chatDate" th:text="*{commentWriteDate}"></span>
             </div>
+          </th:block>
+
+        </th:block>
+
+        <th:block th:if="*{commentDelFl} == 'Y'">
+          <th:block th:if="${session.loginMember.memberNo} == ${comment.memberNo}">
+            <div class="chatContentContainerUser"> 
+              <span class="chatDate" th:text="*{commentWriteDate}"></span>
+              <p class="chatContentUser">삭제된 댓글 입니다</p> 
+            </div>
+          </th:block>
+        </th:block>
+
+        <th:block th:if="*{commentDelFl} == 'N'">
+
+          <th:block th:if="${session.loginMember.memberNo} == ${comment.memberNo}">
+              <!-- 남이 쓴 댓글 -->
+              <div class="chatContainerUser">
+                
+                  <img th:unless="*{profileImg}" th:src="#{user.default.image}" class="chatUserProfile">
+                  <img th:if="*{profileImg}" th:src="*{profileImg}" class="chatUserProfile">
+                  <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
+                  <div>
+                    <a class="a-insertBtn" th:value="*{memberNickname}" th:onclick="|showInsertComment(*{commentNo}, this.getAttribute('value'), this)|">답글</a>
+                    <a class="a-updateBtn" th:value="*{memberNickname}" th:name="*{profileImg}"
+                    th:onclick="|showUpdateComment(*{commentNo}, this.getAttribute('value'), this.getAttribute('name'), this)|">수정</a>
+                    <a class="a-deleteBtn" th:onclick="|deleteComment(*{commentNo})|">삭제</a>
+                  </div>
+                
+              </div>
+
+              <div class="chatContentContainerUser">  <!-- chatContentContainerUser -->
+                <span class="chatDate" th:text="*{commentWriteDate}"></span>
+                <p class="chatContentUser"  th:text="*{commentContent}">글글글글</p> <!-- chatContentUser -->
+              </div>
+          </th:block>
+
         </th:block>
 
         <div class="test"></div>

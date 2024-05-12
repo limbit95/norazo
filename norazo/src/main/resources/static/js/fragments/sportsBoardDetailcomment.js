@@ -72,9 +72,9 @@ const selectCommentList = () => {
         chatContentContainer.classList.add("chatContentContainerUser");
       }
 
-      // // 만약 삭제된 댓글이지만 자식 댓글이 존재하는 경우
-      // if(comment.commentDelFl == 'Y') 
-      //   commentRow.innerText = "삭제된 댓글 입니다";
+      // 만약 삭제된 댓글이지만 자식 댓글이 존재하는 경우
+      if(comment.commentDelFl == 'Y') 
+        chatMainContainer.innerText = "삭제된 댓글 입니다";
 
       if(comment.commentDelFl == 'N'){ // 삭제되지 않은 댓글
 
@@ -109,8 +109,9 @@ const selectCommentList = () => {
         childCommentBtn.innerText = "답글";
 
         // 답글 버튼에 onclick 이벤트 리스너 추가 
+        childCommentBtn.setAttribute("value", comment.memberNickname);
         childCommentBtn.setAttribute("onclick", 
-          `showInsertComment(${comment.commentNo}, this)`);     
+          `showInsertComment(${comment.commentNo}, this.getAttribute('value'), this)`);     
           
         // 버튼 영역에 답글 추가
         commentBtnArea.append(childCommentBtn);
@@ -126,8 +127,10 @@ const selectCommentList = () => {
           updateBtn.innerText = "수정";
           
           // 수정 버튼에 onclick 이벤트 리스너 추가 
+          updateBtn.setAttribute("value", comment.memberNickname);
+          updateBtn.setAttribute("name", comment.profileImg);
           updateBtn.setAttribute("onclick", 
-          `showUpdateComment(${comment.commentNo}, this)`); 
+          `showUpdateComment(${comment.commentNo}, this.getAttribute('value'), this.getAttribute('name'), this)`); 
           
           // 삭제 버튼
           const deleteBtn = document.createElement("a");
@@ -241,7 +244,7 @@ addContent.addEventListener("click", e => {
   .catch(err => console.log(err));
 })
 
-const newinsertComment = (parentCommentNo, btn) => {
+const newinsertComment = (parentCommentNo, memberNickname, btn) => {
   // 댓글 등록 전체 컨테이너
   const chatSubmitMainContainer2 = document.createElement("div");
   chatSubmitMainContainer2.classList.add("chatSubmitMainContainer2");
@@ -281,15 +284,19 @@ const newinsertComment = (parentCommentNo, btn) => {
   textarea.style.lineHeight = "1.5";
   textarea.style.fontFamily = "main";
   textarea.style.outline = "none";
-  
   textarea.placeholder = "답글 등록";
-  
+
+  const div = document.createElement("div");
+  div.style.width = "50px";
+  div.style.height = "20px";
+  div.style.borderColor = "red";
+
   chatSubmitContainer2.append(textarea);
   
   // 등록 버튼
   const detailCommentSubmitBtn2 = document.createElement("button");
-  detailCommentSubmitBtn2.innerText = "등록";
-  detailCommentSubmitBtn2.setAttribute("onclick", "insertChildComment("+parentCommentNo+", "+btn+")");
+  detailCommentSubmitBtn2.innerText = "등록"; 
+  detailCommentSubmitBtn2.setAttribute("onclick", `insertChildComment(${parentCommentNo}, '${memberNickname}', ${btn})`);
   
   detailCommentSubmitBtn2.style.width = "60px";
   detailCommentSubmitBtn2.style.height = "30px";
@@ -363,17 +370,16 @@ const newinsertComment = (parentCommentNo, btn) => {
   
   chatSubmitMainContainer2.append(divBtns);
 
+  return chatSubmitMainContainer2; 
   
-  // 답글 버튼의 부모의 뒤쪽에 textarea 추가
-  // after(요소) : 뒤쪽에 추가
-  btn.parentElement.parentElement.nextElementSibling.after(chatSubmitMainContainer2);
 }
 
 /** 답글 작성 화면 추가
  * @param {*} parentCommentNo 
  * @param {*} btn 
+ * @param {*} memberNickname 
  */
-const showInsertComment = (parentCommentNo, btn) => {
+const showInsertComment = (parentCommentNo, memberNickname, btn) => {
 
   // ** 답글 작성 textarea가 한 개만 열릴 수 있도록 만들기 **
   const temp = document.getElementsByClassName("chatSubmitMainContainer2");
@@ -390,8 +396,11 @@ const showInsertComment = (parentCommentNo, btn) => {
       return; // 함수를 종료시켜 답글이 생성되지 않게함.
     }
   }
+  const chatSubmitMainContainer2 = newinsertComment(parentCommentNo, memberNickname, btn);
 
-  newinsertComment(parentCommentNo, btn);
+  // 답글 버튼의 부모의 뒤쪽에 textarea 추가
+  // after(요소) : 뒤쪽에 추가
+  btn.parentElement.parentElement.nextElementSibling.after(chatSubmitMainContainer2);
 
   // 답글 버튼 영역 + 등록/취소 버튼 생성 및 추가
   // const commentBtnArea = document.createElement("div");
@@ -435,8 +444,7 @@ const insertCancel = (cancelBtn) => {
  * @param {*} parentCommentNo : 부모 댓글 번호
  * @param {*} btn  :  클릭된 등록 버튼
  */
-const insertChildComment = (parentCommentNo, btn) => {
-
+const insertChildComment = (parentCommentNo, memberNickname, btn) => {
   // 답글 내용이 작성된 textarea
   const textarea = document.querySelector(".chatSubmitContainer2").childNodes[0];
 
@@ -449,7 +457,7 @@ const insertChildComment = (parentCommentNo, btn) => {
 
   // ajax를 이용해 댓글 등록 요청
   const data = {
-    "commentContent" : textarea.value,
+    "commentContent" : "(@" + memberNickname + ") " + textarea.value,
     "boardNo"        : boardNo,
     "memberNo"       : loginMemberNo,  // 또는 Session 회원 번호 이용도 가능
     "parentCommentNo" : parentCommentNo // 부모 댓글 번호
@@ -521,7 +529,7 @@ let beforeCommentRow;
  * @param {*} commentNo 
  * @param {*} btn 
  */
-const showUpdateComment = (commentNo, btn) => {
+const showUpdateComment = (commentNo, memberNickname, Img, btn) => {
 
   /* 댓글 수정 화면이 1개만 열릴 수 있게 하기 */
   const temp = document.querySelector(".update-textarea");
@@ -540,36 +548,37 @@ const showUpdateComment = (commentNo, btn) => {
     }
   }
 
-
   // -------------------------------------------
-
+  
   // 1. 댓글 수정이 클릭된 행 (.comment-row) 선택
-  const commentRow = btn.closest("li"); 
-
+  const chatMainContainertemp = btn.parentElement.parentElement.parentElement;
+  
   // 2. 행 전체를 백업(복제)
   // 요소.cloneNode(true) : 요소 복제, 
   //           매개변수 true == 하위 요소도 복제
-  beforeCommentRow = commentRow.cloneNode(true);
+  beforeCommentRow = chatMainContainertemp.cloneNode(true);
   // console.log(beforeCommentRow);
 
   // 3. 기존 댓글에 작성되어 있던 내용만 얻어오기
-  let beforeContent = commentRow.children[1].innerText;
+  let beforeContent = chatMainContainertemp.children[1].children[1].innerText;
 
   // 4. 댓글 행 내부를 모두 삭제
-  commentRow.innerHTML = "";
+  chatMainContainertemp.innerHTML = "";
 
-  // 5. textarea 생성 + 클래스 추가 + 내용 추가
+
+
+
   const textarea = document.createElement("textarea");
   textarea.classList.add("update-textarea");
   textarea.value = beforeContent;
 
   // 6. 댓글 행에 textarea 추가
-  commentRow.append(textarea);
+  chatMainContainertemp.append(textarea);
 
   // 7. 버튼 영역 생성
   const commentBtnArea = document.createElement("div");
   commentBtnArea.classList.add("comment-btn-area");
-
+  
   // 8. 수정 버튼 생성
   const updateBtn = document.createElement("button");
   updateBtn.innerText = "수정";
@@ -578,24 +587,24 @@ const showUpdateComment = (commentNo, btn) => {
   // 9. 취소 버튼 생성
   const cancelBtn = document.createElement("button");
   cancelBtn.innerText = "취소";
-  cancelBtn.setAttribute("onclick", "updateCancel(this)");
+  cancelBtn.setAttribute("onclick", `updateCancel(this)`);
+  
 
   // 10. 버튼 영역에 수정/취소 버튼 추가 후
   //     댓글 행에 버튼 영역 추가
   commentBtnArea.append(updateBtn, cancelBtn);
-  commentRow.append(commentBtnArea);
+  chatMainContainertemp.append(commentBtnArea);
+
 }
-
-
 // --------------------------------------------------------------------
 
 /** 댓글 수정 취소
  * @param {*} btn : 취소 버튼
  */
 const updateCancel = (btn) => {
-
   if(confirm("취소 하시겠습니까?")){
-    const commentRow = btn.closest("li"); // 기존 댓글 행
+    console.log(btn.parentElement.parentElement);
+    const commentRow = btn.parentElement.parentElement;  // 기존 댓글 행
     commentRow.after(beforeCommentRow); // 기존 댓글 다음에 백업 추가
     commentRow.remove(); // 기존 삭제 -> 백업이 기존 행 위치로 이동
   }
@@ -610,10 +619,10 @@ const updateCancel = (btn) => {
  * @param {*} btn       : 클릭된 수정 버튼
  */
 const updateComment = (commentNo, btn) => {
-
   // 수정된 내용이 작성된 textarea 얻어오기
-  const textarea = btn.parentElement.previousElementSibling;
-
+  const textarea = btn.parentElement.parentElement.children[0];
+  
+  console.log(textarea);
   // 유효성 검사
   if(textarea.value.trim().length == 0){
     alert("댓글 작성 후 수정 버튼을 클릭해 주세요");
