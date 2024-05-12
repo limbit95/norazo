@@ -33,6 +33,13 @@ public interface BoardService {
 	 */
 	int boardUpdate(Board inputBoard);
 
+
+	/** 게시글 삭제 
+	 * @param map
+	 * @return
+	 */
+	int boardDelete(Map<String, Object> map);
+
 	
 
 }

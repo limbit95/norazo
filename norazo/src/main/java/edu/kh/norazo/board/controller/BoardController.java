@@ -280,8 +280,62 @@ public class BoardController {
 		ra.addFlashAttribute("message",message);
 		
 		
-		log.debug("주소 값 : "+ path);
 		return path;
 	}
 	
+	/** 게시글 삭제 
+	 * @param boardCode
+	 * @param boardNo
+	 * @param inputBoard
+	 * @param loginMember
+	 * @param ra
+	 * @param queryString
+	 * @return
+	 */
+	@GetMapping("{boardName:[a-z]+}/{boardNo:[0-9]+}/delete")
+	public String boardDelete(@PathVariable("boardName")String boardCode,
+			  				  @PathVariable("boardNo") int boardNo,
+			  				  Board inputBoard,
+			  				  @SessionAttribute("loginMember") Member loginMember,
+			  				  RedirectAttributes ra,
+			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		
+		if(boardCode.equals("free")) {
+			inputBoard.setBoardCode(2);
+		}
+		
+		if(boardCode.equals("faq")) {
+			inputBoard.setBoardCode(3);
+		}
+		
+		map.put("boardCode", inputBoard.getBoardCode());
+		map.put("boardNo", boardNo);
+		map.put("memberNo", loginMember.getMemberNo());
+		
+
+		int result = service.boardDelete(map);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+		
+			path = "redirect:/board/"+boardCode;
+			
+			message = "게시글이 삭제 되었습니다.";
+	
+		} else {
+			
+			path = String.format("redirect:/board/%s/%d", boardCode,boardNo);
+			message = "게시글 삭제 실패";
+		}
+		
+		ra.addFlashAttribute("message",message);
+		
+		
+		return path;
+	}
 }

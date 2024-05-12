@@ -69,4 +69,11 @@ public class BoardServiceImpl implements BoardService{
 		
 		return mapper.boardUpdate(inputBoard);
 	}
+
+	// 게시글 삭제 
+	@Override
+	public int boardDelete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.boardDelete(map);
+	}
 }
