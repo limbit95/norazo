@@ -50,6 +50,10 @@ const selectCommentList = () => {
       
       const chatMainContainer = document.createElement("div");
       chatMainContainer.classList.add("chatMainContainer");
+
+      // 대댓글(자식 댓글)인 경우 "child-comment" 클래스 추가
+      if(comment.parentCommentNo != 0) 
+        chatMainContainer.classList.add("child-comment");
       
       // 행(li) 생성 + 클래스 추가
       let chatContainer = document.createElement("div");
@@ -74,15 +78,6 @@ const selectCommentList = () => {
 
       if(comment.commentDelFl == 'N'){ // 삭제되지 않은 댓글
 
-        // 프로필 이미지, 닉네임, 날짜 감싸는 요소
-        let chatLeftContainer = document.createElement("div");
-        if(loginMemberNo != comment.memberNo){
-          chatLeftContainer.classList.add("chatLeftContainer");
-        } else if(loginMemberNo == comment.memberNo){
-          chatLeftContainer.classList.remove("chatLeftContainer");
-          chatLeftContainer.classList.add("chatLeftContainerUser");
-        }
-
         // 프로필 이미지
         const profileImg = document.createElement("img");
         profileImg.classList.add("chatUserProfile");
@@ -97,17 +92,9 @@ const selectCommentList = () => {
         nickname.classList.add("chatUserName");
         nickname.innerText = comment.memberNickname;
         
-        // 날짜(작성일)
-        const commentDate = document.createElement("span");
-        commentDate.classList.add("chatDate");
-        commentDate.innerText = comment.commentWriteDate;
-
         // 작성자 영역(commentWriter)에 프로필, 닉네임, 날짜 추가
-        chatLeftContainer.append(profileImg, nickname, commentDate);
-     
-        // 댓글 행에 작성자 영역 추가
-        chatContainer.append(chatLeftContainer);
-     
+        chatContainer.append(profileImg, nickname);
+        
         // ----------------------------------------------------
 
         if(loginMemberNo != comment.memberNo){
@@ -115,11 +102,10 @@ const selectCommentList = () => {
         }
         // 버튼 영역
         const commentBtnArea = document.createElement("div");
-        commentBtnArea.classList.add("comment-btn-area");
-
 
         // 답글 버튼
-        const childCommentBtn = document.createElement("button");
+        const childCommentBtn = document.createElement("a");
+        childCommentBtn.classList.add("a-insertBtn");
         childCommentBtn.innerText = "답글";
 
         // 답글 버튼에 onclick 이벤트 리스너 추가 
@@ -129,23 +115,23 @@ const selectCommentList = () => {
         // 버튼 영역에 답글 추가
         commentBtnArea.append(childCommentBtn);
 
-
         // 로그인한 회원 번호가 댓글 작성자 번호와 같을 때
         // 댓글 수정/삭제 버튼 출력
 
         if(loginMemberNo != null && loginMemberNo == comment.memberNo){
 
           // 수정 버튼
-          const updateBtn = document.createElement("button");
+          const updateBtn = document.createElement("a");
+          updateBtn.classList.add("a-updateBtn")
           updateBtn.innerText = "수정";
-
+          
           // 수정 버튼에 onclick 이벤트 리스너 추가 
           updateBtn.setAttribute("onclick", 
-            `showUpdateComment(${comment.commentNo}, this)`); 
-
-
+          `showUpdateComment(${comment.commentNo}, this)`); 
+          
           // 삭제 버튼
-          const deleteBtn = document.createElement("button");
+          const deleteBtn = document.createElement("a");
+          deleteBtn.classList.add("a-deleteBtn")
           deleteBtn.innerText = "삭제";
 
           // 삭제 버튼에 onclick 이벤트 리스너 추가 
@@ -157,24 +143,35 @@ const selectCommentList = () => {
           commentBtnArea.append(updateBtn, deleteBtn);
         }
 
-        // 행에 버튼 영역 추가
-        commentRow.append(commentBtnArea);
+        chatContainer.append(commentBtnArea);
 
+        // 행에 버튼 영역 추가
+        // chatContainerUser.append(commentBtnArea);
 
         // ----------------------------------------------------
 
+        // 날짜(작성일)
+        const commentDate = document.createElement("span");
+        commentDate.classList.add("chatDate");
+        commentDate.innerText = comment.commentWriteDate;
 
         // 댓글 내용 
         let chatContent = document.createElement("p");
         if(loginMemberNo != comment.memberNo){
           chatContent.classList.add("chatContent");
+          chatContent.innerText = comment.commentContent;
+
+          chatContentContainer.append(chatContent); // 행에 내용 추가
+          chatContentContainer.append(commentDate); // 행에 작성일자 추가
         } else if(loginMemberNo == comment.memberNo){
           chatContent.classList.remove("chatContent");
           chatContent.classList.add("chatContentUser");
+          chatContent.innerText = comment.commentContent;
+          
+          chatContentContainer.append(commentDate); // 행에 작성일자 추가
+          chatContentContainer.append(chatContent); // 행에 내용 추가
         }
-        chatContent.innerText = comment.commentContent;
 
-        chatContentContainer.append(chatContent); // 행에 내용 추가
 
       } // else 끝
 
@@ -244,6 +241,133 @@ addContent.addEventListener("click", e => {
   .catch(err => console.log(err));
 })
 
+const newinsertComment = (parentCommentNo, btn) => {
+  // 댓글 등록 전체 컨테이너
+  const chatSubmitMainContainer2 = document.createElement("div");
+  chatSubmitMainContainer2.classList.add("chatSubmitMainContainer2");
+  chatSubmitMainContainer2.style.display = "flex";
+  chatSubmitMainContainer2.style.width = "335px";
+  chatSubmitMainContainer2.style.height = "100px";
+  chatSubmitMainContainer2.style.background = "var(--primary3)";
+  chatSubmitMainContainer2.style.boxShadow = "0px 4px 4px rgba(0, 0, 0, 0.25)";
+  chatSubmitMainContainer2.style.borderRadius = "30px";
+  chatSubmitMainContainer2.style.overflow = "hidden";
+  chatSubmitMainContainer2.style.alignItems = "center";
+  chatSubmitMainContainer2.style.marginTop = "10px";
+
+  // 작성할 댓글 내용 감싸는 컨테이너
+  const chatSubmitContainer2 = document.createElement("div");
+  chatSubmitContainer2.classList.add("chatSubmitContainer2");
+  chatSubmitContainer2.style.width = "240px";
+  chatSubmitContainer2.style.height = "70px";
+  chatSubmitContainer2.style.background = "white";
+  chatSubmitContainer2.style.borderRadius = "30px";
+  chatSubmitContainer2.style.display = "flex";
+  chatSubmitContainer2.style.justifyContent = "center";
+  chatSubmitContainer2.style.alignItems = "center";
+  chatSubmitContainer2.style.marginLeft = "10px";
+
+  // 답글을 작성할 textarea 요소 생성
+  const textarea = document.createElement("textarea");
+  textarea.classList.add("textarea");
+  textarea.style.width = "250px";
+  textarea.style.height = "60px";
+  textarea.style.border = "none";
+  textarea.style.fontSize = "15px";
+  textarea.style.resize = "none";
+  textarea.style.borderRadius = "30px";
+  textarea.style.padding = "15px";
+  textarea.style.letterApacing = "1px";
+  textarea.style.lineHeight = "1.5";
+  textarea.style.fontFamily = "main";
+  textarea.style.outline = "none";
+  
+  textarea.placeholder = "답글 등록";
+  
+  chatSubmitContainer2.append(textarea);
+  
+  // 등록 버튼
+  const detailCommentSubmitBtn2 = document.createElement("button");
+  detailCommentSubmitBtn2.innerText = "등록";
+  detailCommentSubmitBtn2.setAttribute("onclick", "insertChildComment("+parentCommentNo+", "+btn+")");
+  
+  detailCommentSubmitBtn2.style.width = "60px";
+  detailCommentSubmitBtn2.style.height = "30px";
+  detailCommentSubmitBtn2.style.backgroundColor = "var(--primary2)";
+  detailCommentSubmitBtn2.style.fontSize = "15px";
+  detailCommentSubmitBtn2.style.marginLeft = "10px";
+  detailCommentSubmitBtn2.style.transition = "background-color 0.3s";
+  detailCommentSubmitBtn2.style.borderColor = "transparent";
+  detailCommentSubmitBtn2.style.cursor = "pointer";
+  detailCommentSubmitBtn2.style.marginLeft = "10px";
+  
+  detailCommentSubmitBtn2.addEventListener("mouseover", () => {
+    detailCommentSubmitBtn2.style.background = "var(--secondary)";
+    detailCommentSubmitBtn2.style.transition = "background-color 0.3s";
+    detailCommentSubmitBtn2.style.borderColor= "transparent";
+  });
+  detailCommentSubmitBtn2.addEventListener("mouseout", () => {
+    detailCommentSubmitBtn2.style.width = "60px";
+    detailCommentSubmitBtn2.style.height = "30px";
+    detailCommentSubmitBtn2.style.backgroundColor = "var(--primary2)";
+    detailCommentSubmitBtn2.style.fontSize = "15px";
+    detailCommentSubmitBtn2.style.marginLeft = "10px";
+    detailCommentSubmitBtn2.style.transition = "background-color 0.3s";
+    detailCommentSubmitBtn2.style.borderColor = "transparent";
+    detailCommentSubmitBtn2.style.cursor = "pointer";
+    detailCommentSubmitBtn2.style.marginLeft = "10px";
+  });
+
+  // 취소 버튼
+  const detailCommentSubmitBtn3 = document.createElement("button");
+  detailCommentSubmitBtn3.innerText = "취소";
+  detailCommentSubmitBtn3.setAttribute("onclick", "insertCancel("+btn+")");
+  
+  detailCommentSubmitBtn3.style.width = "60px";
+  detailCommentSubmitBtn3.style.height = "30px";
+  detailCommentSubmitBtn3.style.backgroundColor = "var(--primary2)";
+  detailCommentSubmitBtn3.style.fontSize = "15px";
+  detailCommentSubmitBtn3.style.marginLeft = "10px";
+  detailCommentSubmitBtn3.style.transition = "background-color 0.3s";
+  detailCommentSubmitBtn3.style.borderColor = "transparent";
+  detailCommentSubmitBtn3.style.cursor = "pointer";
+  detailCommentSubmitBtn3.style.marginLeft = "10px";
+  detailCommentSubmitBtn3.style.marginTop = "5px";
+  
+  detailCommentSubmitBtn3.addEventListener("mouseover", () => {
+    detailCommentSubmitBtn3.style.background = "var(--secondary)";
+    detailCommentSubmitBtn3.style.transition = "background-color 0.3s";
+    detailCommentSubmitBtn3.style.borderColor= "transparent";
+  });
+  detailCommentSubmitBtn3.addEventListener("mouseout", () => {
+    detailCommentSubmitBtn3.style.width = "60px";
+    detailCommentSubmitBtn3.style.height = "30px";
+    detailCommentSubmitBtn3.style.backgroundColor = "var(--primary2)";
+    detailCommentSubmitBtn3.style.fontSize = "15px";
+    detailCommentSubmitBtn3.style.marginLeft = "10px";
+    detailCommentSubmitBtn3.style.transition = "background-color 0.3s";
+    detailCommentSubmitBtn3.style.borderColor = "transparent";
+    detailCommentSubmitBtn3.style.cursor = "pointer";
+    detailCommentSubmitBtn3.style.marginLeft = "10px";
+    detailCommentSubmitBtn3.style.marginTop = "5px";
+  });
+
+  chatSubmitMainContainer2.append(chatSubmitContainer2);
+  
+  const divBtns = document.createElement("div");
+  divBtns.style.display = "flex";
+  divBtns.style.flexDirection = "column";
+  
+  divBtns.append(detailCommentSubmitBtn2);
+  divBtns.append(detailCommentSubmitBtn3);
+  
+  chatSubmitMainContainer2.append(divBtns);
+
+  
+  // 답글 버튼의 부모의 뒤쪽에 textarea 추가
+  // after(요소) : 뒤쪽에 추가
+  btn.parentElement.parentElement.nextElementSibling.after(chatSubmitMainContainer2);
+}
 
 /** 답글 작성 화면 추가
  * @param {*} parentCommentNo 
@@ -252,46 +376,41 @@ addContent.addEventListener("click", e => {
 const showInsertComment = (parentCommentNo, btn) => {
 
   // ** 답글 작성 textarea가 한 개만 열릴 수 있도록 만들기 **
-  const temp = document.getElementsByClassName("commentInsertContent");
+  const temp = document.getElementsByClassName("chatSubmitMainContainer2");
 
   if(temp.length > 0){ // 답글 작성 textara가 이미 화면에 존재하는 경우
 
     if(confirm("다른 답글을 작성 중입니다. 현재 댓글에 답글을 작성 하시겠습니까?")){
-      temp[0].nextElementSibling.remove(); // 버튼 영역부터 삭제
-      temp[0].remove(); // textara 삭제 (기준점은 마지막에 삭제해야 된다!)
+      temp[0].childNodes[0].childNodes[0].remove(); // 버튼 영역부터 삭제
+      temp[0].childNodes[0].nextElementSibling.remove(); // 버튼 영역부터 삭제
+      temp[0].childNodes[0].remove(); // 버튼 영역부터 삭제
+      temp[0].remove(); // 버튼 영역부터 삭제
     
     } else{
       return; // 함수를 종료시켜 답글이 생성되지 않게함.
     }
   }
-  
-  // 답글을 작성할 textarea 요소 생성
-  const textarea = document.createElement("textarea");
-  textarea.classList.add("commentInsertContent");
-  
-  // 답글 버튼의 부모의 뒤쪽에 textarea 추가
-  // after(요소) : 뒤쪽에 추가
-  btn.parentElement.after(textarea);
 
+  newinsertComment(parentCommentNo, btn);
 
   // 답글 버튼 영역 + 등록/취소 버튼 생성 및 추가
-  const commentBtnArea = document.createElement("div");
-  commentBtnArea.classList.add("comment-btn-area");
+  // const commentBtnArea = document.createElement("div");
+  // commentBtnArea.classList.add("comment-btn-area");
 
-  const insertBtn = document.createElement("button");
-  insertBtn.innerText = "등록";
-  insertBtn.setAttribute("onclick", "insertChildComment("+parentCommentNo+", this)");
+  // const insertBtn = document.createElement("button");
+  // insertBtn.innerText = "등록";
+  // insertBtn.setAttribute("onclick", "insertChildComment("+parentCommentNo+", this)");
 
-  const cancelBtn = document.createElement("button");
-  cancelBtn.innerText = "취소";
-  cancelBtn.setAttribute("onclick", "insertCancel(this)");
+  // const cancelBtn = document.createElement("button");
+  // cancelBtn.innerText = "취소";
+  // cancelBtn.setAttribute("onclick", "insertCancel(this)");
 
 
-  // 답글 버튼 영역의 자식으로 등록/취소 버튼 추가
-  commentBtnArea.append(insertBtn, cancelBtn);
+  // // 답글 버튼 영역의 자식으로 등록/취소 버튼 추가
+  // commentBtnArea.append(insertBtn, cancelBtn);
 
-  // 답글 버튼 영역을 화면에 추가된 textarea 뒤쪽에 추가
-  textarea.after(commentBtnArea);
+  // // 답글 버튼 영역을 화면에 추가된 textarea 뒤쪽에 추가
+  // textarea.after(commentBtnArea);
 } 
 
 
@@ -304,10 +423,11 @@ const showInsertComment = (parentCommentNo, btn) => {
 const insertCancel = (cancelBtn) => {
 
   // 취소 버튼 부모의 이전 요소(textarea) 삭제
-  cancelBtn.parentElement.previousElementSibling.remove();
+  const commentcancel = document.querySelector(".chatSubmitMainContainer2");
+  commentcancel.remove();
 
-  // 취소 버튼이 존재하는 버튼영역 삭제
-  cancelBtn.parentElement.remove();
+  // // 취소 버튼이 존재하는 버튼영역 삭제
+  // cancelBtn.parentElement.remove();
 }
 
 
@@ -318,7 +438,7 @@ const insertCancel = (cancelBtn) => {
 const insertChildComment = (parentCommentNo, btn) => {
 
   // 답글 내용이 작성된 textarea
-  const textarea = btn.parentElement.previousElementSibling;
+  const textarea = document.querySelector(".chatSubmitContainer2").childNodes[0];
 
   // 유효성 검사
   if(textarea.value.trim().length == 0){

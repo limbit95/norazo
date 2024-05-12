@@ -62,28 +62,26 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: start;
-    width: 80%;
+    align-items: center;
+    width: 100%;
     height: 400px;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .userInfo-modal::-webkit-scrollbar {
     width: 10px;
 }
 .userInfo-modal::-webkit-scrollbar-thumb {
-    background-color: #2f3542;
+    background-color: var(--primary3);
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
 }
 .userInfo-modal::-webkit-scrollbar-track:vertical {
-    background-color: grey;
+    background-color: white;
     border-radius: 10px;
     box-shadow: inset 0px 0px 5px white;
-}
-.userInfo-modal::-webkit-scrollbar-track-piece:horizontal {
-    background-color: var(--primary3);
 }
 
 .userInfo-modal > div {
