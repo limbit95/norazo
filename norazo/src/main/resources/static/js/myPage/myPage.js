@@ -304,7 +304,8 @@ if( document.getElementById('introduce') != null) {
 /* 탈퇴 유효성 검사 */
 
 // 탈퇴 form 태그
-const secession1 = document.querySelector("#secession");
+const secession1 = document.querySelector("#secession1");
+
 
 if(secession1 != null) {
 
@@ -326,4 +327,4 @@ if(secession1 != null) {
             return;
         }
     });
-}
+};

@@ -23,23 +23,24 @@
     width: 20px;
     margin: 0 5px;
     text-align: center;
+    color: var(--gray1);
 }
 
 .pagination a{
     display: block;
     width: 100%;
     height: 100%;
+    color: var(--yellow)!important;
+    text-decoration: none;
 }
 
 .current{
     font-weight: bold;
-    background-color: #455ba8;
+    background-color: var(--white);
     border-radius: 50%;
-    color: white !important;
+    color: var(--yellow) !important;
     letter-spacing: 0 !important;
 }
-
-
 
 /* 내가 만든, 속한, 찜한 모임 드롭 다운 */
 #myGroupDiv {
