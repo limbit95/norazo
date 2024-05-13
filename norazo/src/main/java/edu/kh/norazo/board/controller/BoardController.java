@@ -46,13 +46,6 @@ public class BoardController {
 	        model.addAttribute("boardName", "문의 게시판");
 	        board.setBoardCode(3);
 	    }
-		log.debug("boardCode : " + boardCode);
-		
-	    if(boardCode.equals("faq")) {
-	        model.addAttribute("boardName", "문의 게시판");
-	        board.setBoardCode(3);
-	        
-	    }
 
 		
 
@@ -80,7 +73,8 @@ public class BoardController {
 	public String boardDetail(@PathVariable("boardCode") String boardCode,
 							  @PathVariable("boardNo") int boardNo,
 							  Model model,
-							  RedirectAttributes ra) {
+							  RedirectAttributes ra,
+							  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp) {
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("boardNo", boardNo);
@@ -107,6 +101,7 @@ public class BoardController {
 			path = "board/boardDetail";
 			
 			model.addAttribute("board",board);
+			model.addAttribute("cp",cp);
 		}
 		
 		return path;

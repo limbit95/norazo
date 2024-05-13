@@ -5,7 +5,8 @@
         <div class="user-icon">
 
             <div class="user-profile-info">
-                <img src="/images/profile/default-profileImg.png">
+                <img th:with="user=#{user.default.image}"
+                     th:src="${session.loginMember.profileImg ?: user}">
                 <h3 id="comment-user-font">닉네임</h3>
                 <h3 id="sysdate-font">2024-05-08-sysdate</h3>                    
             </div>
@@ -20,7 +21,7 @@
         </div>
 
         <div class="textarea-div">
-            <textarea name="" id="comment-textarea" class="boardCommentSubmit"></textarea>
+            <div name="" id="comment-textarea" class="boardCommentSubmit"></div>
         </div>
 
     </div>
