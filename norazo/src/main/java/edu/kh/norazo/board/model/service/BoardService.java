@@ -40,6 +40,12 @@ public interface BoardService {
 	 */
 	int boardDelete(Map<String, Object> map);
 
-	
+
+	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
+
+
+
+
+
 
 }

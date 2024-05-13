@@ -76,4 +76,10 @@ public class BoardServiceImpl implements BoardService{
 		// TODO Auto-generated method stub
 		return mapper.boardDelete(map);
 	}
+
+	@Override
+	public Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map) {
+		
+		return mapper.selectPrevAndNextBoard(map);
+	}
 }
