@@ -73,11 +73,8 @@ public class SportsBoardController {
 									@PathVariable("boardNo") int boardNo,
 									@SessionAttribute("loginMember") Member loginMember, 
 									@RequestParam(value="myGroup", required=false, defaultValue="null") String myGroup,
-									@RequestParam(value="main", required=false, defaultValue="main") String main,
 									Model model,
 									RedirectAttributes ra) {
-		
-		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardNo", boardNo);
@@ -107,10 +104,7 @@ public class SportsBoardController {
 		
 		if(attendFl > 0) {
 			return "board/sportsBoardDetail";
-		} else if(attendFl == 0) {
-			ra.addFlashAttribute("message", "참석한 회원이 아닙니다.");
-			return "redirect:/";
-		}
+		} 
 		
 		// 미참석인 모임 참석 클릭시 참석 기능
 		int join = service.join(map);
