@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -164,31 +165,16 @@ public class MemberController {
 	/** 비밀번호 찾기 
 	 * @return
 	 */
+	@ResponseBody
 	@PostMapping("findPw")
-	public String findPw(Member inputMember,
+	public int findPw(@RequestBody String inputEmail,
+						 Member inputMember,
 						 RedirectAttributes ra) {
+		inputMember.setMemberEmail(inputEmail);
 		
 		int result = service.findPw(inputMember);
-				
-		String path = null;
-		String message = null;
 		
-		if(result > 0) {
-			
-			message = "임시 비밀번호가 메일로 발송되었습니다.";
-			
-			path = "/member/login";
-		
-		} else {
-			
-			message = "메일 인증이 완료되지 않았습니다.";
-			
-			path = "/member/findPw";
-		}
-		
-		ra.addFlashAttribute("message", message);
-		
-		return "redirect:"+path;
+		return result;
 	}
 	
 

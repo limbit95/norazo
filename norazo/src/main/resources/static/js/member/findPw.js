@@ -4,10 +4,12 @@ const emailMessage = document.querySelector("#emailMessage");
 
 
 const checkObj = {"memberEmail" : false};
+
+let inputEmail;
     
 memberEmail.addEventListener("input", e => {
 
-    const inputEmail = e.target.value;
+    inputEmail = e.target.value;
     
     if( inputEmail.trim().length === 0){
         emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요";
@@ -58,3 +60,29 @@ findPwForm.addEventListener("submit", e =>{
    }
    alert("기둘");
 });
+
+
+
+const findPwBtn = document.querySelector("#findPwBtn");
+
+if(findPwBtn != null){
+    findPwBtn.addEventListener("click", e => {
+        fetch("/member/findPw", {
+            method : "POST",
+            headers : {"Content-Type" : "application/json"},
+            body : inputEmail
+        })
+        .then( resp => resp.text() )
+        .then( count => {
+            if(count > 0){
+                
+            }            
+        })
+        .catch(error =>{
+            console.log(error);
+        });
+    })
+}
+
+
+/member/findPw
