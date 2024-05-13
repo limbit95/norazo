@@ -2,6 +2,7 @@ package edu.kh.norazo.member.model.service;
 
 import java.util.Map;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
