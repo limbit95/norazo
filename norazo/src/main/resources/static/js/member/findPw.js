@@ -58,31 +58,6 @@ findPwForm.addEventListener("submit", e =>{
     return;
 
    }
-   alert("기둘");
 });
 
 
-
-const findPwBtn = document.querySelector("#findPwBtn");
-
-if(findPwBtn != null){
-    findPwBtn.addEventListener("click", e => {
-        fetch("/member/findPw", {
-            method : "POST",
-            headers : {"Content-Type" : "application/json"},
-            body : inputEmail
-        })
-        .then( resp => resp.text() )
-        .then( count => {
-            if(count > 0){
-                
-            }            
-        })
-        .catch(error =>{
-            console.log(error);
-        });
-    })
-}
-
-
-});
