@@ -30,53 +30,42 @@ public class BoardController {
 	
 	@GetMapping("{boardCode:[a-z,A-Z]+}")
 	public String selectBoardList(@PathVariable("boardCode") String boardCode,
-								  @SessionAttribute("loginMember") Member loginMember,
 								  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp,
 								  Model model) {
-		
-		
-		log.debug("boardCode : " + boardCode);
-		
-		int memberNo = loginMember.getMemberNo();
+
+		Board board = new Board();
 		
 		Map<String, Object> map = null;
 		
 		if(boardCode.equals("free")) {
-			
-			map = service.selectFreeBoardList(boardCode,cp);
-		}	
+        model.addAttribute("boardName", "자유 게시판");
+        board.setBoardCode(2);
+        
+	    }   
+	    if(boardCode.equals("faq")) {
+	        model.addAttribute("boardName", "문의 게시판");
+	        board.setBoardCode(3);
+	    }
+		log.debug("boardCode : " + boardCode);
 		
-		if(boardCode.equals("faq")) {
-			
-			map = service.selectFaqBoardList(boardCode,cp);
-		}
-		
-		if(boardCode.equals("myCreate")) {
-			
-			map = service.selectmyCreateBoardList(boardCode,cp,memberNo);
-		}
-		
-		if(boardCode.equals("myBelong")) {
-			
-			map = service.selectmyBelongBoardList(boardCode,cp,memberNo);
-		}
-		
-		if(boardCode.equals("myHeart")) {
-			
-			map = service.selectmyHeartBoardList(boardCode,cp,memberNo);
-		}
-		
-		
-		model.addAttribute("pagination",map.get("pagination"));
-		
-		model.addAttribute("boardList",map.get("boardList"));
-		
-		List<Board> boardList = (List<Board>) map.get("boardList");
-		
-		model.addAttribute("boardName", boardList.get(0).getBoardName());
+	    if(boardCode.equals("faq")) {
+	        model.addAttribute("boardName", "문의 게시판");
+	        board.setBoardCode(3);
+	        
+	    }
+
 		
 
 		
+		map = service.selectBoardList(board.getBoardCode(),cp);
+		
+		model.addAttribute("boardList",map.get("boardList"));
+		
+		model.addAttribute("pagination",map.get("pagination"));
+		
+// 		List<Board> boardList = (List<Board>) map.get("boardList");
+		
+	
 		return "board/boardList";
 	}
 	
@@ -94,7 +83,6 @@ public class BoardController {
 							  RedirectAttributes ra) {
 		
 		Map<String, Object> map = new HashMap<>();
-		map.put("boardCode", boardCode);
 		map.put("boardNo", boardNo);
 					
 			if(boardCode.equals("free")) {
@@ -111,7 +99,7 @@ public class BoardController {
 		String path = null;
 		
 		if(board == null) {
-			path = "redirect:/board" + boardCode;
+			path = "redirect:/board/" + boardCode;
 			ra.addFlashAttribute("message","게시글이 존재하지 않습니다.");
 			
 		} else {
@@ -120,6 +108,7 @@ public class BoardController {
 			
 			model.addAttribute("board",board);
 		}
+		
 		return path;
 	}
 	
@@ -196,16 +185,17 @@ public class BoardController {
 							  Model model, 
 							  RedirectAttributes ra) {
 		
-		Map<String, Object> map = new HashMap<>();
-		map.put("boardCode", boardCode);
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("boardNo", boardNo);
 					
 		if(boardCode.equals("free")) {
 			map.put("boardCode", 2);
+			model.addAttribute("boardCode", boardCode);
 		}
 		
 		if(boardCode.equals("faq")) {
 			map.put("boardCode", 3);
+			model.addAttribute("boardCode", boardCode);
 		}
 		
 
@@ -231,17 +221,15 @@ public class BoardController {
 			
 		} else {
 			
-			path ="board/boardUpdate";
-			
-			model.addAttribute("board",board);
-			
-			}
-			
+		path ="board/boardUpdate";
 		
+		model.addAttribute("board",board);
+					
+
+		}
 		
 		return path;
-	}
-	
+	}	
 
 	/** 게시글 수정
 	 * @param boardCode
@@ -250,24 +238,24 @@ public class BoardController {
 	 * @param loginMember
 	 * @param ra
 	 * @param queryString
-	 * @return
+	 * @return 
 	 */
 	@PostMapping("{boardName:[a-z]+}/{boardNo:[0-9]+}/update")
-	public String boardUpdate(@PathVariable("boardName")String boardName,
+	public String boardUpdate(@PathVariable("boardName")String boardCode,
 			  				  @PathVariable("boardNo") int boardNo,
 			  				  Board inputBoard,
 			  				  @SessionAttribute("loginMember") Member loginMember,
 			  				  RedirectAttributes ra,
 			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
 		
-		
-		if(boardName.equals("free")) {
+		if(boardCode.equals("free")) {
 			inputBoard.setBoardCode(2);
 		}
 		
-		if(boardName.equals("faq")) {
+		if(boardCode.equals("faq")) {
 			inputBoard.setBoardCode(3);
 		}
+		
 		
 		inputBoard.setMemberNo(loginMember.getMemberNo());
 		
@@ -280,19 +268,75 @@ public class BoardController {
 		
 		if(result > 0) {
 		
-			path = String.format("redirect:/board/%s/%d", boardName,boardNo);
+			path = String.format("redirect:/board/%s/%d", boardCode,boardNo);
 			
 			message = "게시글이 수정 되었습니다.";
 	
 		} else {
 			
-			path = String.format("redirect:/board/%s/%d", boardName,boardNo+"/update");
+			path = String.format("redirect:/board/%s/%d", boardCode,boardNo);
 			message = "게시글 수정 실패되었습니다.";
 		}
 		
 		ra.addFlashAttribute("message",message);
 		
+		
 		return path;
 	}
 	
+	/** 게시글 삭제 
+	 * @param boardCode
+	 * @param boardNo
+	 * @param inputBoard
+	 * @param loginMember
+	 * @param ra
+	 * @param queryString
+	 * @return
+	 */
+	@GetMapping("{boardName:[a-z]+}/{boardNo:[0-9]+}/delete")
+	public String boardDelete(@PathVariable("boardName")String boardCode,
+			  				  @PathVariable("boardNo") int boardNo,
+			  				  Board inputBoard,
+			  				  @SessionAttribute("loginMember") Member loginMember,
+			  				  RedirectAttributes ra,
+			  				  @RequestParam(value = "queryString", required = false, defaultValue = "")String queryString) {
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		
+		if(boardCode.equals("free")) {
+			inputBoard.setBoardCode(2);
+		}
+		
+		if(boardCode.equals("faq")) {
+			inputBoard.setBoardCode(3);
+		}
+		
+		map.put("boardCode", inputBoard.getBoardCode());
+		map.put("boardNo", boardNo);
+		map.put("memberNo", loginMember.getMemberNo());
+		
+
+		int result = service.boardDelete(map);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+		
+			path = "redirect:/board/"+boardCode;
+			
+			message = "게시글이 삭제 되었습니다.";
+	
+		} else {
+			
+			path = String.format("redirect:/board/%s/%d", boardCode,boardNo);
+			message = "게시글 삭제 실패";
+		}
+		
+		ra.addFlashAttribute("message",message);
+		
+		
+		return path;
+	}
 }

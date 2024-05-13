@@ -23,7 +23,7 @@ public class BoardServiceImpl implements BoardService{
 	private final BoardMapper mapper;
 
 	@Override
-	public Map<String, Object> selectFreeBoardList(String boardCode, int cp) {
+	public Map<String, Object> selectBoardList(int boardCode, int cp) {
 
 		int listCount = mapper.getFreeListCount(boardCode);
 		
@@ -35,7 +35,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		RowBounds rowBounds = new RowBounds(offset, limit);
 		
-		List<Board> boardList = mapper.selectFreeBoardList(boardCode, rowBounds);
+		List<Board> boardList = mapper.selectBoardList(boardCode, rowBounds);
 		
 		Map<String, Object> map = new HashMap<>();
 		
@@ -45,29 +45,6 @@ public class BoardServiceImpl implements BoardService{
 		return map;
 	}
 
-	@Override
-	public Map<String, Object> selectFaqBoardList(String boardCode, int cp) {
-		
-		int listCount = mapper.getFaqListCount(boardCode);
-		
-		Pagination pagination = new Pagination(cp,listCount); 
-		
-		int limit = pagination.getLimit();
-		
-		int offset = (cp - 1) * limit;
-		
-		RowBounds rowBounds = new RowBounds(offset, limit);
-
-		List<Board> boardList = mapper.selectFaqBoardList(boardCode,rowBounds);
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-
-		return map;
-	}
 
 	// 게시글 상세 조회
 	@Override
@@ -83,77 +60,6 @@ public class BoardServiceImpl implements BoardService{
 		
 		return mapper.insertBoard(inputBoard);
 	}
-	public Map<String, Object> selectmyCreateBoardList(String boardCode, int cp, int memberNo) {
-		
-		int listCount = mapper.getMyCreateListCount(boardCode, memberNo);
-		
-		Pagination pagination = new Pagination(cp,listCount); 
-		
-		int limit = pagination.getLimit();
-		
-		int offset = (cp - 1) * limit;
-		
-		RowBounds rowBounds = new RowBounds(offset, limit);
-
-		List<Board> boardList = mapper.selectMyCreateBoardList(boardCode,rowBounds, memberNo);
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-
-		return map;
-	}
-
-	@Override
-	public Map<String, Object> selectmyBelongBoardList(String boardCode, int cp, int memberNo) {
-		
-		int listCount = mapper.getMyBelongListCount(boardCode, memberNo);
-		
-		Pagination pagination = new Pagination(cp,listCount); 
-		
-		int limit = pagination.getLimit();
-		
-		int offset = (cp - 1) * limit;
-		
-		RowBounds rowBounds = new RowBounds(offset, limit);
-
-		List<Board> boardList = mapper.selectMyBelongBoardList(boardCode,rowBounds, memberNo);
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-
-		return map;
-	}
-
-	@Override
-	public Map<String, Object> selectmyHeartBoardList(String boardCode, int cp, int memberNo) {
-		
-		int listCount = mapper.getMyHeartListCount(boardCode, memberNo);
-		
-		Pagination pagination = new Pagination(cp,listCount); 
-		
-		int limit = pagination.getLimit();
-		
-		int offset = (cp - 1) * limit;
-		
-		RowBounds rowBounds = new RowBounds(offset, limit);
-
-		List<Board> boardList = mapper.selectMyHeartBoardList(boardCode,rowBounds, memberNo);
-		
-		Map<String, Object> map = new HashMap<>();
-		
-		map.put("pagination", pagination);
-		map.put("boardList", boardList);
-		
-
-		return map;
-	}
-
 	
 	// 게시글 수정
 	@Override
@@ -162,5 +68,12 @@ public class BoardServiceImpl implements BoardService{
 		
 		
 		return mapper.boardUpdate(inputBoard);
+	}
+
+	// 게시글 삭제 
+	@Override
+	public int boardDelete(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return mapper.boardDelete(map);
 	}
 }

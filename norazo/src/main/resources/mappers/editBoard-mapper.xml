@@ -44,6 +44,7 @@
 	<!-- 작성한 모임글에 작성한 회원이 가장 먼저 참석 -->
 	<insert id="firstJoin">
 		INSERT INTO ATTEND_MEMBER VALUES(
+			SEQ_ATTEND_NO.NEXTVAL,
 			#{memberNo},
 			#{boardNo}
 		)

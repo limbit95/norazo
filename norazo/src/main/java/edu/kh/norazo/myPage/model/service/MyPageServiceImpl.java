@@ -2,8 +2,11 @@ package edu.kh.norazo.myPage.model.service;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.board.model.dto.Pagination;
 import edu.kh.norazo.member.model.dto.Member;
 import edu.kh.norazo.myPage.model.mapper.MyPageMapper;
 import lombok.RequiredArgsConstructor;
@@ -154,6 +159,72 @@ public class MyPageServiceImpl implements MyPageService {
 				paramMap.put("memberNo", memberNo);
 				
 				return mapper.changePw(paramMap);
+	}
+
+
+	public Map<String, Object> selectmyCreateBoardList(Map<String, Object> map) {
+		int listCount = mapper.getMyCreateListCount(map);
+		
+		Pagination pagination = new Pagination((int) map.get("cp"),listCount); 
+		
+		int limit = pagination.getLimit();
+		
+		int offset = ((int) map.get("cp") - 1) * limit;
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+
+		List<Board> boardList = mapper.selectMyCreateBoardList(map, rowBounds);
+		
+		Map<String, Object> map2 = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> selectmyBelongBoardList(Map<String, Object> map) {
+		int listCount = mapper.getMyBelongListCount(map);
+		
+		Pagination pagination = new Pagination((int) map.get("cp"),listCount); 
+		
+		int limit = pagination.getLimit();
+		
+		int offset = ((int) map.get("cp") - 1) * limit;
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+
+		List<Board> boardList = mapper.selectMyBelongBoardList(map, rowBounds);
+		
+		Map<String, Object> map2 = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+
+		return map;
+	}
+
+	@Override
+	public Map<String, Object> selectmyHeartBoardList(Map<String, Object> map) {
+		int listCount = mapper.getMyHeartListCount(map);
+		
+		Pagination pagination = new Pagination((int) map.get("cp"),listCount); 
+		
+		int limit = pagination.getLimit();
+		
+		int offset = ((int) map.get("cp") - 1) * limit;
+		
+		RowBounds rowBounds = new RowBounds(offset, limit);
+
+		List<Board> boardList = mapper.selectMyHeartBoardList(map, rowBounds);
+		
+		Map<String, Object> map2 = new HashMap<>();
+		
+		map.put("pagination", pagination);
+		map.put("boardList", boardList);
+
+		return map;
 	}
 
 }

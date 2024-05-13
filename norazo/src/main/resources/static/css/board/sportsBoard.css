@@ -1,4 +1,13 @@
 @media (min-width: 1900px) {
+    .sportsBoardMain {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        width: 1090px;
+        height: 1350px;
+    }
+
     .board-page-header {
         display: flex;
         align-items: center;
@@ -78,6 +87,14 @@
 }
 
 @media (max-width: 1900px) {
+    .sportsBoardMain {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        height: 155vh;
+    }
+
     .board-page-header {
         display: flex;
         align-items: center;
@@ -157,8 +174,13 @@
 }
 
 @media (max-width: 990px) {
-    main {
+    .sportsBoardMain {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
         width: 89.474vw; /* 850 */
+        height: 52vh;
     }
 
     .title-group {
@@ -224,7 +246,78 @@
     }
 }
 
+@media (max-width: 500px) {
+    .sportsBoardMain {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        width: 89.474vw; /* 850 */
+        height: 100vh;
+    }
 
+    .title-group {
+        display: flex;
+        width: 83.158vw;
+        align-items: end;
+    }
+
+    .boardType-title {
+        text-align: start;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        font-size: 4.211vw;
+        width: 83.158vw;
+    }
+
+    .board-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 89.474vw;
+    }
+
+    .board-list > div {
+        display: flex;
+        flex-wrap: wrap;
+        width: 18vw;
+        height: 185px;
+        padding: 0px;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+
+    .board-list > div > img {
+        width: 18vw; 
+        height: 100px; 
+        border-radius: 20px; 
+        background-color: rgb(255, 255, 255); 
+        padding: 0px;
+        margin: 0;
+        border: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        cursor: pointer;
+    }
+
+    .board-list > div > div {
+        height: 90px;
+        margin-top: 10px;
+    }
+
+    .writeDate {
+        color: var(--gray2);
+        font-size: 12px; 
+    }
+
+    .board-title {
+        color: var(--gray1); 
+        font-size: 14px; 
+        text-align: start; 
+        width: auto;
+        cursor: pointer;
+        margin-top: 5px;
+        line-height: 120%;
+    }
+}
 
 
 

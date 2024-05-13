@@ -1,3 +1,4 @@
+// 게시글 수정 이동 
 const updateBoardBtn = document.querySelector(".updateBoardBtn");
 
 if(updateBoardBtn != null){
@@ -12,4 +13,19 @@ if(updateBoardBtn != null){
                         + location.search;
                         
     });
+}
+// 게시글 삭제 
+const deleteBoardBtn = document.querySelector(".deleteBoardBtn");
+
+if(deleteBoardBtn != null){
+    deleteBoardBtn.addEventListener("click", () => {
+    if( !confirm("삭제 하시겠습니까?") ) {
+      alert("취소 되었습니다.")
+      return;
+    }
+
+    location.href = location.pathname
+    + "/delete"            
+    + location.search;
+  });
 }

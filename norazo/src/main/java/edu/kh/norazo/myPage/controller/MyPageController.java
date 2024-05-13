@@ -1,11 +1,14 @@
 package edu.kh.norazo.myPage.controller;
 
 import java.io.Console;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.norazo.myPage.model.service.MyPageService;
+import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.board.model.service.BoardService;
 import edu.kh.norazo.member.model.dto.Member;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -173,8 +178,45 @@ public class MyPageController {
 	}
 	
 	
-	
-	
+	@GetMapping("{boardCode:[a-z,A-Z]+}")
+	public String selectBoardList(@PathVariable("boardCode") String boardCode,
+								  @SessionAttribute("loginMember") Member loginMember,
+								  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp,
+								  Model model) {
+		
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		// 파라미터로 넘길 객체
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("boardCode", boardCode);
+		map1.put("cp", cp);
+		map1.put("memberNo", memberNo);
+		
+		// model로 올릴 객체
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		
+		if(boardCode.equals("myCreate")) {
+	        model.addAttribute("myGroup", "내가 만든 모임");
+			map2 = service.selectmyCreateBoardList(map1);
+		}
+		if(boardCode.equals("myBelong")) {
+			model.addAttribute("myGroup", "내가 속한 모임");
+			map2 = service.selectmyBelongBoardList(map1);
+		}
+		if(boardCode.equals("myHeart")) {
+			model.addAttribute("myGroup", "내가 찜한 모임");
+			map2 = service.selectmyHeartBoardList(map1);
+		}
+		
+		
+		model.addAttribute("pagination",map2.get("pagination"));
+		
+		model.addAttribute("boardList",map2.get("boardList"));
+		
+
+		return "board/boardList";
+	}
 	
 	
 	

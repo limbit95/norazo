@@ -31,11 +31,15 @@ function updateMemberInfo() {
     const remaining = memberCountLimit - attendMemberCount;
   
     // Update the text content of the element
+    if(attendMemberCount == memberCountLimit){
+        memberInfo.textContent = `${attendMemberCount} / ${memberCountLimit} (자리 없음)`;
+        return;
+    }
     memberInfo.textContent = `${attendMemberCount} / ${memberCountLimit} (${remaining} 자리 남음)`;
   }
   
   // Ensure the DOM is fully loaded before running the script
-  document.addEventListener('DOMContentLoaded', updateMemberInfo);
+  window.addEventListener('DOMContentLoaded', updateMemberInfo);
 
 
 // Member Info
@@ -61,16 +65,16 @@ if (deleteJoinMember != null) {
         const loginMemberNo = document.querySelector("#loginMemberNo").value;
         if (memberNo == loginMemberNo) {
 
-            if(confirm("모임 삭제")) {
-                alert("모임이 삭제 되었습니다");
+            if(confirm("정말 모임을 삭제하시겠습니까?")) {
+                // alert("모임이 삭제 되었습니다");
             } else {
                 e.preventDefault();
             }
         } 
 
         if (memberNo != loginMemberNo || createMemberNo != loginMemberNo) {
-            if(confirm("참여 취소")) {
-                alert("참여 취소 되었습니다");
+            if(confirm("참여 취소하시겠습니까?")) {
+                // alert("참여 취소 되었습니다");
             } else {
                 e.preventDefault();
             }
@@ -93,8 +97,8 @@ if (deleteJoinMember != null) {
 
 
 // 게시글 수정 삭제 테스트 코드
-const updateBtn = document.querySelector("#updateBtn");
-const deleteBtn = document.querySelector("#deleteBtn");
+const updateBtn = document.querySelector("#updateSportsBoard");
+const deleteBtn = document.querySelector("#deleteSportsBoard");
 
 if(updateBtn != null){
     updateBtn.addEventListener("click", e =>{

@@ -18,13 +18,13 @@
         <div class="title-div-box">                       
             <h1 th:text="${board.boardName}">00 게시판</h1>
         </div>
-      
             <div class="div-box">
-
-                <form action="/board/update/boardUpdate" 
+                <!-- {boardName:[a-z]+}/{boardNo:[0-9]+}/update -->
+                <form th:action="@{/board/{boardCode}/{boardNo}/update(boardCode=${boardCode},boardNo=*{boardNo})}" 
                       th:object="${board}" 
-                      method="post">
-                      
+                      method="post"
+                      id="boardUpdateFrm">
+
                     <div class="board-create-div">
 
                         <div class="content-div-box">
@@ -33,28 +33,23 @@
                                 <input type="text"
                                     th:value="${board.boardTitle}"
                                     class="board-title-input"
-                                    id="boardTitle">
+                                    id="boardTitle"
+                                    name="boardTitle">
                             </div>
 
                             <div class="board-content">
                                 <textarea id="boardContent"
-                                        th:text="${board.boardContent}"></textarea>
+                                        th:text="${board.boardContent}"
+                                        name="boardContent"></textarea>
                             </div>
                             
-                            <div class="button-div">
-                                <th:block th:if="${board.memberNo == session.loginMember?.memberNo}">
-                                    <button class="updateBoardBtn" id="updateBoardBtn">수정</button>
-                                    <button class="deleteBoardBtn" id="deleteBoardBtn">삭제</button>
-                                </th:block>
-                            </div>    
-
+                            <button class="updateBoardSubmitBtn">수정 하기</button>
                         </div>
                     </div>
                 </form>
 
             </div>  
-
-            <th:block th:replace="~{board/comment}"></th:block>
+            
     </main>
     
     <th:block th:replace="~{common/footer}"></th:block>

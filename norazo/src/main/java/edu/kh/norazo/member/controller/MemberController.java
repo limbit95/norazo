@@ -58,11 +58,7 @@ public class MemberController {
 						@RequestParam(value = "saveId", required = false)String saveId,
 						HttpServletResponse resp) {
 		
-		log.debug("확인" + inputMember);
-		
 		Member loginMember = service.login(inputMember);
-		
-		log.debug("loginMember : "+loginMember);
 		
 		String path = null;
 		

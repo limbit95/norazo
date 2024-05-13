@@ -70,12 +70,12 @@
                   <div class="joinMemberImgContainer">
 
                     <th:block th:each="memberList, stat : ${memberList}" th:object="${memberList}">
-                      <th:block th:if="${stat.index < 5}">
-                        <img class="joinMemberImg" th:src="*{profileImg}" id="profileImg"/>
+                      <th:block th:if="${5 > stat.index}">
+                        <img class="joinMemberImg" th:src="*{profileImg} ?: #{user.default.image}" id="profileImg"/>
                       </th:block>
                     </th:block>
 
-                    <th:block th:if="${#lists.size(memberList) < 5}">
+                    <th:block th:if="${5 > #lists.size(memberList)}">
                       <th:block th:each="i : ${#numbers.sequence(#lists.size(memberList), 4)}">
                         <img class="joinMemberImg" src="/images/profile/blankprofile.png" id="profileImg"/>
                       </th:block>
@@ -150,30 +150,39 @@
 
                     <div class="titleContainer2">
                       <h3 class="detailTitle">참석</h3>
-                      <h3 class="detail-user" id="memberInfo" 
-                      th:data-attend="*{attendMemberCount}" 
-                      th:data-limit="*{memberCountLimit}">ATTENDED MEMBER
+                      <h3 class="detail-user" id="memberInfo"
+                          th:data-attend="*{attendMemberCount}"
+                          th:data-limit="*{memberCountLimit}">ATTENDED MEMBER
                       </h3>
                     </div>
-                    
+                  
                   </div> 
 
                   <!-- 취소 -->
-                  <form action="/sportsBoard/deleteJoinMember" method="POST">
-                    <th:block th:if="${createMember.memberNo == session.loginMember.memberNo}">
-                      <button class="detailCancelBtn" id="updateJoinMember">모임 수정</button>
-                      <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
-                      <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
-                      <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
-                      <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
-                      <button class="detailCancelBtn" id="deleteJoinMember">모임 삭제</button>
-                    </th:block>
-
-                    <th:block th:if="${createMember.memberNo != session.loginMember.memberNo}">
+                  <th:block th:if="${board.memberNo == session.loginMember.memberNo}">
+                    <button class="detailCancelBtn" id="updateSportsBoard"
+                            th:data-board-no="${board.boardNo}"
+                            th:data-sports-code="${board.sportsCode}">모임 수정</button>
+                            <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
+                            <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
+                            <input type="hidden" th:value="${board.memberNo}" id="createMemberNo" name="createMemberNo">
+                            <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
+                            <button class="detailCancelBtn" id="deleteSportsBoard"
+                            th:data-board-no="${board.boardNo}" 
+                            th:data-sports-code="${board.sportsCode}">모임 삭제</button>
+                  </th:block>
+                  
+                  <th:block th:if="${myGroup}">
+                    <form th:action="@{/sportsBoard/deleteJoinMember(myGroup=${myGroup})}" method="POST">
+                  </th:block>
+                  <th:block th:unless="${myGroup}">
+                    <form th:action="@{/sportsBoard/deleteJoinMember(sportsCode=${board.sportsCode}, main=${main})}" method="POST">
+                  </th:block>
+                    <th:block th:if="${board.memberNo != session.loginMember.memberNo}">
                       <button class="detailCancelBtn" id="deleteJoinMember">참여 취소</button>
                       <input type="hidden" th:value="${board.memberNo}" id="memberNo" name="memberNo">
                       <input type="hidden" th:value="${boardNo}" id="boardNo" name="boardNo">
-                      <input type="hidden" th:value="${createMember.memberNo}" id="createMemberNo" name="createMemberNo">
+                      <input type="hidden" th:value="${board.memberNo}" id="createMemberNo" name="createMemberNo">
                       <input type="hidden" th:value="${session.loginMember.memberNo}" id="loginMemberNo" name="loginMemberNo">
                     </th:block>
                   </form>
@@ -198,7 +207,7 @@
                 <th:block th:object="${createMember}">
                   <div class="creatorDetaileBotContainer">
                     <div>
-                      <img th:src="*{profileImg}" class ="creatorImg">
+                      <img th:src="*{profileImg} ?: #{user.default.image}" class ="creatorImg">
                     </div>
 
                     <div class="creatorRightContainer">
@@ -230,19 +239,21 @@
 
             <th:block th:replace="~{common/fragments/sportsBoardDetailComment}"></th:block>
             
-            <th:block th:if="${session.loginMember.memberNo}  == ${board.memberNo}">
-              <button id="updateBtn" 
-                      th:data-board-no="${board.boardNo}" 
-                      th:data-sports-code="${board.sportsCode}"
-                      style="width: 100px; height: 50px; color: white; background-color: var(--primary3); font-size: 20px;">수정</button>
-              <button id="deleteBtn" 
-                      th:data-board-no="${board.boardNo}" 
-                      th:data-sports-code="${board.sportsCode}"
-                      style="width: 100px; height: 50px; color: white; background-color: var(--primary3); font-size: 20px; margin-top: 10px;">삭제</button>
-            </th:block>
     </main>
     <th:block th:replace="~{common/footer}"></th:block>
     <script src="/js/sportsBoard/sportsBoardDetail.js"></script>
     <script src="/js/fragments/sportsBoardDetailModal.js"></script>
+    <script src="/js/fragments/sportsBoardDetailcomment.js"></script>
+
+    <script th:inline="javascript">
+      // - loginMember 가 null 인 경우 null 반환
+      const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원 번호";
+
+      // 현재 게시글 번호를 전역 변수로 저장
+      const boardNo = /*[[${board.boardNo}]]*/ "게시글 번호";
+
+      const userDefaultIamge = /*[[#{user.default.image}]]*/ "기본 이미지";
+    </script>
+  
 </body>
 </html>
