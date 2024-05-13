@@ -5,8 +5,10 @@
         <div class="user-icon">
 
             <div class="user-profile-info">
-                <img th:with="user=#{user.default.image}"
-                     th:src="${session.loginMember.profileImg ?: user}">
+                <img th:unless="${session.loginMember}"
+                     th:src="#{user.default.image}">
+                <img th:if="${session.loginMember}"
+                     th:src="${session.loginMember.profileImg} ?: #{user.default.image}">
                 <h3 id="comment-user-font">닉네임</h3>
                 <h3 id="sysdate-font">2024-05-08-sysdate</h3>                    
             </div>
@@ -39,7 +41,6 @@
         <ul class="pagination">
             <!-- 첫 페이지로 이동 -->
             
- 
             <li th:if="${prevBoardNo}">
                 <button type="button" class="to-list-button" id="prevBoardNo" name="prevBoardNo">&lt;&lt;</button>
             </li>

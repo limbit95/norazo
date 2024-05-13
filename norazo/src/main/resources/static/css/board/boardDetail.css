@@ -288,10 +288,10 @@ img{
     color: var(--gray1);
 }
 
-.pagination li #leftPageButton {
+.pagination li #prevBoardNo {
     color: var(--secondary);
 }
 
-.pagination li #rightPageButton {
+.pagination li #nextBoardNo {
     color: var(--secondary);
 }
