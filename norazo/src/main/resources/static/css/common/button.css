@@ -282,6 +282,7 @@ button:hover {
     height: 50px;
     background-color: var(--primary2);
 
+    margin-bottom: 20px;
     /* 폰트 */
     font-size: 25px;
 }

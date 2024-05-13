@@ -313,6 +313,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .boardDetailTitle {
@@ -463,11 +464,12 @@
     /* align-items: center; */
     display: flex;
     width: 100%;
+    align-items: center;
 }
 
 .userNameContainer {
   width: 120px; 
-  height: 40px; 
+  height: auto; 
   background: var(--primary1); 
   border-radius: 30px;
   display: flex;
@@ -475,6 +477,7 @@
   align-items: center;
   overflow: hidden;
   padding: 5px;
+  white-space: wrap;
 }
 
 .userEmailContainer {
@@ -500,15 +503,16 @@
 .userName {
     text-align: center; 
     color: var(--white); 
-    font-size: 25px; 
+    font-size: 20px; 
     font-family: 'main';
     font-weight: 400; 
     word-wrap: break-word;
     text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
     overflow: auto;
+    white-space: nowrap;
     margin-top: 3px;
+    white-space: pre-wrap;
+
 }
 
 .userEmail {
