@@ -70,7 +70,6 @@
 
         <!-- 게시글이 존재 할 때 --> 
         <th:block th:unless="${#lists.isEmpty(boardList)}" th:each="board, i : ${boardList}" th:object="${board}">
-
             <!-- 자유, 문의 게시판으로 들어갈 경우 -->
             <div class="freeBoard-list" th:unless="${myGroup}">
                 <h2 th:text="${board.boardNo}"></h2>

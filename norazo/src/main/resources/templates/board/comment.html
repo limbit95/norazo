@@ -5,7 +5,8 @@
         <div class="user-icon">
 
             <div class="user-profile-info">
-                <img src="/images/profile/default-profileImg.png">
+                <img th:with="user=#{user.default.image}"
+                     th:src="${session.loginMember.profileImg ?: user}">
                 <h3 id="comment-user-font">닉네임</h3>
                 <h3 id="sysdate-font">2024-05-08-sysdate</h3>                    
             </div>
@@ -20,7 +21,7 @@
         </div>
 
         <div class="textarea-div">
-            <textarea id="comment-textarea" class="boardCommentSubmit"></textarea>
+            <div name="" id="comment-textarea" class="boardCommentSubmit"></div>
         </div>
 
     </div>
@@ -37,13 +38,17 @@
     <div class="pagination-div">
         <ul class="pagination">
             <!-- 첫 페이지로 이동 -->
-            <li><button class="to-list-button" id="leftPageButton">&lt;&lt;</button></li>
+            
+ 
+            <li th:if="${prevBoardNo}">
+                <button type="button" class="to-list-button" id="prevBoardNo" name="prevBoardNo">&lt;&lt;</button>
+            </li>
 
             <!-- 목록 버튼 -->
-            <li><button class="to-list-button" id="listButton">목록으로</button></li>
+            <li><button class="to-list-button" id="listButton" name="listButton">목록으로</button></li>
 
             <!-- 끝 페이지로 이동 -->
-            <li><button class="to-list-button" id="rightPageButton">&gt;&gt;</button></li>
+            <li th:if="${nextBoardNo}"><button class="to-list-button" id="nextBoardNo" name="nextBoardNo">&gt;&gt;</button></li>
         </ul>
     </div>
 </div>

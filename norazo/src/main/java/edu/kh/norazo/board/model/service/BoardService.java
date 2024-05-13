@@ -1,6 +1,7 @@
 package edu.kh.norazo.board.model.service;
 
 
+import java.util.List;
 import java.util.Map;
 
 import edu.kh.norazo.board.model.dto.Board;
@@ -40,6 +41,15 @@ public interface BoardService {
 	 */
 	int boardDelete(Map<String, Object> map);
 
+
+	/** DB 이미지 파일명 목록 조회
+	 * @return
+	 */
+	List<String> selectDbImageList();
+
 	
+	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
+
+
 
 }

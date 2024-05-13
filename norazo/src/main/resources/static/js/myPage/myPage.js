@@ -301,4 +301,29 @@ if( document.getElementById('introduce') != null) {
     }
 }
 
+/* 탈퇴 유효성 검사 */
 
+// 탈퇴 form 태그
+const secession1 = document.querySelector("#secession");
+
+if(secession1 != null) {
+
+    secession1.addEventListener("submit", e => {
+
+        const memberPw = document.querySelector("#memberPw");
+
+        // - 비밀번호 입력 되었는지 확인
+        if(memberPw.value.trim().length == 0) {
+            alert("비밀번호를 입력해주세요.");
+            e.preventDefault(); // 제출막기
+            return;
+        }
+
+        // 정말 탈퇴? 물어보기
+        if( !confirm("정말 탈퇴 하시겠습니까?") ) {
+            alert("취소 되었습니다.");
+            e.preventDefault();
+            return;
+        }
+    });
+}
