@@ -32,8 +32,26 @@ SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCAT
 	 	FROM MEMBER m
 	 	JOIN ATTEND_MEMBER a ON m.MEMBER_NO = a.MEMBER_NO
 	 	JOIN BOARD b ON a.BOARD_NO = b.BOARD_NO
-	 	WHERE b.BOARD_NO = 1190
+	 	WHERE b.BOARD_NO = 1161
 	 	ORDER BY b.MEMBER_NO;
 	 	
  SELECT * FROM ATTEND_MEMBER;
-	 
+	  
+
+SELECT * FROM "SPORTS_TYPE" WHERE SPORTS_CODE = NULL;
+
+
+INSERT INTO "BOARD" VALUES(
+			2,
+			'1235asf',
+			'윤정 : 다같이 죽자 수찬이형 : (굵은 목소리로) 술이 너무 좋아~ 성혁 : 윽 샘 : 윽윽',
+			DEFAULT,
+			NULL,
+			DEFAULT,
+			38,
+			1,
+			'billards',
+			4,
+			'125364',
+			'2024-05-16 15:39'
+		);

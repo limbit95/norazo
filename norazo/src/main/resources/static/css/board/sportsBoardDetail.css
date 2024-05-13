@@ -682,7 +682,7 @@
 .chatContent {
     width: 250px;
     white-space: pre-wrap;
-    border-radius: 10px;
+    border-radius: 30px;
     background-color: var(--primary3);
     padding: 15px;
     font-family: 'main';
@@ -708,7 +708,7 @@
 .chatContentUser {
     width: 250px;
     white-space: pre-wrap;
-    border-radius: 10px;
+    border-radius: 30px;
     background-color: var(--primary1);
     padding: 15px;
     font-family: 'main';
