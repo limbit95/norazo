@@ -23,6 +23,6 @@ public interface MyPageService {
 
 	Map<String, Object> selectmyHeartBoardList(Map<String, Object> map);
 
-	int secession(String memberPw, int memberNo);
-
+	int secession(String memberPw, int memberNo) throws Exception;
+ 
 }

@@ -35,4 +35,10 @@ public interface MyPageMapper {
 	List<Board> selectMyHeartBoardList(Map<String, Object> map, RowBounds rowBounds);
 
 	int secession(int memberNo);
+
+	/** 회원 탈퇴시 해당 회원이 작성한 모든 게시글 삭제
+	 * @param memberNo
+	 * @return
+	 */
+	int deleteAllBoard(int memberNo);
 }

@@ -29,6 +29,7 @@ public class Board {
 	private int boardCode; // 1 : 모임 게시판 / 2 : 자유 게시판 / 3 : 문의 게시판
 	private String boardName; // 게시판 유형 한글 이름 
 	private String memberNickname; // 게시글 작성한 회원 닉네임
+	private String memberDelFl; // 게시글 작성한 회원 탈퇴여부
 	
  	private List<Comment> commentList;
 	private int likeCheck;

@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.dto.Pagination;
 import edu.kh.norazo.member.model.dto.Member;
+import edu.kh.norazo.myPage.model.exception.DeleteAllBoardException;
 import edu.kh.norazo.myPage.model.mapper.MyPageMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -230,7 +231,13 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	// 회원 탈퇴
 		@Override
-		public int secession(String memberPw, int memberNo) {
+		public int secession(String memberPw, int memberNo) throws Exception {
+			
+//			int result = mapper.deleteAllBoard(memberNo);
+//			
+//			if(result == 0) {
+//				throw new DeleteAllBoardException();
+//			} 
 			
 			// 현재 로그인한 회원의 암호화된 비밀번호를 DB에서 조회
 			String originPw = mapper.selectPw(memberNo);
