@@ -24,12 +24,12 @@ boardUpdateFrm.addEventListener("submit", e => {
     let text = boardContent.value;
     const introduced = text.replaceAll(/\n/g, "<br>");
     if (introduced != null) {
-        document.getElementById('introduced').innerHTML = introduced;
+        boardContent.innerHTML = introduced;
     }};
   const introduce = boardContent.value.replaceAll("<br>", "\r\n");
-  if( document.getElementById('introduce') != null) {
+  if( boardContent != null) {
     if (introduce != null) {
-        document.getElementById('introduce').innerHTML = introduce;
+        boardContent.innerHTML = introduce;
     }
   }
 
