@@ -39,17 +39,17 @@
     <!-- 페이지 네이션 -->
     <div class="pagination-div">
         <ul class="pagination">
-            <!-- 첫 페이지로 이동 -->
-            
+
+            <!-- 이전 페이지로 이동 --> 
             <li th:if="${prevBoardNo}">
-                <button type="button" class="to-list-button" id="prevBoardNo" name="prevBoardNo">&lt;&lt;</button>
+                <button type="button" class="to-list-button" id="prevBoardNo" name="prevBoardNo" th:value="${prevBoardNo}">&lt;&lt;</button>
             </li>
 
             <!-- 목록 버튼 -->
             <li><button class="to-list-button" id="listButton" name="listButton">목록으로</button></li>
 
-            <!-- 끝 페이지로 이동 -->
-            <li th:if="${nextBoardNo}"><button class="to-list-button" id="nextBoardNo" name="nextBoardNo">&gt;&gt;</button></li>
+            <!-- 다음 페이지로 이동 -->
+            <li th:if="${nextBoardNo}"><button class="to-list-button" id="nextBoardNo" name="nextBoardNo" th:value="${nextBoardNo}">&gt;&gt;</button></li>
         </ul>
     </div>
 </div>

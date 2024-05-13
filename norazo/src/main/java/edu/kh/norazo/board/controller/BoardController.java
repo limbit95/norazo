@@ -108,11 +108,11 @@ public class BoardController {
 			model.addAttribute("currentBoardNo", prevAndNextMap.get("currentBoardNo"));
 			model.addAttribute("prevBoardNo", prevAndNextMap.get("prevBoardNo"));
 			model.addAttribute("nextBoardNo", prevAndNextMap.get("nextBoardNo"));
-			
+			model.addAttribute("cp",cp);
 
-			log.info("model {}", model.getAttribute("prevBoardNo"));
-			log.info("model {}", model.getAttribute("currentBoardNo"));
-			log.info("model {}", model.getAttribute("nextBoardNo"));
+			log.info("이전 페이지 {}", model.getAttribute("prevBoardNo"));
+			log.info("현재 페이지 {}", model.getAttribute("currentBoardNo"));
+			log.info("다음 페이지 {}", model.getAttribute("nextBoardNo"));
 
 			
 			
@@ -122,7 +122,6 @@ public class BoardController {
 			model.addAttribute("board",board);
 			
 			log.info("보드 코드는 ? : ", board.getBoardCode());
-			model.addAttribute("cp",cp);
 		}
 		
 		return path;
