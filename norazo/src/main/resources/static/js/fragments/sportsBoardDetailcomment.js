@@ -72,9 +72,6 @@ const selectCommentList = () => {
         chatContentContainer.classList.add("chatContentContainerUser");
       }
 
-      // 만약 삭제된 댓글이지만 자식 댓글이 존재하는 경우
-      if(comment.commentDelFl == 'Y') 
-        chatMainContainer.innerText = "삭제된 댓글 입니다";
 
       if(comment.commentDelFl == 'N'){ // 삭제되지 않은 댓글
 
@@ -174,9 +171,33 @@ const selectCommentList = () => {
           chatContentContainer.append(commentDate); // 행에 작성일자 추가
           chatContentContainer.append(chatContent); // 행에 내용 추가
         }
-
-
       } // else 끝
+
+      // 만약 삭제된 댓글이지만 자식 댓글이 존재하는 경우
+      if(comment.commentDelFl == 'Y') {
+        // 날짜(작성일)
+        const commentDate = document.createElement("span");
+        commentDate.classList.add("chatDate");
+        commentDate.innerText = comment.commentWriteDate;
+
+        // 댓글 내용 
+        let chatContent = document.createElement("p");
+        if(loginMemberNo != comment.memberNo){
+          chatContent.classList.add("chatContent");
+          chatContent.innerText = "삭제된 댓글 입니다";
+          
+          chatContentContainer.append(chatContent); // 행에 내용 추가
+          chatContentContainer.append(commentDate); // 행에 작성일자 추가
+        } else if(loginMemberNo == comment.memberNo){
+          chatContent.classList.remove("chatContent");
+          chatContent.classList.add("chatContentUser");
+          chatContent.innerText = "삭제된 댓글 입니다";
+          
+          chatContentContainer.append(commentDate); // 행에 작성일자 추가
+          chatContentContainer.append(chatContent); // 행에 내용 추가
+        }
+        
+      }
 
       // 댓글 목록(ul)에 행(li) 추가
       chatMainContainer.append(chatContainer);

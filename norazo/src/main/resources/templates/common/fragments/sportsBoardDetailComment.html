@@ -10,7 +10,7 @@
       th:each="comment : ${board.commentList}" 
       th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
       th:object="${comment}"> 
-
+      
         <th:block th:if="*{commentDelFl} == 'Y'">
           <th:block th:if="${session.loginMember.memberNo} != ${comment.memberNo}">
             <div class="chatContentContainer"> 
