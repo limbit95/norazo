@@ -22,58 +22,57 @@ if (boardContent && boardContent.innerHTML.trim() === "") {
 function updateMemberInfo() {
     // Get the element by its ID
     const memberInfo = document.getElementById('memberInfo');
-  
+
     // Read data attributes for attend and limit
     const attendMemberCount = parseInt(memberInfo.getAttribute('data-attend'), 10);
     const memberCountLimit = parseInt(memberInfo.getAttribute('data-limit'), 10);
-  
+
     // Calculate the remaining spots
     const remaining = memberCountLimit - attendMemberCount;
-  
+
     // Update the text content of the element
-    if(attendMemberCount == memberCountLimit){
+    if (attendMemberCount == memberCountLimit) {
         memberInfo.textContent = `${attendMemberCount} / ${memberCountLimit} (자리 없음)`;
         return;
     }
     memberInfo.textContent = `${attendMemberCount} / ${memberCountLimit} (${remaining} 자리 남음)`;
-  }
-  
-  // Ensure the DOM is fully loaded before running the script
-  window.addEventListener('DOMContentLoaded', updateMemberInfo);
+}
+
+// Ensure the DOM is fully loaded before running the script
+window.addEventListener('DOMContentLoaded', updateMemberInfo);
 
 
 // Member Info
 // 모임장 자기소개
 const memberIntroduce = document.querySelector("#memberIntroduce");
-  
+
 if (memberIntroduce && memberIntroduce.innerHTML.trim() === "") {
     memberIntroduce.innerHTML = "자기소개 비어있어요~";
     memberIntroduce.style.color = "#E1E1E1";
 }
 // console.log("Sports Board Detail");
-  
+
 
 // 모임글 취소
 const deleteJoinMember = document.querySelector("#deleteJoinMember");
 
 if (deleteJoinMember != null) {
 
-    
+
     deleteJoinMember.addEventListener("click", (e) => {
         const memberNo = document.querySelector("#memberNo").value;
         const createMemberNo = document.querySelector("#createMemberNo").value;
         const loginMemberNo = document.querySelector("#loginMemberNo").value;
         if (memberNo == loginMemberNo) {
 
-            if(confirm("정말 모임을 삭제하시겠습니까?")) {
-                // alert("모임이 삭제 되었습니다");
+            if (confirm("정말 모임을 삭제하시겠습니까?")) {
             } else {
                 e.preventDefault();
             }
-        } 
+        }
 
         if (memberNo != loginMemberNo || createMemberNo != loginMemberNo) {
-            if(confirm("참여 취소하시겠습니까?")) {
+            if (confirm("참여 취소하시겠습니까?")) {
                 // alert("참여 취소 되었습니다");
             } else {
                 e.preventDefault();
@@ -100,22 +99,22 @@ if (deleteJoinMember != null) {
 const updateBtn = document.querySelector("#updateSportsBoard");
 const deleteBtn = document.querySelector("#deleteSportsBoard");
 
-if(updateBtn != null){
-    updateBtn.addEventListener("click", e =>{
+if (updateBtn != null) {
+    updateBtn.addEventListener("click", e => {
         const boardNo = e.target.dataset.boardNo;
         const sportsCode = e.target.dataset.sportsCode;
         location.href = "/editBoard/update/" + sportsCode + "/" + boardNo;
     });
 };
 
-if(deleteBtn != null){
+if (deleteBtn != null) {
     deleteBtn.addEventListener("click", e => {
         const boardNo = e.target.dataset.boardNo;
         const sportsCode = e.target.dataset.sportsCode;
-        if(!confirm("정말로 삭제하시겠습니까?")){
+        if (!confirm("정말로 삭제하시겠습니까?")) {
             return;
         }
-        
+
         location.href = "/sportsBoard/delete/" + sportsCode + "/" + boardNo;
-    });  
+    });
 };
