@@ -2,6 +2,7 @@ package edu.kh.norazo.member.controller;
 
 import java.util.Map;
 
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -164,6 +165,7 @@ public class MemberController {
 	/** 비밀번호 찾기 
 	 * @return
 	 */
+	
 	@PostMapping("findPw")
 	public String findPw(Member inputMember,
 						 RedirectAttributes ra) {
@@ -187,7 +189,6 @@ public class MemberController {
 		}
 		
 		ra.addFlashAttribute("message", message);
-		
 		return "redirect:"+path;
 	}
 	

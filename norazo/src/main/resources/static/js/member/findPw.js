@@ -56,5 +56,6 @@ findPwForm.addEventListener("submit", e =>{
     return;
 
    }
-   alert("기둘");
+   
+
 });
