@@ -47,5 +47,6 @@
 		UPDATE "MEMBER" 
 		SET MEMBER_PW = #{memberPw}  
 		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_DEL_FL = 'N'
 	</update>
 </mapper>

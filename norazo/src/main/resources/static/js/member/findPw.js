@@ -11,12 +11,8 @@ memberEmail.addEventListener("input", e => {
     
     if( inputEmail.trim().length === 0){
         emailMessage.innerText = "메일을 받을 수 있는 이메일을 입력해주세요";
-
         emailMessage.classList.remove("confirm","error");
         checkObj.memberEmail = false;
-
-        memberEmail.value = "";
-
         return;
     }
     
@@ -50,11 +46,15 @@ const findPwForm = document.querySelector("#findPwForm");
 
 findPwForm.addEventListener("submit", e =>{
 
+
    if(!checkObj.memberEmail){
-    document.getElementById(key).focus();
+
     e.preventDefault();
+
+    memberEmail.focus();
+
     return;
+
    }
-   
-   alert("잠시만 기다려주세요");
+
 });

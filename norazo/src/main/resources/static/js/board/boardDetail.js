@@ -44,13 +44,29 @@ listButton.addEventListener("click", () => {
   location.href = url + location.search;
 });
 
-const leftPageButton = document.querySelector("#leftPageButton");
+// 이전 페이지 이동 
+const prevBoardNo = document.querySelector("#prevBoardNo");
 
-// leftPageButton.addEventListener("click",() =>{
+prevBoardNo.addEventListener("click",()=>{
 
-  
-// });
-// 현재 주소 
-// http://localhost/board/faq/100?cp=1
-// 목표 주소 
-// http://localhost/board/faq/101?cp=1
+  const third = location.pathname.lastIndexOf("/");
+  let url = location.pathname.substring(0, third+1) + prevBoardNo.value + location.search;
+  location.href = url;
+
+});
+
+// 다음 페이지 이동 
+const nextBoardNo = document.querySelector("#nextBoardNo");
+
+nextBoardNo.addEventListener("click",()=>{
+  // location.pathname : /board/free/92 
+  // location.search   : ?cp=1
+  const third = location.pathname.lastIndexOf("/");
+  let url = location.pathname.substring(0, third+1) + nextBoardNo.value + location.search;
+  location.href = url;
+
+});
+
+// console.log(nextBoardNo.value);
+// console.log(prevBoardNo.value);
+// console.log(location.href);
