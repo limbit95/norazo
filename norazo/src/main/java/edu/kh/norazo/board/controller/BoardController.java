@@ -241,7 +241,6 @@ public class BoardController {
 			path ="board/boardUpdate";
 			
 			model.addAttribute("board",board);
-					
 
 		}
 		
