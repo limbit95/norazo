@@ -219,16 +219,17 @@ public class BoardController {
 			
 			ra.addFlashAttribute("message",message);
 			
-		} 
+		} else {
 			
 		path ="board/boardUpdate";
 		
 		model.addAttribute("board",board);
-			
+					
+
+		}
 		
 		return path;
-	}
-	
+	}	
 
 	/** 게시글 수정
 	 * @param boardCode
