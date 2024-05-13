@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@EnableAsync
+
 @EnableScheduling
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 public class NorazoApplication {

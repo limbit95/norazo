@@ -165,7 +165,7 @@ public class MemberController {
 	/** 비밀번호 찾기 
 	 * @return
 	 */
-
+	
 	@PostMapping("findPw")
 	public String findPw(Member inputMember,
 						 RedirectAttributes ra) {
@@ -189,7 +189,6 @@ public class MemberController {
 		}
 		
 		ra.addFlashAttribute("message", message);
-		
 		return "redirect:"+path;
 	}
 	
