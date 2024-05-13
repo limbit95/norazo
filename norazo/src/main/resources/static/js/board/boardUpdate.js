@@ -19,4 +19,19 @@ boardUpdateFrm.addEventListener("submit", e => {
     e.preventDefault();
     return;
   }
+
+  if(loginMember != null) {
+    let text = boardContent.value;
+    const introduced = text.replaceAll(/\n/g, "<br>");
+    if (introduced != null) {
+        document.getElementById('introduced').innerHTML = introduced;
+    }};
+  const introduce = boardContent.value.replaceAll("<br>", "\r\n");
+  if( document.getElementById('introduce') != null) {
+    if (introduce != null) {
+        document.getElementById('introduce').innerHTML = introduce;
+    }
+  }
+
+
 });
