@@ -214,9 +214,11 @@ public class MyPageController {
 		}
 		
 		
-		model.addAttribute("pagination",map2.get("pagination"));
+		model.addAttribute("pagination", map2.get("pagination"));
 		
-		model.addAttribute("boardList",map2.get("boardList"));
+		model.addAttribute("boardList", map2.get("boardList"));
+		
+		log.debug("test : " + map2.get("boardList"));
 		
 
 		return "board/boardList";
