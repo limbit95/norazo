@@ -229,6 +229,7 @@ public class MyPageController {
 	public String secession() {
 		return "myPage/secession";
 	}
+	
 	@PostMapping("secession")
 	public String secession(
 				@RequestParam("memberPw") String memberPw,
@@ -236,8 +237,7 @@ public class MyPageController {
 				SessionStatus status,
 				RedirectAttributes ra,
 				HttpServletResponse resp,
-				HttpSession session
-			) {
+				HttpSession session) throws Exception {
 		
 		// 서비스 호출
 		int memberNo = loginMember.getMemberNo();
@@ -256,6 +256,9 @@ public class MyPageController {
 			
 		} else {
 			message = "비밀번호가 일치하지 않습니다.";
+			if(result == -1) {
+				message = "회원 탈퇴 실패";
+			}
 			path = "secession";
 		}
 		

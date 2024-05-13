@@ -25,7 +25,7 @@ const boardLike = document.querySelector(".board-like");
 let sportsCode;
 let boardNo;
 let likeCheck;
-let main;
+let boardWriterDelFl;
 
 // 뒷배경 블러처리
 const backdrop = document.querySelector(".modal-backdrop");
@@ -37,8 +37,14 @@ thumbnail.forEach( (i) => {
         sportsCode = e.target.dataset.sportsCode;
         // 조회한 모임글 번호
         boardNo = e.target.dataset.boardNo;
-        // 메인에서 클릭하여 들어온 경우 쿼리스트링으로 main임으로 구분 지을 변수
-        main = e.target.dataset.main;
+        
+        // 탈퇴한 회원이 게시물일 경우 게시물 조회 불가능하게 만들기
+        boardWriterDelFl = e.target.dataset.memberDelFl;
+
+        if(boardWriterDelFl == 'Y'){
+            alert("삭제되었거나, 존재하지 않는 게시물입니다.");
+            return;
+        }
         
         // 참석 버튼에 현재 조회한 모임글 번호 데이터 삽입
         joinBtn.setAttribute("data-board-no", boardNo);
@@ -86,19 +92,19 @@ thumbnail.forEach( (i) => {
                 const img = document.createElement("img");
                 img.classList.add("member");
 
-                if(index < 5){
+                if(index < 6){
                     if(i.profileImg == null){
-                        img.setAttribute("src", "/images/profile/default-profileImg.png");
+                        img.setAttribute("src", "/images/default-profileImg.png");
                     } else{
                         img.setAttribute("src", i.profileImg);
                     }
                     memberList.append(img);
                 }
 
-                if(index == 6){
-                    img.setAttribute("src", "/images/profile/01_assets.png");
-                    memberList.append(img);
-                }
+                // if(index == 6){
+                //     img.setAttribute("src", "/images/default-profileImg.png");
+                //     memberList.append(img);
+                // }
             });
             memberListDiv.append(memberList);
             // ---------- 현재 참석한 회원 리스트 ----------
@@ -134,8 +140,13 @@ boardTitle.forEach( (i) => {
         sportsCode = e.target.dataset.sportsCode;
         // 조회한 모임글 번호
         boardNo = e.target.dataset.boardNo;
-        // 메인에서 클릭하여 들어온 경우 쿼리스트링으로 main임으로 구분 지을 변수
-        main = e.target.dataset.main;
+        // 탈퇴한 회원이 게시물일 경우 게시물 조회 불가능하게 만들기
+        boardWriterDelFl = e.target.dataset.memberDelFl;
+
+        if(boardWriterDelFl == 'Y'){
+            alert("삭제되었거나, 존재하지 않는 게시물입니다.");
+            return;
+        }
         
         // 참석 버튼에 현재 조회한 모임글 번호 데이터 삽입
         joinBtn.setAttribute("data-board-no", boardNo);
@@ -183,19 +194,19 @@ boardTitle.forEach( (i) => {
                 const img = document.createElement("img");
                 img.classList.add("member");
 
-                if(index < 5){
+                if(index < 6){
                     if(i.profileImg == null){
-                        img.setAttribute("src", "/images/profile/default-profileImg.png");
+                        img.setAttribute("src", "/images/default-profileImg.png");
                     } else{
                         img.setAttribute("src", i.profileImg);
                     }
                     memberList.append(img);
                 }
 
-                if(index == 6){
-                    img.setAttribute("src", "/images/profile/01_assets.png");
-                    memberList.append(img);
-                }
+                // if(index == 6){
+                //     img.setAttribute("src", "/images/profile/default-profileImg.png");
+                //     memberList.append(img);
+                // }
             });
             memberListDiv.append(memberList);
             // ---------- 현재 참석한 회원 리스트 ----------

@@ -24,7 +24,7 @@
 	
 	<!-- 특정 게시판의 지정된 페이지 목록 조회 -->
 	<select id="selectBoardList" resultMap="modal_rm">
-		SELECT BOARD_NO, BOARD_TITLE, SPORTS_KR_NAME, MEMBER_NO, SPORTS_CODE, 
+		SELECT BOARD_NO, BOARD_TITLE, SPORTS_KR_NAME, MEMBER_NO, SPORTS_CODE, MEMBER_DEL_FL, 
 		
 			(SELECT IMG_PATH || IMG_RENAME 
 			FROM "BOARD_IMG" C 
@@ -129,7 +129,7 @@
 	<!-- 모임 게시글 정보 modal으로 조회 -->
 	<select id="modalView" resultMap="modal_rm">
 		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, MEMBER_COUNT_LIMIT, MEETING_LOCATION, 
-		TO_CHAR(MEETING_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') MEETING_DATE,
+		TO_CHAR(MEETING_DATE, 'MM"월" DD"일" "("DY")" HH24"시" MI"분"') MEETING_DATE, 
 		
 			(SELECT IMG_PATH || IMG_RENAME 
 			FROM "BOARD_IMG" C 

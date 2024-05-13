@@ -32,6 +32,12 @@
 		MEMBER_DEL_FL = 'Y'
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
+	
+	<update id="deleteAllBoard">
+		UPDATE "BOARD" SET
+			BOARD_DEL_FL = 'Y'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 
 	<update id="profile">
 		UPDATE "MEMBER" SET

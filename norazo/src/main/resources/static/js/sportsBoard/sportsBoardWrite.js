@@ -17,8 +17,16 @@ memberCountSelect.addEventListener('focus', function() {
 }); 
 
 
+let offset = new Date().getTimezoneOffset() * 60000; // 9시간 밀리세컨드 값
+let today = new Date(Date.now() - offset);
 
-
+document.querySelector("#dateselect").setAttribute("min", today);
+//max 날짜는 3개월 오늘 날짜 전일
+today.setMonth(today.getMonth()+3);
+today.setDate(today.getDate()-1);
+document.querySelector('#dateselect').max = today.toISOString().substring(0,10)
+today.setDate(-1)
+document.querySelector('#dateselect').max = today.toISOString().substring(0,10)
 
 
 /* 선택된 이미지 미리보기 */
