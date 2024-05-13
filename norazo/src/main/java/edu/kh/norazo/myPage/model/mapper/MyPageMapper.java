@@ -33,4 +33,6 @@ public interface MyPageMapper {
 	int getMyHeartListCount(Map<String, Object> map);
 
 	List<Board> selectMyHeartBoardList(Map<String, Object> map, RowBounds rowBounds);
+
+	int secession(int memberNo);
 }

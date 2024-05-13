@@ -47,6 +47,10 @@ public interface BoardMapper {
 	 * @return
 	 */
 	List<String> selectDbImageList();
+  
+	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
+
+
 
 
 	

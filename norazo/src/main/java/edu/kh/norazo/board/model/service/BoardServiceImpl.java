@@ -81,5 +81,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<String> selectDbImageList() {
 		return mapper.selectDbImageList();
+  }
+
+  @Override
+	public Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map) {
+		return mapper.selectPrevAndNextBoard(map);
 	}
 }

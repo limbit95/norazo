@@ -48,5 +48,8 @@ public interface BoardService {
 	List<String> selectDbImageList();
 
 	
+	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
+
+
 
 }

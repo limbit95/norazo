@@ -153,4 +153,6 @@
 		AND B.BOARD_DEL_FL = 'N'
 		ORDER BY BL.LIKE_NO
 	</select>
+	
+	
 </mapper>

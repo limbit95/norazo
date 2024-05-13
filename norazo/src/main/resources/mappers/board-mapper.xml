@@ -94,6 +94,19 @@
 		SELECT SUBSTR(PROFILE_IMG, INSTR(PROFILE_IMG, '/', -1) + 1) "rename" 
 		FROM "MEMBER"
 		WHERE PROFILE_IMG IS NOT NULL
-	</select>
+  </select>
+	
+	<select id="selectPrevAndNextBoard">
+      SELECT * FROM (
+        SELECT 
+            BOARD_NO AS "currentBoardNo",
+            LAG(BOARD_NO) OVER (ORDER BY BOARD_NO) AS "prevBoardNo",
+
+            LEAD(BOARD_NO) OVER (ORDER BY BOARD_NO) AS "nextBoardNo"
+        FROM "BOARD"
+        WHERE BOARD_CODE = #{boardCode}
+      )
+      WHERE "currentBoardNo" = #{boardNo}
+	  </select>
 	
 </mapper>

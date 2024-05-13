@@ -29,3 +29,28 @@ if(deleteBoardBtn != null){
     + location.search;
   });
 }
+
+// 페이지 네이션 이동 
+
+const listButton = document.querySelector("#listButton");
+
+listButton.addEventListener("click", () => {
+  // 현재 URL의 경로를 가져옵니다.
+  let url = location.pathname;
+  
+  url = url.substring(0,url.lastIndexOf("/"));
+  
+  // 수정된 URL로 페이지를 리다이렉트합니다.
+  location.href = url + location.search;
+});
+
+const leftPageButton = document.querySelector("#leftPageButton");
+
+// leftPageButton.addEventListener("click",() =>{
+
+  
+// });
+// 현재 주소 
+// http://localhost/board/faq/100?cp=1
+// 목표 주소 
+// http://localhost/board/faq/101?cp=1
