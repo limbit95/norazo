@@ -41,20 +41,11 @@ public class BoardController {
         model.addAttribute("boardName", "자유 게시판");
         board.setBoardCode(2);
         
-	    }   
-	    if(boardCode.equals("faq")) {
-	        model.addAttribute("boardName", "문의 게시판");
-	        board.setBoardCode(3);
-	    }
-		log.debug("boardCode : " + boardCode);
-		
-	    if(boardCode.equals("faq")) {
-	        model.addAttribute("boardName", "문의 게시판");
-	        board.setBoardCode(3);
-	        
-	    }
-
-		
+    }   
+    if(boardCode.equals("faq")) {
+        model.addAttribute("boardName", "문의 게시판");
+        board.setBoardCode(3);
+    }
 
 		
 		map = service.selectBoardList(board.getBoardCode(),cp);
@@ -76,24 +67,26 @@ public class BoardController {
 	 * @param ra
 	 * @return
 	 */
+//	http://localhost/board/free/91
 	@GetMapping("{boardCode:[a-z]+}/{boardNo:[0-9]+}")
 	public String boardDetail(@PathVariable("boardCode") String boardCode,
 							  @PathVariable("boardNo") int boardNo,
 							  Model model,
-							  RedirectAttributes ra) {
+							  RedirectAttributes ra,
+							  @RequestParam(value = "cp", required = false,defaultValue = "1")int cp) {
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("boardNo", boardNo);
 					
-			if(boardCode.equals("free")) {
-				map.put("boardCode", 2);
-			}
+		if(boardCode.equals("free")) {
+			map.put("boardCode", 2);
+		}
+		
+		if(boardCode.equals("faq")) {
+			map.put("boardCode", 3);
+		}
 			
-			if(boardCode.equals("faq")) {
-				map.put("boardCode", 3);
-			}
-			
-
+	
 		Board board = service.selectOne(map);
 		
 		String path = null;
@@ -103,10 +96,33 @@ public class BoardController {
 			ra.addFlashAttribute("message","게시글이 존재하지 않습니다.");
 			
 		} else {
+			//Map<String, Integer> prevAndNextMap = new HashMap<>();
+			
+			map.put("boardNo", boardNo);
+			// 해당 게시글의 이전글 / 다음글 얻어오기
+			Map<String, Integer> prevAndNextMap = service.selectPrevAndNextBoard(map);
+	
+			
+			log.info("BoardCode {}", map.get("boardCode"));
+			
+			model.addAttribute("currentBoardNo", prevAndNextMap.get("currentBoardNo"));
+			model.addAttribute("prevBoardNo", prevAndNextMap.get("prevBoardNo"));
+			model.addAttribute("nextBoardNo", prevAndNextMap.get("nextBoardNo"));
+			
+
+			log.info("model {}", model.getAttribute("prevBoardNo"));
+			log.info("model {}", model.getAttribute("currentBoardNo"));
+			log.info("model {}", model.getAttribute("nextBoardNo"));
+
+			
+			
 			
 			path = "board/boardDetail";
 			
 			model.addAttribute("board",board);
+			
+			log.info("보드 코드는 ? : ", board.getBoardCode());
+			model.addAttribute("cp",cp);
 		}
 		
 		return path;
@@ -122,8 +138,10 @@ public class BoardController {
 		
 		if(boardCode.equals("free")) {
 			model.addAttribute("boardName", "자유 게시판");
+			
 		} else if (boardCode.equals("faq")) {
 			model.addAttribute("boardName", "문의 게시판");
+			
 		}
 		
 		return "board/boardWrite";

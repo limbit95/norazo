@@ -34,7 +34,7 @@
 
 .backGround {
     width: 400px;
-    height: 1020px;
+    height: 1180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -131,13 +131,12 @@
     padding: 10px;
     text-align: center;
     line-height: 40px;
-
     padding: 15px;
 }
 
 .MyProfileRight {
     width: 620px;
-    height: 1020px;
+    height: 1180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -176,7 +175,7 @@
 
 .editMain {
     width: 620px;
-    height: 1020px;
+    height: 1180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -190,7 +189,7 @@
 
 .changePwmain {
     width: 620px;
-    height: 1020px;
+    height: 1180px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,6 +209,11 @@ a:visited {
     color: var(--white);
 }
 
+.editTitle1 {
+    color: var(--white);
+    margin-bottom: 60px;
+}
+
 h1 {
     font-weight: 400;
 }
@@ -219,7 +223,7 @@ h2 {
 }
 
 .myPage-row {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 h2 {
@@ -266,7 +270,7 @@ ion-icon {
 
 #introduce {
     width: 500px;
-    height: 100px;
+    height: 130px;
     overflow-y:auto;
     resize: none;
     background: var(--white); 
@@ -325,4 +329,19 @@ ion-icon {
     color: var(--white);
     padding-left: 0px;
     cursor: pointer;
+}
+
+.article {
+    color: var(--white);
+    width: 500px;
+    line-height: 40px;
+    padding-bottom: 50px;
+    padding-top: 100px;
+}
+
+#secession {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
 }

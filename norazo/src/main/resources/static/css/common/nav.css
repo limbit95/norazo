@@ -177,10 +177,18 @@
     }
     
     .search-box-div > input::placeholder {
-
+        font-family: 'regular';
+        font-size: 15px;
     }
     
     .search-box-div > input:focus {outline:none;}
+
+    .search-box-div > input[type=text] {
+        float: none;
+        text-decoration: none;
+        font-family: 'regular';
+        font-size: 15px;
+    }
 
     .searchIcon {
         margin-left: 5px;

@@ -43,6 +43,15 @@ public interface BoardMapper {
 	 */
 	int boardDelete(Map<String, Object> map);
 
+	/** DB 이미지 파일명 목록 조회
+	 * @return
+	 */
+	List<String> selectDbImageList();
+  
+	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
+
+
+
 
 	
 }

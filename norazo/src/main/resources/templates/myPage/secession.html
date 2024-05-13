@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="/css/fragments/myPage.css">
+    <link rel="stylesheet" href="/css/common/footer.css">
+    <link rel="stylesheet" href="/css/common/main.css">
+    <link rel="stylesheet" href="/css/common/nav.css">
+    <link rel="stylesheet" href="/css/common/button.css">
+    <link rel="icon" type="image/x-icon" href="/images/norazo-favicon.ico">
+</head>
+<body>
+    <th:block th:replace="~{common/nav}"></th:block>
+    <main>
+        <div class="contents">
+            <th:block th:replace="~{common/fragments/myPageLeftSide}"></th:block>
+			<section class="changePwmain">
+                
+                <form action="secession" method="POST" name="myPageFrm" id="secession">
+                    <div class="editTitle1"><h1>회원 탈퇴</h1></div>
+                    <div class="myPage-row">
+                        <h4 class="article">
+                            NORAZO 회원(이하 "회원")을 탈퇴하기 전에 반드시 읽어 주십시오.<br>
+
+                            본 약관은 NORAZO (이하 “당사”)가 NORAZO 회원(이하 “회원”)의 탈퇴에 관한 모든 조건을 규정한 것입니다.
+                            회원탈퇴를 하실 경우에는 아래의 내용에 동의하신 것으로 간주됩니다.
+                            
+                            탈퇴 후에는 당사가 운영하는 모든 웹사이트에서 제공하는 회원 대상 서비스를 이용하실 수 없습니다.
+                            회원 탈퇴 수속이 수리된 후에도 회원정보에 대해서는 당사가 관리하게 됩니다.
+                            탈퇴 후에 회원정보를 삭제하는 경우도 있으므로 양해해 주십시오.
+                        </h4>
+                    </div>
+                    <div class="myPage-row">
+                        <h2 class="editTitle">현재 비밀번호</h2>
+                        <div>
+                            <input type="password" class="profileUpdatePw1" name="memberPw" id="memberPw" maxlength="30" >  
+                        </div>
+                    </div>
+                    <button class="myPage-submit"><h3>탈퇴하기</h3></button>
+                    </form>
+			</section>
+        </div>
+    </main>
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script src="/js/myPage/myPage.js"></script>
+    <script th:inline="javascript">
+        const loginMemberProfileImg = "회원프로필이미지";
+    </script>
+</body>
+</html>

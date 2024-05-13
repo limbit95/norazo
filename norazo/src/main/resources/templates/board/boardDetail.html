@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,9 +55,17 @@
 
             </div>      
 
+
             <th:block th:replace="~{board/comment}"></th:block>
     </main>
     <script src="/js/board/boardDetail.js"></script>
     <th:block th:replace="~{common/footer}"></th:block>
+    
+    <script th:inline="javascript">
+        const prevBoardNo = /*[[${prevBoardNo}]]*/"이전페이지";
+        const nextBoardNo = /*[[${nextBoardNo}]]*/"다음페이지";
+
+    </script>
+
 </body>
 </html>
