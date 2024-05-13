@@ -120,6 +120,8 @@ public class BoardController {
 			path = "board/boardDetail";
 			
 			model.addAttribute("board",board);
+			
+			log.info("보드 코드는 ? : ", board.getBoardCode());
 			model.addAttribute("cp",cp);
 		}
 		
