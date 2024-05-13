@@ -164,19 +164,31 @@ public class MemberController {
 	}
 	
 	/** 비밀번호 찾기 
-	 * @return
-	 */
-	@ResponseBody
-	@PostMapping("findPw")
-	public int findPw(@RequestBody String inputEmail,
-						 Member inputMember,
-						 RedirectAttributes ra) {
-		inputMember.setMemberEmail(inputEmail);
-		
-		int result = service.findPw(inputMember);
-		
-		return result;
-	}
-	
-
+	    * @return
+	    */
+	   @PostMapping("findPw")
+	   public String findPw(Member inputMember,
+	                   RedirectAttributes ra) {
+	      
+	      int result = service.findPw(inputMember);
+	            
+	      String path = null;
+	      String message = null;
+	      
+	      if(result > 0) {
+	         
+	         message = "임시 비밀번호가 메일로 발송되었습니다.";
+	         
+	         path = "/member/login";
+	      
+	      } else {
+	         
+	         message = "메일 인증이 완료되지 않았습니다.";
+	         
+	         path = "/member/findPw";
+	      }
+	      
+	      ra.addFlashAttribute("message", message);
+	      return "redirect:"+path;
+	   }
 }

@@ -58,31 +58,14 @@ findPwForm.addEventListener("submit", e =>{
     return;
 
    }
-   alert("기둘");
+   const findPwBtn = document.getElementById("findPwBtn");
+
+// checkObj가 true이면 버튼을 숨깁니다.
+
+    findPwBtn.style.display = "none";
+    emailMessage.classList.remove("confirm");
+    emailMessage.classList.add("error");
+    emailMessage.style.fontWeight = "bold";
+    emailMessage.innerText = "비밀번호가 전송되었습니다. 잠시만 기다려주세요!";
 });
 
-
-
-const findPwBtn = document.querySelector("#findPwBtn");
-
-if(findPwBtn != null){
-    findPwBtn.addEventListener("click", e => {
-        fetch("/member/findPw", {
-            method : "POST",
-            headers : {"Content-Type" : "application/json"},
-            body : inputEmail
-        })
-        .then( resp => resp.text() )
-        .then( count => {
-            if(count > 0){
-                
-            }            
-        })
-        .catch(error =>{
-            console.log(error);
-        });
-    })
-}
-
-
-});
