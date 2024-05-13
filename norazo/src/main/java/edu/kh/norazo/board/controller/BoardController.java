@@ -238,10 +238,10 @@ public class BoardController {
 			
 		} else {
 			
-		path ="board/boardUpdate";
-		
-		model.addAttribute("board",board);
-					
+			path ="board/boardUpdate";
+			
+			model.addAttribute("board",board);
+						
 
 		}
 		
