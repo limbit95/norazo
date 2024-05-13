@@ -85,4 +85,4 @@ if(findPwBtn != null){
 }
 
 
-/member/findPw
+});
