@@ -57,9 +57,7 @@
             </th:block>
         </div>
 
-    </main>
-
-    <th:block th:if="${boardList}">
+        <th:block th:if="${boardList}">
             <div class="pagination-area">
                 
                 <ul class="pagination" th:object="${pagination}">
@@ -92,6 +90,8 @@
                 </ul>
             </div>
         </th:block>
+
+    </main>
 
     <th:block th:replace="~{common/fragments/modal}"></th:block>
     <th:block th:replace="~{common/footer}"></th:block>

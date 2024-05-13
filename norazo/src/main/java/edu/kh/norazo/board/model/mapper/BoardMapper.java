@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.RowBounds;
 
 import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.member.model.dto.Member;
 
 @Mapper
 public interface BoardMapper {
@@ -49,6 +50,9 @@ public interface BoardMapper {
 	List<String> selectDbImageList();
   
 	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
+
+	
+
 
 
 

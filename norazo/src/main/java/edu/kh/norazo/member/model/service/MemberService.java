@@ -1,5 +1,6 @@
 package edu.kh.norazo.member.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import edu.kh.norazo.member.model.dto.Member;
@@ -37,4 +38,16 @@ public interface MemberService {
 	 */
 	int findPw(Member inputMember);
 
+	/** 탈퇴한 회원 목록 조회
+	 * @return
+	 */
+	List<Member> secessionMemberList();
+
+
+	/** 탈퇴한 회원의 게시글 삭제 및 탈퇴 회원 관리 테이블로 이동
+	 * @param memberList
+	 * @return
+	 */
+	int secessionMemberManager(List<Member> memberList);
+	
 }
