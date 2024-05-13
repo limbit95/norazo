@@ -46,26 +46,29 @@ listButton.addEventListener("click", () => {
 
 // 이전 페이지 이동 
 const prevBoardNo = document.querySelector("#prevBoardNo");
-
-prevBoardNo.addEventListener("click",()=>{
-
-  const third = location.pathname.lastIndexOf("/");
-  let url = location.pathname.substring(0, third+1) + prevBoardNo.value + location.search;
-  location.href = url;
-
-});
+if (prevBoardNo != null) {
+  prevBoardNo.addEventListener("click",()=>{
+  
+    const third = location.pathname.lastIndexOf("/");
+    let url = location.pathname.substring(0, third+1) + prevBoardNo.value + location.search;
+    location.href = url;
+  
+  });
+}
 
 // 다음 페이지 이동 
 const nextBoardNo = document.querySelector("#nextBoardNo");
+if (nextBoardNo != null ) {
+  nextBoardNo.addEventListener("click",()=>{
+    // location.pathname : /board/free/92 
+    // location.search   : ?cp=1
+    const third = location.pathname.lastIndexOf("/");
+    let url = location.pathname.substring(0, third+1) + nextBoardNo.value + location.search;
+    location.href = url;
+  
+  });  
+}
 
-nextBoardNo.addEventListener("click",()=>{
-  // location.pathname : /board/free/92 
-  // location.search   : ?cp=1
-  const third = location.pathname.lastIndexOf("/");
-  let url = location.pathname.substring(0, third+1) + nextBoardNo.value + location.search;
-  location.href = url;
-
-});
 
 // console.log(nextBoardNo.value);
 // console.log(prevBoardNo.value);
