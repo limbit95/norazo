@@ -77,9 +77,14 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.boardDelete(map);
 	}
 
+	// DB 이미지 파일명 목록 조회
 	@Override
+	public List<String> selectDbImageList() {
+		return mapper.selectDbImageList();
+  }
+
+  @Override
 	public Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map) {
-		
 		return mapper.selectPrevAndNextBoard(map);
 	}
 }

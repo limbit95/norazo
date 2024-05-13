@@ -10,7 +10,7 @@
       th:each="comment : ${board.commentList}" 
       th:classappend="${comment.parentCommentNo} != 0 ? child-comment"
       th:object="${comment}"> 
-      
+
         <th:block th:if="*{commentDelFl} == 'Y'">
           <th:block th:if="${session.loginMember.memberNo} != ${comment.memberNo}">
             <div class="chatContentContainer"> 
@@ -28,7 +28,7 @@
             <div class="chatContainer">
                 
                 <img th:unless="*{profileImg}" th:src="#{user.default.image}" class="chatUserProfile">
-                <img th:if="*{profileImg}" th:src="*{profileImg}" class="chatUserProfile">
+                <img th:if="*{profileImg}" th:src="*{profileImg} ?: #{user.default.image}" class="chatUserProfile">
                 <h3 class="chatUserName" th:text="*{memberNickname}"></h3>
                 <div>
                   <a class="a-insertBtn" th:value="*{memberNickname}" th:onclick="|showInsertComment(*{commentNo}, this.getAttribute('value'), this)|">답글</a>
@@ -79,8 +79,6 @@
           </th:block>
 
         </th:block>
-
-        <div class="test"></div>
 
       </div>
       

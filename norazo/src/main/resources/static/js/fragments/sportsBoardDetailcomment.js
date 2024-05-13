@@ -122,6 +122,7 @@ const selectCommentList = () => {
           const updateBtn = document.createElement("a");
           updateBtn.classList.add("a-updateBtn")
           updateBtn.innerText = "수정";
+          updateBtn.style.marginLeft = "3px";
           
           // 수정 버튼에 onclick 이벤트 리스너 추가 
           updateBtn.setAttribute("value", comment.memberNickname);
@@ -133,6 +134,7 @@ const selectCommentList = () => {
           const deleteBtn = document.createElement("a");
           deleteBtn.classList.add("a-deleteBtn")
           deleteBtn.innerText = "삭제";
+          deleteBtn.style.marginLeft = "3px";
 
           // 삭제 버튼에 onclick 이벤트 리스너 추가 
           deleteBtn.setAttribute("onclick", 
@@ -550,7 +552,7 @@ let beforeCommentRow;
  * @param {*} commentNo 
  * @param {*} btn 
  */
-const showUpdateComment = (commentNo, memberNickname, Img, btn) => {
+const showUpdateComment = (commentNo, memberNickname, img, btn) => {
 
   /* 댓글 수정 화면이 1개만 열릴 수 있게 하기 */
   const temp = document.querySelector(".update-textarea");
@@ -559,8 +561,7 @@ const showUpdateComment = (commentNo, memberNickname, Img, btn) => {
   if(temp != null){
 
     if(confirm("수정 중인 댓글이 있습니다. 현재 댓글을 수정 하시겠습니까?")){
-
-      const commentRow = temp.parentElement; // 기존 댓글 행
+      const commentRow = temp.parentElement.parentElement; // 기존 댓글 행
       commentRow.after(beforeCommentRow); // 기존 댓글 다음에 백업 추가
       commentRow.remove(); // 기존 삭제 -> 백업이 기존 행 위치로 이동
 
@@ -584,37 +585,56 @@ const showUpdateComment = (commentNo, memberNickname, Img, btn) => {
   let beforeContent = chatMainContainertemp.children[1].children[1].innerText;
 
   // 4. 댓글 행 내부를 모두 삭제
-  chatMainContainertemp.innerHTML = "";
+  // chatMainContainertemp.innerHTML = "";
+  chatMainContainertemp.children[1].innerHTML = "";
+  chatMainContainertemp.children[0].children[2].remove(); 
 
-
-
+  const commentDate = document.createElement("span");
+  commentDate.classList.add("chatDate");
+  commentDate.innerText = "수정 중";
+  commentDate.style.marginLeft = "74px";
 
   const textarea = document.createElement("textarea");
   textarea.classList.add("update-textarea");
-  textarea.value = beforeContent;
+  textarea.classList.add("chatContentUser");
+  textarea.textContent = beforeContent;
+  textarea.style.resize = "none";
+  textarea.style.outline = "none";
+  textarea.style.height = "52px";
 
-  // 6. 댓글 행에 textarea 추가
-  chatMainContainertemp.append(textarea);
+  const chatContentUser = document.querySelector("p");
+  chatContentUser.classList.add("chatContentUser");
 
-  // 7. 버튼 영역 생성
+  chatContentUser.append(textarea);
+  
+  chatMainContainertemp.children[1].append(commentDate, textarea);
+
+  // 버튼 영역
   const commentBtnArea = document.createElement("div");
   commentBtnArea.classList.add("comment-btn-area");
-  
-  // 8. 수정 버튼 생성
-  const updateBtn = document.createElement("button");
+  commentBtnArea.style.width = "auto";
+  commentBtnArea.style.marginLeft = "34px";
+
+  // 수정 버튼
+  const updateBtn = document.createElement("a");
+  updateBtn.classList.add("a-updateBtn")
   updateBtn.innerText = "수정";
+          
+  // 수정 버튼에 onclick 이벤트 리스너 추가 
   updateBtn.setAttribute("onclick", `updateComment(${commentNo}, this)`);
-
-  // 9. 취소 버튼 생성
-  const cancelBtn = document.createElement("button");
+          
+  // 취소 버튼
+  const cancelBtn = document.createElement("a");
+  cancelBtn.classList.add("a-deleteBtn")
   cancelBtn.innerText = "취소";
-  cancelBtn.setAttribute("onclick", `updateCancel(this)`);
-  
+  cancelBtn.style.marginLeft = "8px";
 
-  // 10. 버튼 영역에 수정/취소 버튼 추가 후
-  //     댓글 행에 버튼 영역 추가
+  // 취소 버튼에 onclick 이벤트 리스너 추가 
+  cancelBtn.setAttribute("onclick", `updateCancel(this)`);
+
+  // 버튼 영역에 수정, 삭제 버튼 추가
   commentBtnArea.append(updateBtn, cancelBtn);
-  chatMainContainertemp.append(commentBtnArea);
+  chatMainContainertemp.children[0].append(commentBtnArea);
 
 }
 // --------------------------------------------------------------------
@@ -624,8 +644,7 @@ const showUpdateComment = (commentNo, memberNickname, Img, btn) => {
  */
 const updateCancel = (btn) => {
   if(confirm("취소 하시겠습니까?")){
-    console.log(btn.parentElement.parentElement);
-    const commentRow = btn.parentElement.parentElement;  // 기존 댓글 행
+    const commentRow = btn.parentElement.parentElement.parentElement;  // 기존 댓글 행
     commentRow.after(beforeCommentRow); // 기존 댓글 다음에 백업 추가
     commentRow.remove(); // 기존 삭제 -> 백업이 기존 행 위치로 이동
   }
@@ -641,9 +660,8 @@ const updateCancel = (btn) => {
  */
 const updateComment = (commentNo, btn) => {
   // 수정된 내용이 작성된 textarea 얻어오기
-  const textarea = btn.parentElement.parentElement.children[0];
-  
-  console.log(textarea);
+  const textarea = btn.parentElement.parentElement.parentElement.children[1].children[1];
+  console.log(textarea.value);
   // 유효성 검사
   if(textarea.value.trim().length == 0){
     alert("댓글 작성 후 수정 버튼을 클릭해 주세요");
