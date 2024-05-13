@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.norazo.myPage.model.service.MyPageService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.service.BoardService;
 import edu.kh.norazo.member.model.dto.Member;
@@ -218,7 +222,46 @@ public class MyPageController {
 		return "board/boardList";
 	}
 	
-	
+
+	@GetMapping("secession")
+	public String secession() {
+		return "myPage/secession";
+	}
+	@PostMapping("secession")
+	public String secession(
+				@RequestParam("memberPw") String memberPw,
+				@SessionAttribute("loginMember") Member loginMember,
+				SessionStatus status,
+				RedirectAttributes ra,
+				HttpServletResponse resp,
+				HttpSession session
+			) {
+		
+		// 서비스 호출
+		int memberNo = loginMember.getMemberNo();
+		
+		int result = service.secession(memberPw, memberNo);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) {
+			message = "탈퇴 되었습니다.";
+			path = "/";
+			
+			status.setComplete(); // 세션 완료시킴
+			session.invalidate();
+			
+		} else {
+			message = "비밀번호가 일치하지 않습니다.";
+			path = "secession";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+		
+	}
 	
 	
 	
