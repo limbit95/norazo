@@ -1,5 +1,6 @@
 package edu.kh.norazo.member.model.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.scheduling.annotation.Async;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.norazo.email.model.service.EmailService;
 import edu.kh.norazo.member.model.dto.Member;
 import edu.kh.norazo.member.model.mapper.MemberMapper;
+import edu.kh.norazo.myPage.model.exception.DeleteAllBoardException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -85,9 +87,10 @@ public class MemberServiceImpl implements MemberService{
 		
 		// 평문인 findPassword를 메일로 보내기
 		String result = emailService.sendPwEmail(inputMember, findPassword);
-		
 		// 암호화된 비밀번호를 디비에 업데이트
 		
+		log.info("result :", result);
+		 
 		findPassword = bcrypt.encode(result);
 		
 		inputMember.setMemberPw(findPassword);
@@ -127,6 +130,35 @@ public class MemberServiceImpl implements MemberService{
 	          
 	       }
 	       return key;
+	}
+	
+	
+	// 탈퇴한 회원 목록 조회
+	@Override
+	public List<Member> secessionMemberList() {
+		return mapper.secessionMemberList();
+	}
+
+	// 탈퇴한 회원 게시글 삭제 및 관리 테이블로 이동
+	@Override
+	public int secessionMemberManager(List<Member> memberList) {
+		int result = 0;
+		for(Member member : memberList) {
+			result += mapper.deleteAllBoard(member);
+		}
+		
+		result = 0;
+		for(Member member : memberList) {
+			result += mapper.moveToSecessionGroup(member);
+		}
+		
+		result = 0;
+		for(Member member : memberList) {
+			result += mapper.deleteSecessionMemberList(member);
+		}
+		
+		
+		return result;
 	}
 
 }

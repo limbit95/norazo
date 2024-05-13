@@ -97,16 +97,18 @@
   </select>
 	
 	<select id="selectPrevAndNextBoard">
-      SELECT * FROM (
-        SELECT 
-            BOARD_NO AS "currentBoardNo",
-            LAG(BOARD_NO) OVER (ORDER BY BOARD_NO) AS "prevBoardNo",
-
-            LEAD(BOARD_NO) OVER (ORDER BY BOARD_NO) AS "nextBoardNo"
-        FROM "BOARD"
-        WHERE BOARD_CODE = #{boardCode}
-      )
-      WHERE "currentBoardNo" = #{boardNo}
-	  </select>
+     	SELECT * FROM (
+	       SELECT 
+	           BOARD_NO AS "currentBoardNo",
+	           LAG(BOARD_NO) OVER (ORDER BY BOARD_NO) AS "prevBoardNo",
+	
+	           LEAD(BOARD_NO) OVER (ORDER BY BOARD_NO) AS "nextBoardNo"
+	       FROM "BOARD"
+	       WHERE BOARD_CODE = #{boardCode}
+	     )
+	     WHERE "currentBoardNo" = #{boardNo}
+  	</select>
+	  
+	
 	
 </mapper>

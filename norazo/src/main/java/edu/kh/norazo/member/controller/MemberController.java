@@ -157,6 +157,7 @@ public class MemberController {
 		ra.addFlashAttribute("message", message);
 		return "redirect:"+path;
 	}
+	
 	@GetMapping("findPw")
 	public String findPw() {
 		

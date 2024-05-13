@@ -87,9 +87,9 @@
                         <!-- 사람 아이콘, 정원(1~50명) -->
                         <ion-icon name="person-outline" class="member-count-limit"></ion-icon>
                         <h2>정원(1 ~ 50명)</h2>
-                        <select id="" class="member-count-select" name="memberCountLimit"
+                        <select id="" class="member-count-select" name="memberCountLimit" 
                                 th:data-sports-type-list="${session.sportsTypeList}">
-                            <option value="">인원수</option>
+                            <option th:value="${board.memberCountLimit}">인원수</option>
                         </select>
                     </div>
                 </div>

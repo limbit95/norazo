@@ -58,6 +58,8 @@ findPwForm.addEventListener("submit", e =>{
     return;
 
    }
+});
+
    const findPwBtn = document.getElementById("findPwBtn");
 
 // checkObj가 true이면 버튼을 숨깁니다.

@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.kh.norazo.board.model.dto.Board;
 import edu.kh.norazo.board.model.dto.Pagination;
 import edu.kh.norazo.board.model.mapper.BoardMapper;
+import edu.kh.norazo.member.model.dto.Member;
+import edu.kh.norazo.myPage.model.exception.DeleteAllBoardException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -87,4 +89,6 @@ public class BoardServiceImpl implements BoardService{
 	public Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map) {
 		return mapper.selectPrevAndNextBoard(map);
 	}
+
+  	
 }

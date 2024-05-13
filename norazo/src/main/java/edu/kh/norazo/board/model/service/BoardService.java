@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.norazo.board.model.dto.Board;
+import edu.kh.norazo.member.model.dto.Member;
 
 public interface BoardService {
 
@@ -49,6 +50,9 @@ public interface BoardService {
 
 	
 	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
+
+
+	
 
 
 
