@@ -55,6 +55,7 @@ textarea {
     font-family: 'regular';
     font-size: 25px;
 }
+
 textarea:focus {
     outline: none;
 }

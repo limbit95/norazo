@@ -18,3 +18,7 @@ footer > div {
     margin: 10px;
     width: 15%;
 }
+
+a{
+    cursor: pointer;
+}
