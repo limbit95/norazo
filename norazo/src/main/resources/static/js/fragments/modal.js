@@ -113,12 +113,12 @@ thumbnail.forEach( (i) => {
             // 참석되어 있는 모임글은 모달창 조회가 아닌 상세 조회 페이지로 바로 이동
             if(loginMember != null) {
                 board.memberList.forEach( (i) => {
-                    if(loginMember.memberNo == i.memberNo && main == null){
+                    if(loginMember.memberNo == i.memberNo){
                         modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
                         return;
                     }
-                    if(loginMember.memberNo == i.memberNo && main != null){
+                    if(loginMember.memberNo == i.memberNo){
                         modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo + "?main";
                         return;
@@ -215,12 +215,12 @@ boardTitle.forEach( (i) => {
             // 참석되어 있는 모임글은 모달창 조회가 아닌 상세 조회 페이지로 바로 이동
             if(loginMember != null) {
                 board.memberList.forEach( (i) => {
-                    if(loginMember.memberNo == i.memberNo && main == null){
+                    if(loginMember.memberNo == i.memberNo){
                         modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
                         return;
                     }
-                    if(loginMember.memberNo == i.memberNo && main != null){
+                    if(loginMember.memberNo == i.memberNo){
                         modalContent.classList.add("popup-hidden");
                         location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo + "?main";
                         return;
