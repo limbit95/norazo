@@ -65,26 +65,4 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
-	<!-- 탈퇴한 회원 기존 Member 테이블에서 SECESSION_MEMBER 테이블로 이동 -->
-	<insert id="moveToSecessionGroup">
-		INSERT INTO SECESSION_MEMBER VALUES(
-			SEQ_SECESSION_MEMBER_NO.NEXTVAL,
-			#{memberEmail},
-			#{memberPw},
-			#{memberNickname},
-			#{memberTel},
-			#{memberAddress},
-			#{gender},
-			#{birthDate},
-			SYSDATE,
-			#{memberDelFl}
-		)
-	</insert>
-	
-	<!-- 매월 1일마다 탈퇴한 회원 정보 폐기 -->
-	<delete id="deleteSecessionMemberList">
-		DELETE FROM "MEMBER" 
-		WHERE MEMBER_NO = #{memberNo}
-	</delete>
-	
 </mapper>
