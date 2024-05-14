@@ -51,7 +51,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public int checkNickname(String memberNickname) {
-		// TODO Auto-generated method stub
+
 		return mapper.checkNickname(memberNickname);
 	}
 
