@@ -139,24 +139,13 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.secessionMemberList();
 	}
 
-	// 탈퇴한 회원 게시글 삭제 및 관리 테이블로 이동
+	// 탈퇴한 회원 게시글 삭제
 	@Override
 	public int secessionMemberManager(List<Member> memberList) {
 		int result = 0;
 		for(Member member : memberList) {
 			result += mapper.deleteAllBoard(member);
 		}
-		
-		result = 0;
-		for(Member member : memberList) {
-			result += mapper.moveToSecessionGroup(member);
-		}
-		
-		result = 0;
-		for(Member member : memberList) {
-			result += mapper.deleteSecessionMemberList(member);
-		}
-		
 		
 		return result;
 	}
