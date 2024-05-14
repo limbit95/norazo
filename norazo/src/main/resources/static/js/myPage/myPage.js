@@ -282,16 +282,18 @@ if(signUpForm != null) {
 
 if(loginMember != null) {
     let text = loginMember.memberIntroduce;
-    const introduced = text.replaceAll(/\n/g, "<br>");
-    if (introduced != null) {
-        document.getElementById('introduced').innerHTML = introduced;
+    if (text != null){
+        const introduced = text.replaceAll(/\n/g, "<br>");
+        if (introduced != null) {
+            document.getElementById('introduced').innerHTML = introduced;
+        }
     }
 }
-
+if(loginMember.memberIntroduce != null) {
 const introduce = loginMember.memberIntroduce.replaceAll("<br>", "\r\n");
 
 if( document.getElementById('introduce') != null) {
     if (introduce != null) {
         document.getElementById('introduce').innerHTML = introduce;
     }
-}
+}}
