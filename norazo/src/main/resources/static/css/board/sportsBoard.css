@@ -1,11 +1,11 @@
-@media (min-width: 1900px) {
+@media (min-width: 1550px) {
     .sportsBoardMain {
         display: flex;
         justify-content: start;
         align-items: center;
         flex-direction: column;
         width: 1090px;
-        height: 1350px;
+        height: 1300px;
         margin-top: 30px;
     }
 
@@ -87,13 +87,13 @@
     
 }
 
-@media (max-width: 1900px) {
+@media (max-width: 1550px) {
     .sportsBoardMain {
         display: flex;
         justify-content: start;
         align-items: center;
         flex-direction: column;
-        height: 2000px;
+        height: 1650px;
     }
 
     .board-page-header {
@@ -180,7 +180,7 @@
         justify-content: start;
         align-items: center;
         flex-direction: column;
-        height: 2600px;
+        height: 2250px;
     }
 
     .board-page-header {
@@ -268,7 +268,7 @@
         align-items: center;
         flex-direction: column;
         width: 89.474vw; /* 850 */
-        height: 900px
+        height: 850px
     }
 
     .title-group {
