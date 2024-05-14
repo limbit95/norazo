@@ -19,7 +19,7 @@ public class secessionMemberManagerScheduling {
 
 	private final MemberService service;
 
-	@Scheduled(fixedDelay = 5000) // 이전 작업이 시작된 후 5초 후에 수행
+//	@Scheduled(fixedDelay = 5000) // 이전 작업이 시작된 후 5초 후에 수행
 //	@Scheduled(fixedRate = 5000) // 이전 작업이 끝난 후 5초 후에 수행
 	// cron="초 분 시 일 월 요일 [년도]" - 요일 : 1(SUN) ~ 7(SAT)
 //	@Scheduled(cron = "0,15,30,45 * * * * *") // 시계 초 단위가 0, 15, 30, 45 경우 수행
@@ -27,9 +27,9 @@ public class secessionMemberManagerScheduling {
 //	@Scheduled(cron = "0 0 0 * * *") // 자정마다 수행
 //	@Scheduled(cron = "0 0 12 * * *") // 정오마다 수행
 //	@Scheduled(cron = "0 0 0 1 * *") // 매월 1일 마다 수행
-	@Scheduled(cron = "0 0 * * * *") // 시계 초 단위가 0, 30인 경우 수행 (테스트용)
+	@Scheduled(cron = "0 0 0 * * *") // 시계 초 단위가 0, 30인 경우 수행 (테스트용)
 	public void secessionMemberManager() {
-		log.info("스케줄러 동작");
+		log.info("탈퇴한 회원 처리");
 		
 		List<Member> memberList = service.secessionMemberList();
 		
@@ -40,16 +40,5 @@ public class secessionMemberManagerScheduling {
 		}
 	}
 	
-//	@Scheduled(cron = "0 0 0 1 * *")
-//	public void everyMonthManager() {
-//		
-//		List<Member> memberList = service.secessionMemberList();
-//		
-//		int result = service.secessionMemberManager(memberList);
-//		
-//		if(result > 0) {
-//			log.info("탈퇴한 회원의 처리가 완료되었습니다.");
-//		}
-//	}
 	
 }
