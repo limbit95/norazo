@@ -230,7 +230,7 @@ boardTitle.forEach( (i) => {
         });
         // 모달창 보이기
         modalContent.classList.remove("popup-hidden");
-        backdrop.classList.remove("popup-hidden");
+        // backdrop.classList.remove("popup-hidden");
     });
 });
 
@@ -246,7 +246,7 @@ if(closeBtn != null){
 window.addEventListener("keydown", (e) => {
     if(e.key == 'Escape'){
         modalContent.classList.add("popup-hidden");
-        backdrop.classList.add("popup-hidden");
+        // backdrop.classList.add("popup-hidden");
     };
 });
 
@@ -257,7 +257,7 @@ if(joinBtn != null){
         if(loginMember == null){
             if(confirm("로그인 후 이용해주세요. \n로그인 페이지로 이동하시겠습니까?")){
                 modalContent.classList.add("popup-hidden");
-                backdrop.classList.add("popup-hidden");
+                // backdrop.classList.add("popup-hidden");
                 location.href = "/member/login";
             }
             return;
@@ -265,7 +265,7 @@ if(joinBtn != null){
 
         if(confirm("해당 모임에 참석하시겠습니까?")){
             modalContent.classList.add("popup-hidden");
-            backdrop.classList.add("popup-hidden");
+            // backdrop.classList.add("popup-hidden");
             location.href = "/sportsBoard/detail/" + sportsCode + "/" + boardNo;
         }
     });

@@ -67,5 +67,4 @@ findPwForm.addEventListener("submit", e =>{
     emailMessage.classList.add("error");
     emailMessage.style.fontWeight = "bold";
     emailMessage.innerText = "비밀번호가 전송되었습니다. 잠시만 기다려주세요!";
-
 });
