@@ -70,23 +70,25 @@ if (changePw !== null) {
     });
 }
 
-const secession = document.querySelector("#secession");
+// 탈퇴 form 태그
+const secession1 = document.querySelector("#secession1");
 
-if (secession !== null) {
-    secession.addEventListener("submit", e => {
+if(secession1 != null) {
+
+    secession1.addEventListener("submit", e => {
+
         const memberPw = document.querySelector("#memberPw");
-        const agree = document.querySelector("#agree");
-        if (memberPw.value.trim().length == 0) {
-            alert("비밀번호를 입력하세요");
-            e.preventDefault();
+
+        // - 비밀번호 입력 되었는지 확인
+        if(memberPw.value.trim().length == 0) {
+            alert("비밀번호를 입력해주세요.");
+            e.preventDefault(); // 제출막기
             return;
         }
-        if (!agree.checked) {
-            alert("회원탈퇴를 위해 약관에 동의해주세요");
-            e.preventDefault();
-            return;
-        }
-        if (!confirm("정말 탈퇴 하시겠습니까?")) {
+
+        // 정말 탈퇴? 물어보기
+
+        if( !confirm("정말 탈퇴 하시겠습니까?") ) {
             alert("취소 되었습니다.");
             e.preventDefault();
             return;
@@ -228,7 +230,7 @@ gender.addEventListener("change", function() {
 
 
 
-      // 회원 가입 폼 제출 
+      // 폼 제출 
   const signUpForm = document.querySelector("#updateInfo");
 if(signUpForm != null) {
   signUpForm.addEventListener("submit", e =>{
@@ -277,9 +279,7 @@ if(signUpForm != null) {
   });
 
 }
-const a = document.getElementById("changePwbtn");
-if(a != null) {
-a.addEventListener("click", e => {
+
 if(loginMember != null) {
     let text = loginMember.memberIntroduce;
     const introduced = text.replaceAll(/\n/g, "<br>");
@@ -287,44 +287,11 @@ if(loginMember != null) {
         document.getElementById('introduced').innerHTML = introduced;
     }
 }
-})};
-if(loginMember != null) {
-    let text = loginMember.memberIntroduce;
-    const introduced = text.replaceAll(/\n/g, "<br>");
-    if (introduced != null) {
-        document.getElementById('introduced').innerHTML = introduced;
-    }};
+
 const introduce = loginMember.memberIntroduce.replaceAll("<br>", "\r\n");
+
 if( document.getElementById('introduce') != null) {
     if (introduce != null) {
         document.getElementById('introduce').innerHTML = introduce;
     }
 }
-
-/* 탈퇴 유효성 검사 */
-
-// 탈퇴 form 태그
-const secession1 = document.querySelector("#secession1");
-
-
-if(secession1 != null) {
-
-    secession1.addEventListener("submit", e => {
-
-        const memberPw = document.querySelector("#memberPw");
-
-        // - 비밀번호 입력 되었는지 확인
-        if(memberPw.value.trim().length == 0) {
-            alert("비밀번호를 입력해주세요.");
-            e.preventDefault(); // 제출막기
-            return;
-        }
-
-        // 정말 탈퇴? 물어보기
-        if( !confirm("정말 탈퇴 하시겠습니까?") ) {
-            alert("취소 되었습니다.");
-            e.preventDefault();
-            return;
-        }
-    });
-};
