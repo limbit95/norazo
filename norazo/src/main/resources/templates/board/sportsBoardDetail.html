@@ -68,6 +68,13 @@
                  <th:block th:replace="~{common/fragments/sportsBoardDetailModal}"></th:block>
 
                   <div class="joinMemberImgContainer">
+                    <i class="fa-solid fa-crown" id="crwon1"></i>
+                    <i class="fa-solid fa-crown" id="crwon2"></i>
+                    <i class="fa-solid fa-crown" id="crwon3"></i>
+                    <i class="fa-solid fa-crown" id="crwon4"></i>
+                    <i class="fa-solid fa-crown" id="crwon5"></i>
+                    <i class="fa-solid fa-crown" id="crwon6"></i>
+                    <i class="fa-solid fa-crown" id="crwon7"></i>
 
                     <th:block th:each="memberList, stat : ${memberList}" th:object="${memberList}">
                       <th:block th:if="${5 > stat.index}">

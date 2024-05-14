@@ -9,9 +9,21 @@
       <h4 class="modal-joinMember" th:text="|${board.attendMemberCount} / ${board.memberCountLimit}|">ATTENDED MEMBER</h4>
     </div>
     <div class="userInfo-modal">
-      <div th:each="memberList : ${memberList}" th:object="${memberList}">
-        <img th:src="*{profileImg} ?: #{user.default.image}" class="userImg-modal">
-        <h3 class="userName-modal" th:text="*{memberNickname}">UserName</h3>
+      <div th:each="memberList, i : ${memberList}" th:object="${memberList}">
+        <div th:if="${i.index} == 0" class="master">
+          <i class="fa-solid fa-crown" id="modal-crwon1"></i>
+          <i class="fa-solid fa-crown" id="modal-crwon2"></i>
+          <i class="fa-solid fa-crown" id="modal-crwon3"></i>
+          <i class="fa-solid fa-crown" id="modal-crwon4"></i>
+          <i class="fa-solid fa-crown" id="modal-crwon5"></i>
+          <i class="fa-solid fa-crown" id="modal-crwon6"></i>
+          <i class="fa-solid fa-crown" id="modal-crwon7"></i>
+          <img th:src="*{profileImg} ?: #{user.default.image}" class="userImg-modal">
+          <h3 class="userName-modal" th:text="*{memberNickname}">UserName</h3>
+        </div>
+
+        <img th:if="${i.index} > 0" th:src="*{profileImg} ?: #{user.default.image}" class="userImg-modal">
+        <h3 th:if="${i.index} > 0" class="userName-modal" th:text="*{memberNickname}">UserName</h3>
       </div>
     </div>
     <form action="" method="GET">

@@ -78,24 +78,53 @@
     text-decoration: none;
     transition: color 0.3s;
 }
-textarea {
+
+
+.board-content{
+    display: flex;
+    background-color: var(--white);
+    transition: color 0.3s;
     resize: none;
     width: 1000px;
     height: 500px;
     border-radius: 30px;
     padding-left: 20px;
+    padding-right: 20px;
     padding-top: 20px;
     margin-top: 20px;
 }
+
+
 #boardContent{
     color: var(--gray1); 
+    background-color: var(--white);
     font-size: 20px; 
     font-family: 'main' !important;
     word-wrap: break-word;
     text-decoration: none;
     transition: color 0.3s;
     border: none;
+    width: 970px;
+    height: 460px;
+    overflow: auto;
+    overflow-x: hidden;
+    resize: none;
 }
+#boardContent::-webkit-scrollbar {
+    width: 20px;
+}
+#boardContent::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 30px;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+}
+#boardContent::-webkit-scrollbar-track:vertical {
+    background-color: var(--primary3);
+    border-radius: 30px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
 textarea:focus {
     outline: none;
 }

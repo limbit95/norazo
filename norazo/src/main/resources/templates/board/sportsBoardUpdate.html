@@ -54,7 +54,7 @@
                         <div class="datetime">
                             <ion-icon name="calendar-clear-outline" class="date-icon"></ion-icon>
                             <!-- 연도월일 양식 바꿔서 삽입해야함 -->
-                            <input type="datetime-local" name="meetingDate"> 
+                            <input type="datetime-local" name="meetingDate" id="dateselect" th:value="${board.meetingDate}"> 
                         </div>
 
                         <!-- 카테고리 선택 -->
@@ -89,7 +89,7 @@
                         <h2>정원(1 ~ 50명)</h2>
                         <select id="" class="member-count-select" name="memberCountLimit" 
                                 th:data-sports-type-list="${session.sportsTypeList}">
-                            <option th:value="${board.memberCountLimit}">인원수</option>
+                            <option th:value="${board.memberCountLimit}">[[${board.memberCountLimit}]]</option>
                         </select>
                     </div>
                 </div>

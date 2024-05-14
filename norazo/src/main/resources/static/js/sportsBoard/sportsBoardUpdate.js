@@ -1,3 +1,40 @@
+let now = new Date(); // 현재 날짜와 시간
+ // 현재 날짜와 시간을 ISO 형식으로 변환  ex)2024-05-14T10:56
+
+function disablePastDates(dateNow) { // 이전 날짜를 비활성화하고 이후 날짜만 선택 가능하도록 설정하는 함수
+
+  let nowISO = now.toISOString().substring(0, 16);
+  
+  let inputField = document.getElementById('dateselect');
+  inputField.min = nowISO;
+ 
+  if(!checkTimeValidity()){
+    return false;
+  };
+  return true;
+}
+
+// 페이지가 로드될 때 disablePastDates 함수 실행
+window.onload = disablePastDates;
+
+function checkTimeValidity() {
+  let selectedDateTime = new Date(document.getElementById('dateselect').value);
+
+  if (selectedDateTime < now) {
+    alert('현재 시간보다 이후 시간만 선택 가능합니다');
+    document.getElementById('dateselect').value = '';
+    return false;
+  }
+  return true;
+}
+
+document.getElementById('dateselect').addEventListener("input", e => {
+  checkTimeValidity();
+});
+
+
+
+
 
 /* 선택된 이미지 미리보기 */
 // const previewList = document.getElementsByClassName("preview"); // img 태그 5개
@@ -178,58 +215,67 @@ const meetingLocation = document.querySelector("[name='meetingLocation']");
 const boardContent = document.querySelector("[name='boardContent']");
 
 boardUpdateFrm.addEventListener("submit", e => {
-    if(inputImageList[0].value == null){
-        alert("대표 사진을 첨부해주세요.");
-        e.preventDefault();
-        return;
-    }
+  now = new Date();
 
-    if(boardTitle.value.trim().length == 0){
-        alert("제목을 작성해주세요.");
-        boardTitle.focus();
-        e.preventDefault();
-        return;
-    }
+  if(inputImageList[0].value == null){
+      alert("대표 사진을 첨부해주세요.");
+      e.preventDefault();
+      return;
+  }
 
-    if(meetingDate.value.length == 0){
-        alert("날짜를 선택해주세요.");
-        meetingDate.focus();
-        e.preventDefault();
-        return;
-    }
+  if(boardTitle.value.trim().length == 0){
+      alert("제목을 작성해주세요.");
+      boardTitle.focus();
+      e.preventDefault();
+      return;
+  }
 
-    if(categorySelect.value.length == 0){
-        alert("카테고리를 선택해주세요.");
-        categorySelect.focus();
-        e.preventDefault();
-        return;
-    }
+  if(meetingDate.value.length == 0){
+      alert("날짜를 선택해주세요.");
+      meetingDate.focus();
+      e.preventDefault();
+      return;
+  }
 
-    if(meetingLocation.value.trim().length == 0){
-        alert("모임 장소를 작성해주세요.");
-        meetingLocation.focus();
-        e.preventDefault();
-        return;
-    }
+  if(categorySelect.value.length == 0){
+      alert("카테고리를 선택해주세요.");
+      categorySelect.focus();
+      e.preventDefault();
+      return;
+  }
 
-    if(memberCountSelect.value.length == 0){
-        alert("참석 가능 인원 제한수를 선택해주세요.");
-        memberCountSelect.focus();
-        e.preventDefault();
-        return;
-    }
+  if(meetingLocation.value.trim().length == 0){
+      alert("모임 장소를 작성해주세요.");
+      meetingLocation.focus();
+      e.preventDefault();
+      return;
+  }
 
-    if(memberCountSelect.value < attendMemberCount){
-        alert("현재 참석한 회원수가 참석 가능 인원 제한수보다 많습니다.");
-        memberCountSelect.focus();
-        e.preventDefault();
-        return;
-    }
+  if(memberCountSelect.value.length == 0){
+      alert("참석 가능 인원 제한수를 선택해주세요.");
+      memberCountSelect.focus();
+      e.preventDefault();
+      return;
+  }
 
-    if(boardContent.value.trim().length == 0){
-        alert("모임 소개글을 작성해주세요.");
-        boardContent.focus();
-        e.preventDefault();
-        return;
-    }
+  if(memberCountSelect.value < attendMemberCount){
+      alert("현재 참석한 회원수가 참석 가능 인원 제한수보다 많습니다.");
+      memberCountSelect.focus();
+      e.preventDefault();
+      return;
+  }
+
+  if(boardContent.value.trim().length == 0){
+      alert("모임 소개글을 작성해주세요.");
+      boardContent.focus();
+      e.preventDefault();
+      return;
+  }
+
+  if(!disablePastDates(now)){
+    e.preventDefault();
+    meetingDate.focus();
+    return;
+  }
+
 });

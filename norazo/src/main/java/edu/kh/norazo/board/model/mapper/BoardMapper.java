@@ -51,6 +51,12 @@ public interface BoardMapper {
   
 	Map<String, Integer> selectPrevAndNextBoard(Map<String, Object> map);
 
+	/** 게시판 종류별 게시물 수 조회
+	 * @param boardCode
+	 * @return
+	 */
+	int getboardTypeListCount(int boardCode);
+
 	
 
 

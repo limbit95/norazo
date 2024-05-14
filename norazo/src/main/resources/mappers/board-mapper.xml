@@ -43,6 +43,13 @@
 		AND BOARD_CODE = 3
 	</select>
 	
+	<select id="getboardTypeListCount">	
+		SELECT COUNT(*)  
+		FROM BOARD
+		WHERE BOARD_DEL_FL = 'N'
+		AND BOARD_CODE = #{boardCode}
+	</select>
+	
 	<!-- 게시글 상세 조회 -->
 	<select id="selectOne">
 		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, BOARD_CODE, BOARD_NAME,
