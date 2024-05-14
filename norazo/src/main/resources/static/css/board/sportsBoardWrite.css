@@ -299,6 +299,7 @@
     line-height: 140%;
     border: none;
     outline: none;
+    resize: none;
 }
 
 /* 등록하기 버튼 div */

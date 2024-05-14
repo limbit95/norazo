@@ -53,10 +53,10 @@
     white-space: scroll;
 }
 
-#introduced::-webkit-scrollbar {
+/* #introduced::-webkit-scrollbar {
     width: 0%;
     background-color: black;
-  }
+  } */
 
 .Rectangle1 {
     width: 250px;
@@ -124,15 +124,39 @@
     border-bottom-right-radius: 30px;
     background-color: var(--primary2);
     line-height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
+
 #introduced{
+    width: 230px;
     overflow-x: hidden;
-    padding: 10px;
     text-align: center;
     line-height: 40px;
-    padding: 15px;
+    padding-left: 15px;
 }
+#introduced {
+    overflow: auto;
+    overflow-x: hidden;
+}
+#introduced::-webkit-scrollbar {
+    width: 13px;
+}
+#introduced::-webkit-scrollbar-thumb {
+    background-color: var(--primary3);
+    border-radius: 30px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+#introduced::-webkit-scrollbar-track:vertical {
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
+
+
 
 .MyProfileRight {
     width: 620px;

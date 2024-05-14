@@ -79,7 +79,7 @@
     transition: color 0.3s;
 }
 
-#boardContent{
+.board-content{
     display: flex;
     word-break: break-all;
     text-align: left;
@@ -98,7 +98,31 @@
     padding-right: 20px;
     padding-top: 20px;
     margin-top: 20px;
+    white-space: pre-wrap;
+    cursor: auto;
 }
+
+#boardContent {
+    width: 960px;
+    height: 460px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+#boardContent::-webkit-scrollbar {
+    width: 20px;
+}
+#boardContent::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 30px;
+    background-clip: padding-box;
+    border: 3px solid transparent;
+}
+#boardContent::-webkit-scrollbar-track:vertical {
+    background-color: var(--primary3);
+    border-radius: 30px;
+    box-shadow: inset 0px 0px 5px white;
+}
+
 
 textarea:focus {
     outline: none;

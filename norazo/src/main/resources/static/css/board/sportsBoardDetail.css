@@ -266,18 +266,42 @@
     height: 580px; 
     background: var(--white); 
     border-radius: 30px;
+    padding-left: 15px;
+    padding-right: 0px;
 }
 
 .boardContent {
+    width: 540px; 
+    height: 580px; 
     text-align: center; 
     color: var(--gray1); 
     /* font-weight: 400;  */
     letter-spacing: 2px;
     line-height: 25px;
     word-wrap: break-word;
-    padding: 15px;
-    
+    white-space: pre-wrap;
+    overflow: auto;
 }
+.boardContent::-webkit-scrollbar {
+    width: 15px;
+}
+.boardContent::-webkit-scrollbar-thumb {
+    background-color: var(--primary3);
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+}
+.boardContent::-webkit-scrollbar-track:vertical {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+}
+.boardContent::-webkit-scrollbar:horizontal {
+    height: 0px;
+}
+
+
+
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
 /* ----------------------------------------------------------- */
@@ -567,7 +591,7 @@
 .boardCommentDivTop {
     width: 400px;
     height: 475px;
-    overflow: scroll;
+    overflow: auto;
     overflow-x: hidden;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -579,16 +603,16 @@
 }
 
 .boardCommentDivTop::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
 }
 .boardCommentDivTop::-webkit-scrollbar-thumb {
-    background-color: white;
+    background-color: var(--primary3);
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
 }
 .boardCommentDivTop::-webkit-scrollbar-track:vertical {
-    background-color: var(--primary3);
+    background-color: var(--white);
     border-radius: 10px;
     box-shadow: inset 0px 0px 5px white;
 }
@@ -786,4 +810,109 @@ form {
     width: 255px;
     height: 70px;
     padding: 10px;
+}
+
+
+/* 방장 표시 아이콘 */
+#crwon1 {
+    position: absolute;
+    bottom: 8px;
+    left: 72px;
+    color: var(--secondary);
+    font-size: 32px;
+    z-index: 1;
+}
+#crwon2 {
+    position: absolute;
+    bottom: 8px;
+    left: 71.5px;
+    color: white;
+    font-size: 32px;
+}
+#crwon3 {
+    position: absolute;
+    bottom: 8.5px;
+    left: 71.5px;
+    color: white;
+    font-size: 32px;
+}
+#crwon4 {
+    position: absolute;
+    bottom: 8.5px;
+    left: 72px;
+    color: white;
+    font-size: 32px;
+}
+#crwon5 {
+    position: absolute;
+    bottom: 8.5px;
+    left: 72.5px;
+    color: white;
+    font-size: 32px;
+}
+#crwon6 {
+    position: absolute;
+    bottom: 8px;
+    left: 72.5px;
+    color: white;
+    font-size: 32px;
+}
+#crwon7 {
+    position: absolute;
+    bottom: 7.5px;
+    left: 72px;
+    color: white;
+    font-size: 32px;
+}
+
+/* 참여 인원 현황에서 보이는 방장 표시 아이콘*/
+#modal-crwon1 {
+    position: absolute;
+    bottom: 2px;
+    left: 44px;
+    color: var(--secondary);
+    font-size: 30px;
+    z-index: 1;
+}
+#modal-crwon2 {
+    position: absolute;
+    bottom: 2px;
+    left: 43.5px;
+    color: white;
+    font-size: 30px;
+}
+#modal-crwon3 {
+    position: absolute;
+    bottom: 2px;
+    left: 43.5px;
+    color: white;
+    font-size: 30px;
+}
+#modal-crwon4 {
+    position: absolute;
+    bottom: 2.5px;
+    left: 44px;
+    color: white;
+    font-size: 30px;
+}
+#modal-crwon5 {
+    position: absolute;
+    bottom: 2.5px;
+    left: 44.5px;
+    color: white;
+    font-size: 30px;
+}
+#modal-crwon6 {
+    position: absolute;
+    bottom: 2px;
+    left: 44.5px;
+    color: white;
+    font-size: 30px;
+}
+#modal-crwon7 {
+    position: absolute;
+    bottom: 1.5px;
+    left: 44px;
+    color: white;
+    font-size: 30px;
 }

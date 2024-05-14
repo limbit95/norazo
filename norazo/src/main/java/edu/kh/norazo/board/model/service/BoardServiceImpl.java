@@ -27,7 +27,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public Map<String, Object> selectBoardList(int boardCode, int cp) {
 
-		int listCount = mapper.getFreeListCount(boardCode);
+		int listCount = mapper.getboardTypeListCount(boardCode);
 		
 		Pagination pagination = new Pagination(cp,listCount); 
 		
