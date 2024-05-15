@@ -1,56 +1,73 @@
 <div class="commnet-area">
+    
+    <div id="commentList">
+    
+        <div 
+                th:each="comment : ${board.commentList}"
+                th:classappend="${comment.parentCommentNo} != 0 ? child-comment : user-info-area"
+                th:object="${comment}">
 
-    <div class="user-info-area">
+            <th:block th:if="*{commentDelFl} == 'Y'">
+                <div class="div2">
+                    <div class="comment-textarea2">삭제된 댓글 입니다</div>
+                </div>
+            </th:block>
 
-        <div class="user-icon">
+            <div th:if="*{commentDelFl} == 'N'"
+            th:classappend="*{parentCommentNo} != 0 ? child-comment3 : user-icon">
 
-            <div class="user-profile-info">
-                <img th:unless="${session.loginMember}"
-                     th:src="#{user.default.image}">
-                <img th:if="${session.loginMember}"
-                     th:src="${session.loginMember.profileImg} ?: #{user.default.image}">
-                <h3 id="comment-user-font">닉네임</h3>
-                <h3 id="sysdate-font">2024-05-08-sysdate</h3>                    
+                <ion-icon th:if="*{parentCommentNo}" name="return-down-forward-sharp" class="under"></ion-icon>
+
+                <div class="user-profile-info">
+                    <img th:unless="*{profileImg}" th:src="#{user.default.image}">
+                    <img th:if="*{profileImg}" th:src="*{profileImg}">
+                    <h3 id="comment-user-font" th:text="*{memberNickname}">닉네임</h3>
+                    <h3 id="sysdate-font" th:text="*{commentWriteDate}">작성일자</h3>
+                </div>
+                
+                <div class="a-area">
+                    <th:block th:if="${session.loginMember == null or session.loginMember.memberNo != comment.memberNo}">
+                        <a class="action-btn" style="width: 100px;"></a>
+                    </th:block>
+                    <a class="action-btn" th:value="*{memberNickname}" th:onclick="|showInsertComment(*{commentNo}, this, this.getAttribute('value'))|">답글</a>
+
+                    <th:block th:if="${session.loginMember != null and session.loginMember.memberNo == comment.memberNo}">
+                        <a class="action-btn" th:onclick="|showUpdateComment(*{commentNo}, this, ${comment.parentCommentNo})|">수정</a>
+                        <a class="action-btn" th:onclick="|deleteComment(*{commentNo})|">삭제</a>
+                    </th:block>
+                </div>
+                
             </div>
+    
+            <div th:text="*{commentContent}" th:if="*{commentDelFl} == 'N'"
+                 th:classappend="*{parentCommentNo} != 0 ? child-comment2 : comment-textarea"></div>
 
-            <div class="a-area">
-            
-                <a href="" class="action-btn">답글</a>
-                <a href="" class="action-btn">수정</a>
-                <a href="" class="action-btn">삭제</a>
-
-            </div>
         </div>
-
-        <div class="textarea-div">
-            <div name="" id="comment-textarea" class="boardCommentSubmit"></div>
-        </div>
-
+        
     </div>
-
     <div class="comment-container">
-        <textarea name="" id="reply-textarea" class="boardCommentSubmit"></textarea>
+        <textarea class="reply-textarea" ></textarea>
         
         <div class="comment-submit">           
-            <button class="commentSubmitBtn">댓글 등록</button>
+            <button class="commentSubmitBtn" id="addComment">댓글 등록</button>
         </div> 
-        
     </div>
-    <!-- 페이지 네이션 -->
-    <div class="pagination-div">
-        <ul class="pagination">
-
-            <!-- 이전 페이지로 이동 --> 
-            <li th:if="${prevBoardNo}">
-                <button type="button" class="to-list-button" id="prevBoardNo" name="prevBoardNo" th:value="${prevBoardNo}">&lt;&lt;</button>
-            </li>
-
-            <!-- 목록 버튼 -->
-            <li><button class="to-list-button" id="listButton" name="listButton">목록으로</button></li>
-
-            <!-- 다음 페이지로 이동 -->
-            <li th:if="${nextBoardNo}"><button class="to-list-button" id="nextBoardNo" name="nextBoardNo" th:value="${nextBoardNo}">&gt;&gt;</button></li>
-        </ul>
-    </div>
+    
 </div>
 
+<!-- 페이지 네이션 -->
+<div class="pagination-div">
+    <ul class="pagination">
+
+        <!-- 이전 페이지로 이동 --> 
+        <li th:if="${prevBoardNo}">
+            <button type="button" class="to-list-button" id="prevBoardNo" name="prevBoardNo" th:value="${prevBoardNo}">&lt;&lt;</button>
+        </li>
+
+        <!-- 목록 버튼 -->
+        <li><button class="to-list-button" id="listButton" name="listButton">목록으로</button></li>
+
+        <!-- 다음 페이지로 이동 -->
+        <li th:if="${nextBoardNo}"><button class="to-list-button" id="nextBoardNo" name="nextBoardNo" th:value="${nextBoardNo}">&gt;&gt;</button></li>
+    </ul>
+</div>
