@@ -48,23 +48,24 @@
                                     <button class="updateBoardBtn">수정</button>
                                     <button class="deleteBoardBtn">삭제</button>
                             </th:block>
-                        </div>    
+                        </div>
 
                     </div>
                 </div>
                 
-            </div>      
+            </div>
 
 
             <th:block th:replace="~{board/comment}"></th:block>
+
     </main>
     <script src="/js/board/boardDetail.js"></script>
+    <script src="/js/fragments/comment.js"></script>
     <th:block th:replace="~{common/footer}"></th:block>
     
     <script th:inline="javascript">
         const prevBoardNo = /*[[${prevBoardNo}]]*/"이전페이지";
         const nextBoardNo = /*[[${nextBoardNo}]]*/"다음페이지";
-
     </script>
 
 </body>
