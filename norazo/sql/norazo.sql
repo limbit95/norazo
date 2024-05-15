@@ -449,6 +449,10 @@ COMMIT;
 
 ----------------------------------------------------------------------------------------
 
+SELECT * FROM BOARD ORDER BY BOARD_NO;
+
+DELETE FROM BOARD WHERE BOARD_NO = 20;
+
 DELETE FROM BOARD_IMG;
 DELETE FROM BOARD_LIKE;
 DELETE FROM ATTEND_MEMBER;
