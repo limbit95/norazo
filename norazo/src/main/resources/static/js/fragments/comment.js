@@ -125,8 +125,10 @@ const selectCommentList = () => {
             commentBtnArea.classList.add("a-area");
             
             // 답글 버튼
+            console.log(comment);
             const childCommentBtn = document.createElement("a");
             childCommentBtn.classList.add("action-btn");
+            childCommentBtn.setAttribute("value", comment.memberNickname);
             childCommentBtn.innerText = "답글";
             
             // 답글 버튼에 onclick 이벤트 리스너 추가 
@@ -355,6 +357,8 @@ const selectCommentList = () => {
   const insertChildComment = (parentCommentNo, btn, memberNickname) => {
     // 답글 내용이 작성된 textarea
     const textarea = btn.parentElement.previousElementSibling;
+    // const idx = memberNickname.indexOf("@");
+    // const memberEmail = memberNickname.substr(0, idx);
 
     // 유효성 검사
     if(textarea.value.trim().length == 0){

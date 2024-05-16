@@ -102,11 +102,11 @@ const selectCommentList = () => {
 
         // 답글 버튼
         const childCommentBtn = document.createElement("a");
+        childCommentBtn.setAttribute("value", comment.memberNickname);
         childCommentBtn.classList.add("a-insertBtn");
         childCommentBtn.innerText = "답글";
 
         // 답글 버튼에 onclick 이벤트 리스너 추가 
-        childCommentBtn.setAttribute("value", comment.memberNickname);
         childCommentBtn.setAttribute("onclick", 
           `showInsertComment(${comment.commentNo}, this.getAttribute('value'), this)`);     
           
@@ -125,7 +125,7 @@ const selectCommentList = () => {
           updateBtn.style.marginLeft = "3px";
           
           // 수정 버튼에 onclick 이벤트 리스너 추가 
-          updateBtn.setAttribute("value", comment.memberNickname);
+          updateBtn.setAttribute("value", comment.memberEmail);
           updateBtn.setAttribute("name", comment.profileImg);
           updateBtn.setAttribute("onclick", 
           `showUpdateComment(${comment.commentNo}, this.getAttribute('value'), this.getAttribute('name'), this)`); 
@@ -469,7 +469,10 @@ const insertCancel = (cancelBtn) => {
  */
 const insertChildComment = (parentCommentNo, memberNickname, btn) => {
   // 답글 내용이 작성된 textarea
+  console.log(memberNickname);
   const textarea = document.querySelector(".chatSubmitContainer2").childNodes[0];
+  // const idx = memberNickname.indexOf("@");
+  // const memberEmail = memberNickname.substr(0, idx);
 
   // 유효성 검사
   if(textarea.value.trim().length == 0){
@@ -480,7 +483,7 @@ const insertChildComment = (parentCommentNo, memberNickname, btn) => {
 
   // ajax를 이용해 댓글 등록 요청
   const data = {
-    "commentContent" : "(@" + memberNickname + ") " + textarea.value,
+    "commentContent" : "@" + memberNickname + " " + textarea.value,
     "boardNo"        : boardNo,
     "memberNo"       : loginMemberNo,  // 또는 Session 회원 번호 이용도 가능
     "parentCommentNo" : parentCommentNo // 부모 댓글 번호

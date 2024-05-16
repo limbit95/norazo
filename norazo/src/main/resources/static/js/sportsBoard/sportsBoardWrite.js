@@ -232,9 +232,9 @@ boardWriteFrm.addEventListener("submit", e => {
     return;
   }
 
-  if(boardContentWrite.value.trim().length == 0){
+  if(boardContent.value.trim().length == 0){
     alert("모임 소개글을 작성해주세요.");
-    boardContentWrite.focus();
+    boardContent.focus();
     e.preventDefault();
     return;
   }
